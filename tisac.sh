@@ -65,11 +65,11 @@ echo "export PATH=\$PATH:/root/node-v20.10.0-linux-arm64/bin" >>$current/etc/pro
 fi
 
 if [ ! -d "SillyTavern" ]; then
-git clone git@github.com:SillyTavern/SillyTavern.git
+git clone https://github.com/SillyTavern/SillyTavern.git
 fi
 
 if [ ! -d "one-api" ]; then
-git clone git@github.com:songquanpeng/one-api.git
+git clone https://github.com/songquanpeng/one-api.git
 fi
 
 git clone -b test https://github.com/teralomaniac/clewd
