@@ -30,6 +30,8 @@ then
     case "$choice" in
       y|Y )
         echo "go安装中..."
+        yes | apt update
+        yes | apt upgrade
         DEBIAN_FRONTEND=noninteractive apt-get install golang -y
         go version;;
       n|N )
