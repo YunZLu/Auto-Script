@@ -5,7 +5,7 @@ read -p "确保开了魔法后按回车继续"
 
 while :
 do 
-read -p "确定要更新启动脚本为one-api版吗? (y/n)" choice
+read -p "确定要更新启动脚本为one-api版吗? (y/n)"choice
 
 case "$choice" in
     y|Y )
