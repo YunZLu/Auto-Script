@@ -55,6 +55,11 @@ else
     yes | apt update
     yes | apt upgrade
     DEBIAN_FRONTEND=noninteractive apt-get install golang -y
+    
+    #重装ca-certificates解决go mod X509问题
+    apt-get install --reinstall ca-certificates -y
+    yes | apt-get update
+    
     go version
     echo "go安装成功~"
 fi
