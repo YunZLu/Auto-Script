@@ -9,7 +9,6 @@ then
     case "$choice" in
       y|Y )
         echo "npm安装中..."
-        yes | apt update
         DEBIAN_FRONTEND=noninteractive apt-get install npm -y
         go version;;
       n|N )
@@ -27,6 +26,7 @@ then
     case "$choice" in
       y|Y )
         echo "go安装中..."
+        yes | apt update
         DEBIAN_FRONTEND=noninteractive apt-get install golang -y
         go version;;
       n|N )
