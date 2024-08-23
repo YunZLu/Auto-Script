@@ -53,6 +53,7 @@ if command -v go &> /dev/null; then
 else
     echo "go指令不存在，现在下载~"
     yes | apt update
+    yes | apt upgrade
     DEBIAN_FRONTEND=noninteractive apt-get install golang -y
     go version
     echo "go安装成功~"
