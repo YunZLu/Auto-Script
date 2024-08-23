@@ -42,7 +42,6 @@ DEBIAN_FRONTEND=noninteractive apt-get install golang -y
    echo "Ubuntu安装失败了，请更换魔法或者手动安装Ubuntu喵~"
     exit 1
  fi
-
     echo "Ubuntu成功安装到Termux"
 
 if [ -d "SillyTavern" ]; then
@@ -62,6 +61,14 @@ if [ ! -d node-v20.10.0-linux-arm64.tar.xz ]; then
 tar xf node-v20.10.0-linux-arm64.tar.xz
 
 echo "export PATH=\$PATH:/root/node-v20.10.0-linux-arm64/bin" >>$current/etc/profile
+fi
+
+echo "正在为Ubuntu下载启动文件喵~"
+curl -O https://raw.githubusercontent.com/YunZLu/termux_using_openai/main/sac.sh
+
+if [ ! -f "$current/root/sac.sh" ]; then
+   echo "启动文件下载失败了，换个魔法或者手动下载试试吧"
+   exit
 fi
 
 ln -s /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/ubuntu/root
