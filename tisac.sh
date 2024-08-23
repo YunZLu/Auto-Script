@@ -76,11 +76,11 @@ git clone -b test https://github.com/teralomaniac/clewd
 
 echo -e "\033[0;33m本操作仅为破限下载提供方便，所有破限皆为收录，喵喵不具有破限所有权\033[0m"
 read -p "回车进行导入喵~"
-git clone https://github.com/hopingmiao/promot.git st_promot
+git clone https://github.com/hopingmiao/promot.git /root/st_promot
 if  [ ! -d "st_promot" ]; then
     echo -e "(*꒦ິ⌓꒦ີ)\n\033[0;33m hoping：因网络波动预设文件下载失败了，更换网络后再试喵~\n\033[0m"
 else
-    cp -r $current/root/st_promot/. $current/root/SillyTavern/public/'OpenAI Settings'/
+    cp -r /root/st_promot/. /root/SillyTavern/public/'OpenAI Settings'/
     echo -e "\033[0;33m破限已成功导入，安装完毕后启动酒馆即可看到喵~\033[0m"
 fi
 
