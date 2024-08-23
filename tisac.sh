@@ -16,8 +16,6 @@ current=/data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/ub
 
 yes | apt update
 
-yes | apt upgrade
-
 # 安装proot-distro
 DEBIAN_FRONTEND=noninteractive pkg install proot-distro -y
 
