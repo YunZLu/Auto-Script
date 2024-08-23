@@ -68,6 +68,21 @@ echo "root软链接已添加，可直接在mt管理器打开root文件夹修改�
 if [ ! -d "one-api" ]; then
 	echo "one-api不存在，正在通过git下载..."
 	git clone https://github.com/songquanpeng/one-api.git
+elif [ ! -f "one-api/install.sh" ]; then
+	echo "one-api部署文件不存在，正在通过git下载..."
+	cd one-api
+	curl -O https://raw.githubusercontent.com/YunZLu/termux_using_openai/main/install.sh
+        if [ ! -f "install.sh" ]; then
+	echo -e "(*꒦ິ⌓꒦ີ)\n\033[0;33m hoping：因网络波动预设文件下载失败了，更换网络后再试喵~\n\033[0m"
+	else
+        echo "one-api部署文件下载成功"
+	fi
+        cd /root
+fi
+
+if [ ! -d "one-api" ]; then
+	echo "one-api不存在，正在通过git下载..."
+	git clone https://github.com/songquanpeng/one-api.git
 elif [ ! -f "one-api/start.sh" ]; then
 	echo "one-api启动文件不存在，正在通过git下载..."
 	cd one-api
@@ -868,14 +883,15 @@ do
     echo -e "\033[0;36mhoping喵~让你选一个执行（输入数字即可），懂了吗？\033[0;38m(｡ì _ í｡)\033[0m\033[0m
 \033[0;33m--------------------------------------\033[0m
 \033[0;31m选项0 退出脚本\033[0m
-\033[0;34m选项1 启动One-Api\033[0m
-\033[0;33m选项2 启动Clewd\033[0m
-\033[0;37m选项3 启动酒馆\033[0m
-\033[0;33m选项4 Clewd设置\033[0m
-\033[0;37m选项5 酒馆设置\033[0m
-\033[0;33m选项6 神秘小链接$saclinkemoji\033[0m
+\033[0;36m选项1 部署One-Api\033[0m
+\033[0;34m选项2 启动One-Api\033[0m
+\033[0;33m选项3 启动Clewd\033[0m
+\033[0;37m选项4 启动酒馆\033[0m
+\033[0;33m选项5 Clewd设置\033[0m
+\033[0;37m选项6 酒馆设置\033[0m
+\033[0;33m选项7 神秘小链接$saclinkemoji\033[0m
 \033[0;33m--------------------------------------\033[0m
-\033[0;31m选项7 更新脚本\033[0m
+\033[0;31m选项8 更新脚本\033[0m
 \033[0;33m--------------------------------------\033[0m
 \033[0;35m不准选其他选项，听到了吗？
 \033[0m\n(⇀‸↼‶)"
@@ -885,6 +901,13 @@ do
         0) 
             break ;; 
         1) 
+            #部署One-Api
+            cd one-api
+            bash install.sh
+            echo "One-Api已部署完成, 即将返回主菜单"
+            cd ../
+            ;; 
+        2) 
             #启动One-Api
 	    ps -ef | grep one-api | awk '{print$2}' | xargs kill -9
             cd one-api
@@ -892,7 +915,7 @@ do
             echo "One-Api已关闭, 即将返回主菜单"
             cd ../
             ;; 
-        2) 
+        3) 
             #启动Clewd
             port=$(grep -oP '"Port":\s*\K\d+' clewd/config.js)
             echo "端口为$port, 出现 (x)Login in {邮箱} 代表启动成功, 后续出现AI无法应答等报错请检查本窗口喵。"
@@ -902,7 +925,7 @@ do
             echo "Clewd已关闭, 即将返回主菜单"
             cd ../
             ;; 
-        3) 
+        4) 
             #启动SillyTavern
 			ps -ef | grep server.js | awk '{print$2}' | xargs kill -9
             cd SillyTavern
@@ -910,22 +933,22 @@ do
             echo "酒馆已关闭, 即将返回主菜单"
             cd ../
             ;; 
-        4) 
+        5) 
             #Clewd设置
             clewdSettings
             ;; 
-        5) 
+        6) 
             #SillyTavern设置
             sillyTavernSettings
             ;; 
-	6)
+	7)
 		saclinkname=$(curl -s https://raw.githubusercontent.com/hopingmiao/termux_using_Claue/main/secret_saclink | awk -F '|' '{print $1 }')
 		echo -e "神秘小链接会不定期悄悄更新，这次的神秘小链接是..."
 		sleep 2
 		echo $saclinkname
 		termux-open-url $(curl -s https://raw.githubusercontent.com/hopingmiao/termux_using_Claue/main/secret_saclink | awk -F '|' '{print $2 }')
 		;;
-        7)
+        8)
             # 更新脚本
             curl -O https://raw.githubusercontent.com/YunZLu/termux_using_openai/main/sac.sh
 	    echo -e "重启终端或者输入bash sac.sh重新进入脚本喵~"
