@@ -18,7 +18,7 @@ case "$choice" in
         fi;;
     n|N )
         echo "你选择了不更新启动脚本，正在退出"
-        break ;;
+        ;;
     * )
         echo "m9( ｀д´ )!!!!你选了个啥呀？要不要更新了！"
         echo "已退出喵喵一键脚本，输入 bash sac.sh 可重新进入脚本喵~"
