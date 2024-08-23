@@ -69,16 +69,17 @@ echo "root软链接已添加，可直接在mt管理器打开root文件夹修改�
 if [ ! -d "one-api" ]; then
 	echo "one-api不存在，正在通过git下载..."
 	git clone https://github.com/songquanpeng/one-api.git
-elif [ ! -f "one-api/start.sh" ]; then
+   if [ ! -f "one-api/start.sh" ]; then
 	echo "one-api启动文件不存在，正在通过git下载..."
 	cd one-api
 	curl -O https://raw.githubusercontent.com/YunZLu/termux_using_openai/main/start.sh
-        if [ ! -f "start.sh" ]; then
-	echo -e "(*꒦ິ⌓꒦ີ)\n\033[0;33m hoping：因网络波动预设文件下载失败了，更换网络后再试喵~\n\033[0m"
-	else
-        echo "one-api启动文件下载成功"
-	fi
-        cd /root
+          if [ ! -f "start.sh" ]; then
+	   echo -e "(*꒦ິ⌓꒦ີ)\n\033[0;33m hoping：因网络波动预设文件下载失败了，更换网络后再试喵~\n\033[0m"
+	   else
+           echo "one-api启动文件下载成功"
+	   fi
+           cd /root
+   fi
 fi
 
 if [ ! -d "SillyTavern" ] || [ ! -f "SillyTavern/start.sh" ]; then
