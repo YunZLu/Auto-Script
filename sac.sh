@@ -58,17 +58,6 @@ else
     echo "go安装成功~"
 fi
 
-#检查是否存在npm指令
-if command -v npm &> /dev/null; then
-    echo "npm指令存在"
-    go version
-else
-    echo "npm指令不存在，现在下载~"
-    DEBIAN_FRONTEND=noninteractive apt-get install npm -y
-    npm version
-    echo "npm安装成功~"
-fi
-
 #添加termux上的Ubuntu/root软链接
 if [ ! -d "/data/data/com.termux/files/home/root" ]; then
     ln -s /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/ubuntu/root /data/data/com.termux/files/home
