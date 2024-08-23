@@ -31,7 +31,7 @@ then
       y|Y )
         echo "go安装中..."
         DEBIAN_FRONTEND=noninteractive apt-get install golang -y
-        go version
+        go version;;
       n|N )
         echo "不安装go，无法启动！"
         exit;;
