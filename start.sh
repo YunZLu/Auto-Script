@@ -39,7 +39,7 @@ then
 fi
 
 echo "前端构建中..."
-cd /root/one-api/web/default
+cd one-api/web/default
 npm install
 npm run build
 
@@ -48,9 +48,6 @@ cd ../..
 go mod download
 go build -ldflags "-s -w" -o one-api
 
-# Make sure pwd is the directory of the script
-cd "$(dirname "$0")"
-
 echo "One-Api启动中..."
-chmod u+x /root/one-api
+chmod u+x one-api
 ./one-api --port 3000 --log-dir ./logs
