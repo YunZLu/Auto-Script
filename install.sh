@@ -47,5 +47,3 @@ echo "后端构建中..."
 cd ../..
 go mod download
 go build -ldflags "-s -w" -o one-api
-
-echo "One-Api部署成功！！！"
