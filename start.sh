@@ -49,5 +49,5 @@ go mod download
 go build -ldflags "-s -w" -o one-api
 
 echo "One-Api启动中..."
-chmod u+x one-api
+chmod u+x /root/one-api
 ./one-api --port 3000 --log-dir ./logs
