@@ -32,8 +32,10 @@ DEBIAN_FRONTEND=noninteractive proot-distro install ubuntu
     echo "Ubuntu成功安装到Termux"
 
 echo "正在安装pkg软件喵~"
-
 DEBIAN_FRONTEND=noninteractive pkg install git vim curl xz-utils -y
+
+echo "正在安装apt软件喵~"
+DEBIAN_FRONTEND=noninteractive apt-get install golang -y
 
 # Check Ubuntu installed successfully
  if [ ! -d "$current" ]; then
