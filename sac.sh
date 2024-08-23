@@ -97,7 +97,7 @@ fi
 if [ ! -f "SillyTavern/start.sh" ]; then
 	if [ ! -d "SillyTavern" ]; then
 	    echo "SillyTavern不存在，正在通过git下载..."
-	    git clone git clone https://github.com/SillyTavern/SillyTavern.git
+	    git clone https://github.com/SillyTavern/SillyTavern.git
 	    echo -e "\033[0;33m本操作仅为破限下载提供方便，所有破限皆为收录，喵喵不具有破限所有权\033[0m"
 	    read -p "回车进行导入破限喵~"
 	    mkdir -m 755 /root/st_promot
