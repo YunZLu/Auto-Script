@@ -38,12 +38,12 @@ then
     esac
 fi
 
-echo "构建前端中..."
+echo "前端构建中..."
 cd /root/one-api/web/default
 npm install
 npm run build
 
-echo "构建后端中..."
+echo "后端构建中..."
 cd ../..
 go mod download
 go build -ldflags "-s -w" -o one-api
