@@ -14,6 +14,8 @@ read -p "确保开了魔法后按回车继续"
 
 current=/data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/ubuntu
 
+yes | apt update
+
 # 安装proot-distro
 DEBIAN_FRONTEND=noninteractive pkg install proot-distro -y
 
@@ -94,7 +96,7 @@ echo "proot-distro login ubuntu" >>/data/data/com.termux/files/home/.bashrc
 
 source /data/data/com.termux/files/home/.bashrc
 
-yes | apt update
+#yes | apt update
 echo "正在安装apt软件喵~"
 DEBIAN_FRONTEND=noninteractive apt-get install golang -y
 
