@@ -14,6 +14,7 @@ case "$choice" in
            echo "脚本下载失败了，换个魔法或者手动下载试试吧"
         else
            echo "更新脚本成功，正在退出"
+           bash /root/sac.sh
         fi;;
     n|N )
         echo "不更新脚本，正在退出"
