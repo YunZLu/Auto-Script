@@ -46,6 +46,19 @@ else
   fi
 fi
 
+#检查是否存在go指令
+if command -v go &> /dev/null; then
+    echo "go指令存在"
+    go version
+else
+    echo "go指令不存在，现在下载~"
+    yes | apt update
+    DEBIAN_FRONTEND=noninteractive apt-get install golang -y
+    go version
+    echo "go安装成功~"
+fi
+
+
 #添加termux上的Ubuntu/root软链接
 if [ ! -d "/data/data/com.termux/files/home/root" ]; then
     ln -s /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/ubuntu/root /data/data/com.termux/files/home
