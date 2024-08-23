@@ -3,23 +3,20 @@
 # Make sure pwd is the directory of the script
 cd "$(dirname "$0")"
 
-if ! command -v npm &> /dev/null
+if ! command -v go &> /dev/null
 then
-    read -p "还没安装npm，现在安装nodejs和npm吗? (y/n)" choice
+    read -p "还没安装npm，现在安装npm吗? (y/n)" choice
     case "$choice" in
       y|Y )
-        echo "nvm安装中..."
-        export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
-        [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-        curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
-        source ~/.bashrc
-        nvm install --lts
-        nvm use --lts;;
+        echo "npm安装中..."
+        yes | apt update
+        DEBIAN_FRONTEND=noninteractive apt-get install npm -y
+        go version;;
       n|N )
-        echo "不安装nvm，无法启动！"
+        echo "不安装npm，无法启动！"
         exit;;
       * )
-        echo "你选了个啥呀？没安装nvm，无法启动！"
+        echo "你选了个啥呀？没安装npm，无法启动！"
         exit;;
     esac
 fi
@@ -30,8 +27,6 @@ then
     case "$choice" in
       y|Y )
         echo "go安装中..."
-        yes | apt update
-        yes | apt upgrade
         DEBIAN_FRONTEND=noninteractive apt-get install golang -y
         go version;;
       n|N )
