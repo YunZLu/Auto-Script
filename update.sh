@@ -3,8 +3,6 @@
 echo -e "\033[0;31m开魔法！开魔法！开魔法！\033[0m\n"
 read -p "确保开了魔法后按回车继续"
 
-while :
-do
 read -r "确定要更新启动脚本为one-api版吗? (y/n)" choice
 
 case "$choice" in
@@ -23,8 +21,6 @@ case "$choice" in
         exit;;
     * )
         echo "m9( ｀д´ )!!!!你选了个啥呀？要不要更新了！"
+        echo "已退出更新脚本，输入 bash update.sh 可重新进入脚本喵~"
         ;;
 esac
-done
-echo "已退出更新脚本，输入 bash update.sh 可重新进入脚本喵~"
-exit
