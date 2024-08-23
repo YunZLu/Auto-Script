@@ -67,7 +67,7 @@ echo "root软链接已添加，可直接在mt管理器打开root文件夹修改�
 
 if [ ! -d "one-api" ]; then
 	echo "one-api不存在，正在通过git下载..."
-	git clone https://github.com/songquanpeng/one-api.git
+	git clone git clone git@github.com:songquanpeng/one-api.git
 elif [ ! -f "one-api/start.sh" ]; then
 	echo "one-api启动文件不存在，正在通过git下载..."
 	cd one-api
