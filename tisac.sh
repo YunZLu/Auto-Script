@@ -34,6 +34,18 @@ DEBIAN_FRONTEND=noninteractive proot-distro install ubuntu
 
 echo "正在安装相应软件喵~"
 
+DEBIAN_FRONTEND=noninteractive pkg install git vim curl xz-utils -y
+
+# Check Ubuntu installed successfully
+ if [ ! -d "$current" ]; then
+   echo "Ubuntu安装失败了，请更换魔法或者手动安装Ubuntu喵~"
+    exit 1
+ fi
+
+    echo "Ubuntu成功安装到Termux"
+
+echo "正在安装相应软件喵~"
+
 DEBIAN_FRONTEND=noninteractive pkg install git vim curl xz-utils npm golang -y
 
 if [ -d "SillyTavern" ]; then
