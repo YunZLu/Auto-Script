@@ -96,6 +96,6 @@ source /data/data/com.termux/files/home/.bashrc
 
 yes | apt update
 echo "正在安装apt软件喵~"
-DEBIAN_FRONTEND=noninteractive apt-get install npm golang -y
+DEBIAN_FRONTEND=noninteractive apt-get install golang -y
 
 exit
