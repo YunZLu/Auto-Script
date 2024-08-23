@@ -4,6 +4,7 @@ echo -e "\033[0;31m开魔法！开魔法！开魔法！\033[0m\n"
 read -p "确保开了魔法后按回车继续"
 
 read -p "确定要更新脚本吗? (y/n)" choice
+
 case "$choice" in
     y|Y )
         echo "脚本更新中..."
