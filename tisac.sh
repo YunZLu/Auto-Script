@@ -15,6 +15,7 @@ read -p "确保开了魔法后按回车继续"
 current=/data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/ubuntu
 
 yes | apt update
+yes | apt upgrade
 
 # 安装proot-distro
 DEBIAN_FRONTEND=noninteractive pkg install proot-distro -y
