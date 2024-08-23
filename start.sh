@@ -39,7 +39,7 @@ then
 fi
 
 echo "前端构建中..."
-cd one-api/web/default
+cd /root/one-api/web/default
 npm install
 npm run build
 
