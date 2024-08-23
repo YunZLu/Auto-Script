@@ -856,7 +856,7 @@ function TavernAI-extrasstart {
 # 主菜单
 echo -e "                                              
 喵喵一键脚本
-作者：hoping喵(懒喵~)，水秋喵(苦等hoping喵起床)，瑾年
+作者：hoping喵(懒喵~)，水秋喵(苦等hoping喵起床)，瑾年(...)
 版本：酒馆:$st_version clewd:$clewd_version 脚本:$version
 最新：\033[5;36m酒馆:$st_latest\033[0m \033[5;32mclewd:$clewd_latest\033[0m \033[0;33m脚本:$latest_version\033[0m
 来自：Claude2.1先行破限组
