@@ -1,6 +1,6 @@
 #!/bin/bash
 
-version="Ver2.9.5"
+version="Ver1.0.1"
 clewd_version="$(grep '"version"' "clewd/package.json" | awk -F '"' '{print $4}')($(grep "Main = 'clewd修改版 v'" "clewd/lib/clewd-utils.js" | awk -F'[()]' '{print $3}'))"
 st_version=$(grep '"version"' "SillyTavern/package.json" | awk -F '"' '{print $4}')
 echo "hoping：卡在这里了？...说明有小猫没开魔法喵~"
@@ -53,6 +53,16 @@ fi
 
 echo "root软链接已添加，可直接在mt管理器打开root文件夹修改文件"
 
+if [ ! -d "one-api" ]; then
+	echo "one-api不存在，正在通过git下载..."
+	git clone https://github.com/songquanpeng/one-api.git
+elif [ ! -f "one-api/start.sh" ]; then
+	echo "one-api启动文件不存在，正在通过git下载..."
+	cd one-api
+	curl -O https://raw.githubusercontent.com/YunZLu/termux_using_openai/main/start.sh
+        cd /root
+fi
+
 if [ ! -d "SillyTavern" ] || [ ! -f "SillyTavern/start.sh" ]; then
     echo "SillyTavern不存在，正在通过git下载..."
 	cp -r SillyTavern/public SillyTavern_public_bak
@@ -80,6 +90,12 @@ elif [ ! -f "clewd/config.js" ]; then
     cd clewd
     bash start.sh
     cd /root
+fi
+
+if [ ! -d "one-api" ] || [ ! -f "one-api/start.sh" ]; then
+	echo -e "(*꒦ິ⌓꒦ີ)\n\033[0;33m hoping：因网络波动文件下载失败了，更换网络后再试喵~\n\033[0m"
+ 	rm -rf one-api
+	exit 1
 fi
 
 if [ ! -d "SillyTavern" ] || [ ! -f "SillyTavern/start.sh" ]; then
@@ -853,7 +869,7 @@ do
             break ;; 
         1) 
             #启动One-Api
-			ps -ef | grep one-api | awk '{print$2}' | xargs kill -9
+	    ps -ef | grep one-api | awk '{print$2}' | xargs kill -9
             cd one-api
             bash start.sh
             echo "One-Api已关闭, 即将返回主菜单"
@@ -894,7 +910,7 @@ do
 		;;
         7)
             # 更新脚本
-            curl -O https://raw.githubusercontent.com/hopingmiao/termux_using_Claue/main/sac.sh
+            curl -O https://raw.githubusercontent.com/YunZLu/termux_using_openai/main/sac.sh
 	    echo -e "重启终端或者输入bash sac.sh重新进入脚本喵~"
             break ;;
         *) 

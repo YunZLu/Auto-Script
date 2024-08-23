@@ -31,7 +31,6 @@ then
       y|Y )
         echo "安装go中..."
         DEBIAN_FRONTEND=noninteractive pkg install golang -y
-
         if command -v go &> /dev/null; then
             echo "go安装成功"
             go version                                                
@@ -39,7 +38,6 @@ then
             echo "go安装失败，请检查网络后重试。"
             exit 1
         fi
-
       n|N )
         echo "不安装go，无法启动！"
         exit;;
