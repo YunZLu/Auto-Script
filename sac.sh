@@ -117,8 +117,7 @@ elif [ ! -f "clewd/config.js" ]; then
 fi
 
 
-if [ ! -f "SillyTavern/start.sh" ]; then
-	if [ ! -d "SillyTavern" ]; then
+if [ ! -d "SillyTavern" ]; then
 	    echo "SillyTavern不存在，正在通过git下载..."
      	    rm -rf SillyTavern
 	    git clone https://github.com/SillyTavern/SillyTavern -b release
@@ -132,23 +131,43 @@ if [ ! -f "SillyTavern/start.sh" ]; then
 	    mv /root/st_promot SillyTavern/public/OpenAI\ Settings/
 	    echo -e "\033[0;33m破限已成功导入，安装完毕后启动酒馆即可看到喵~\033[0m"
 	    fi
-        else
-	    echo "SillyTavern缺失启动文件，正在通过git下载..."
-	    cp -r SillyTavern/public SillyTavern_public_bak
-	    rm -rf SillyTavern
-	    git clone https://github.com/SillyTavern/SillyTavern -b release
-	    echo -e "\033[0;33m本操作仅为破限下载提供方便，所有破限皆为收录，喵喵不具有破限所有权\033[0m"
-	    read -p "回车进行导入破限喵~"
-	    rm -rf /root/st_promot
-	    git clone https://github.com/hopingmiao/promot.git /root/st_promot
-	    if  [ ! -d "/root/st_promot" ]; then
-		echo -e "(*꒦ິ⌓꒦ີ)\n\033[0;33m hoping：因网络波动预设文件下载失败了，更换网络后再试喵~\n\033[0m"
-	    else
-		cp -r /root/st_promot/. /root/SillyTavern/public/'OpenAI Settings'/
-		echo -e "\033[0;33m破限已成功导入，安装完毕后启动酒馆即可看到喵~\033[0m"
-	    fi
-	 fi
-
+					#直接更新...不然不知道为什么会缺失破限文件...有时间再看看吧...
+					if [ -d "SillyTavern_old" ]; then                                   
+					NEW_FOLDER_NAME="SillyTavern_$(date +%Y%m%d)"
+					mv SillyTavern_old $NEW_FOLDER_NAME
+					fi
+			  		git clone -b staging https://github.com/SillyTavern/SillyTavern.git SillyTavern_new
+					if [ ! -d "SillyTavern_new" ]; then
+						echo -e "(*꒦ິ⌓꒦ີ)\n\033[0;33m hoping：因为网络波动下载失败了，更换网络再试喵~\n\033[0m"
+						exit 5
+					fi
+					
+					if [ -d "SillyTavern/data/default-user" ]; then
+					    cp -r SillyTavern/data/default-user/characters/. SillyTavern_new/public/characters/
+    					cp -r SillyTavern/data/default-user/chats/. SillyTavern_new/public/chats/       
+    					cp -r SillyTavern/data/default-user/worlds/. SillyTavern_new/public/worlds/
+    					cp -r SillyTavern/data/default-user/groups/. SillyTavern_new/public/groups/
+    					cp -r SillyTavern/data/default-user/group\ chats/. SillyTavern_new/public/group\ chats/
+    					cp -r SillyTavern/data/default-user/OpenAI\ Settings/. SillyTavern_new/public/OpenAI\ Settings/
+    					cp -r SillyTavern/data/default-user/User\ Avatars/. SillyTavern_new/public/User\ Avatars/
+    					cp -r SillyTavern/data/default-user/backgrounds/. SillyTavern_new/public/backgrounds/
+    					cp -r SillyTavern/data/default-user/settings.json SillyTavern_new/public/settings.json
+					else
+    					cp -r SillyTavern/public/characters/. SillyTavern_new/public/characters/
+    					cp -r SillyTavern/public/chats/. SillyTavern_new/public/chats/       
+    					cp -r SillyTavern/public/worlds/. SillyTavern_new/public/worlds/
+    					cp -r SillyTavern/public/groups/. SillyTavern_new/public/groups/
+    					cp -r SillyTavern/public/group\ chats/. SillyTavern_new/public/group\ chats/
+    					cp -r SillyTavern/public/OpenAI\ Settings/. SillyTavern_new/public/OpenAI\ Settings/
+    					cp -r SillyTavern/public/User\ Avatars/. SillyTavern_new/public/User\ Avatars/
+    					cp -r SillyTavern/public/backgrounds/. SillyTavern_new/public/backgrounds/
+    					cp -r SillyTavern/public/settings.json SillyTavern_new/public/settings.json
+					fi
+					
+					mv SillyTavern SillyTavern_old                                  
+					mv SillyTavern_new SillyTavern
+					echo -e "\033[0;33mhoping：酒馆已更新完毕~\033[0m"
+  
 fi
 
 
