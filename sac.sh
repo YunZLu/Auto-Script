@@ -178,7 +178,7 @@ if [ ! -d "SillyTavern" ]; then
      	    rm -rf SillyTavern
 	    git clone https://github.com/SillyTavern/SillyTavern -b release
      	    if [ ! -d "SillyTavern" ]; then
-	    echo -e "(*꒦ິ⌓꒦ີ)\n\033[0;33m hoping：因网络波动预设文件下载失败了喵~\n\033[0m"
+	    echo -e "(*꒦ິ⌓꒦ີ)\n\033[0;33m hoping：因网络波动SillyTavern下载失败了喵~\n\033[0m"
      
 	    continue
      
