@@ -118,7 +118,7 @@ fi
 if [ ! -d "clewd" ]; then
 	echo "clewd不存在，正在通过git下载..."
 	git clone -b test https://github.com/teralomaniac/clewd
- 	if  [ ! -d "/root/st_promot" ]; then
+ 	if  [ ! -d "clewd" ]; then
 	echo -e "(*꒦ິ⌓꒦ີ)\n\033[0;33m hoping：因网络波动clewd下载失败了喵~\n\033[0m"
    
 	continue
