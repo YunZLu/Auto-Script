@@ -107,7 +107,7 @@ fi
 if [ ! -f "SillyTavern/start.sh" ]; then
 	if [ ! -d "SillyTavern" ]; then
 	    echo "SillyTavern不存在，正在通过git下载..."
-	    git clone https://github.com/SillyTavern/SillyTavern.git
+	    git clone https://github.com/SillyTavern/SillyTavern -b release
 	    echo -e "\033[0;33m本操作仅为破限下载提供方便，所有破限皆为收录，喵喵不具有破限所有权\033[0m"
 	    read -p "回车进行导入破限喵~"
 	    mkdir -m 755 /root/st_promot
@@ -122,7 +122,7 @@ if [ ! -f "SillyTavern/start.sh" ]; then
 	    echo "SillyTavern不存在，正在通过git下载..."
 	    cp -r SillyTavern/public SillyTavern_public_bak
 	    rm -rf SillyTavern
-	    git clone https://github.com/SillyTavern/SillyTavern SillyTavern
+	    git clone https://github.com/SillyTavern/SillyTavern -b release
 	    echo -e "\033[0;33m本操作仅为破限下载提供方便，所有破限皆为收录，喵喵不具有破限所有权\033[0m"
 	    read -p "回车进行导入破限喵~"
 	    rm -rf /root/st_promot
