@@ -104,7 +104,7 @@ if [ ! -f "one-api/start.sh" ]; then
 		curl -O https://raw.githubusercontent.com/YunZLu/termux_using_openai/main/start.sh
 	            if [ ! -f "start.sh" ]; then
 		    echo -e "(*꒦ິ⌓꒦ີ)\n\033[0;33m hoping：因网络波动one-api启动文件下载失败了喵~\n\033[0m"
-       
+      
 		    continue
       
 		    else
@@ -131,7 +131,7 @@ if [ ! -d "clewd" ]; then
  	    bash start.sh
  	} || {
 	    cd /root 
-	    rm-rf clewd
+	    rm -rf clewd
 	    echo -e "(*꒦ິ⌓꒦ີ)\n\033[0;33m hoping：clewd未部署成功，已帮您删除clewd了喵~\n\033[0m"
 	    continue
      	}
@@ -155,7 +155,7 @@ elif [ ! -f "clewd/config.js" ]; then
  	    bash start.sh
  	} || {
 	    cd /root 
-	    rm-rf clewd
+	    rm -rf clewd
 	    echo -e "(*꒦ິ⌓꒦ີ)\n\033[0;33m hoping：clewd未部署成功，已帮您删除clewd了喵~\n\033[0m"
 	    continue
      	}
@@ -205,7 +205,7 @@ if [ ! -d "SillyTavern" ]; then
 				 	    npm i --no-audit --no-fund --quiet --omit=dev
 				 	} || {
 					    cd /root 
-					    rm-rf SillyTavern
+					    rm -rf SillyTavern
 					    echo -e "(*꒦ິ⌓꒦ີ)\n\033[0;33m hoping：SillyTavern未部署成功，已帮您删除SillyTavern了喵~\n\033[0m"
 					    continue
 				     	}
@@ -215,7 +215,7 @@ if [ ! -d "SillyTavern" ]; then
 				 	    node "server.js" "$@"v
 				 	} || {
 					    cd /root 
-					    rm-rf SillyTavern
+					    rm -rf SillyTavern
 					    echo -e "(*꒦ິ⌓꒦ີ)\n\033[0;33m hoping：SillyTavern未部署成功，已帮您删除SillyTavern了喵~\n\033[0m"
 					    continue
 				     	}
