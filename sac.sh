@@ -128,12 +128,12 @@ if [ ! -d "SillyTavern" ]; then
 	    echo -e "\033[0;33m破限已成功导入，更新完毕后启动酒馆即可看到喵~\033[0m"
 	    fi
 					#直接更新...不然不知道为什么会缺失破限文件...有时间再研究吧...
-     					echo -e "\033[0;33mSillyTavern需要更新，请耐心等待...~\033[0m"
+     					echo -e "\033[0;33mSillyTavern需要更新，请耐心等待...\033[0m"
 					cd /root/SillyTavern
 					npm i --no-audit --no-fund --quiet --omit=dev
                                         node post-install.js
-					echo -e "\033[0;31m当SillyTavern运行成功输出网址时，请按Ctrl+C！！！\033[0m"
-      					read -p "明白了，按回车键继续"
+					echo -e "\033[0;31m当SillyTavern成功输出绿色网址时，请按Ctrl+C！\033[0m"
+      					read -p "明白了，请按回车键继续"
 					node "server.js" "$@"
 					cd /root
 	  				export NODE_ENV=production
