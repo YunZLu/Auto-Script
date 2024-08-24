@@ -127,15 +127,8 @@ if [ ! -d "clewd" ]; then
 	echo "clewd下载成功"
 	cd clewd
  
-	{
- 	    bash start.sh
- 	} || {
-	    cd /root 
-	    rm -rf clewd
-	    echo -e "(*꒦ິ⌓꒦ີ)\n\033[0;33m hoping：clewd未部署成功，已帮您删除clewd了喵~\n\033[0m"
-	    continue
-     	}
-     
+ 	bash start.sh
+
         cd /root
 	    if [ ! -f "clewd/config.js" ]; then
 	    rm -rf clewd
