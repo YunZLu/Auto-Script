@@ -133,8 +133,10 @@ if [ ! -d "SillyTavern" ]; then
 	    fi
 					#直接更新...不然不知道为什么会缺失破限文件...有时间再研究吧...
      					echo "SillyTavern需要更新，请耐心等待..."
+					cd /root/SillyTavern
 					npm i --no-audit --no-fund --quiet --omit=dev
                                         node post-install.js
+					cd /root
 	  				export NODE_ENV=production
 					if [ -d "SillyTavern_old" ]; then                                   
 					NEW_FOLDER_NAME="SillyTavern_$(date +%Y%m%d)"
