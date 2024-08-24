@@ -211,14 +211,7 @@ if [ ! -d "SillyTavern" ]; then
 				     	}
 					echo -e "\033[0;31m当SillyTavern成功输出绿色网址时，请按Ctrl+C！\033[0m"
       					read -p "红字看明白了，按回车键继续..."
-     				     	{
-				 	    node "server.js" "$@"v
-				 	} || {
-					    cd /root 
-					    rm -rf SillyTavern
-					    echo -e "(*꒦ິ⌓꒦ີ)\n\033[0;33m hoping：SillyTavern未部署成功，已帮您删除SillyTavern了喵~\n\033[0m"
-					    continue
-				     	}
+				 	node "server.js" "$@"v
 					cd /root
 	  				export NODE_ENV=production
 					if [ -d "SillyTavern_old" ]; then                                   
