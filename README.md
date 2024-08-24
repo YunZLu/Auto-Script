@@ -13,7 +13,7 @@
 
 2.下载termux
 推荐下载网站：https://f-droid.org/zh_Hans/packages/com.termux
-下载推荐版本；
+建议下载推荐版本；
 
 （2）.开始部署：
 
