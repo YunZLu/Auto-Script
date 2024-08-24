@@ -104,10 +104,23 @@ if [ ! -f "one-api/start.sh" ]; then
 fi
 
 
+if [ ! -d "clewd" ]; then
+	echo "clewd不存在，正在通过git下载..."
+	git clone -b test https://github.com/teralomaniac/clewd
+	cd clewd
+	bash start.sh
+        cd /root
+elif [ ! -f "clewd/config.js" ]; then
+    cd clewd
+    bash start.sh
+    cd /root
+fi
+
 
 if [ ! -f "SillyTavern/start.sh" ]; then
 	if [ ! -d "SillyTavern" ]; then
 	    echo "SillyTavern不存在，正在通过git下载..."
+     	    rm -rf SillyTavern
 	    git clone https://github.com/SillyTavern/SillyTavern -b release
 	    echo -e "\033[0;33m本操作仅为破限下载提供方便，所有破限皆为收录，喵喵不具有破限所有权\033[0m"
 	    read -p "回车进行导入破限喵~"
@@ -116,11 +129,11 @@ if [ ! -f "SillyTavern/start.sh" ]; then
 	    if  [ ! -d "/root/st_promot" ]; then
 	        echo -e "(*꒦ິ⌓꒦ີ)\n\033[0;33m hoping：因网络波动预设文件下载失败了，更换网络后再试喵~\n\033[0m"
 	    else
-	    cp -r /root/st_promot/. /root/SillyTavern/public/'OpenAI Settings'/
+	    mv /root/st_promot SillyTavern/public/OpenAI\ Settings/
 	    echo -e "\033[0;33m破限已成功导入，安装完毕后启动酒馆即可看到喵~\033[0m"
 	    fi
         else
-	    echo "SillyTavern不存在，正在通过git下载..."
+	    echo "SillyTavern缺失启动文件，正在通过git下载..."
 	    cp -r SillyTavern/public SillyTavern_public_bak
 	    rm -rf SillyTavern
 	    git clone https://github.com/SillyTavern/SillyTavern -b release
@@ -134,23 +147,10 @@ if [ ! -f "SillyTavern/start.sh" ]; then
 		cp -r /root/st_promot/. /root/SillyTavern/public/'OpenAI Settings'/
 		echo -e "\033[0;33m破限已成功导入，安装完毕后启动酒馆即可看到喵~\033[0m"
 	    fi
-	fi
+	 fi
 
 fi
 
-
-
-if [ ! -d "clewd" ]; then
-	echo "clewd不存在，正在通过git下载..."
-	git clone -b test https://github.com/teralomaniac/clewd
-	cd clewd
-	bash start.sh
-        cd /root
-elif [ ! -f "clewd/config.js" ]; then
-    cd clewd
-    bash start.sh
-    cd /root
-fi
 
 if [ ! -d "one-api" ] || [ ! -f "one-api/start.sh" ]; then
 	echo -e "(*꒦ິ⌓꒦ີ)\n\033[0;33m hoping：因网络波动文件下载失败了，更换网络后再试喵~\n\033[0m"
