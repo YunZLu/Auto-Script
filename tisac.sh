@@ -71,6 +71,14 @@ if [ ! -f "$current/root/sac.sh" ]; then
    exit
 fi
 
+echo "正在为你下载更新文件喵~"
+curl -O https://raw.githubusercontent.com/YunZLu/termux_using_openai/main/update.sh
+
+if [ ! -f "$current/root/update.sh" ]; then
+   echo "更新文件下载失败了，换个魔法或者手动下载试试吧"
+   exit
+fi
+
 ln -s /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/ubuntu/root
 
 echo "bash /root/sac.sh" >>$current/root/.bashrc
