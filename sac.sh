@@ -1005,7 +1005,7 @@ do
 		;;
         7)
             # 更新脚本
-            curl -O https://raw.githubusercontent.com/YunZLu/termux_using_openai/main/sac.sh
+	    echo -e "退出脚本后，请输入 bash update.sh 更新脚本喵~"
             break ;;
         *) 
             echo -e "m9( ｀д´ )!!!! \n\033[0;36m坏猫猫居然不听话，存心和我hoping喵~过不去是吧？\033[0m\n"
