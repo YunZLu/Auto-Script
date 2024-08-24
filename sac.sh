@@ -133,7 +133,7 @@ if [ ! -d "SillyTavern" ]; then
 					npm i --no-audit --no-fund --quiet --omit=dev
                                         node post-install.js
 					echo -e "\033[0;31m当SillyTavern成功输出绿色网址时，请按Ctrl+C！\033[0m"
-      					read -p "明白了，请按回车键继续"
+      					read -p "红字看明白了，按回车键继续..."
 					node "server.js" "$@"
 					cd /root
 	  				export NODE_ENV=production
