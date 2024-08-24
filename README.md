@@ -4,6 +4,7 @@
 
 喵喵一键脚本项目：https://github.com/hopingmiao/termux_using_Claue
 
+
 二、部署教程：
 
 （1）.部署前准备：
@@ -22,6 +23,7 @@
 
 3.按脚本提示安装；
 
+
 三、原已部署喵喵一键脚本
 
 1.输入0退出喵喵一键脚本
@@ -29,6 +31,7 @@
 2.输入命令：curl -O https://raw.githubusercontent.com/YunZLu/termux_using_openai/main/update.sh && chmod +x update.sh && ./update.sh
 
 3.等待安装结束。
+
 
 四、升级脚本（没有需求暂时不会考虑升级）
 
