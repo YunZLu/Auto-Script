@@ -68,12 +68,22 @@ fi
 echo "root软链接已添加，可直接在mt管理器打开root文件夹修改文件"
 
 
+while [ ! -d "clewd" ] || [ ! -f "clewd/config.js" ] || [ ! -d "SillyTavern" ] || [ ! -f "SillyTavern/start.sh" ] || [ ! -d "one-api" ] || [ ! -f "one-api/start.sh" ]
+
+do
+
+read -p "请仔细检查网络环境后，按回车键继续......"
+
 if [ ! -f "one-api/start.sh" ]; then
 	if [ ! -d "one-api" ]; then
 		echo "one-api不存在，正在通过git下载..."
   		git clone https://github.com/songquanpeng/one-api.git
 	            if [ ! -d "one-api" ]; then
 		    echo -e "(*꒦ິ⌓꒦ີ)\n\033[0;33m hoping：因网络波动one-api下载失败了，更换网络后再试喵~\n\033[0m"
+ 		    echo -e "\033[0;31m已退出喵喵一键脚本，检查网络正常后，输入 bash sac.sh 可重新进入脚本喵~\033[0m"
+       
+		    continue
+      
 		    else
 	            echo "one-api文件下载成功"
 		    fi
@@ -82,6 +92,10 @@ if [ ! -f "one-api/start.sh" ]; then
     		curl -O https://raw.githubusercontent.com/YunZLu/termux_using_openai/main/start.sh
 	            if [ ! -f "start.sh" ]; then
 		    echo -e "(*꒦ິ⌓꒦ີ)\n\033[0;33m hoping：因网络波动one-api启动文件下载失败了，更换网络后再试喵~\n\033[0m"
+ 		    echo -e "\033[0;31m已退出喵喵一键脚本，检查网络正常后，输入 bash sac.sh 可重新进入脚本喵~\033[0m"
+       
+		    continue
+      
 		    else
 	            echo "one-api启动文件下载成功"
 		    fi
@@ -92,6 +106,10 @@ if [ ! -f "one-api/start.sh" ]; then
 		curl -O https://raw.githubusercontent.com/YunZLu/termux_using_openai/main/start.sh
 	            if [ ! -f "start.sh" ]; then
 		    echo -e "(*꒦ິ⌓꒦ີ)\n\033[0;33m hoping：因网络波动one-api启动文件下载失败了，更换网络后再试喵~\n\033[0m"
+ 		    echo -e "\033[0;31m已退出喵喵一键脚本，检查网络正常后，输入 bash sac.sh 可重新进入脚本喵~\033[0m"
+       
+		    continue
+      
 		    else
 	            echo "one-api启动文件下载成功"
 		    fi
@@ -103,13 +121,43 @@ fi
 if [ ! -d "clewd" ]; then
 	echo "clewd不存在，正在通过git下载..."
 	git clone -b test https://github.com/teralomaniac/clewd
+ 	if  [ ! -d "/root/st_promot" ]; then
+	echo -e "(*꒦ິ⌓꒦ີ)\n\033[0;33m hoping：因网络波动clewd下载失败了，更换网络后再试喵~\n\033[0m"
+  	echo -e "\033[0;31m已退出喵喵一键脚本，检查网络正常后，输入 bash sac.sh 可重新进入脚本喵~\033[0m"
+   
+	continue
+ 
+ 	else
+	echo "clewd下载成功"
 	cd clewd
 	bash start.sh
         cd /root
+	    if [ ! -f "clewd/config.js" ]; then
+	    rm -rf clewd
+	    echo -e "(*꒦ິ⌓꒦ີ)\n\033[0;33m hoping：clewd未部署成功，已帮您删除clewd，重启脚本下载clewd喵~\n\033[0m"
+	    echo -e "\033[0;31m已退出喵喵一键脚本，检查网络正常后，输入 bash sac.sh 可重新进入脚本喵~\033[0m"
+     
+	    continue
+     
+	    else
+	    echo "clewd部署成功！！！"
+	    fi
+	fi
 elif [ ! -f "clewd/config.js" ]; then
+    echo "clewd未部署，正在部署中..."
     cd clewd
     bash start.sh
     cd /root
+    if [ ! -f "clewd/config.js" ]; then
+    rm -rf clewd
+    echo -e "(*꒦ິ⌓꒦ີ)\n\033[0;33m hoping：clewd未部署成功，已帮您删除clewd，重启脚本下载clewd喵~\n\033[0m"
+    echo -e "\033[0;31m已退出喵喵一键脚本，检查网络正常后，输入 bash sac.sh 可重新进入脚本喵~\033[0m"
+    
+    continue
+    
+    else
+    echo "clewd部署成功！！！"
+    fi
 fi
 
 
@@ -117,12 +165,25 @@ if [ ! -d "SillyTavern" ]; then
 	    echo "SillyTavern不存在，正在通过git下载..."
      	    rm -rf SillyTavern
 	    git clone https://github.com/SillyTavern/SillyTavern -b release
+     	    if [ ! -d "SillyTavern" ]; then
+	    echo -e "(*꒦ິ⌓꒦ີ)\n\033[0;33m hoping：因网络波动预设文件下载失败了，更换网络后再试喵~\n\033[0m"
+	    echo -e "\033[0;31m已退出喵喵一键脚本，检查网络正常后，输入 bash sac.sh 可重新进入脚本喵~\033[0m"
+     
+	    continue
+     
+     	    else
+	    echo -e "\033[0;33mSillyTavern下载成功喵~\033[0m"
+	    fi
 	    echo -e "\033[0;33m本操作仅为破限下载提供方便，所有破限皆为收录，喵喵不具有破限所有权\033[0m"
 	    read -p "回车进行导入破限喵~"
 	    mkdir -m 755 /root/st_promot
 	    git clone https://github.com/hopingmiao/promot.git /root/st_promot
 	    if  [ ! -d "/root/st_promot" ]; then
-	        echo -e "(*꒦ິ⌓꒦ີ)\n\033[0;33m hoping：因网络波动预设文件下载失败了，更换网络后再试喵~\n\033[0m"
+	    echo -e "(*꒦ິ⌓꒦ີ)\n\033[0;33m hoping：因网络波动预设文件下载失败了，更换网络后再试喵~\n\033[0m"
+	    echo -e "\033[0;31m已退出喵喵一键脚本，检查网络正常后，输入 bash sac.sh 可重新进入脚本喵~\033[0m"
+     
+	    continue
+     
 	    else
 	    mv /root/st_promot SillyTavern/public/OpenAI\ Settings/
 	    echo -e "\033[0;33m破限已成功导入，更新完毕后启动酒馆即可看到喵~\033[0m"
@@ -144,12 +205,14 @@ if [ ! -d "SillyTavern" ]; then
 
 			  		git clone -b staging https://github.com/SillyTavern/SillyTavern.git SillyTavern_new
 					if [ ! -d "SillyTavern_new" ]; then
-						echo -e "(*꒦ິ⌓꒦ີ)\n\033[0;33m hoping：因为网络波动下载失败了，更换网络再试喵~\n\033[0m"
-						exit 5
-					fi
-					
-					if [ -d "SillyTavern/data/default-user" ]; then
-					    cp -r SillyTavern/data/default-user/characters/. SillyTavern_new/public/characters/
+						rm -rf SillyTavern
+      						echo -e "(*꒦ິ⌓꒦ີ)\n\033[0;33m hoping：因为网络波动SillyTavern更新文件下载失败了，更换网络再试喵~\n\033[0m"
+	    	    				echo -e "\033[0;31m已退出喵喵一键脚本，检查网络正常后，输入 bash sac.sh 可重新进入脚本喵~\033[0m"
+	      
+	    					continue
+	  
+					elif [ -d "SillyTavern/data/default-user" ]; then
+					cp -r SillyTavern/data/default-user/characters/. SillyTavern_new/public/characters/
     					cp -r SillyTavern/data/default-user/chats/. SillyTavern_new/public/chats/       
     					cp -r SillyTavern/data/default-user/worlds/. SillyTavern_new/public/worlds/
     					cp -r SillyTavern/data/default-user/groups/. SillyTavern_new/public/groups/
@@ -158,7 +221,16 @@ if [ ! -d "SillyTavern" ]; then
     					cp -r SillyTavern/data/default-user/User\ Avatars/. SillyTavern_new/public/User\ Avatars/
     					cp -r SillyTavern/data/default-user/backgrounds/. SillyTavern_new/public/backgrounds/
     					cp -r SillyTavern/data/default-user/settings.json SillyTavern_new/public/settings.json
+
+  					mv SillyTavern SillyTavern_old                                  
+					mv SillyTavern_new SillyTavern
+                     			rm -rf /root/st_promot
+                			git clone https://github.com/hopingmiao/promot.git /root/st_promot
+                     			cp -r /root/st_promot/. /root/SillyTavern/public/'OpenAI Settings'/
+					echo -e "\033[0;33mhoping：酒馆已更新完毕~\033[0m"
+     
 					else
+     
     					cp -r SillyTavern/public/characters/. SillyTavern_new/public/characters/
     					cp -r SillyTavern/public/chats/. SillyTavern_new/public/chats/       
     					cp -r SillyTavern/public/worlds/. SillyTavern_new/public/worlds/
@@ -168,7 +240,6 @@ if [ ! -d "SillyTavern" ]; then
     					cp -r SillyTavern/public/User\ Avatars/. SillyTavern_new/public/User\ Avatars/
     					cp -r SillyTavern/public/backgrounds/. SillyTavern_new/public/backgrounds/
     					cp -r SillyTavern/public/settings.json SillyTavern_new/public/settings.json
-					fi
 					
 					mv SillyTavern SillyTavern_old                                  
 					mv SillyTavern_new SillyTavern
@@ -176,30 +247,9 @@ if [ ! -d "SillyTavern" ]; then
                 			git clone https://github.com/hopingmiao/promot.git /root/st_promot
                      			cp -r /root/st_promot/. /root/SillyTavern/public/'OpenAI Settings'/
 					echo -e "\033[0;33mhoping：酒馆已更新完毕~\033[0m"
-  
-fi
+					fi
 
-
-if [ ! -d "one-api" ] || [ ! -f "one-api/start.sh" ]; then
-	echo -e "(*꒦ິ⌓꒦ີ)\n\033[0;33m hoping：因网络波动文件下载失败了，更换网络后再试喵~\n\033[0m"
- 	echo -e "\033[0;31m已退出喵喵一键脚本，输入 bash sac.sh 可重新进入脚本喵~\033[0m"
- 	rm -rf one-api
-	exit 2
-fi
-
-if [ ! -d "SillyTavern" ] || [ ! -f "SillyTavern/start.sh" ]; then
-	echo -e "(*꒦ິ⌓꒦ີ)\n\033[0;33m hoping：因网络波动文件下载失败了，更换网络后再试喵~\n\033[0m"
-  	echo -e "\033[0;31m已退出喵喵一键脚本，输入 bash sac.sh 可重新进入脚本喵~\033[0m"
- 	rm -rf SillyTavern
-	exit 2
-fi
-
-if  [ ! -d "clewd" ] || [ ! -f "clewd/config.js" ]; then
-	echo -e "(*꒦ິ⌓꒦ີ)\n\033[0;33m hoping：因网络波动文件下载失败了，更换网络后再试喵~\n\033[0m"
-  	echo -e "\033[0;31m已退出喵喵一键脚本，输入 bash sac.sh 可重新进入脚本喵~\033[0m"
-  	rm -rf clewd
-	exit 3
-fi
+done
 
 version="Ver2.9.5"
 clewd_version="$(grep '"version"' "clewd/package.json" | awk -F '"' '{print $4}')($(grep "Main = 'clewd修改版 v'" "clewd/lib/clewd-utils.js" | awk -F'[()]' '{print $3}'))"
@@ -213,6 +263,7 @@ function clewdSettings {
         sactag_value="默认"
     fi
     clewd_dir=clewd
+
     echo -e "\033[0;36mhoping：选一个执行喵~\033[0m
 \033[0;33m当前:\033[0m$clewd_version \033[0;33m最新:\033[0m\033[5;36m$clewd_latest\033[0m \033[0;33mconfig.js:\033[5;37m$sactag_value
 \033[0;33m--------------------------------------\033[0m
