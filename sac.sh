@@ -1,17 +1,13 @@
 #!/bin/bash
 
-version="Ver2.9.5"
-clewd_version="$(grep '"version"' "clewd/package.json" | awk -F '"' '{print $4}')($(grep "Main = 'clewd修改版 v'" "clewd/lib/clewd-utils.js" | awk -F'[()]' '{print $3}'))"
-st_version=$(grep '"version"' "SillyTavern/package.json" | awk -F '"' '{print $4}')
 echo "hoping：卡在这里了？...说明有小猫没开魔法喵~"
 latest_version=$(curl -s https://raw.githubusercontent.com/hopingmiao/termux_using_Claue/main/VERSION)
 clewd_latestversion=$(curl -s https://raw.githubusercontent.com/teralomaniac/clewd/test/package.json | grep '"version"' | awk -F '"' '{print $4}')
 clewd_subversion=$(curl -s https://raw.githubusercontent.com/teralomaniac/clewd/test/lib/clewd-utils.js | grep "Main = 'clewd修改版 v'" | awk -F'[()]' '{print $3}')
 clewd_latest="$clewd_latestversion($clewd_subversion)"
 st_latest=$(curl -s https://raw.githubusercontent.com/SillyTavern/SillyTavern/release/package.json | grep '"version"' | awk -F '"' '{print $4}')
- saclinkemoji=$(curl -s https://raw.githubusercontent.com/hopingmiao/termux_using_Claue/main/secret_saclink | awk -F '|' '{print $3 }')
+saclinkemoji=$(curl -s https://raw.githubusercontent.com/hopingmiao/termux_using_Claue/main/secret_saclink | awk -F '|' '{print $3 }')
 # hopingmiao=hotmiao
-#
 
 # ANSI Colors
 RED='\033[0;31m'
@@ -204,6 +200,10 @@ if  [ ! -d "clewd" ] || [ ! -f "clewd/config.js" ]; then
   	rm -rf clewd
 	exit 3
 fi
+
+version="Ver2.9.5"
+clewd_version="$(grep '"version"' "clewd/package.json" | awk -F '"' '{print $4}')($(grep "Main = 'clewd修改版 v'" "clewd/lib/clewd-utils.js" | awk -F'[()]' '{print $3}'))"
+st_version=$(grep '"version"' "SillyTavern/package.json" | awk -F '"' '{print $4}')
 
 function clewdSettings { 
     # 3. Clewd设置
