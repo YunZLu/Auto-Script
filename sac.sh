@@ -136,6 +136,8 @@ if [ ! -d "SillyTavern" ]; then
 					cd /root/SillyTavern
 					npm i --no-audit --no-fund --quiet --omit=dev
                                         node post-install.js
+					echo "当SillyTavern运行成功输出网址时，请按Ctrl+C"
+					node "server.js" "$@"
 					cd /root
 	  				export NODE_ENV=production
 					if [ -d "SillyTavern_old" ]; then                                   
