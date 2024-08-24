@@ -248,6 +248,7 @@ if [ ! -d "SillyTavern" ]; then
                      			cp -r /root/st_promot/. /root/SillyTavern/public/'OpenAI Settings'/
 					echo -e "\033[0;33mhoping：酒馆已更新完毕~\033[0m"
 					fi
+fi
 
 done
 
