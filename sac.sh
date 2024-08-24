@@ -148,63 +148,72 @@ do
 	        mv /root/st_promot SillyTavern/public/OpenAI\ Settings/
 	         echo -e "\033[0;33m破限已成功导入，更新完毕后启动酒馆即可看到喵~\033[0m"
 	        fi
-	        
-                #直接更新...不然不知道为什么会缺失破限文件...有时间再研究吧...
-                echo -e "\033[0;33mSillyTavern需要更新，请耐心等待...\033[0m"
-                cd /root/SillyTavern
-                #启动酒馆后更新才能导入破限文件，暂时没办法...
-                npm i --no-audit --no-fund --quiet --omit=dev
-                echo -e "\033[0;31m当SillyTavern成功输出绿色网址时，请按Ctrl+C！\033[0m"
-                read -p "红字看明白了后，请按回车键继续..."
-                node "server.js" "$@"v
-                cd /root
-                
-                export NODE_ENV=production
-                if [ -d "SillyTavern_old" ]; then                                   
-                NEW_FOLDER_NAME="SillyTavern_$(date +%Y%m%d)"
-                mv SillyTavern_old $NEW_FOLDER_NAME
-                fi
-                
-                git clone -b staging https://github.com/SillyTavern/SillyTavern.git SillyTavern_new
-                if [ ! -d "SillyTavern_new" ]; then
-                rm -rf SillyTavern
-                echo -e "(*꒦ິ⌓꒦ີ)\n\033[0;33m hoping：因为网络波动SillyTavern更新文件下载失败了喵~\n\033[0m"
-                continue
-                elif [ -d "SillyTavern/data/default-user" ]; then
-                cp -r SillyTavern/data/default-user/characters/. SillyTavern_new/public/characters/
-                cp -r SillyTavern/data/default-user/chats/. SillyTavern_new/public/chats/       
-                cp -r SillyTavern/data/default-user/worlds/. SillyTavern_new/public/worlds/
-                cp -r SillyTavern/data/default-user/groups/. SillyTavern_new/public/groups/
-                cp -r SillyTavern/data/default-user/group\ chats/. SillyTavern_new/public/group\ chats/
-                cp -r SillyTavern/data/default-user/OpenAI\ Settings/. SillyTavern_new/public/OpenAI\ Settings/
-                cp -r SillyTavern/data/default-user/User\ Avatars/. SillyTavern_new/public/User\ Avatars/
-                cp -r SillyTavern/data/default-user/backgrounds/. SillyTavern_new/public/backgrounds/
-                cp -r SillyTavern/data/default-user/settings.json SillyTavern_new/public/settings.json
-                mv SillyTavern SillyTavern_old                                  
-                mv SillyTavern_new SillyTavern
-                rm -rf /root/st_promot
-                git clone https://github.com/hopingmiao/promot.git /root/st_promot
-                cp -r /root/st_promot/. /root/SillyTavern/public/'OpenAI Settings'/
-                echo -e "\033[0;33mhoping：酒馆已更新完毕~\033[0m"
-                else
-                cp -r SillyTavern/public/characters/. SillyTavern_new/public/characters/
-                cp -r SillyTavern/public/chats/. SillyTavern_new/public/chats/       
-                cp -r SillyTavern/public/worlds/. SillyTavern_new/public/worlds/
-                cp -r SillyTavern/public/groups/. SillyTavern_new/public/groups/
-                cp -r SillyTavern/public/group\ chats/. SillyTavern_new/public/group\ chats/
-                cp -r SillyTavern/public/OpenAI\ Settings/. SillyTavern_new/public/OpenAI\ Settings/
-                cp -r SillyTavern/public/User\ Avatars/. SillyTavern_new/public/User\ Avatars/
-                cp -r SillyTavern/public/backgrounds/. SillyTavern_new/public/backgrounds/
-                cp -r SillyTavern/public/settings.json SillyTavern_new/public/settings.json
-                mv SillyTavern SillyTavern_old                                  
-                mv SillyTavern_new SillyTavern
-                rm -rf /root/st_promot
-                git clone https://github.com/hopingmiao/promot.git /root/st_promot
-                cp -r /root/st_promot/. /root/SillyTavern/public/'OpenAI Settings'/
-                echo -e "\033[0;33mhoping：酒馆已更新完毕~\033[0m"
-                fi
-        fi
 
+	 	echo -e "\033[0;31m更新酒馆是为了导入破限，也可以选择后面自己更新。\033[0m\n"
+   		read -p "输入 Y 现在更新酒馆，输入 N 暂时不更新，不要输入其他乱七八糟的知道吗? \n(⇀‸↼‶)" choice
+   		case "$choice" in
+   		y|Y )
+	                #直接更新...不然不知道为什么会缺失破限文件...有时间再研究吧...
+	                echo -e "\033[0;33mSillyTavern更新，请耐心等待...\033[0m"
+	                cd /root/SillyTavern
+	                #启动酒馆后更新才能导入破限文件，暂时没办法...
+	                npm i --no-audit --no-fund --quiet --omit=dev
+	                echo -e "\033[0;31m当SillyTavern成功输出绿色网址时，请按Ctrl+C！\033[0m"
+	                read -p "红字看明白了后，请按回车键继续..."
+	                node "server.js" "$@"v
+	                cd /root
+	                
+	                export NODE_ENV=production
+	                if [ -d "SillyTavern_old" ]; then                                   
+	                NEW_FOLDER_NAME="SillyTavern_$(date +%Y%m%d)"
+	                mv SillyTavern_old $NEW_FOLDER_NAME
+	                fi
+	                
+	                git clone -b staging https://github.com/SillyTavern/SillyTavern.git SillyTavern_new
+	                if [ ! -d "SillyTavern_new" ]; then
+	                rm -rf SillyTavern
+	                echo -e "(*꒦ິ⌓꒦ີ)\n\033[0;33m hoping：因为网络波动SillyTavern更新文件下载失败了喵~\n\033[0m"
+	                continue
+	                elif [ -d "SillyTavern/data/default-user" ]; then
+	                cp -r SillyTavern/data/default-user/characters/. SillyTavern_new/public/characters/
+	                cp -r SillyTavern/data/default-user/chats/. SillyTavern_new/public/chats/       
+	                cp -r SillyTavern/data/default-user/worlds/. SillyTavern_new/public/worlds/
+	                cp -r SillyTavern/data/default-user/groups/. SillyTavern_new/public/groups/
+	                cp -r SillyTavern/data/default-user/group\ chats/. SillyTavern_new/public/group\ chats/
+	                cp -r SillyTavern/data/default-user/OpenAI\ Settings/. SillyTavern_new/public/OpenAI\ Settings/
+	                cp -r SillyTavern/data/default-user/User\ Avatars/. SillyTavern_new/public/User\ Avatars/
+	                cp -r SillyTavern/data/default-user/backgrounds/. SillyTavern_new/public/backgrounds/
+	                cp -r SillyTavern/data/default-user/settings.json SillyTavern_new/public/settings.json
+	                mv SillyTavern SillyTavern_old                                  
+	                mv SillyTavern_new SillyTavern
+	                rm -rf /root/st_promot
+	                git clone https://github.com/hopingmiao/promot.git /root/st_promot
+	                cp -r /root/st_promot/. /root/SillyTavern/public/'OpenAI Settings'/
+	                echo -e "\033[0;33mhoping：酒馆已更新完毕~\033[0m"
+	                else
+	                cp -r SillyTavern/public/characters/. SillyTavern_new/public/characters/
+	                cp -r SillyTavern/public/chats/. SillyTavern_new/public/chats/       
+	                cp -r SillyTavern/public/worlds/. SillyTavern_new/public/worlds/
+	                cp -r SillyTavern/public/groups/. SillyTavern_new/public/groups/
+	                cp -r SillyTavern/public/group\ chats/. SillyTavern_new/public/group\ chats/
+	                cp -r SillyTavern/public/OpenAI\ Settings/. SillyTavern_new/public/OpenAI\ Settings/
+	                cp -r SillyTavern/public/User\ Avatars/. SillyTavern_new/public/User\ Avatars/
+	                cp -r SillyTavern/public/backgrounds/. SillyTavern_new/public/backgrounds/
+	                cp -r SillyTavern/public/settings.json SillyTavern_new/public/settings.json
+	                mv SillyTavern SillyTavern_old                                  
+	                mv SillyTavern_new SillyTavern
+	                rm -rf /root/st_promot
+	                git clone https://github.com/hopingmiao/promot.git /root/st_promot
+	                cp -r /root/st_promot/. /root/SillyTavern/public/'OpenAI Settings'/
+	                echo -e "\033[0;33mhoping：酒馆已更新完毕~\033[0m"
+	                fi;;
+   		n|N )
+     			continue;;
+	    	* )
+        		echo "m9( ｀д´ )!!!!坏猫猫居然不听话？不给你更新了！！！"
+        		continue;;
+   		esac
+        fi
 done
 
 version="Ver2.9.5"
