@@ -132,11 +132,12 @@ if [ ! -d "SillyTavern" ]; then
 	    echo -e "\033[0;33m破限已成功导入，更新完毕后启动酒馆即可看到喵~\033[0m"
 	    fi
 					#直接更新...不然不知道为什么会缺失破限文件...有时间再研究吧...
-     					echo "\033[0;33mSillyTavern需要更新，请耐心等待...~\033[0m"
+     					echo -e "\033[0;33mSillyTavern需要更新，请耐心等待...~\033[0m"
 					cd /root/SillyTavern
 					npm i --no-audit --no-fund --quiet --omit=dev
                                         node post-install.js
-					echo "\033[0;33m当SillyTavern运行成功输出网址时，请按Ctrl+C~\033[0m"
+					echo -e "\033[0;31m当SillyTavern运行成功输出网址时，请按Ctrl+C！！！\033[0m"
+      					read -p "明白了，按回车键继续"
 					node "server.js" "$@"
 					cd /root
 	  				export NODE_ENV=production
@@ -185,18 +186,21 @@ fi
 
 if [ ! -d "one-api" ] || [ ! -f "one-api/start.sh" ]; then
 	echo -e "(*꒦ິ⌓꒦ີ)\n\033[0;33m hoping：因网络波动文件下载失败了，更换网络后再试喵~\n\033[0m"
+ 	echo -e "\033[0;31m已退出喵喵一键脚本，输入 bash sac.sh 可重新进入脚本喵~\033[0m"
  	rm -rf one-api
-	exit 1
+	exit 2
 fi
 
 if [ ! -d "SillyTavern" ] || [ ! -f "SillyTavern/start.sh" ]; then
 	echo -e "(*꒦ິ⌓꒦ີ)\n\033[0;33m hoping：因网络波动文件下载失败了，更换网络后再试喵~\n\033[0m"
+  	echo -e "\033[0;31m已退出喵喵一键脚本，输入 bash sac.sh 可重新进入脚本喵~\033[0m"
  	rm -rf SillyTavern
 	exit 2
 fi
 
 if  [ ! -d "clewd" ] || [ ! -f "clewd/config.js" ]; then
 	echo -e "(*꒦ິ⌓꒦ີ)\n\033[0;33m hoping：因网络波动文件下载失败了，更换网络后再试喵~\n\033[0m"
+  	echo -e "\033[0;31m已退出喵喵一键脚本，输入 bash sac.sh 可重新进入脚本喵~\033[0m"
   	rm -rf clewd
 	exit 3
 fi
