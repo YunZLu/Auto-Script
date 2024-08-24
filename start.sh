@@ -45,6 +45,7 @@ npm run build
 
 echo "后端构建中..."
 cd ../..
+echo "第一次下载依赖包会比较慢，耐心等待..."
 go mod download
 go build -ldflags "-s -w" -o one-api
 
