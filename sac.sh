@@ -79,8 +79,7 @@ if [ ! -f "one-api/start.sh" ]; then
 		echo "one-api不存在，正在通过git下载..."
   		git clone https://github.com/songquanpeng/one-api.git
 	            if [ ! -d "one-api" ]; then
-		    echo -e "(*꒦ິ⌓꒦ີ)\n\033[0;33m hoping：因网络波动one-api下载失败了，更换网络后再试喵~\n\033[0m"
- 		    echo -e "\033[0;31m已退出喵喵一键脚本，检查网络正常后，输入 bash sac.sh 可重新进入脚本喵~\033[0m"
+		    echo -e "(*꒦ິ⌓꒦ີ)\n\033[0;33m hoping：因网络波动one-api下载失败了喵~\n\033[0m"
        
 		    continue
       
@@ -91,8 +90,7 @@ if [ ! -f "one-api/start.sh" ]; then
     		cd one-api
     		curl -O https://raw.githubusercontent.com/YunZLu/termux_using_openai/main/start.sh
 	            if [ ! -f "start.sh" ]; then
-		    echo -e "(*꒦ິ⌓꒦ີ)\n\033[0;33m hoping：因网络波动one-api启动文件下载失败了，更换网络后再试喵~\n\033[0m"
- 		    echo -e "\033[0;31m已退出喵喵一键脚本，检查网络正常后，输入 bash sac.sh 可重新进入脚本喵~\033[0m"
+		    echo -e "(*꒦ິ⌓꒦ີ)\n\033[0;33m hoping：因网络波动one-api启动文件下载失败了喵~\n\033[0m"
        
 		    continue
       
@@ -105,8 +103,7 @@ if [ ! -f "one-api/start.sh" ]; then
 		cd one-api
 		curl -O https://raw.githubusercontent.com/YunZLu/termux_using_openai/main/start.sh
 	            if [ ! -f "start.sh" ]; then
-		    echo -e "(*꒦ິ⌓꒦ີ)\n\033[0;33m hoping：因网络波动one-api启动文件下载失败了，更换网络后再试喵~\n\033[0m"
- 		    echo -e "\033[0;31m已退出喵喵一键脚本，检查网络正常后，输入 bash sac.sh 可重新进入脚本喵~\033[0m"
+		    echo -e "(*꒦ິ⌓꒦ີ)\n\033[0;33m hoping：因网络波动one-api启动文件下载失败了喵~\n\033[0m"
        
 		    continue
       
@@ -122,8 +119,7 @@ if [ ! -d "clewd" ]; then
 	echo "clewd不存在，正在通过git下载..."
 	git clone -b test https://github.com/teralomaniac/clewd
  	if  [ ! -d "/root/st_promot" ]; then
-	echo -e "(*꒦ິ⌓꒦ີ)\n\033[0;33m hoping：因网络波动clewd下载失败了，更换网络后再试喵~\n\033[0m"
-  	echo -e "\033[0;31m已退出喵喵一键脚本，检查网络正常后，输入 bash sac.sh 可重新进入脚本喵~\033[0m"
+	echo -e "(*꒦ິ⌓꒦ີ)\n\033[0;33m hoping：因网络波动clewd下载失败了喵~\n\033[0m"
    
 	continue
  
@@ -134,8 +130,7 @@ if [ ! -d "clewd" ]; then
         cd /root
 	    if [ ! -f "clewd/config.js" ]; then
 	    rm -rf clewd
-	    echo -e "(*꒦ິ⌓꒦ີ)\n\033[0;33m hoping：clewd未部署成功，已帮您删除clewd，重启脚本下载clewd喵~\n\033[0m"
-	    echo -e "\033[0;31m已退出喵喵一键脚本，检查网络正常后，输入 bash sac.sh 可重新进入脚本喵~\033[0m"
+	    echo -e "(*꒦ິ⌓꒦ີ)\n\033[0;33m hoping：clewd未部署成功，已帮您删除clewd了喵~\n\033[0m"
      
 	    continue
      
@@ -150,9 +145,8 @@ elif [ ! -f "clewd/config.js" ]; then
     cd /root
     if [ ! -f "clewd/config.js" ]; then
     rm -rf clewd
-    echo -e "(*꒦ິ⌓꒦ີ)\n\033[0;33m hoping：clewd未部署成功，已帮您删除clewd，重启脚本下载clewd喵~\n\033[0m"
-    echo -e "\033[0;31m已退出喵喵一键脚本，检查网络正常后，输入 bash sac.sh 可重新进入脚本喵~\033[0m"
-    
+    echo -e "(*꒦ິ⌓꒦ີ)\n\033[0;33m hoping：clewd未部署成功，已帮您删除clewd了喵~\n\033[0m"
+   
     continue
     
     else
@@ -166,8 +160,7 @@ if [ ! -d "SillyTavern" ]; then
      	    rm -rf SillyTavern
 	    git clone https://github.com/SillyTavern/SillyTavern -b release
      	    if [ ! -d "SillyTavern" ]; then
-	    echo -e "(*꒦ິ⌓꒦ີ)\n\033[0;33m hoping：因网络波动预设文件下载失败了，更换网络后再试喵~\n\033[0m"
-	    echo -e "\033[0;31m已退出喵喵一键脚本，检查网络正常后，输入 bash sac.sh 可重新进入脚本喵~\033[0m"
+	    echo -e "(*꒦ິ⌓꒦ີ)\n\033[0;33m hoping：因网络波动预设文件下载失败了喵~\n\033[0m"
      
 	    continue
      
@@ -179,8 +172,7 @@ if [ ! -d "SillyTavern" ]; then
 	    mkdir -m 755 /root/st_promot
 	    git clone https://github.com/hopingmiao/promot.git /root/st_promot
 	    if  [ ! -d "/root/st_promot" ]; then
-	    echo -e "(*꒦ິ⌓꒦ີ)\n\033[0;33m hoping：因网络波动预设文件下载失败了，更换网络后再试喵~\n\033[0m"
-	    echo -e "\033[0;31m已退出喵喵一键脚本，检查网络正常后，输入 bash sac.sh 可重新进入脚本喵~\033[0m"
+	    echo -e "(*꒦ິ⌓꒦ີ)\n\033[0;33m hoping：因网络波动预设文件下载失败了喵~\n\033[0m"
      
 	    continue
      
@@ -206,8 +198,7 @@ if [ ! -d "SillyTavern" ]; then
 			  		git clone -b staging https://github.com/SillyTavern/SillyTavern.git SillyTavern_new
 					if [ ! -d "SillyTavern_new" ]; then
 						rm -rf SillyTavern
-      						echo -e "(*꒦ິ⌓꒦ີ)\n\033[0;33m hoping：因为网络波动SillyTavern更新文件下载失败了，更换网络再试喵~\n\033[0m"
-	    	    				echo -e "\033[0;31m已退出喵喵一键脚本，检查网络正常后，输入 bash sac.sh 可重新进入脚本喵~\033[0m"
+      						echo -e "(*꒦ິ⌓꒦ີ)\n\033[0;33m hoping：因为网络波动SillyTavern更新文件下载失败了喵~\n\033[0m"
 	      
 	    					continue
 	  
