@@ -150,15 +150,9 @@ if [ ! -d "clewd" ]; then
 elif [ ! -f "clewd/config.js" ]; then
     echo "clewd未部署，正在部署中..."
     cd clewd
-    
-	{
- 	    bash start.sh
- 	} || {
-	    cd /root 
-	    rm -rf clewd
-	    echo -e "(*꒦ິ⌓꒦ີ)\n\033[0;33m hoping：clewd未部署成功，已帮您删除clewd了喵~\n\033[0m"
-	    continue
-     	}
+
+    bash start.sh
+
     
     cd /root
     if [ ! -f "clewd/config.js" ]; then
@@ -201,14 +195,9 @@ if [ ! -d "SillyTavern" ]; then
 					#直接更新...不然不知道为什么会缺失破限文件...有时间再研究吧...
      					echo -e "\033[0;33mSillyTavern需要更新，请耐心等待...\033[0m"
 					cd /root/SillyTavern
-				     	{
-				 	    npm i --no-audit --no-fund --quiet --omit=dev
-				 	} || {
-					    cd /root 
-					    rm -rf SillyTavern
-					    echo -e "(*꒦ິ⌓꒦ີ)\n\033[0;33m hoping：SillyTavern未部署成功，已帮您删除SillyTavern了喵~\n\033[0m"
-					    continue
-				     	}
+
+				 	npm i --no-audit --no-fund --quiet --omit=dev
+
 					echo -e "\033[0;31m当SillyTavern成功输出绿色网址时，请按Ctrl+C！\033[0m"
       					read -p "红字看明白了，按回车键继续..."
 				 	node "server.js" "$@"v
