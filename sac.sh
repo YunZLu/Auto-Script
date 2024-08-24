@@ -81,7 +81,7 @@ if [ ! -f "one-api/start.sh" ]; then
 		    else
 	            echo "one-api文件下载成功"
 		    fi
-      		echo "one-api不存在，正在通过git下载..."
+      		echo "one-api启动文件不存在，正在通过git下载..."
     		cd one-api
     		curl -O https://raw.githubusercontent.com/YunZLu/termux_using_openai/main/start.sh
 	            if [ ! -f "start.sh" ]; then
