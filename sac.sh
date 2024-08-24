@@ -131,7 +131,7 @@ if [ ! -d "SillyTavern" ]; then
 	    mv /root/st_promot SillyTavern/public/OpenAI\ Settings/
 	    echo -e "\033[0;33m破限已成功导入，安装完毕后启动酒馆即可看到喵~\033[0m"
 	    fi
-					#直接更新...不然不知道为什么会缺失破限文件...有时间再看看吧...
+					#直接更新...不然不知道为什么会缺失破限文件...有时间再研究吧...
 					if [ -d "SillyTavern_old" ]; then                                   
 					NEW_FOLDER_NAME="SillyTavern_$(date +%Y%m%d)"
 					mv SillyTavern_old $NEW_FOLDER_NAME
@@ -142,8 +142,7 @@ if [ ! -d "SillyTavern" ]; then
 						exit 5
 					fi
 					
-					if [ -d "SillyTavern/data/default-user" ]; then
-					    cp -r SillyTavern/data/default-user/characters/. SillyTavern_new/public/characters/
+					cp -r SillyTavern/data/default-user/characters/. SillyTavern_new/public/characters/
     					cp -r SillyTavern/data/default-user/chats/. SillyTavern_new/public/chats/       
     					cp -r SillyTavern/data/default-user/worlds/. SillyTavern_new/public/worlds/
     					cp -r SillyTavern/data/default-user/groups/. SillyTavern_new/public/groups/
@@ -152,17 +151,6 @@ if [ ! -d "SillyTavern" ]; then
     					cp -r SillyTavern/data/default-user/User\ Avatars/. SillyTavern_new/public/User\ Avatars/
     					cp -r SillyTavern/data/default-user/backgrounds/. SillyTavern_new/public/backgrounds/
     					cp -r SillyTavern/data/default-user/settings.json SillyTavern_new/public/settings.json
-					else
-    					cp -r SillyTavern/public/characters/. SillyTavern_new/public/characters/
-    					cp -r SillyTavern/public/chats/. SillyTavern_new/public/chats/       
-    					cp -r SillyTavern/public/worlds/. SillyTavern_new/public/worlds/
-    					cp -r SillyTavern/public/groups/. SillyTavern_new/public/groups/
-    					cp -r SillyTavern/public/group\ chats/. SillyTavern_new/public/group\ chats/
-    					cp -r SillyTavern/public/OpenAI\ Settings/. SillyTavern_new/public/OpenAI\ Settings/
-    					cp -r SillyTavern/public/User\ Avatars/. SillyTavern_new/public/User\ Avatars/
-    					cp -r SillyTavern/public/backgrounds/. SillyTavern_new/public/backgrounds/
-    					cp -r SillyTavern/public/settings.json SillyTavern_new/public/settings.json
-					fi
 					
 					mv SillyTavern SillyTavern_old                                  
 					mv SillyTavern_new SillyTavern
