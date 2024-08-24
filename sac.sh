@@ -207,6 +207,9 @@ do
 
 done
 
+version="Ver2.9.5"
+clewd_version="$(grep '"version"' "clewd/package.json" | awk -F '"' '{print $4}')($(grep "Main = 'clewd修改版 v'" "clewd/lib/clewd-utils.js" | awk -F'[()]' '{print $3}'))"
+st_version=$(grep '"version"' "SillyTavern/package.json" | awk -F '"' '{print $4}')
 
 function clewdSettings { 
     # 3. Clewd设置
@@ -216,12 +219,6 @@ function clewdSettings {
         sactag_value="默认"
     fi
     clewd_dir=clewd
-
-
-version="Ver2.9.5"
-clewd_version="$(grep '"version"' "clewd/package.json" | awk -F '"' '{print $4}')($(grep "Main = 'clewd修改版 v'" "clewd/lib/clewd-utils.js" | awk -F'[()]' '{print $3}'))"
-st_version=$(grep '"version"' "SillyTavern/package.json" | awk -F '"' '{print $4}')
-
 
     echo -e "\033[0;36mhoping：选一个执行喵~\033[0m
 \033[0;33m当前:\033[0m$clewd_version \033[0;33m最新:\033[0m\033[5;36m$clewd_latest\033[0m \033[0;33mconfig.js:\033[5;37m$sactag_value
