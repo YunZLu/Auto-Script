@@ -56,24 +56,47 @@ echo "go已安装喵~"
 go env -w GO111MODULE=on
 go env -w GOPROXY=https://mirrors.aliyun.com/goproxy,direct
 
-while [ ! -f "one-api/start.sh" ]
+
+
+while [ ! -d "one-api" ] || [ ! -f "one-api/start.sh" ] || [ ! -d "only_oneapi_sac.sh" ]
 do
-    if [ ! -f "one-api/start.sh" ]; then
-        echo "one-api启动文件不存在，正在通过git下载喵..."
-        cd one-api
-        curl -O https://mirror.ghproxy.com/https://raw.githubusercontent.com/YunZLu/termux_using_openai/main/CN/start.sh
-              if [ ! -f "start.sh" ]; then
-                  echo -e "(*꒦ິ⌓꒦ີ)\n\033[0;33m hoping：因网络波动one-api启动文件下载失败了喵~\n\033[0m"
-                  echo "正在为你重试喵~"
-                  continue
-              else
-                  echo "one-api启动文件下载成功喵~"
-                  cd /data/data/com.termux/files/home
-              fi
-    fi
+        if [ ! -d "one-api" ]; then
+                echo "one-api不存在，正在通过git下载喵..."
+                git clone https://mirror.ghproxy.com/https://github.com/songquanpeng/one-api.git
+        	if [ ! -d "one-api" ]; then
+                echo -e "(*꒦ິ⌓꒦ີ)\n\033[0;33m hoping：因网络波动one-api下载失败了喵~\n\033[0m"
+        	continue
+                else
+                echo "one-api文件下载成功喵~"
+                fi
+        fi
+        
+        if [ ! -f "one-api/start.sh" ]; then
+                echo "one-api启动文件不存在，正在通过git下载喵..."
+                cd one-api
+    		curl -O https://mirror.ghproxy.com/https://raw.githubusercontent.com/YunZLu/termux_using_openai/main/CN/start.sh
+	        if [ ! -f "start.sh" ]; then
+		echo -e "(*꒦ິ⌓꒦ີ)\n\033[0;33m hoping：因网络波动one-api启动文件下载失败了喵~\n\033[0m"
+		continue
+		else
+	        echo "one-api启动文件下载成功喵~"
+		cd 
+		fi
+        fi
+
+        if [ ! -f "only_oneapi_sac.sh" ]; then
+                echo "one-api启动界面不存在，正在通过git下载喵..."
+    		curl -O https://raw.githubusercontent.com/YunZLu/termux_using_openai/main/CN/only_oneapi_sac
+	        if [ ! -f "only_oneapi_sac.sh" ]; then
+		echo -e "(*꒦ິ⌓꒦ີ)\n\033[0;33m hoping：因网络波动one-api启动界面下载失败了喵~\n\033[0m"
+		continue
+		else
+	        echo "one-api启动界面下载成功喵~"
+		fi
+        fi
 done
 
-echo "bash only_oneapi_sac.sh" >>/data/data/com.termux/files/home/.bashrc
-source /data/data/com.termux/files/home/.bashrc
+echo "bash only_oneapi_sac.sh" >>.bashrc
+source .bashrc
 
 exit
