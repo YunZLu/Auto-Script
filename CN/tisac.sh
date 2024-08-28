@@ -18,7 +18,7 @@ do
     if ! command -v proot-distro &> /dev/null; then
     echo "正在为你下载proot-distro喵~"
     DEBIAN_FRONTEND=noninteractive pkg install proot-distro -y
-        if ! command -v git &> /dev/null; then
+        if ! command -v proot-distro &> /dev/null; then
         echo "proot-distro下载失败了，正在重试中喵~"
         continue
         else
