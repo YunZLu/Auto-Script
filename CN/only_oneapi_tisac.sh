@@ -15,6 +15,7 @@ do
     DEBIAN_FRONTEND=noninteractive pkg install git -y
         if ! command -v git &> /dev/null; then
         echo "git下载失败了，正在重试中喵~"
+	sleep 2
         continue
         fi
     fi
@@ -30,6 +31,7 @@ do
     DEBIAN_FRONTEND=noninteractive pkg install nodejs -y
         if ! command -v node &> /dev/null; then
         echo "nodejs下载失败了，正在重试中喵~"
+	sleep 2
         continue
         fi
     fi
@@ -47,6 +49,7 @@ do
     DEBIAN_FRONTEND=noninteractive pkg install golang -y
         if ! command -v go &> /dev/null; then
         echo "go下载失败了，正在重试中喵~"
+	sleep 2
         continue
         fi
     fi
@@ -63,6 +66,7 @@ do
                 git clone https://mirror.ghproxy.com/https://github.com/songquanpeng/one-api.git
         	if [ ! -d "one-api" ]; then
                 echo -e "(*꒦ິ⌓꒦ີ)\n\033[0;33m hoping：因网络波动one-api下载失败了喵~\n\033[0m"
+		sleep 2
         	continue
                 else
                 echo "one-api文件下载成功喵~"
@@ -77,6 +81,7 @@ do
     		curl -O https://mirror.ghproxy.com/https://raw.githubusercontent.com/YunZLu/termux_using_openai/main/CN/start.sh
 	        if [ ! -f "start.sh" ]; then
 		echo -e "(*꒦ິ⌓꒦ີ)\n\033[0;33m hoping：因网络波动one-api启动文件下载失败了喵~\n\033[0m"
+  		sleep 2
 		continue
 		else
 	        echo "one-api启动文件下载成功喵~"
@@ -92,6 +97,7 @@ do
     		curl -O https://mirror.ghproxy.com/https://raw.githubusercontent.com/YunZLu/termux_using_openai/main/CN/only_oneapi_sac.sh
 	        if [ ! -f "only_oneapi_sac.sh" ]; then
 		echo -e "(*꒦ິ⌓꒦ີ)\n\033[0;33m hoping：因网络波动one-api启动界面下载失败了喵~\n\033[0m"
+ 		sleep 2
 		continue
 		else
 	        echo "one-api启动界面下载成功喵~"
