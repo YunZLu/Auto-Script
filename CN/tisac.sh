@@ -78,6 +78,7 @@ do
         continue
         else
         echo "go安装成功~"
+        break
         fi
     fi
 done
