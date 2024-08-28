@@ -42,7 +42,7 @@ do
        echo "Ubuntu安装失败了，正在重试中~"
        continue
      else
-        echo "Ubuntu成功安装到Termux"
+        echo "Ubuntu成功安装到Termux喵~"
      fi
  
 done
