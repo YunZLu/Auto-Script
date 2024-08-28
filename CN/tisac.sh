@@ -25,6 +25,7 @@ do
         echo "proot-distro安装成功喵~"
         fi
     fi
+done
 
 # 加速Ubuntu下载地址
 sed -i 's/https:\/\/github.com/https:\/\/mirror.ghproxy.com\/github.com/g' /data/data/com.termux/files/usr/etc/proot-distro/ubuntu.sh
