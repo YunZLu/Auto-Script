@@ -1,11 +1,11 @@
 #!/bin/bash
 
-latest_version=$(curl -s https://raw.githubusercontent.com/hopingmiao/termux_using_Claue/main/VERSION)
-clewd_latestversion=$(curl -s https://raw.githubusercontent.com/teralomaniac/clewd/test/package.json | grep '"version"' | awk -F '"' '{print $4}')
-clewd_subversion=$(curl -s https://raw.githubusercontent.com/teralomaniac/clewd/test/lib/clewd-utils.js | grep "Main = 'clewd修改版 v'" | awk -F'[()]' '{print $3}')
+latest_version=$(curl -s https://mirror.ghproxy.com/https://raw.githubusercontent.com/hopingmiao/termux_using_Claue/main/VERSION)
+clewd_latestversion=$(curl -s https://mirror.ghproxy.com/https://raw.githubusercontent.com/teralomaniac/clewd/test/package.json | grep '"version"' | awk -F '"' '{print $4}')
+clewd_subversion=$(curl -s https://mirror.ghproxy.com/https://raw.githubusercontent.com/teralomaniac/clewd/test/lib/clewd-utils.js | grep "Main = 'clewd修改版 v'" | awk -F'[()]' '{print $3}')
 clewd_latest="$clewd_latestversion($clewd_subversion)"
-st_latest=$(curl -s https://raw.githubusercontent.com/SillyTavern/SillyTavern/release/package.json | grep '"version"' | awk -F '"' '{print $4}')
-saclinkemoji=$(curl -s https://raw.githubusercontent.com/hopingmiao/termux_using_Claue/main/secret_saclink | awk -F '|' '{print $3 }')
+st_latest=$(curl -s https://mirror.ghproxy.com/https://raw.githubusercontent.com/SillyTavern/SillyTavern/release/package.json | grep '"version"' | awk -F '"' '{print $4}')
+saclinkemoji=$(curl -s https://mirror.ghproxy.com/https://raw.githubusercontent.com/hopingmiao/termux_using_Claue/main/secret_saclink | awk -F '|' '{print $3 }')
 # hopingmiao=hotmiao
 
 # ANSI Colors
@@ -81,7 +81,7 @@ do
         
         if [ ! -d "one-api" ]; then
                 echo "one-api不存在，正在通过git下载喵..."
-                git clone https://github.com/songquanpeng/one-api.git
+                git clone https://mirror.ghproxy.com/https://github.com/songquanpeng/one-api.git
         	if [ ! -d "one-api" ]; then
                 echo -e "(*꒦ິ⌓꒦ີ)\n\033[0;33m hoping：因网络波动one-api下载失败了喵~\n\033[0m"
         	continue
@@ -93,7 +93,7 @@ do
         if [ ! -f "one-api/start.sh" ]; then
                 echo "one-api启动文件不存在，正在通过git下载喵..."
                 cd one-api
-    		curl -O https://raw.githubusercontent.com/YunZLu/termux_using_openai/main/start.sh
+    		curl -O https://mirror.ghproxy.com/https://raw.githubusercontent.com/YunZLu/termux_using_openai/main/CN/start.sh
 	        if [ ! -f "start.sh" ]; then
 		echo -e "(*꒦ິ⌓꒦ີ)\n\033[0;33m hoping：因网络波动one-api启动文件下载失败了喵~\n\033[0m"
 		continue
@@ -106,7 +106,7 @@ do
 
         if [ ! -d "clewd" ]; then
         	echo "clewd不存在，正在通过git下载喵..."
-        	git clone -b test https://github.com/teralomaniac/clewd
+        	git clone -b test https://mirror.ghproxy.com/https://github.com/teralomaniac/clewd
          	if  [ ! -d "clewd" ]; then
         	echo -e "(*꒦ິ⌓꒦ີ)\n\033[0;33m hoping：因网络波动clewd下载失败了喵~\n\033[0m"
         	continue
@@ -132,7 +132,7 @@ do
         if [ ! -d "SillyTavern" ]; then
         echo "SillyTavern不存在，正在通过git下载喵..."
         rm -rf SillyTavern
-        git clone https://github.com/SillyTavern/SillyTavern -b release
+        git clone https://mirror.ghproxy.com/https://github.com/SillyTavern/SillyTavern -b release
         
                 if [ ! -d "SillyTavern" ]; then
                 echo -e "(*꒦ິ⌓꒦ີ)\n\033[0;33m hoping：因网络波动SillyTavern下载失败了喵~\n\033[0m"
@@ -141,21 +141,8 @@ do
                 echo -e "\033[0;33mSillyTavern下载成功喵~\033[0m"
                 fi
                 
-                echo -e "\033[0;33m本操作仅为破限下载提供方便，所有破限皆为收录，喵喵不具有破限所有权\033[0m"
-                read -p "回车进行导入破限喵~"
-                mkdir -m 755 /root/st_promot
-                
-                git clone https://github.com/hopingmiao/promot.git /root/st_promot
-                if  [ ! -d "/root/st_promot" ]; then
-                echo -e "(*꒦ິ⌓꒦ີ)\n\033[0;33m hoping：因网络波动预设文件下载失败了喵~\n\033[0m"
-                continue
-	        else
-	        mv /root/st_promot SillyTavern/public/OpenAI\ Settings/
-	         echo -e "\033[0;33m破限已成功导入，更新完毕后启动酒馆即可看到喵~\033[0m"
-	        fi
-
 	 	echo -e "\033[0;31m更新酒馆是为了导入破限，也可以选择后面自己更新。\033[0m\n"
-   		read -p "输入 Y 现在更新酒馆，输入 N 暂时不更新，不要输入其他乱七八糟的知道吗? \n(⇀‸↼‶)" choice
+   		read -p "输入 Y 现在更新酒馆，按回车键暂时不更新喵~" choice
    		case "$choice" in
    		y|Y )
 	                #直接更新...不然不知道为什么会缺失破限文件...有时间再研究吧...
@@ -174,7 +161,7 @@ do
 	                mv SillyTavern_old $NEW_FOLDER_NAME
 	                fi
 	                
-	                git clone -b staging https://github.com/SillyTavern/SillyTavern.git SillyTavern_new
+	                git clone -b staging https://mirror.ghproxy.com/https://github.com/SillyTavern/SillyTavern.git SillyTavern_new
 	                if [ ! -d "SillyTavern_new" ]; then
 	                rm -rf SillyTavern
 	                echo -e "(*꒦ິ⌓꒦ີ)\n\033[0;33m hoping：因为网络波动SillyTavern更新文件下载失败了喵~\n\033[0m"
@@ -192,7 +179,7 @@ do
 	                mv SillyTavern SillyTavern_old                                  
 	                mv SillyTavern_new SillyTavern
 	                rm -rf /root/st_promot
-	                git clone https://github.com/hopingmiao/promot.git /root/st_promot
+	                git clone https://mirror.ghproxy.com/https://github.com/hopingmiao/promot.git /root/st_promot
 	                cp -r /root/st_promot/. /root/SillyTavern/public/'OpenAI Settings'/
 	                echo -e "\033[0;33mhoping：酒馆已更新完毕~\033[0m"
 	                else
@@ -208,14 +195,12 @@ do
 	                mv SillyTavern SillyTavern_old                                  
 	                mv SillyTavern_new SillyTavern
 	                rm -rf /root/st_promot
-	                git clone https://github.com/hopingmiao/promot.git /root/st_promot
+	                git clone https://mirror.ghproxy.com/https://github.com/hopingmiao/promot.git /root/st_promot
 	                cp -r /root/st_promot/. /root/SillyTavern/public/'OpenAI Settings'/
 	                echo -e "\033[0;33mhoping：酒馆已更新完毕~\033[0m"
 	                fi;;
-   		n|N )
-     			continue;;
 	    	* )
-        		echo "m9( ｀д´ )!!!!坏猫猫居然不听话？不给你更新了！！！"
+        		echo "你选择了不更新酒馆喵~"
         		continue;;
    		esac
         fi
