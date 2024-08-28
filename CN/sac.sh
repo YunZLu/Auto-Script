@@ -1,5 +1,5 @@
 #!/bin/bash
-
+echo "正在获取版本信息中，请稍等一下喵~"
 latest_version=$(curl -s https://mirror.ghproxy.com/https://raw.githubusercontent.com/hopingmiao/termux_using_Claue/main/VERSION)
 clewd_latestversion=$(curl -s https://mirror.ghproxy.com/https://raw.githubusercontent.com/teralomaniac/clewd/test/package.json | grep '"version"' | awk -F '"' '{print $4}')
 clewd_subversion=$(curl -s https://mirror.ghproxy.com/https://raw.githubusercontent.com/teralomaniac/clewd/test/lib/clewd-utils.js | grep "Main = 'clewd修改版 v'" | awk -F'[()]' '{print $3}')
@@ -75,9 +75,6 @@ echo "root软链接已添加，可直接在mt管理器打开root文件夹修改�
 while [ ! -d "clewd" ] || [ ! -f "clewd/config.js" ] || [ ! -d "SillyTavern" ] || [ ! -f "SillyTavern/start.sh" ] || [ ! -d "one-api" ] || [ ! -f "one-api/start.sh" ]
 
 do
-
-        read -p "请仔细检查网络环境后，按回车键继续......"
-        
         if [ ! -d "one-api" ]; then
                 echo "one-api不存在，正在通过git下载喵..."
                 git clone https://mirror.ghproxy.com/https://github.com/songquanpeng/one-api.git
@@ -101,7 +98,6 @@ do
 		cd /root
 		fi
         fi
-
 
         if [ ! -d "clewd" ]; then
         	echo "clewd不存在，正在通过git下载喵..."
