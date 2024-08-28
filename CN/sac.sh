@@ -14,56 +14,55 @@ GREEN='\033[0;32m'
 NC='\033[0m' # No Color
 
 #检查相应软件安装情况
-while ! command -v git &> /dev/null || ! command -v node &> /dev/null || ! command -v golang &> /dev/null
+# 安装git
+while ! command -v git &> /dev/null
 do
-    bash <(curl -sSL https://linuxmirrors.cn/main.sh) << EOF
-    2
-    EOF
-    
-    yes | apt update
-    yes | apt upgrade
-
     if ! command -v git &> /dev/null; then
+    echo "检测到你未安装git喵~"
     echo "正在为你下载git喵~"
     DEBIAN_FRONTEND=noninteractive pkg install git -y
         if ! command -v git &> /dev/null; then
-        echo "git下载失败了，正在重试中~"
+        echo "git下载失败了，正在重试中喵~"
         continue
-        else
-        echo "git安装成功~"
-        fi
-    fi
-    
-    if ! command -v node &> /dev/null; then
-    echo "正在为你下载node喵~"
-    DEBIAN_FRONTEND=noninteractive pkg install nodejs -y
-        if ! command -v node &> /dev/null; then
-        echo "node下载失败了，正在重试中~"
-        continue
-        else
-	#设置npm国内源
-	npm config set registry https://registry.npmmirror.com
-        echo "node安装成功~"
-        fi
-    fi
-
-    if ! command -v go &> /dev/null; then
-    echo "正在为你下载go喵~"
-    DEBIAN_FRONTEND=noninteractive pkg install golang -y
-        if ! command -v go &> /dev/null; then
-        echo "go下载失败了，正在重试中~"
-        continue
-        else
-	#重装ca-certificates解决go mod X509问题
-	apt-get install --reinstall ca-certificates -y
-	yes | apt-get update
-        echo "go安装成功~"
-	#设置go mod下载使用阿里云加速代理
-	go env -w GO111MODULE=on
-	go env -w GOPROXY=https://mirrors.aliyun.com/goproxy,direct
         fi
     fi
 done
+echo "git已安装喵~"
+
+# 安装nodejs
+while ! command -v node &> /dev/null
+do
+    if ! command -v node &> /dev/null; then
+    echo "检测到你未安装nodejs喵~"
+    echo "正在为你下载nodejs喵~"
+    DEBIAN_FRONTEND=noninteractive pkg install nodejs -y
+        if ! command -v node &> /dev/null; then
+        echo "nodejs下载失败了，正在重试中喵~"
+        continue
+        fi
+    fi
+done
+echo "nodejs已安装喵~"
+#设置npm国内源
+npm config set registry https://registry.npmmirror.com
+
+#安装go
+while ! command -v go &> /dev/null
+do
+    if ! command -v go &> /dev/null; then
+    echo "检测到你未安装go喵~"
+    echo "正在为你下载go喵~"
+    DEBIAN_FRONTEND=noninteractive pkg install golang -y
+        if ! command -v go &> /dev/null; then
+        echo "go下载失败了，正在重试中喵~"
+        continue
+        fi
+    fi
+done
+echo "go已安装喵~"
+#设置go mod下载使用阿里云加速代理
+go env -w GO111MODULE=on
+go env -w GOPROXY=https://mirrors.aliyun.com/goproxy,direct
 
 #添加termux上的Ubuntu/root软链接
 if [ ! -d "/data/data/com.termux/files/home/root" ]; then
