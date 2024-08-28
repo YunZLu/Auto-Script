@@ -4,7 +4,7 @@
 cd "$(dirname "$0")"
 
 echo "前端构建中..."
-cd one-api/web/default
+cd web/default
 npm install
 npm run build
 
