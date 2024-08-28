@@ -19,11 +19,27 @@ echo -e "\033[0;33m喵喵正在帮你检查系统环境中，请稍等一下喵~
 #检查相应软件安装情况
 while ! command -v git &> /dev/null || ! command -v node &> /dev/null || ! command -v go &> /dev/null
 do
+    while ! command -v lsb-release &> /dev/null
+    do
+    yes | apt update
+    yes | apt udgard
+    
+    if ! command -v lsb-release &> /dev/null; then
+    echo "检测到你未安装lsb-release喵~"
+    echo "正在为你下载lsb-release喵~"
+    DEBIAN_FRONTEND=noninteractive apt-get install lsb-release -y
+        if ! command -v lsb-release &> /dev/null; then
+        echo "lsb-release下载失败了，正在重试中喵~"
+	sleep 2
+        continue
+        fi
+    fi
     bash <(curl -sSL https://linuxmirrors.cn/main.sh) << eof
     2
 eof
     yes | apt update
     yes | apt udgard
+    done
     
     if ! command -v git &> /dev/null; then
     echo "检测到你未安装git喵~"
