@@ -22,7 +22,7 @@ do
     while ! command -v lsb-release &> /dev/null
     do
     yes | apt update
-    yes | apt udgrade
+    yes | apt upgrade
     
     if ! command -v lsb-release &> /dev/null; then
     echo "检测到你未安装lsb-release喵~"
@@ -38,7 +38,7 @@ do
     2
 eof
     yes | apt update
-    yes | apt udgrade
+    yes | apt upgrade
     done
     
     if ! command -v git &> /dev/null; then
