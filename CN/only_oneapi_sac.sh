@@ -32,7 +32,7 @@ echo -e "\033[0;36m喵喵~让你选一个执行（输入数字即可），懂了
             #安装酒馆
             echo ""> .bashrc
             echo -e "\033[0;36m确定要安装酒馆喵?\033[0m\n"
-	    read -p "输入Y安装酒馆，按回车键返回喵~" choice
+	    read -p "输入Y安装酒馆，或者按回车键返回喵~" choice
             case "$choice" in
    	    y|Y )
             curl -O https://mirror.ghproxy.com/https://raw.githubusercontent.com/YunZLu/termux_using_openai/main/CN/tisac.sh && chmod +x tisac.sh && ./tisac.sh;;
