@@ -69,7 +69,7 @@ if [ ! -d "/data/data/com.termux/files/home/root" ]; then
     ln -s /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/ubuntu/root /data/data/com.termux/files/home
 fi
 
-echo "root软链接已添加，可直接在mt管理器打开root文件夹修改文件"
+echo "root软链接已添加，可直接在mt管理器打开root文件夹修改文件喵~"
 
 
 while [ ! -d "clewd" ] || [ ! -f "clewd/config.js" ] || [ ! -d "SillyTavern" ] || [ ! -f "SillyTavern/start.sh" ] || [ ! -d "one-api" ] || [ ! -f "one-api/start.sh" ]
@@ -120,7 +120,7 @@ do
                 echo -e "(*꒦ິ⌓꒦ີ)\n\033[0;33m hoping：clewd未部署成功，已帮您删除clewd了喵~\n\033[0m"
                 continue
                 else
-                echo "clewd部署成功喵！！！"
+                echo "clewd部署成功喵~"
                 fi
         fi
 
@@ -136,17 +136,17 @@ do
                 echo -e "\033[0;33mSillyTavern下载成功喵~\033[0m"
                 fi
                 
-	 	echo -e "\033[0;31m更新酒馆是为了导入破限，也可以选择后面自己更新。\033[0m\n"
+	 	echo -e "\033[0;31m更新酒馆是为了导入破限，也可以选择后面自己更新喵~\033[0m\n"
    		read -p "输入 Y 现在更新酒馆，按回车键暂时不更新喵~" choice
    		case "$choice" in
    		y|Y )
 	                #直接更新...不然不知道为什么会缺失破限文件...有时间再研究吧...
-	                echo -e "\033[0;33mSillyTavern更新，请耐心等待...\033[0m"
+	                echo -e "\033[0;33mSillyTavern更新，请耐心等待喵...\033[0m"
 	                cd /root/SillyTavern
 	                #启动酒馆后更新才能导入破限文件，暂时没办法...
 	                npm i --no-audit --no-fund --quiet --omit=dev
-	                echo -e "\033[0;31m当SillyTavern成功输出绿色网址时，请按Ctrl+C！\033[0m"
-	                read -p "红字看明白了后，请按回车键继续..."
+	                echo -e "\033[0;31m当SillyTavern成功输出绿色网址时，请按Ctrl+C喵！\033[0m"
+	                read -p "红字看明白了后，请按回车键继续喵..."
 	                node "server.js" "$@"v
 	                cd /root
 	                
@@ -176,7 +176,7 @@ do
 	                rm -rf /root/st_promot
 	                git clone https://mirror.ghproxy.com/https://github.com/hopingmiao/promot.git /root/st_promot
 	                cp -r /root/st_promot/. /root/SillyTavern/public/'OpenAI Settings'/
-	                echo -e "\033[0;33mhoping：酒馆已更新完毕~\033[0m"
+	                echo -e "\033[0;33mhoping：酒馆已更新完毕喵~\033[0m"
 	                else
 	                cp -r SillyTavern/public/characters/. SillyTavern_new/public/characters/
 	                cp -r SillyTavern/public/chats/. SillyTavern_new/public/chats/       
@@ -192,7 +192,7 @@ do
 	                rm -rf /root/st_promot
 	                git clone https://mirror.ghproxy.com/https://github.com/hopingmiao/promot.git /root/st_promot
 	                cp -r /root/st_promot/. /root/SillyTavern/public/'OpenAI Settings'/
-	                echo -e "\033[0;33mhoping：酒馆已更新完毕~\033[0m"
+	                echo -e "\033[0;33mhoping：酒馆已更新完毕喵~\033[0m"
 	                fi;;
 	    	* )
         		echo "你选择了不更新酒馆喵~"
@@ -1009,7 +1009,7 @@ do
 	    echo -e "退出脚本后，请输入 bash update.sh 更新脚本喵~"
             break ;;
         *) 
-            echo -e "m9( ｀д´ )!!!! \n\033[0;36m坏猫猫居然不听话，存心和我hoping喵~过不去是吧？\033[0m\n"
+            echo -e "m9( ｀д´ )!!!! \n\033[0;36m坏猫猫居然不听话，存心和我hoping喵~过不去是吧喵？\033[0m\n"
             ;;
     esac
 done 
