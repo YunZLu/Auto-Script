@@ -10,6 +10,10 @@
         
         curl -O https://mirror.ghproxy.com/https://raw.githubusercontent.com/YunZLu/termux_using_openai/main/CN/tisac.sh && chmod +x tisac.sh && ./tisac.sh
 
+原已部署喵喵一键脚本的，先按0退出脚本，再执行命令：
+
+        curl -O https://raw.githubusercontent.com/YunZLu/termux_using_openai/main/CN/update_CN.sh && chmod +x update_CN.sh && ./update_CN.sh
+        
 
 一、脚本介绍
 
