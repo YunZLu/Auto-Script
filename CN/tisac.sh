@@ -129,7 +129,6 @@ done
 ln -s /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/ubuntu/root
 
 cp -r one-api/. $current/root/one-api
-echo "export PATH=\$PATH:/root/node-v20.17.0-linux-arm64/bin" >>$current/etc/profile
 
 echo "bash /root/sac.sh" >>$current/root/.bashrc
 
