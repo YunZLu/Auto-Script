@@ -37,6 +37,7 @@ echo -e "\033[0;36mhoping喵~让你选一个执行（输入数字即可），懂
             curl -O https://mirror.ghproxy.com/https://raw.githubusercontent.com/YunZLu/termux_using_openai/main/CN/tisac.sh && chmod +x tisac.sh && ./tisac.sh;;
 	    * )
             echo "你已选择不安装酒馆喵~";;
+	    esac
             ;; 
         *) 
             echo -e "m9( ｀д´ )!!!! \n\033[0;36m坏猫猫居然不听话，存心和我hoping喵~过不去是吧？\033[0m\n"
