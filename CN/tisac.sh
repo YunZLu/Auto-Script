@@ -119,10 +119,10 @@ do
         fi
     fi
 
-    if [ ! -f "$current/root/update.sh" ]; then
+    if [ ! -f "$current/root/update_CN.sh" ]; then
     echo "正在为你下载更新文件喵~"
-    curl -O https://mirror.ghproxy.com/https://github.com/YunZLu/termux_using_openai/blob/main/CN/update.sh
-        if [ ! -f "$current/root/update.sh" ]; then
+    curl -O https://mirror.ghproxy.com/https://raw.githubusercontent.com/YunZLu/termux_using_openai/main/CN/update_CN.sh
+        if [ ! -f "$current/root/update_CN.sh" ]; then
         echo "更新文件下载失败了，正在重试中喵~"
         sleep 2
         continue
