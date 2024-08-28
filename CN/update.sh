@@ -3,7 +3,7 @@
 echo -e "\033[0;31m开魔法！开魔法！开魔法！\033[0m\n"
 read -p "确保开了魔法后按回车继续"
 
-read -p "确定要更新吗?输入Y更新，按回车键推出喵~" choice
+read -p "确定要更新吗?输入Y更新，或者按回车键退出喵~" choice
 
 case "$choice" in
     y|Y )
