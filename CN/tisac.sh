@@ -13,12 +13,12 @@ echo "
 current=/data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/ubuntu
 
 # 安装proot-distro
-while [! command -v proot-distro &> /dev/null]
+while ! command -v proot-distro &> /dev/null
 do
-    if [! command -v proot-distro &> /dev/null]; then
+    if ! command -v proot-distro &> /dev/null; then
     echo "正在为你下载proot-distro喵~"
     DEBIAN_FRONTEND=noninteractive pkg install proot-distro -y
-        if [! command -v git &> /dev/null]; then
+        if ! command -v git &> /dev/null; then
         echo "proot-distro下载失败了，正在重试中喵~"
         continue
         else
@@ -45,12 +45,12 @@ do
 done
 
 #安装相应软件
-while [! command -v git &> /dev/null] || [! command -v node &> /dev/null] || [! command -v golang &> /dev/null]
+while ! command -v git &> /dev/null || ! command -v node &> /dev/null || ! command -v golang &> /dev/null
 do
-    if [! command -v git &> /dev/null]; then
+    if ! command -v git &> /dev/null; then
     echo "正在为你下载git喵~"
     DEBIAN_FRONTEND=noninteractive pkg install git -y
-        if [! command -v git &> /dev/null]; then
+        if ! command -v git &> /dev/null; then
         echo "git下载失败了，正在重试中~"
         continue
         else
@@ -58,10 +58,10 @@ do
         fi
     fi
     
-    if [! command -v node &> /dev/null]; then
+    if ! command -v node &> /dev/null; then
     echo "正在为你下载node喵~"
     DEBIAN_FRONTEND=noninteractive pkg install nodejs -y
-        if [! command -v node &> /dev/null]; then
+        if ! command -v node &> /dev/null; then
         echo "node下载失败了，正在重试中~"
         continue
         else
@@ -69,10 +69,10 @@ do
         fi
     fi
 
-    if [! command -v go &> /dev/null]; then
+    if ! command -v go &> /dev/null; then
     echo "正在为你下载go喵~"
     DEBIAN_FRONTEND=noninteractive pkg install golang -y
-        if [! command -v go &> /dev/null]; then
+        if ! command -v go &> /dev/null; then
         echo "go下载失败了，正在重试中~"
         continue
         else
