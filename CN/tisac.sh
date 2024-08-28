@@ -16,6 +16,7 @@ current=/data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/ub
 while ! command -v proot-distro &> /dev/null
 do
     if ! command -v proot-distro &> /dev/null; then
+    echo "检测到你未安装proot-distro喵~"
     echo "正在为你下载proot-distro喵~"
     DEBIAN_FRONTEND=noninteractive pkg install proot-distro -y
         if ! command -v proot-distro &> /dev/null; then
@@ -27,9 +28,11 @@ do
     fi
 done
 
+# 安装git
 while ! command -v git &> /dev/null
 do
     if ! command -v git &> /dev/null; then
+    echo "检测到你未安装git喵~"
     echo "正在为你下载git喵~"
     DEBIAN_FRONTEND=noninteractive pkg install git -y
         if ! command -v git &> /dev/null; then
@@ -41,40 +44,14 @@ do
     fi
 done
 
-while ! command -v node &> /dev/null
-do
-    if ! command -v node &> /dev/null; then
-    echo "正在为你下载git喵~"
-    DEBIAN_FRONTEND=noninteractive pkg install nodejs -y
-        if ! command -v node &> /dev/null; then
-        echo "node下载失败了，正在重试中喵~"
-        continue
-        else
-        echo "node安装成功喵~"
-        fi
-    fi
-done
-
-while ! command -v go &> /dev/null
-do
-    if ! command -v go &> /dev/null; then
-    echo "正在为你下载git喵~"
-    DEBIAN_FRONTEND=noninteractive pkg install golang -y
-        if ! command -v go &> /dev/null; then
-        echo "go下载失败了，正在重试中喵~"
-        continue
-        else
-        echo "go安装成功喵~"
-        fi
-    fi
-done
-
 # 加速Ubuntu下载地址
 sed -i 's/https:\/\/github.com/https:\/\/mirror.ghproxy.com\/github.com/g' /data/data/com.termux/files/usr/etc/proot-distro/ubuntu.sh
 
 # 创建并安装Ubuntu
 while [ ! -d "$current" ]
 do
+   echo "检测到你未安装Ubuntu喵~"
+   echo "正在为你下载Ubuntu喵~"
    DEBIAN_FRONTEND=noninteractive proot-distro install ubuntu
    
     # Check Ubuntu installed successfully
@@ -87,13 +64,41 @@ do
  
 done
 
+# 安装nodejs
+while ! command -v node &> /dev/null
+do
+    if ! command -v node &> /dev/null; then
+    echo "检测到你未安装nodejs喵~"
+    echo "正在为你下载nodejs喵~"
+    DEBIAN_FRONTEND=noninteractive pkg install nodejs -y
+        if ! command -v node &> /dev/null; then
+        echo "nodejs下载失败了，正在重试中喵~"
+        continue
+        else
+        echo "nodejs安装成功喵~"
+        #设置npm国内源
+        npm config set registry https://registry.npmmirror.com
+        fi
+    fi
+done
 
-#设置npm国内源
-npm config set registry https://registry.npmmirror.com
-
-#设置go mod下载使用阿里云加速代理
-go env -w GO111MODULE=on
-go env -w GOPROXY=https://mirrors.aliyun.com/goproxy,direct
+while ! command -v go &> /dev/null
+do
+    if ! command -v go &> /dev/null; then
+    echo "检测到你未安装go喵~"
+    echo "正在为你下载go喵~"
+    DEBIAN_FRONTEND=noninteractive pkg install golang -y
+        if ! command -v go &> /dev/null; then
+        echo "go下载失败了，正在重试中喵~"
+        continue
+        else
+        echo "go安装成功喵~"
+        #设置go mod下载使用阿里云加速代理
+        go env -w GO111MODULE=on
+        go env -w GOPROXY=https://mirrors.aliyun.com/goproxy,direct
+        fi
+    fi
+done
 
 cd $current/root
 
