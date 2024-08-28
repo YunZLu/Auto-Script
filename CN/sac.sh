@@ -19,17 +19,17 @@ echo -e "\033[0;33m喵喵正在帮你检查系统环境中，请稍等一下喵~
 #检查相应软件安装情况
 while ! command -v git &> /dev/null || ! command -v node &> /dev/null || ! command -v go &> /dev/null
 do
-    while ! command -v lsb-release &> /dev/null
+    while ! command -v lsb_release &> /dev/null
     do
     echo -e "\033[0;33m喵喵正在帮你更新软件包中，请稍等一下喵~\n\033[0m"
     yes | apt update
     yes | apt upgrade
     
-    if ! command -v lsb-release &> /dev/null; then
+    if ! command -v lsb_release &> /dev/null; then
     echo "检测到你未安装lsb-release喵~"
     echo "正在为你下载lsb-release喵~"
     DEBIAN_FRONTEND=noninteractive apt-get install lsb-release -y
-        if ! command -v lsb-release &> /dev/null; then
+        if ! command -v lsb_release &> /dev/null; then
         echo "lsb-release下载失败了，正在重试中喵~"
 	sleep 2
         continue
