@@ -85,7 +85,7 @@ do
         fi
 done
 
-while [ ! -d "only_oneapi_sac.sh" ]
+while [ ! -f "only_oneapi_sac.sh" ]
 do
         if [ ! -f "only_oneapi_sac.sh" ]; then
                 echo "one-api启动界面不存在，正在通过git下载喵..."
