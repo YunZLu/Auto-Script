@@ -1017,7 +1017,7 @@ do
 		;;
         7)
             # 更新脚本
-	    rm -rf update.sh
+	    rm -rf update_CN.sh
 	    while [ ! -f "update_CN.sh" ]
             do
                 if [ ! -f "update_CN.sh" ]; then
@@ -1031,7 +1031,7 @@ do
 		fi
             fi
             done
-	    echo -e "退出脚本后，请输入 bash update.sh 更新脚本喵~"
+	    echo -e "退出脚本后，请输入 bash update_CN.sh 更新脚本喵~"
             break ;;
         *) 
             echo -e "m9( ｀д´ )!!!! \n\033[0;36m坏猫猫居然不听话，存心和我hoping喵~过不去是吧喵？\033[0m\n"
