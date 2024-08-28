@@ -28,7 +28,7 @@ do
 done
 
 #安装相应软件
-while command -v git &> /dev/null || command -v node &> /dev/null || command -v golang &> /dev/null
+while ! command -v git &> /dev/null || ! command -v node &> /dev/null || ! command -v golang &> /dev/null
 do
     if ! command -v git &> /dev/null; then
     echo "正在为你下载git喵~"
