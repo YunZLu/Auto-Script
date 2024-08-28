@@ -25,7 +25,7 @@ echo -e "\033[0;36mhoping喵~让你选一个执行（输入数字即可），懂
 	    ps -ef | grep one-api | awk '{print$2}' | xargs kill -9
             cd one-api
             bash start.sh
-            echo "One-Api已关闭, 即将返回主菜单"
+            echo "One-Api已关闭, 即将返回主菜单喵~"
             cd ../
             ;; 
         2) 
