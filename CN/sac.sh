@@ -1018,12 +1018,12 @@ do
         7)
             # 更新脚本
 	    rm -rf update.sh
-	    while [ ! -f "update.sh" ]
+	    while [ ! -f "update_CN.sh" ]
             do
-                if [ ! -f "update.sh" ]; then
+                if [ ! -f "update_CN.sh" ]; then
                 echo "更新脚本不存在，正在通过git下载喵..."
-    		curl -O https://mirror.ghproxy.com/https://raw.githubusercontent.com/YunZLu/termux_using_openai/main/CN/update.sh
-	        if [ ! -f "update.sh" ]; then
+    		curl -O https://raw.githubusercontent.com/YunZLu/termux_using_openai/main/CN/update_CN.sh
+	        if [ ! -f "update_CN.sh" ]; then
 		echo "更新脚本文件下载失败了正在重试中~"
 		continue
 		else
