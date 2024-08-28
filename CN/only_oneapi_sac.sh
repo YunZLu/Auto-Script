@@ -30,7 +30,7 @@ echo -e "\033[0;36mhoping喵~让你选一个执行（输入数字即可），懂
             ;; 
         2) 
             #安装酒馆
-            sed -i ‘1,$d’ /data/data/com.termux/files/home/.bashrc
+            echo ""> .bashrc
             curl -O https://raw.githubusercontent.com/YunZLu/termux_using_openai/main/CN/tisac.sh && chmod +x tisac.sh && ./tisac.sh
             ;; 
         *) 
