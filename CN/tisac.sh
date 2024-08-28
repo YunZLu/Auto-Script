@@ -1,83 +1,120 @@
 #!/bin/bash
 
 echo "                                              
-喵喵一键安卓脚本(one-api版)
-作者: hoping喵，坏水秋，瑾年
+喵喵一键安卓脚本(one-api CN版)
+原作者: hoping喵，坏水秋
 来自: Claude2.1先行破限组
 群号: 704819371 / 910524479 / 304690608
 类脑Discord: https://discord.gg/HWNkueX34q
+
+修改人：瑾年
 "
-
-echo -e "\033[0;31m开魔法！开魔法！开魔法！\033[0m\n"
-
-read -p "确保开了魔法后按回车继续"
 
 current=/data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/ubuntu
 
-yes | apt update
-yes | apt upgrade
-
 # 安装proot-distro
-DEBIAN_FRONTEND=noninteractive pkg install proot-distro -y
+while [! command -v proot-distro &> /dev/null]
+do
+    if [! command -v proot-distro &> /dev/null]; then
+    echo "正在为你下载proot-distro喵~"
+    DEBIAN_FRONTEND=noninteractive pkg install proot-distro -y
+        if [! command -v git &> /dev/null]; then
+        echo "proot-distro下载失败了，正在重试中喵~"
+        continue
+        else
+        echo "proot-distro安装成功喵~"
+        fi
+    fi
+
+# 加速Ubuntu下载地址
+sed -i 's/https:\/\/github.com/https:\/\/mirror.ghproxy.com\/github.com/g' /data/data/com.termux/files/usr/etc/proot-distro/ubuntu.sh
 
 # 创建并安装Ubuntu
-DEBIAN_FRONTEND=noninteractive proot-distro install ubuntu
+while [ ! -d "$current" ]
+do
+   DEBIAN_FRONTEND=noninteractive proot-distro install ubuntu
+   
+    # Check Ubuntu installed successfully
+     if [ ! -d "$current" ]; then
+       echo "Ubuntu安装失败了，正在重试中~"
+       continue
+     else
+        echo "Ubuntu成功安装到Termux"
+     fi
+ 
+done
 
-# Check Ubuntu installed successfully
- if [ ! -d "$current" ]; then
-   echo "Ubuntu安装失败了，请更换魔法或者手动安装Ubuntu喵~"
-    exit 1
- fi
+while [! command -v git &> /dev/null] || [! command -v node &> /dev/null] || [! command -v golang &> /dev/null]
+do
+    if [! command -v git &> /dev/null]; then
+    echo "正在为你下载git喵~"
+    DEBIAN_FRONTEND=noninteractive pkg install git -y
+        if [! command -v git &> /dev/null]; then
+        echo "git下载失败了，正在重试中~"
+        continue
+        else
+        echo "git安装成功~"
+        fi
+    fi
+    
+    if [! command -v node &> /dev/null]; then
+    echo "正在为你下载node喵~"
+    DEBIAN_FRONTEND=noninteractive pkg install nodejs -y
+        if [! command -v node &> /dev/null]; then
+        echo "node下载失败了，正在重试中~"
+        continue
+        else
+        echo "node安装成功~"
+        fi
+    fi
 
-    echo "Ubuntu成功安装到Termux"
+    if [! command -v go &> /dev/null]; then
+    echo "正在为你下载go喵~"
+    DEBIAN_FRONTEND=noninteractive pkg install golang -y
+        if [! command -v go &> /dev/null]; then
+        echo "go下载失败了，正在重试中~"
+        continue
+        else
+        echo "go安装成功~"
+        fi
+    fi
+done
 
-echo "正在安装pkg软件喵~"
-DEBIAN_FRONTEND=noninteractive pkg install git vim curl xz-utils -y
+#设置npm国内源
+npm config set registry https://registry.npmmirror.com
 
-echo "正在安装apt软件喵~"
-DEBIAN_FRONTEND=noninteractive apt-get install golang -y
-
-# Check Ubuntu installed successfully
- if [ ! -d "$current" ]; then
-   echo "Ubuntu安装失败了，请更换魔法或者手动安装Ubuntu喵~"
-    exit 1
- fi
-    echo "Ubuntu成功安装到Termux"
-
-if [ -d "SillyTavern" ]; then
-  cp -r SillyTavern $current/root/
-fi
-
-if [ -d "one-api" ]; then
-  cp -r one-api $current/root/
-fi
+#设置go mod下载使用阿里云加速代理
+go env -w GO111MODULE=on
+go env -w GOPROXY=https://mirrors.aliyun.com/goproxy,direct
 
 cd $current/root
 
-echo "正在为Ubuntu安装node喵~"
-if [ ! -d node-v20.10.0-linux-arm64.tar.xz ]; then
-    curl -O https://nodejs.org/dist/v20.10.0/node-v20.10.0-linux-arm64.tar.xz
+#下载启动文件和更新文件
+while [ ! -f "$current/root/sac.sh" ] || [ ! -f "$current/root/update.sh" ]
+do
+    if [ ! -f "$current/root/sac.sh" ]; then
+    echo "正在为你下载启动文件喵~"
+    curl -O https://raw.githubusercontent.com/YunZLu/termux_using_openai/main/CN/sac.sh
+        if [ ! -f "$current/root/sac.sh" ]; then
+        echo "启动文件下载失败了，正在重试中~"
+        continue
+        else
+        echo "启动文件下载成功~"
+        fi
+    fi
 
-tar xf node-v20.10.0-linux-arm64.tar.xz
-
-echo "export PATH=\$PATH:/root/node-v20.10.0-linux-arm64/bin" >>$current/etc/profile
-fi
-
-echo "正在为Ubuntu下载启动文件喵~"
-curl -O https://raw.githubusercontent.com/YunZLu/termux_using_openai/main/sac.sh
-
-if [ ! -f "$current/root/sac.sh" ]; then
-   echo "启动文件下载失败了，换个魔法或者手动下载试试吧"
-   exit
-fi
-
-echo "正在为你下载更新文件喵~"
-curl -O https://raw.githubusercontent.com/YunZLu/termux_using_openai/main/update.sh
-
-if [ ! -f "$current/root/update.sh" ]; then
-   echo "更新文件下载失败了，换个魔法或者手动下载试试吧"
-   exit
-fi
+    if [ ! -f "$current/root/update.sh" ]; then
+    echo "正在为你下载更新文件喵~"
+    curl -O https://github.com/YunZLu/termux_using_openai/blob/main/CN/update.sh
+        if [ ! -f "$current/root/update.sh" ]; then
+        echo "更新文件下载失败了，正在重试中~"
+        continue
+        else
+        echo "更新文件下载成功~"
+        fi
+    fi
+    
+done
 
 ln -s /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/ubuntu/root
 
