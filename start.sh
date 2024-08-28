@@ -10,7 +10,7 @@ then
       y|Y )
         echo "npm安装中..."
         DEBIAN_FRONTEND=noninteractive apt-get install npm -y
-        go version;;
+        npm version;;
       n|N )
         echo "不安装npm，无法启动！"
         exit;;
@@ -39,7 +39,7 @@ then
 fi
 
 echo "前端构建中..."
-cd /root/one-api/web/default
+cd one-api/web/default
 npm install
 npm run build
 
