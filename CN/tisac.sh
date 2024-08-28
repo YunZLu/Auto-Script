@@ -27,6 +27,43 @@ do
     fi
 done
 
+#安装相应软件
+while command -v git &> /dev/null || command -v node &> /dev/null || command -v golang &> /dev/null
+do
+    if ! command -v git &> /dev/null; then
+    echo "正在为你下载git喵~"
+    DEBIAN_FRONTEND=noninteractive pkg install git -y
+        if ! command -v git &> /dev/null; then
+        echo "git下载失败了，正在重试中~"
+        continue
+        else
+        echo "git安装成功~"
+        fi
+    fi
+    
+    if ! command -v node &> /dev/null; then
+    echo "正在为你下载node喵~"
+    DEBIAN_FRONTEND=noninteractive pkg install nodejs -y
+        if ! command -v node &> /dev/null; then
+        echo "node下载失败了，正在重试中~"
+        continue
+        else
+        echo "node安装成功~"
+        fi
+    fi
+
+    if ! command -v go &> /dev/null; then
+    echo "正在为你下载go喵~"
+    DEBIAN_FRONTEND=noninteractive pkg install golang -y
+        if ! command -v go &> /dev/null; then
+        echo "go下载失败了，正在重试中~"
+        continue
+        else
+        echo "go安装成功~"
+        fi
+    fi
+done
+
 # 加速Ubuntu下载地址
 sed -i 's/https:\/\/github.com/https:\/\/mirror.ghproxy.com\/github.com/g' /data/data/com.termux/files/usr/etc/proot-distro/ubuntu.sh
 
