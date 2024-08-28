@@ -6,7 +6,7 @@
 
         curl -O https://mirror.ghproxy.com/https://raw.githubusercontent.com/YunZLu/termux_using_openai/main/CN/only_oneapi_tisac.sh && chmod +x only_oneapi_tisac.sh && ./only_oneapi_tisac.sh
 
-酒馆 + one-api脚本命令：
+酒馆 + one-api 脚本命令：
         
         curl -O https://mirror.ghproxy.com/https://raw.githubusercontent.com/YunZLu/termux_using_openai/main/CN/tisac.sh && chmod +x tisac.sh && ./tisac.sh
 
