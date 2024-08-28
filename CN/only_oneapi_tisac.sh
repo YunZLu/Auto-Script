@@ -85,12 +85,12 @@ do
         fi
 done
 
-while [ ! -d "only_oneapi_sac" ]
+while [ ! -d "only_oneapi_sac.sh" ]
 do
-        if [ ! -f "only_oneapi_sac" ]; then
+        if [ ! -f "only_oneapi_sac.sh" ]; then
                 echo "one-api启动界面不存在，正在通过git下载喵..."
-    		curl -O https://mirror.ghproxy.com/https://raw.githubusercontent.com/YunZLu/termux_using_openai/main/CN/only_oneapi_sac
-	        if [ ! -f "only_oneapi_sac" ]; then
+    		curl -O https://mirror.ghproxy.com/https://raw.githubusercontent.com/YunZLu/termux_using_openai/main/CN/only_oneapi_sac.sh
+	        if [ ! -f "only_oneapi_sac.sh" ]; then
 		echo -e "(*꒦ິ⌓꒦ີ)\n\033[0;33m hoping：因网络波动one-api启动界面下载失败了喵~\n\033[0m"
 		continue
 		else
@@ -99,7 +99,7 @@ do
         fi
 done
 
-echo "bash only_oneapi_sac" >>.bashrc
+echo "bash only_oneapi_sac.sh" >>.bashrc
 source .bashrc
 
 exit
