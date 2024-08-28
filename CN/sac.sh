@@ -1015,10 +1015,11 @@ do
 		;;
         7)
             # 更新脚本
+	    rm -rf update.sh
 	    while [ ! -f "update.sh" ]
             do
                 if [ ! -f "update.sh" ]; then
-                echo "one-api启动界面不存在，正在通过git下载喵..."
+                echo "更新脚本不存在，正在通过git下载喵..."
     		curl -O https://mirror.ghproxy.com/https://raw.githubusercontent.com/YunZLu/termux_using_openai/main/CN/update.sh
 	        if [ ! -f "update.sh" ]; then
 		echo -e "(*꒦ິ⌓꒦ີ)\n\033[0;33m hoping：因网络波动更新脚本文件下载失败了喵~\n\033[0m"
