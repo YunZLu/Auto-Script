@@ -14,7 +14,7 @@ GREEN='\033[0;32m'
 NC='\033[0m' # No Color
 
 #检查相应软件安装情况
-while [! command -v git &> /dev/null] || [! command -v node &> /dev/null] || [! command -v golang &> /dev/null]
+while ! command -v git &> /dev/null || ! command -v node &> /dev/null || ! command -v golang &> /dev/null
 do
     bash <(curl -sSL https://linuxmirrors.cn/main.sh) << EOF
     2
@@ -23,10 +23,10 @@ do
     yes | apt update
     yes | apt upgrade
 
-    if [! command -v git &> /dev/null]; then
+    if ! command -v git &> /dev/null; then
     echo "正在为你下载git喵~"
     DEBIAN_FRONTEND=noninteractive pkg install git -y
-        if [! command -v git &> /dev/null]; then
+        if ! command -v git &> /dev/null; then
         echo "git下载失败了，正在重试中~"
         continue
         else
@@ -34,10 +34,10 @@ do
         fi
     fi
     
-    if [! command -v node &> /dev/null]; then
+    if ! command -v node &> /dev/null; then
     echo "正在为你下载node喵~"
     DEBIAN_FRONTEND=noninteractive pkg install nodejs -y
-        if [! command -v node &> /dev/null]; then
+        if ! command -v node &> /dev/null; then
         echo "node下载失败了，正在重试中~"
         continue
         else
@@ -47,10 +47,10 @@ do
         fi
     fi
 
-    if [! command -v go &> /dev/null]; then
+    if ! command -v go &> /dev/null; then
     echo "正在为你下载go喵~"
     DEBIAN_FRONTEND=noninteractive pkg install golang -y
-        if [! command -v go &> /dev/null]; then
+        if ! command -v go &> /dev/null; then
         echo "go下载失败了，正在重试中~"
         continue
         else
