@@ -106,10 +106,10 @@ do
     echo "正在为你下载启动文件喵~"
     curl -O https://raw.githubusercontent.com/YunZLu/termux_using_openai/main/CN/sac.sh
         if [ ! -f "$current/root/sac.sh" ]; then
-        echo "启动文件下载失败了，正在重试中~"
+        echo "启动文件下载失败了，正在重试中喵~"
         continue
         else
-        echo "启动文件下载成功~"
+        echo "启动文件下载成功喵~"
         fi
     fi
 
@@ -117,10 +117,10 @@ do
     echo "正在为你下载更新文件喵~"
     curl -O https://github.com/YunZLu/termux_using_openai/blob/main/CN/update.sh
         if [ ! -f "$current/root/update.sh" ]; then
-        echo "更新文件下载失败了，正在重试中~"
+        echo "更新文件下载失败了，正在重试中喵~"
         continue
         else
-        echo "更新文件下载成功~"
+        echo "更新文件下载成功喵~"
         fi
     fi
     
