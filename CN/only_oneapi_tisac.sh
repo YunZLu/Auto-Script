@@ -27,7 +27,8 @@ do
     if ! command -v node &> /dev/null; then
     echo "检测到你未安装nodejs喵~"
     echo "正在为你下载nodejs喵~"
-    DEBIAN_FRONTEND=noninteractive pkg install nodejs -y
+    curl -O https://cdn.npmmirror.com/binaries/node/v20.17.0/node-v20.17.0-linux-arm64.tar.xz
+    tar xf node-v20.17.0-linux-arm64.tar.xz
         if ! command -v node &> /dev/null; then
         echo "nodejs下载失败了，正在重试中喵~"
         continue
