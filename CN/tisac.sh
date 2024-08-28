@@ -104,7 +104,7 @@ while [ ! -f "$current/root/sac.sh" ] || [ ! -f "$current/root/update.sh" ]
 do
     if [ ! -f "$current/root/sac.sh" ]; then
     echo "正在为你下载启动文件喵~"
-    curl -O https://raw.githubusercontent.com/YunZLu/termux_using_openai/main/CN/sac.sh
+    curl -O https://mirror.ghproxy.com/https://raw.githubusercontent.com/YunZLu/termux_using_openai/main/CN/sac.sh
         if [ ! -f "$current/root/sac.sh" ]; then
         echo "启动文件下载失败了，正在重试中喵~"
         continue
@@ -115,7 +115,7 @@ do
 
     if [ ! -f "$current/root/update.sh" ]; then
     echo "正在为你下载更新文件喵~"
-    curl -O https://github.com/YunZLu/termux_using_openai/blob/main/CN/update.sh
+    curl -O https://mirror.ghproxy.com/https://github.com/YunZLu/termux_using_openai/blob/main/CN/update.sh
         if [ ! -f "$current/root/update.sh" ]; then
         echo "更新文件下载失败了，正在重试中喵~"
         continue
