@@ -13,6 +13,8 @@ RED='\033[0;31m'
 GREEN='\033[0;32m'
 NC='\033[0m' # No Color
 
+echo "正在系统环境中，请稍等一下喵~"
+
 #检查相应软件安装情况
 # 安装git
 while ! command -v git &> /dev/null
@@ -82,7 +84,7 @@ do
                 echo "one-api不存在，正在通过git下载喵..."
                 git clone https://mirror.ghproxy.com/https://github.com/songquanpeng/one-api.git
         	if [ ! -d "one-api" ]; then
-                echo -e "(*꒦ິ⌓꒦ີ)\n\033[0;33m hoping：因网络波动one-api下载失败了喵~\n\033[0m"
+                echo "one-api下载失败了，正在重试中喵~"
 		sleep 2
         	continue
                 else
@@ -95,7 +97,7 @@ do
                 cd one-api
     		curl -O https://mirror.ghproxy.com/https://raw.githubusercontent.com/YunZLu/termux_using_openai/main/CN/start.sh
 	        if [ ! -f "start.sh" ]; then
-		echo -e "(*꒦ິ⌓꒦ີ)\n\033[0;33m hoping：因网络波动one-api启动文件下载失败了喵~\n\033[0m"
+		echo "one-api启动文件下载失败了，正在重试中喵~"
   		sleep 2
 		continue
 		else
@@ -108,7 +110,7 @@ do
         	echo "clewd不存在，正在通过git下载喵..."
         	git clone -b test https://mirror.ghproxy.com/https://github.com/teralomaniac/clewd
          	if  [ ! -d "clewd" ]; then
-        	echo -e "(*꒦ິ⌓꒦ີ)\n\033[0;33m hoping：因网络波动clewd下载失败了喵~\n\033[0m"
+        	echo "clewd下载失败了，正在重试中喵~"
 	 	sleep 2
         	continue
          	else
@@ -137,7 +139,7 @@ do
         git clone https://mirror.ghproxy.com/https://github.com/SillyTavern/SillyTavern -b release
         
                 if [ ! -d "SillyTavern" ]; then
-                echo -e "(*꒦ິ⌓꒦ີ)\n\033[0;33m hoping：因网络波动SillyTavern下载失败了喵~\n\033[0m"
+                echo -e echo "SillyTavern下载失败了，正在重试中喵~"
 		sleep 2
                 continue
                 else
@@ -167,7 +169,7 @@ do
 	                git clone -b staging https://mirror.ghproxy.com/https://github.com/SillyTavern/SillyTavern.git SillyTavern_new
 	                if [ ! -d "SillyTavern_new" ]; then
 	                rm -rf SillyTavern
-	                echo -e "(*꒦ິ⌓꒦ີ)\n\033[0;33m hoping：因为网络波动SillyTavern更新文件下载失败了喵~\n\033[0m"
+	                echo -eecho -e echo "SillyTavern更新文件下载失败了，正在重试中喵~"
 			sleep 2
 	                continue
 	                elif [ -d "SillyTavern/data/default-user" ]; then
