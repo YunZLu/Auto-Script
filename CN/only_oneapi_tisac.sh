@@ -65,7 +65,7 @@ do
                 echo "one-api不存在，正在通过git下载喵..."
                 git clone https://mirror.ghproxy.com/https://github.com/songquanpeng/one-api.git
         	if [ ! -d "one-api" ]; then
-                echo -e "(*꒦ິ⌓꒦ີ)\n\033[0;33m hoping：因网络波动one-api下载失败了喵~\n\033[0m"
+                echo "one-ai下载失败了，正在重试中喵~"
 		sleep 2
         	continue
                 else
@@ -80,7 +80,7 @@ do
                 cd one-api
     		curl -O https://mirror.ghproxy.com/https://raw.githubusercontent.com/YunZLu/termux_using_openai/main/CN/start.sh
 	        if [ ! -f "start.sh" ]; then
-		echo -e "(*꒦ິ⌓꒦ີ)\n\033[0;33m hoping：因网络波动one-api启动文件下载失败了喵~\n\033[0m"
+		echo "one-api启动文件下载失败了，正在重试中喵~"
   		sleep 2
 		continue
 		else
@@ -96,7 +96,7 @@ do
                 echo "one-api启动界面不存在，正在通过git下载喵..."
     		curl -O https://mirror.ghproxy.com/https://raw.githubusercontent.com/YunZLu/termux_using_openai/main/CN/only_oneapi_sac.sh
 	        if [ ! -f "only_oneapi_sac.sh" ]; then
-		echo -e "(*꒦ິ⌓꒦ີ)\n\033[0;33m hoping：因网络波动one-api启动界面下载失败了喵~\n\033[0m"
+		echo "one-api启动界面下载失败了，正在重试中喵~"
  		sleep 2
 		continue
 		else
