@@ -35,13 +35,14 @@ do
         continue
         fi
     fi
-    bash <(curl -sSL https://linuxmirrors.cn/main.sh) << eof
+    done
+    
+echo -e "\033[0;33m喵喵正在帮你选择国内代理中，请稍等一下喵~\n\033[0m"
+     bash <(curl -sSL https://linuxmirrors.cn/main.sh) << eof
     2
 eof
     yes | apt update
-    yes | apt upgrade
-    done
-    
+
     if ! command -v git &> /dev/null; then
     echo "检测到你未安装git喵~"
     echo "正在为你下载git喵~"
