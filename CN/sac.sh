@@ -21,6 +21,7 @@ while ! command -v git &> /dev/null || ! command -v node &> /dev/null || ! comma
 do
     while ! command -v lsb-release &> /dev/null
     do
+    echo -e "\033[0;33m喵喵正在帮你更新软件包中，请稍等一下喵~\n\033[0m"
     yes | apt update
     yes | apt upgrade
     
