@@ -56,9 +56,7 @@ echo "go已安装喵~"
 go env -w GO111MODULE=on
 go env -w GOPROXY=https://mirrors.aliyun.com/goproxy,direct
 
-
-
-while [ ! -d "one-api" ] || [ ! -f "one-api/start.sh" ] || [ ! -d "only_oneapi_sac.sh" ]
+while [ ! -d "one-api" ]
 do
         if [ ! -d "one-api" ]; then
                 echo "one-api不存在，正在通过git下载喵..."
@@ -70,7 +68,9 @@ do
                 echo "one-api文件下载成功喵~"
                 fi
         fi
-        
+done
+while [ ! -f "one-api/start.sh" ] 
+do
         if [ ! -f "one-api/start.sh" ]; then
                 echo "one-api启动文件不存在，正在通过git下载喵..."
                 cd one-api
@@ -83,7 +83,10 @@ do
 		cd 
 		fi
         fi
+done
 
+while [ ! -d "only_oneapi_sac.sh" ]
+do
         if [ ! -f "only_oneapi_sac" ]; then
                 echo "one-api启动界面不存在，正在通过git下载喵..."
     		curl -O https://mirror.ghproxy.com/https://raw.githubusercontent.com/YunZLu/termux_using_openai/main/CN/only_oneapi_sac
