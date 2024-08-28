@@ -1,3 +1,16 @@
+0、更新
+
+已更新国内版本，链接使用代理加速，不需要魔法！！！
+
+国内只有 one-api 脚本命令（脚本内可升级安装酒馆）：
+
+        curl -O https://mirror.ghproxy.com/https://raw.githubusercontent.com/YunZLu/termux_using_openai/main/CN/only_oneapi_tisac.sh && chmod +x only_oneapi_tisac.sh && ./only_oneapi_tisac.sh
+
+国内 酒馆 + one-api脚本命令：
+        
+        curl -O https://mirror.ghproxy.com/https://raw.githubusercontent.com/YunZLu/termux_using_openai/main/CN/tisac.sh && chmod +x tisac.sh && ./tisac.sh
+
+
 一、脚本介绍
 
 基于喵喵一键脚本，因个人需要，仅增加one-api项目而修改的脚本
