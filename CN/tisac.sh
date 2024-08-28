@@ -128,6 +128,10 @@ done
 
 ln -s /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/ubuntu/root
 
+if [ ! -d "one-api" ]; then
+  cp -r one-api/. $current/root/one-api
+fi
+
 echo "bash /root/sac.sh" >>$current/root/.bashrc
 
 echo "proot-distro login ubuntu" >>/data/data/com.termux/files/home/.bashrc
