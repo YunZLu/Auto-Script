@@ -1,5 +1,5 @@
 #!/bin/bash
-echo "喵喵正在获取版本信息中，请稍等一下喵~"
+echo -e "\033[0;33m 喵喵正在获取版本信息中，请稍等一下喵~\n\033[0m"
 latest_version=$(curl -s https://mirror.ghproxy.com/https://raw.githubusercontent.com/hopingmiao/termux_using_Claue/main/VERSION)
 clewd_latestversion=$(curl -s https://mirror.ghproxy.com/https://raw.githubusercontent.com/teralomaniac/clewd/test/package.json | grep '"version"' | awk -F '"' '{print $4}')
 clewd_subversion=$(curl -s https://mirror.ghproxy.com/https://raw.githubusercontent.com/teralomaniac/clewd/test/lib/clewd-utils.js | grep "Main = 'clewd修改版 v'" | awk -F'[()]' '{print $3}')
@@ -13,7 +13,7 @@ RED='\033[0;31m'
 GREEN='\033[0;32m'
 NC='\033[0m' # No Color
 
-echo "喵喵正在帮你检查系统环境中，请稍等一下喵~"
+echo -e "\033[0;33m 喵喵正在帮你检查系统环境中，请稍等一下喵~\n\033[0m"
 
 #检查相应软件安装情况
 # 安装git
@@ -1024,7 +1024,7 @@ do
                 echo "更新脚本不存在，正在通过git下载喵..."
     		curl -O https://mirror.ghproxy.com/https://raw.githubusercontent.com/YunZLu/termux_using_openai/main/CN/update.sh
 	        if [ ! -f "update.sh" ]; then
-		echo -e "(*꒦ິ⌓꒦ີ)\n\033[0;33m hoping：因网络波动更新脚本文件下载失败了喵~\n\033[0m"
+		echo "更新脚本文件下载失败了正在重试中~"
 		continue
 		else
 	        echo "更新脚本文件下载成功喵~"
