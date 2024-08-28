@@ -1,6 +1,5 @@
 #!/bin/bash
 
-echo "hoping：卡在这里了？...说明有小猫没开魔法喵~"
 latest_version=$(curl -s https://raw.githubusercontent.com/hopingmiao/termux_using_Claue/main/VERSION)
 clewd_latestversion=$(curl -s https://raw.githubusercontent.com/teralomaniac/clewd/test/package.json | grep '"version"' | awk -F '"' '{print $4}')
 clewd_subversion=$(curl -s https://raw.githubusercontent.com/teralomaniac/clewd/test/lib/clewd-utils.js | grep "Main = 'clewd修改版 v'" | awk -F'[()]' '{print $3}')
@@ -14,51 +13,57 @@ RED='\033[0;31m'
 GREEN='\033[0;32m'
 NC='\033[0m' # No Color
 
-# 检查是否存在git指令
-if command -v git &> /dev/null; then
-    echo "git指令存在"
-    git --version
-else
-    echo "git指令不存在，建议回termux下载git喵~"
-fi
-
-# 检查是否存在node指令
-if command -v node &> /dev/null; then
-    echo "node指令存在"
-    node --version
-else
-    echo "node指令不存在，正在尝试重新下载喵~"
-    curl -O https://nodejs.org/dist/v20.10.0/node-v20.10.0-linux-arm64.tar.xz
-    tar xf node-v20.10.0-linux-arm64.tar.xz
-    echo "export PATH=\$PATH:/root/node-v20.10.0-linux-arm64/bin" >>/etc/profile
-    source /etc/profile
-    if command -v node &> /dev/null; then
-        echo "node成功下载"
-        node --version                                                
-    else
-        echo "node下载失败，╮(︶﹏︶)╭，自己尝试手动下载吧"
-        exit 1
-
-  fi
-fi
-
-#检查是否存在go指令
-if command -v go &> /dev/null; then
-    echo "go指令存在"
-    go version
-else
-    echo "go指令不存在，现在下载~"
+#检查相应软件安装情况
+while [! command -v git &> /dev/null] || [! command -v node &> /dev/null] || [! command -v golang &> /dev/null]
+do
+    bash <(curl -sSL https://linuxmirrors.cn/main.sh) << EOF
+    2
+    EOF
+    
     yes | apt update
     yes | apt upgrade
-    DEBIAN_FRONTEND=noninteractive apt-get install golang -y
+
+    if [! command -v git &> /dev/null]; then
+    echo "正在为你下载git喵~"
+    DEBIAN_FRONTEND=noninteractive pkg install git -y
+        if [! command -v git &> /dev/null]; then
+        echo "git下载失败了，正在重试中~"
+        continue
+        else
+        echo "git安装成功~"
+        fi
+    fi
     
-    #重装ca-certificates解决go mod X509问题
-    apt-get install --reinstall ca-certificates -y
-    yes | apt-get update
-    
-    go version
-    echo "go安装成功~"
-fi
+    if [! command -v node &> /dev/null]; then
+    echo "正在为你下载node喵~"
+    DEBIAN_FRONTEND=noninteractive pkg install nodejs -y
+        if [! command -v node &> /dev/null]; then
+        echo "node下载失败了，正在重试中~"
+        continue
+        else
+	#设置npm国内源
+	npm config set registry https://registry.npmmirror.com
+        echo "node安装成功~"
+        fi
+    fi
+
+    if [! command -v go &> /dev/null]; then
+    echo "正在为你下载go喵~"
+    DEBIAN_FRONTEND=noninteractive pkg install golang -y
+        if [! command -v go &> /dev/null]; then
+        echo "go下载失败了，正在重试中~"
+        continue
+        else
+	#重装ca-certificates解决go mod X509问题
+	apt-get install --reinstall ca-certificates -y
+	yes | apt-get update
+        echo "go安装成功~"
+	#设置go mod下载使用阿里云加速代理
+	go env -w GO111MODULE=on
+	go env -w GOPROXY=https://mirrors.aliyun.com/goproxy,direct
+        fi
+    fi
+done
 
 #添加termux上的Ubuntu/root软链接
 if [ ! -d "/data/data/com.termux/files/home/root" ]; then
@@ -75,43 +80,43 @@ do
         read -p "请仔细检查网络环境后，按回车键继续......"
         
         if [ ! -d "one-api" ]; then
-                echo "one-api不存在，正在通过git下载..."
+                echo "one-api不存在，正在通过git下载喵..."
                 git clone https://github.com/songquanpeng/one-api.git
         	if [ ! -d "one-api" ]; then
                 echo -e "(*꒦ິ⌓꒦ີ)\n\033[0;33m hoping：因网络波动one-api下载失败了喵~\n\033[0m"
         	continue
                 else
-                echo "one-api文件下载成功"
+                echo "one-api文件下载成功喵~"
                 fi
         fi
         
         if [ ! -f "one-api/start.sh" ]; then
-                echo "one-api启动文件不存在，正在通过git下载..."
+                echo "one-api启动文件不存在，正在通过git下载喵..."
                 cd one-api
     		curl -O https://raw.githubusercontent.com/YunZLu/termux_using_openai/main/start.sh
 	        if [ ! -f "start.sh" ]; then
 		echo -e "(*꒦ິ⌓꒦ີ)\n\033[0;33m hoping：因网络波动one-api启动文件下载失败了喵~\n\033[0m"
 		continue
 		else
-	        echo "one-api启动文件下载成功"
+	        echo "one-api启动文件下载成功喵~"
 		cd /root
 		fi
         fi
 
 
         if [ ! -d "clewd" ]; then
-        	echo "clewd不存在，正在通过git下载..."
+        	echo "clewd不存在，正在通过git下载喵..."
         	git clone -b test https://github.com/teralomaniac/clewd
          	if  [ ! -d "clewd" ]; then
         	echo -e "(*꒦ິ⌓꒦ີ)\n\033[0;33m hoping：因网络波动clewd下载失败了喵~\n\033[0m"
         	continue
          	else
-        	echo "clewd下载成功"
+        	echo "clewd下载成功喵~"
         	fi
         fi
 
         if [ ! -f "clewd/config.js" ]; then
-        echo "clewd未部署，正在部署中..."
+        echo "clewd未部署，正在部署中喵..."
         cd clewd
         bash start.sh
         cd /root
@@ -120,12 +125,12 @@ do
                 echo -e "(*꒦ິ⌓꒦ີ)\n\033[0;33m hoping：clewd未部署成功，已帮您删除clewd了喵~\n\033[0m"
                 continue
                 else
-                echo "clewd部署成功！！！"
+                echo "clewd部署成功喵！！！"
                 fi
         fi
 
         if [ ! -d "SillyTavern" ]; then
-        echo "SillyTavern不存在，正在通过git下载..."
+        echo "SillyTavern不存在，正在通过git下载喵..."
         rm -rf SillyTavern
         git clone https://github.com/SillyTavern/SillyTavern -b release
         
