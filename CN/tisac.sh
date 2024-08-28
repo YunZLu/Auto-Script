@@ -27,39 +27,44 @@ do
     fi
 done
 
-#安装相应软件
-while ! command -v git &> /dev/null || ! command -v node &> /dev/null || ! command -v golang &> /dev/null
+while ! command -v git &> /dev/null
 do
     if ! command -v git &> /dev/null; then
     echo "正在为你下载git喵~"
     DEBIAN_FRONTEND=noninteractive pkg install git -y
         if ! command -v git &> /dev/null; then
-        echo "git下载失败了，正在重试中~"
+        echo "git下载失败了，正在重试中喵~"
         continue
         else
-        echo "git安装成功~"
+        echo "git安装成功喵~"
         fi
     fi
-    
+done
+
+while ! command -v node &> /dev/null
+do
     if ! command -v node &> /dev/null; then
-    echo "正在为你下载node喵~"
+    echo "正在为你下载git喵~"
     DEBIAN_FRONTEND=noninteractive pkg install nodejs -y
         if ! command -v node &> /dev/null; then
-        echo "node下载失败了，正在重试中~"
+        echo "node下载失败了，正在重试中喵~"
         continue
         else
-        echo "node安装成功~"
+        echo "node安装成功喵~"
         fi
     fi
+done
 
+while ! command -v go &> /dev/null
+do
     if ! command -v go &> /dev/null; then
-    echo "正在为你下载go喵~"
+    echo "正在为你下载git喵~"
     DEBIAN_FRONTEND=noninteractive pkg install golang -y
         if ! command -v go &> /dev/null; then
-        echo "go下载失败了，正在重试中~"
+        echo "go下载失败了，正在重试中喵~"
         continue
         else
-        echo "go安装成功~"
+        echo "go安装成功喵~"
         fi
     fi
 done
