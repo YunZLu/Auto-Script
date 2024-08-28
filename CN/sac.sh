@@ -23,6 +23,7 @@ do
     DEBIAN_FRONTEND=noninteractive pkg install git -y
         if ! command -v git &> /dev/null; then
         echo "git下载失败了，正在重试中喵~"
+	sleep 2
         continue
         fi
     fi
@@ -38,6 +39,7 @@ do
     DEBIAN_FRONTEND=noninteractive pkg install nodejs -y
         if ! command -v node &> /dev/null; then
         echo "nodejs下载失败了，正在重试中喵~"
+	sleep 2
         continue
         fi
     fi
@@ -55,6 +57,7 @@ do
     DEBIAN_FRONTEND=noninteractive pkg install golang -y
         if ! command -v go &> /dev/null; then
         echo "go下载失败了，正在重试中喵~"
+	sleep 2
         continue
         fi
     fi
@@ -80,6 +83,7 @@ do
                 git clone https://mirror.ghproxy.com/https://github.com/songquanpeng/one-api.git
         	if [ ! -d "one-api" ]; then
                 echo -e "(*꒦ິ⌓꒦ີ)\n\033[0;33m hoping：因网络波动one-api下载失败了喵~\n\033[0m"
+		sleep 2
         	continue
                 else
                 echo "one-api文件下载成功喵~"
@@ -92,6 +96,7 @@ do
     		curl -O https://mirror.ghproxy.com/https://raw.githubusercontent.com/YunZLu/termux_using_openai/main/CN/start.sh
 	        if [ ! -f "start.sh" ]; then
 		echo -e "(*꒦ິ⌓꒦ີ)\n\033[0;33m hoping：因网络波动one-api启动文件下载失败了喵~\n\033[0m"
+  		sleep 2
 		continue
 		else
 	        echo "one-api启动文件下载成功喵~"
@@ -104,6 +109,7 @@ do
         	git clone -b test https://mirror.ghproxy.com/https://github.com/teralomaniac/clewd
          	if  [ ! -d "clewd" ]; then
         	echo -e "(*꒦ິ⌓꒦ີ)\n\033[0;33m hoping：因网络波动clewd下载失败了喵~\n\033[0m"
+	 	sleep 2
         	continue
          	else
         	echo "clewd下载成功喵~"
@@ -118,6 +124,7 @@ do
                 if [ ! -f "clewd/config.js" ]; then
                 rm -rf clewd
                 echo -e "(*꒦ິ⌓꒦ີ)\n\033[0;33m hoping：clewd未部署成功，已帮您删除clewd了喵~\n\033[0m"
+		sleep 2
                 continue
                 else
                 echo "clewd部署成功喵~"
@@ -131,6 +138,7 @@ do
         
                 if [ ! -d "SillyTavern" ]; then
                 echo -e "(*꒦ິ⌓꒦ີ)\n\033[0;33m hoping：因网络波动SillyTavern下载失败了喵~\n\033[0m"
+		sleep 2
                 continue
                 else
                 echo -e "\033[0;33mSillyTavern下载成功喵~\033[0m"
@@ -160,6 +168,7 @@ do
 	                if [ ! -d "SillyTavern_new" ]; then
 	                rm -rf SillyTavern
 	                echo -e "(*꒦ິ⌓꒦ີ)\n\033[0;33m hoping：因为网络波动SillyTavern更新文件下载失败了喵~\n\033[0m"
+			sleep 2
 	                continue
 	                elif [ -d "SillyTavern/data/default-user" ]; then
 	                cp -r SillyTavern/data/default-user/characters/. SillyTavern_new/public/characters/
