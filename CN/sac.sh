@@ -1,5 +1,5 @@
 #!/bin/bash
-echo "正在获取版本信息中，请稍等一下喵~"
+echo "喵喵正在获取版本信息中，请稍等一下喵~"
 latest_version=$(curl -s https://mirror.ghproxy.com/https://raw.githubusercontent.com/hopingmiao/termux_using_Claue/main/VERSION)
 clewd_latestversion=$(curl -s https://mirror.ghproxy.com/https://raw.githubusercontent.com/teralomaniac/clewd/test/package.json | grep '"version"' | awk -F '"' '{print $4}')
 clewd_subversion=$(curl -s https://mirror.ghproxy.com/https://raw.githubusercontent.com/teralomaniac/clewd/test/lib/clewd-utils.js | grep "Main = 'clewd修改版 v'" | awk -F'[()]' '{print $3}')
@@ -13,7 +13,7 @@ RED='\033[0;31m'
 GREEN='\033[0;32m'
 NC='\033[0m' # No Color
 
-echo "正在系统环境中，请稍等一下喵~"
+echo "喵喵正在帮你检查系统环境中，请稍等一下喵~"
 
 #检查相应软件安装情况
 # 安装git
