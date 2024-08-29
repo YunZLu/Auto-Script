@@ -22,7 +22,7 @@ do
         fi
     fi
 done
-echo -e "\033[0;32mgit已安装喵~\n\033[0m"
+echo -e "\n\033[0;32mgit已安装喵~\n\033[0m"
 
 # 安装nodejs
 while ! command -v node &> /dev/null
@@ -38,7 +38,7 @@ do
         fi
     fi
 done
-echo -e "\033[0;32mnodejs已安装喵~\n\033[0m"
+echo -e "\n\033[0;32mnodejs已安装喵~\n\033[0m"
 #设置npm国内源
 npm config set registry https://registry.npmmirror.com
 
@@ -56,7 +56,7 @@ do
         fi
     fi
 done
-echo -e "\033[0;32mgo已安装喵~\033[0m\n"
+echo -e "\n\033[0;32mgo已安装喵~\033[0m\n"
 #设置go mod下载使用阿里云加速代理
 go env -w GO111MODULE=on
 go env -w GOPROXY=https://mirrors.aliyun.com/goproxy,direct
