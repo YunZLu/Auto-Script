@@ -44,7 +44,7 @@ echo -e "\033[0;33m喵喵正在帮你选择国内代理中，请稍等一下喵~
     6
 eof
     yes | apt update
-echo -e "\n\033[0;31已更换国内代理，并成功升级软件包喵~\n\033[0m"
+echo -e "\n\033[0;32m已更换国内代理，并成功升级软件包喵~\n\033[0m"
 
     if ! command -v git &> /dev/null; then
     echo -e "\033[0;31m检测到你未安装git喵~\n\033[0m"
