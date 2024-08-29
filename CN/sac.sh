@@ -27,10 +27,10 @@ do
     
     if ! command -v lsb_release &> /dev/null; then
     echo -e "\033[0;31m检测到你未安装lsb-release喵~\n\033[0m"
-    echo -e "\033[0;33m正在为你下载lsb-release喵~\n\033[0m"
+    echo -e "\033[0;33m正在为你下载lsb-release，请稍等一下喵~\n\033[0m"
     DEBIAN_FRONTEND=noninteractive apt-get install lsb-release -y
         if ! command -v lsb_release &> /dev/null; then
-        echo -e "\033[0;31mlsb-release下载失败了，正在重试中喵~\n\033[0m"
+        echo -e "\033[0;31mlsb-release下载失败了，正在重试中，请稍等一下喵~\n\033[0m"
 	sleep 2
 	continue
 	else
@@ -48,10 +48,10 @@ echo -e "\033[0;31已更换国内代理，并升级软件包喵~\n\033[0m"
 
     if ! command -v git &> /dev/null; then
     echo -e "\033[0;31m检测到你未安装git喵~\n\033[0m"
-    echo -e "\033[0;33m正在为你下载git喵~\n\033[0m"
+    echo -e "\033[0;33m正在为你下载git，请稍等一下喵~\n\033[0m"
     DEBIAN_FRONTEND=noninteractive apt-get install git -y
         if ! command -v git &> /dev/null; then
-        echo -e "\033[0;31mgit下载失败了，正在重试中喵~\n\033[0m"
+        echo -e "\033[0;31mgit下载失败了，正在重试中，请稍等一下喵~\n\033[0m"
 	sleep 2
         continue
 	else
@@ -61,10 +61,10 @@ echo -e "\033[0;31已更换国内代理，并升级软件包喵~\n\033[0m"
 
     if ! command -v node &> /dev/null; then
     echo -e "\033[0;31m检测到你未安装nodejs喵~\n\033[0m"
-    echo -e "\033[0;33m正在为你下载nodejs喵~\n\033[0m"
+    echo -e "\033[0;33m正在为你下载nodejs，请稍等一下喵~\n\033[0m"
     DEBIAN_FRONTEND=noninteractive apt-get install nodejs-lts -y
         if ! command -v node &> /dev/null; then
-        echo -e "\033[0;31mnodejs下载失败了，正在重试中喵~\n\033[0m"
+        echo -e "\033[0;31mnodejs下载失败了，正在重试中，请稍等一下喵~\n\033[0m"
 	sleep 2
         continue
 	else
@@ -74,10 +74,10 @@ echo -e "\033[0;31已更换国内代理，并升级软件包喵~\n\033[0m"
 
     if ! command -v go &> /dev/null; then
     echo -e "\033[0;31m检测到你未安装go喵~\n\033[0m"
-    echo -e "\033[0;33m正在为你下载go喵~\n\033[0m"
+    echo -e "\033[0;33m正在为你下载go，请稍等一下喵~\n\033[0m"
     DEBIAN_FRONTEND=noninteractive apt-get install golang -y
         if ! command -v go &> /dev/null; then
-        echo -e "\033[0;31mgo下载失败了，正在重试中喵~\n\033[0m"
+        echo -e "\033[0;31mgo下载失败了，正在重试中，请稍等一下喵~\n\033[0m"
 	sleep 2
         continue
 	else
@@ -110,10 +110,10 @@ while [ ! -d "clewd" ] || [ ! -f "clewd/config.js" ] || [ ! -d "SillyTavern" ] |
 
 do
         if [ ! -d "one-api" ]; then
-                echo -e "\033[0;33mone-api不存在，正在通过git下载喵...\n\033[0m"
+                echo -e "\033[0;33mone-api不存在，正在通过git下载，请稍等一下喵...\n\033[0m"
                 git clone https://mirror.ghproxy.com/https://github.com/songquanpeng/one-api.git
         	if [ ! -d "one-api" ]; then
-                echo -e "\033[0;31mone-api下载失败了，正在重试中喵~\n\033[0m"
+                echo -e "\033[0;31mone-api下载失败了，正在重试中，请稍等一下喵~\n\033[0m"
 		sleep 2
         	continue
                 else
@@ -122,11 +122,11 @@ do
         fi
         
         if [ ! -f "one-api/start.sh" ]; then
-                echo -e "\033[0;33mone-api启动文件不存在，正在通过git下载喵...\n\033[0m"
+                echo -e "\033[0;33mone-api启动文件不存在，正在通过git下载，请稍等一下喵...\n\033[0m"
                 cd one-api
     		curl -O https://mirror.ghproxy.com/https://raw.githubusercontent.com/YunZLu/termux_using_openai/main/CN/start.sh
 	        if [ ! -f "start.sh" ]; then
-		echo -e "\033[0;33mone-api启动文件下载失败了，正在重试中喵~\n\033[0m"
+		echo -e "\033[0;33mone-api启动文件下载失败了，正在重试中，请稍等一下喵~\n\033[0m"
   		sleep 2
 		continue
 		else
@@ -136,10 +136,10 @@ do
         fi
 
         if [ ! -d "clewd" ]; then
-        	echo -e "\033[0;33mclewd不存在，正在通过git下载喵...\n\033[0m"
+        	echo -e "\033[0;33mclewd不存在，正在通过git下载，请稍等一下喵...\n\033[0m"
         	git clone -b test https://mirror.ghproxy.com/https://github.com/teralomaniac/clewd
          	if  [ ! -d "clewd" ]; then
-        	echo -e "\033[0;31mclewd下载失败了，正在重试中喵~\n\033[0m"
+        	echo -e "\033[0;31mclewd下载失败了，正在重试中，请稍等一下喵~\n\033[0m"
 	 	sleep 2
         	continue
          	else
@@ -148,7 +148,7 @@ do
         fi
 
         if [ ! -f "clewd/config.js" ]; then
-        echo -e "\033[0;33mclewd未部署，正在部署中喵...\n\033[0m"
+        echo -e "\033[0;33mclewd未部署，正在部署中，请稍等一下喵...\n\033[0m"
         cd clewd
         bash start.sh
         cd /root
@@ -163,31 +163,31 @@ do
         fi
 
         if [ ! -d "SillyTavern" ]; then
-        echo -e "\033[0;33mSillyTavern不存在，正在通过git下载喵...\n\033[0m"
+        echo -e "\033[0;33mSillyTavern不存在，正在通过git下载，请稍等一下喵...\n\033[0m"
         rm -rf SillyTavern
         git clone https://mirror.ghproxy.com/https://github.com/SillyTavern/SillyTavern -b release
         
                 if [ ! -d "SillyTavern" ]; then
-                echo -e "\033[0;31mSillyTavern下载失败了，正在重试中喵~\n\033[0m"
+                echo -e "\033[0;31mSillyTavern下载失败了，正在重试中，请稍等一下喵~\n\033[0m"
 		sleep 2
                 continue
                 else
                 echo -e "\033[0;32mSillyTavern下载成功喵~\033[0m"
                 fi
-                
-	 	echo -e "\033[0;31m更新酒馆是为了导入破限，也可以选择后面自己更新喵~\n\033[0m"
+	 	echo -e "\033[0;31m更新酒馆是为了导入破限，也可以选择后面自己更新喵~\033[0m"
    		echo -e "\033[0;33m输入 Y 现在更新酒馆，按回车键暂时不更新喵~\n\033[0m"
      		read -n 1 choice
    		case "$choice" in
    		y|Y )
 	                #直接更新...不然不知道为什么会缺失破限文件...有时间再研究吧...
-	                echo -e "\033[0;33mSillyTavern更新，请耐心等待喵...\n\033[0m"
+	                echo -e "\033[0;33m\nSillyTavern更新中，请稍等一下喵...\n\033[0m"
 	                cd /root/SillyTavern
 	                #启动酒馆后更新才能导入破限文件，暂时没办法...
 	                npm i --no-audit --no-fund --quiet --omit=dev
-	                echo -e "\033[0;35m当SillyTavern成功输出绿色网址时，请按Ctrl+C喵！\n\033[0m"
+	                echo -e "\033[0;35m当SillyTavern输出绿色网址后，请按Ctrl+C喵！\033[0m"
 	                echo -e "\033[0;33m紫红色字看明白了后，请按回车键继续喵...\n\033[0m"
 		        read -n 1
+	                echo -e "\033[0;33mSillyTavern启动中，请稍等一下喵...\n\033[0m"
 	                node "server.js" "$@"v
 	                cd /root
 	                
@@ -200,7 +200,7 @@ do
 	                git clone -b staging https://mirror.ghproxy.com/https://github.com/SillyTavern/SillyTavern.git SillyTavern_new
 	                if [ ! -d "SillyTavern_new" ]; then
 	                rm -rf SillyTavern
-	                echo -e "\033[0;31mSillyTavern更新文件下载失败了，正在重试中喵~\n\033[0m"
+	                echo -e "\033[0;31mSillyTavern更新文件下载失败了，正在重试中，请稍等一下喵~\n\033[0m"
 			sleep 2
 	                continue
 	                elif [ -d "SillyTavern/data/default-user" ]; then
