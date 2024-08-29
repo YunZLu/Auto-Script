@@ -26,7 +26,7 @@ do
     yes | apt upgrade
     
     if ! command -v lsb_release &> /dev/null; then
-    echo -e "\033[0;31m检测到你未安装lsb-release喵~\n\033[0m"
+    echo -e "\n\033[0;31m检测到你未安装lsb-release喵~\n\033[0m"
     echo -e "\033[0;33m正在为你下载lsb-release，请稍等一下喵~\n\033[0m"
     DEBIAN_FRONTEND=noninteractive apt-get install lsb-release -y
         if ! command -v lsb_release &> /dev/null; then
