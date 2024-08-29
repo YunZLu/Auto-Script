@@ -19,10 +19,10 @@ while ! command -v proot-distro &> /dev/null
 do
     if ! command -v proot-distro &> /dev/null; then
     echo -e "\033[0;31m检测到你未安装proot-distro喵~\n\033[0m"
-    echo -e "\033[0;33m正在为你下载proot-distro喵~\n\033[0m"
+    echo -e "\033[0;33m正在为你下载proot-distro，请稍等一下喵~\n\033[0m"
     DEBIAN_FRONTEND=noninteractive pkg install proot-distro -y
         if ! command -v proot-distro &> /dev/null; then
-        echo -e "\033[0;31mproot-distro下载失败了，正在重试中喵~\n\033[0m"
+        echo -e "\033[0;31mproot-distro下载失败了，正在重试中，请稍等一下喵~\n\033[0m"
         sleep 2
         continue
         fi
@@ -37,12 +37,12 @@ sed -i 's/https:\/\/github.com/https:\/\/mirror.ghproxy.com\/github.com/g' /data
 while [ ! -d "$current" ]
 do
    echo -e "\033[0;31m检测到你未安装Ubuntu喵~\n\033[0m"
-   echo -e "\033[0;33m正在为你下载Ubuntu喵~\n\033[0m"
+   echo -e "\033[0;33m正在为你下载Ubuntu，请稍等一下喵~\n\033[0m"
    DEBIAN_FRONTEND=noninteractive proot-distro install ubuntu
    
     # Check Ubuntu installed successfully
      if [ ! -d "$current" ]; then
-       echo -e "\033[0;31mUbuntu安装失败了，正在重试中~\n\033[0m"
+       echo -e "\033[0;31mUbuntu安装失败了，正在重试，请稍等一下喵~\n\033[0m"
        sleep 2
        continue
      else
@@ -56,10 +56,10 @@ while ! command -v git &> /dev/null
 do
     if ! command -v git &> /dev/null; then
     echo -e "\033[0;31m检测到你未安装git喵~\n\033[0m"
-    echo -e "\033[0;33m正在为你下载git喵~\n\033[0m"
+    echo -e "\033[0;33m正在为你下载git，请稍等一下喵~\n\033[0m"
     DEBIAN_FRONTEND=noninteractive pkg install git -y
         if ! command -v git &> /dev/null; then
-        echo -e "\033[0;31mgit下载失败了，正在重试中喵~\n\033[0m"
+        echo -e "\033[0;31mgit下载失败了，正在重试中，请稍等一下喵~\n\033[0m"
 	sleep 2
         continue
         fi
@@ -72,10 +72,10 @@ while ! command -v node &> /dev/null
 do
     if ! command -v node &> /dev/null; then
     echo -e "\033[0;31m检测到你未安装nodejs喵~\n\033[0m"
-    echo -e "\033[0;33m正在为你下载nodejs喵~\n\033[0m"
+    echo -e "\033[0;33m正在为你下载nodejs，请稍等一下喵~\n\033[0m"
     DEBIAN_FRONTEND=noninteractive pkg install nodejs-lts -y
         if ! command -v node &> /dev/null; then
-        echo -e "\033[0;31mnodejs下载失败了，正在重试中喵~\n\033[0m"
+        echo -e "\033[0;31mnodejs下载失败了，正在重试中，请稍等一下喵~\n\033[0m"
 	sleep 2
         continue
         fi
@@ -90,10 +90,10 @@ while ! command -v go &> /dev/null
 do
     if ! command -v go &> /dev/null; then
     echo -e "\033[0;31m检测到你未安装go喵~\n\033[0m"
-    echo -e "\033[0;33m正在为你下载go喵~\n\033[0m"
+    echo -e "\033[0;33m正在为你下载go，请稍等一下喵~\n\033[0m"
     DEBIAN_FRONTEND=noninteractive pkg install golang -y
         if ! command -v go &> /dev/null; then
-        echo -e "\033[0;31mgo下载失败了，正在重试中喵~\n\033[0m"
+        echo -e "\033[0;31mgo下载失败了，正在重试中，请稍等一下喵~\n\033[0m"
 	sleep 2
         continue
         fi
@@ -110,10 +110,10 @@ cd $current/root
 while [ ! -f "$current/root/sac.sh" ]
 do
         if [ ! -f "$current/root/sac.sh" ]; then
-                echo -e "\033[0;33m启动文件不存在，正在通过git下载喵...\n\033[0m"
+                echo -e "\033[0;33m启动文件不存在，正在通过git下载，请稍等一下喵...\n\033[0m"
     		curl -O https://mirror.ghproxy.com/https://raw.githubusercontent.com/YunZLu/termux_using_openai/main/CN/sac.sh
 	        if [ ! -f "$current/root/sac.sh" ]; then
-		echo -e "\033[0;31m启动文件下载失败了，正在重试中喵~\n\033[0m"
+		echo -e "\033[0;31m启动文件下载失败了，正在重试中，请稍等一下喵~\n\033[0m"
  		sleep 2
 		continue
 		else
@@ -125,10 +125,10 @@ done
 while [ ! -f "$current/root/update_CN.sh" ]
 do
         if [ ! -f "$current/root/update_CN.sh" ]; then
-                echo -e "\033[0;33m更新文件不存在，正在通过git下载喵...\n\033[0m"
+                echo -e "\033[0;33m更新文件不存在，正在通过git下载，请稍等一下喵...\n\033[0m"
     		curl -O https://mirror.ghproxy.com/https://raw.githubusercontent.com/YunZLu/termux_using_openai/main/CN/update_CN.sh
 	        if [ ! -f "$current/root/update_CN.sh" ]; then
-		echo -e "\033[0;31m更新下载失败了，正在重试中喵~\n\033[0m"
+		echo -e "\033[0;31m更新下载失败了，正在重试中，请稍等一下喵~\n\033[0m"
  		sleep 2
 		continue
 		else
