@@ -139,7 +139,13 @@ done
 
 ln -s /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/ubuntu/root
 
-cp -r /data/data/com.termux/files/home/one-api/ $current/root/one-api
+
+if [ ! -d "/data/data/com.termux/files/home/one-api/" ]; then
+        echo -e "\033[0;32m不需要复制one-api文件，跳过...\n\033[0m"
+else
+ 	cp -r /data/data/com.termux/files/home/one-api/ $current/root/one-api
+	echo -e "\033[0;32mone-api文件复制成功\n\033[0m"
+fi
 
 echo "bash /root/sac.sh" >>$current/root/.bashrc
 
