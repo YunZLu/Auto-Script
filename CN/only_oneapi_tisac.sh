@@ -87,7 +87,7 @@ do
   		sleep 2
 		continue
 		else
-	        echo -e "\033[0;32mone-api启动文件下载成功喵~\n\033[0m"
+	        echo -e "\n\033[0;32mone-api启动文件下载成功喵~\n\033[0m"
 		cd 
 		fi
         fi
@@ -103,7 +103,7 @@ do
  		sleep 2
 		continue
 		else
-	        echo -e "\033[0;32mone-api启动界面下载成功喵~\n\033[0m"
+	        echo -e "\n\033[0;32mone-api启动界面下载成功喵~\n\033[0m"
 		fi
         fi
 done
