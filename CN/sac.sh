@@ -115,7 +115,7 @@ while [ ! -d "clewd" ] || [ ! -f "clewd/config.js" ] || [ ! -d "SillyTavern" ] |
 
 do
         if [ ! -d "one-api" ]; then
-                echo -e "\033[0;33mone-api不存在，正在通过git下载，请稍等一下喵...\n\033[0m"
+                echo -e "\n\033[0;33mone-api不存在，正在通过git下载，请稍等一下喵...\n\033[0m"
                 git clone https://mirror.ghproxy.com/https://github.com/songquanpeng/one-api.git
         	if [ ! -d "one-api" ]; then
                 echo -e "\033[0;31mone-api下载失败了，正在重试中，请稍等一下喵~\n\033[0m"
