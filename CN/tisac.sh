@@ -1,16 +1,18 @@
 #!/bin/bash
 
 echo -e "                                             
-\033[0;32m喵喵一键安卓脚本(one-api CN版)\n\033[0m
-\033[0;32m原作者: hoping喵，坏水秋\n\033[0m
-\033[0;32m来自: Claude2.1先行破限组\n\033[0m
-\033[0;32m群号: 704819371 / 910524479 / 304690608\n\033[0m
-\033[0;32m类脑Discord: https://discord.gg/HWNkueX34q\n\033[0m
+\033[0;32m喵喵一键安卓脚本(one-api CN版)\033[0m
+\033[0;32m原作者: hoping喵，坏水秋\033[0m
+\033[0;32m来自: Claude2.1先行破限组\033[0m
+\033[0;32m群号: 704819371 / 910524479 / 304690608\033[0m
+\033[0;32m类脑Discord: https://discord.gg/HWNkueX34q\033[0m
 
 \033[0;33m修改人：瑾年\n\033[0m
 "
 
 current=/data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/ubuntu
+
+echo -e "\033[0;33m喵喵正在帮你检查系统环境中，请稍等一下喵~\n\033[0m"
 
 # 安装proot-distro
 while ! command -v proot-distro &> /dev/null
@@ -48,7 +50,6 @@ do
      fi
  
 done
-echo -e "\033[0;33m喵喵正在帮你检查系统环境中，请稍等一下喵~\n\033[0m"
 
 # 安装git
 while ! command -v git &> /dev/null
