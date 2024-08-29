@@ -86,8 +86,6 @@ do
 done
 echo -e "\033[0;32mnodejs已安装喵~\033[0m\n"
 cd /data/data/com.termux/files/home/
-#设置npm国内源
-npm config set registry https://registry.npmmirror.com
 
 #安装go
 while ! command -v go &> /dev/null
