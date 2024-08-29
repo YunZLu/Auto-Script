@@ -37,7 +37,7 @@ sed -i 's/https:\/\/github.com/https:\/\/mirror.ghproxy.com\/github.com/g' /data
 while [ ! -d "$current" ]
 do
    echo -e "\033[0;31m检测到你未安装Ubuntu喵~\n\033[0m"
-   echo -e "\033[0;33m正在为你下载Ubuntu，请稍等一下喵~\n\033[0m"
+   echo -e "\033[0;33m正在为你下载Ubuntu，请稍等一下喵~\033[0m"
    DEBIAN_FRONTEND=noninteractive proot-distro install ubuntu
    
     # Check Ubuntu installed successfully
@@ -46,7 +46,7 @@ do
        sleep 2
        continue
      else
-        echo -e "\n\033[0;31mUbuntu成功安装到Termux喵~\033[0m"
+        echo -e "\n\033[0;32mUbuntu成功安装到Termux喵~\033[0m"
      fi
  
 done
