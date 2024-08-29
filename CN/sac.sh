@@ -34,7 +34,7 @@ do
 	sleep 2
 	continue
 	else
-        echo -e "\033[0;32mlsb-release安装成功喵~\n\033[0m"
+        echo -e "\n\033[0;32mlsb-release安装成功喵~\n\033[0m"
         fi
     fi
     done
@@ -44,7 +44,7 @@ echo -e "\033[0;33m喵喵正在帮你选择国内代理中，请稍等一下喵~
     2
 eof
     yes | apt update
-echo -e "\033[0;31已更换国内代理，并升级软件包喵~\n\033[0m"
+echo -e "\n\033[0;31已更换国内代理，并成功升级软件包喵~\n\033[0m"
 
     if ! command -v git &> /dev/null; then
     echo -e "\033[0;31m检测到你未安装git喵~\n\033[0m"
@@ -55,7 +55,7 @@ echo -e "\033[0;31已更换国内代理，并升级软件包喵~\n\033[0m"
 	sleep 2
         continue
 	else
-        echo -e "\033[0;32mgit安装成功喵~\n\033[0m"
+        echo -e "\n\033[0;32mgit安装成功喵~\n\033[0m"
         fi
     fi
 
@@ -68,7 +68,7 @@ echo -e "\033[0;31已更换国内代理，并升级软件包喵~\n\033[0m"
 	sleep 2
         continue
 	else
-        echo -e "\033[0;32mnode安装成功喵~\n\033[0m"
+        echo -e "\n\033[0;32mnode安装成功喵~\n\033[0m"
         fi
     fi
 
@@ -81,18 +81,18 @@ echo -e "\033[0;31已更换国内代理，并升级软件包喵~\n\033[0m"
 	sleep 2
         continue
 	else
-        echo -e "\033[0;32mgo装成功喵~\n\033[0m"
+        echo -e "\n\033[0;32mgo装成功喵~\n\033[0m"
         fi
     fi
 done
 
-echo -e "\033[0;32mgit已安装喵~\n\033[0m"
+echo -e "\n\033[0;32mgit已安装喵~\n\033[0m"
 
-echo -e "\033[0;32mnode已安装喵~\n\033[0m"
+echo -e "\n\033[0;32mnode已安装喵~\n\033[0m"
 #设置npm国内源
 npm config set registry https://registry.npmmirror.com
 
-echo -e "\033[0;32mgo已安装喵~\n\033[0m"
+echo -e "\n\033[0;32mgo已安装喵~\n\033[0m"
 #设置go mod下载使用阿里云加速代理
 go env -w GO111MODULE=on
 go env -w GOPROXY=https://mirrors.aliyun.com/goproxy,direct
@@ -117,7 +117,7 @@ do
 		sleep 2
         	continue
                 else
-                echo -e "\033[0;32mone-api文件下载成功喵~\n\033[0m"
+                echo -e "\n\033[0;32mone-api文件下载成功喵~\n\033[0m"
                 fi
         fi
         
@@ -130,7 +130,7 @@ do
   		sleep 2
 		continue
 		else
-	        echo -e "\033[0;32mone-api启动文件下载成功喵~\n\033[0m"
+	        echo -e "\n\033[0;32mone-api启动文件下载成功喵~\n\033[0m"
 		cd /root
 		fi
         fi
@@ -143,7 +143,7 @@ do
 	 	sleep 2
         	continue
          	else
-        	echo -e "\033[0;32mclewd下载成功喵~\n\033[0m"
+        	echo -e "\n\033[0;32mclewd下载成功喵~\n\033[0m"
         	fi
         fi
 
@@ -158,7 +158,7 @@ do
 		sleep 2
                 continue
                 else
-                echo -e "\033[0;32mclewd部署成功喵~\n\033[0m"
+                echo -e "\n\033[0;32mclewd部署成功喵~\n\033[0m"
                 fi
         fi
 
@@ -172,7 +172,7 @@ do
 		sleep 2
                 continue
                 else
-                echo -e "\033[0;32mSillyTavern下载成功喵~\033[0m"
+                echo -e "\n\033[0;32mSillyTavern下载成功喵~\033[0m"
                 fi
 	 	echo -e "\033[0;31m更新酒馆是为了导入破限，也可以选择后面自己更新喵~\033[0m"
    		echo -e "\033[0;33m输入 Y 现在更新酒馆，按回车键暂时不更新喵~\n\033[0m"
@@ -218,7 +218,7 @@ do
 	                rm -rf /root/st_promot
 	                git clone https://mirror.ghproxy.com/https://github.com/hopingmiao/promot.git /root/st_promot
 	                cp -r /root/st_promot/. /root/SillyTavern/public/'OpenAI Settings'/
-	                echo -e "\033[0;32m酒馆已更新完毕喵~\n\033[0m"
+	                echo -e "\n\033[0;32m酒馆已更新完毕喵~\n\033[0m"
 	                else
 	                cp -r SillyTavern/public/characters/. SillyTavern_new/public/characters/
 	                cp -r SillyTavern/public/chats/. SillyTavern_new/public/chats/       
@@ -234,10 +234,10 @@ do
 	                rm -rf /root/st_promot
 	                git clone https://mirror.ghproxy.com/https://github.com/hopingmiao/promot.git /root/st_promot
 	                cp -r /root/st_promot/. /root/SillyTavern/public/'OpenAI Settings'/
-	                echo -e "\033[0;32m酒馆已更新完毕喵~\n\033[0m"
+	                echo -e "\n\033[0;32m酒馆已更新完毕喵~\n\033[0m"
 	                fi;;
 	    	* )
-        		echo -e "\033[0;32m你选择了不更新酒馆喵~\n\033[0m"
+        		echo -e "\n\033[0;32m你选择了不更新酒馆喵~\n\033[0m"
         		continue;;
    		esac
         fi
