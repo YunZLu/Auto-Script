@@ -196,11 +196,11 @@ do
 	                NEW_FOLDER_NAME="SillyTavern_$(date +%Y%m%d)"
 	                mv SillyTavern_old $NEW_FOLDER_NAME
 	                fi
-	                
+	                echo -e "\n\033[0;33m正在下载SillyTaver更新文件中，请稍等一下喵...\n\033[0m"
 	                git clone -b staging https://mirror.ghproxy.com/https://github.com/SillyTavern/SillyTavern.git SillyTavern_new
 	                if [ ! -d "SillyTavern_new" ]; then
 	                rm -rf SillyTavern
-	                echo -e "\033[0;31mSillyTavern更新文件下载失败了，正在重试中，请稍等一下喵~\n\033[0m"
+	                echo -e "\033[0;31mSillyTavern更新文件下载失败了，正在重试中，请稍等一下喵~\033[0m"
 			sleep 2
 	                continue
 	                elif [ -d "SillyTavern/data/default-user" ]; then
