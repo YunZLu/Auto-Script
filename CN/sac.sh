@@ -21,7 +21,7 @@ while ! command -v git &> /dev/null || ! command -v node &> /dev/null || ! comma
 do
     while ! command -v lsb_release &> /dev/null
     do
-    echo -e "\033[0;33m喵喵正在帮你更新软件包中，请稍等一下喵~\n\033[0m"
+    echo -e "\033[0;33m喵喵正在帮你更新软件包中，请稍等一下喵~\033[0m"
     yes | apt update
     yes | apt upgrade
     
@@ -55,7 +55,7 @@ echo -e "\n\033[0;31已更换国内代理，并成功升级软件包喵~\n\033[0
 	sleep 2
         continue
 	else
-        echo -e "\n\033[0;32mgit安装成功喵~\n\033[0m"
+        echo -e "\n\033[0;32mgit安装成功喵~\033[0m"
         fi
     fi
 
@@ -81,14 +81,14 @@ echo -e "\n\033[0;31已更换国内代理，并成功升级软件包喵~\n\033[0
 	sleep 2
         continue
 	else
-        echo -e "\n\033[0;32mgo装成功喵~\n\033[0m"
+        echo -e "\n\033[0;32mgo装成功喵~\033[0m"
         fi
     fi
 done
 
-echo -e "\n\033[0;32mgit已安装喵~\n\033[0m"
+echo -e "\n\033[0;32mgit已安装喵~\033[0m"
 
-echo -e "\n\033[0;32mnode已安装喵~\n\033[0m"
+echo -e "\n\033[0;32mnode已安装喵~\033[0m"
 #设置npm国内源
 npm config set registry https://registry.npmmirror.com
 
@@ -103,7 +103,7 @@ if [ ! -d "/data/data/com.termux/files/home/root" ]; then
     ln -s /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/ubuntu/root /data/data/com.termux/files/home
 fi
 
-echo -e "\033[0;32mroot软链接已添加，可直接在mt管理器打开root文件夹修改文件喵~\n\033[0m"
+echo -e "\033[0;32mroot软链接已添加，可直接在mt管理器打开root文件夹修改文件喵~\033[0m"
 
 
 while [ ! -d "clewd" ] || [ ! -f "clewd/config.js" ] || [ ! -d "SillyTavern" ] || [ ! -f "SillyTavern/start.sh" ] || [ ! -d "one-api" ] || [ ! -f "one-api/start.sh" ]
