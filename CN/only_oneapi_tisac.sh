@@ -30,7 +30,7 @@ do
     if ! command -v node &> /dev/null; then
     echo "检测到你未安装nodejs喵~"
     echo "正在为你下载nodejs喵~"
-    DEBIAN_FRONTEND=noninteractive pkg install nodejs -y
+    DEBIAN_FRONTEND=noninteractive pkg install nodejs-lst -y
         if ! command -v node &> /dev/null; then
         echo "nodejs下载失败了，正在重试中喵~"
 	sleep 2
@@ -75,6 +75,7 @@ do
                 fi
         fi
 done
+
 while [ ! -f "one-api/start.sh" ] 
 do
         if [ ! -f "one-api/start.sh" ]; then
