@@ -1,9 +1,4 @@
-# 主菜单
-echo -e "                                              
-\033[0;32m喵喵一键脚本(one-api CN版)\033[0m
-\033[0;32m作者：瑾年\033[0m
-\033[0;32m来自：头脑风暴搞起来\033[0m
-"
+#!/bin/bash
 
 echo -e "\033[0;33m喵喵正在帮你检查系统环境中，请稍等一下喵~\n\033[0m"
 
@@ -59,6 +54,13 @@ echo -e "\n\033[0;32mgo已安装喵~\033[0m\n"
 #设置go mod下载使用阿里云加速代理
 go env -w GO111MODULE=on
 go env -w GOPROXY=https://mirrors.aliyun.com/goproxy,direct
+
+# 主菜单
+echo -e "                                              
+\033[0;32m喵喵一键脚本(one-api CN版)\033[0m
+\033[0;32m作者：瑾年\033[0m
+\033[0;32m来自：头脑风暴搞起来\033[0m
+"
 
 while :
 do 
