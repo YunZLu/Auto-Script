@@ -73,10 +73,13 @@ do
     if ! command -v node &> /dev/null; then
     echo -e "\033[0;31m检测到你未安装nodejs喵~\n\033[0m"
     echo -e "\033[0;33m正在为你下载nodejs，请稍等一下喵~\n\033[0m"
+    current=/data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/ubuntu
+    cd $current/root
     curl -O https://cdn.npmmirror.com/binaries/node/v20.17.0/node-v20.17.0-linux-arm64.tar.xz
     tar xf node-v20.17.0-linux-arm64.tar.xz
-    echo "export PATH=\$PATH:/root/node-v20.17.0-linux-arm64/bin" >>/etc/profile
+    echo "export PATH=\$PATH:/root/node-v20.10.0-linux-arm64/bin" >>$current/etc/profile
     source /etc/profile
+    cd /data/data/com.termux/files/home/
         if ! command -v node &> /dev/null; then
         echo -e "\033[0;31mnodejs下载失败了，正在重试中，请稍等一下喵~\n\033[0m"
 	sleep 2
