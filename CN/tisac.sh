@@ -77,7 +77,7 @@ do
     curl -O https://cdn.npmmirror.com/binaries/node/v20.10.0/node-v20.10.0-linux-arm64.tar.xz
     tar xf node-v20.10.0-linux-arm64.tar.xz
     echo "export PATH=\$PATH:/root/node-v20.10.0-linux-arm64/bin" >>$current/etc/profile
-        if [ ! ! -d node-v20.10.0-linux-arm64 ]; then
+        if [ ! -d node-v20.10.0-linux-arm64 ]; then
         echo -e "\033[0;31mnodejs下载失败了，正在重试中，请稍等一下喵~\n\033[0m"
 	sleep 2
         continue
