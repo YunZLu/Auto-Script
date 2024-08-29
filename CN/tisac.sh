@@ -48,6 +48,7 @@ do
      fi
  
 done
+echo -e "\033[0;33m 喵喵正在帮你检查系统环境中，请稍等一下喵~\n\033[0m"
 
 # 安装git
 while ! command -v git &> /dev/null
@@ -58,7 +59,7 @@ do
     DEBIAN_FRONTEND=noninteractive pkg install git -y
         if ! command -v git &> /dev/null; then
         echo "git下载失败了，正在重试中喵~"
-        sleep 2
+	sleep 2
         continue
         fi
     fi
@@ -71,10 +72,10 @@ do
     if ! command -v node &> /dev/null; then
     echo "检测到你未安装nodejs喵~"
     echo "正在为你下载nodejs喵~"
-    DEBIAN_FRONTEND=noninteractive pkg install nodejs -y
+    DEBIAN_FRONTEND=noninteractive pkg install nodejs-lst -y
         if ! command -v node &> /dev/null; then
         echo "nodejs下载失败了，正在重试中喵~"
-        sleep 2
+	sleep 2
         continue
         fi
     fi
@@ -92,7 +93,7 @@ do
     DEBIAN_FRONTEND=noninteractive pkg install golang -y
         if ! command -v go &> /dev/null; then
         echo "go下载失败了，正在重试中喵~"
-        sleep 2
+	sleep 2
         continue
         fi
     fi
@@ -105,32 +106,34 @@ go env -w GOPROXY=https://mirrors.aliyun.com/goproxy,direct
 cd $current/root
 
 #下载启动文件和更新文件
-while [ ! -f "$current/root/sac.sh" ] || [ ! -f "$current/root/update.sh" ]
+while [ ! -f "$current/root/sac.sh" ]
 do
-    if [ ! -f "$current/root/sac.sh" ]; then
-    echo "正在为你下载启动文件喵~"
-    curl -O https://mirror.ghproxy.com/https://raw.githubusercontent.com/YunZLu/termux_using_openai/main/CN/sac.sh
         if [ ! -f "$current/root/sac.sh" ]; then
-        echo "启动文件下载失败了，正在重试中喵~"
-        sleep 2
-        continue
-        else
-        echo "启动文件下载成功喵~"
+                echo "启动文件不存在，正在通过git下载喵..."
+    		curl -O https://mirror.ghproxy.com/https://raw.githubusercontent.com/YunZLu/termux_using_openai/main/CN/sac.sh
+	        if [ ! -f "$current/root/sac.sh" ]; then
+		echo "启动文件下载失败了，正在重试中喵~"
+ 		sleep 2
+		continue
+		else
+	        echo "启动文件下载成功喵~"
+		fi
         fi
-    fi
+done
 
-    if [ ! -f "$current/root/update_CN.sh" ]; then
-    echo "正在为你下载更新文件喵~"
-    curl -O https://mirror.ghproxy.com/https://raw.githubusercontent.com/YunZLu/termux_using_openai/main/CN/update_CN.sh
+while [ ! -f "$current/root/update_CN.sh" ]
+do
         if [ ! -f "$current/root/update_CN.sh" ]; then
-        echo "更新文件下载失败了，正在重试中喵~"
-        sleep 2
-        continue
-        else
-        echo "更新文件下载成功喵~"
+                echo "更新文件不存在，正在通过git下载喵..."
+    		curl -O https://mirror.ghproxy.com/https://raw.githubusercontent.com/YunZLu/termux_using_openai/main/CN/update_CN.sh
+	        if [ ! -f "$current/root/update_CN.sh" ]; then
+		echo "更新下载失败了，正在重试中喵~"
+ 		sleep 2
+		continue
+		else
+	        echo "更新下载成功喵~"
+		fi
         fi
-    fi
-    
 done
 
 ln -s /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/ubuntu/root
