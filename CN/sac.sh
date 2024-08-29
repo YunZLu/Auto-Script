@@ -83,6 +83,7 @@ echo -e "\n\033[0;31已更换国内代理，并成功升级软件包喵~\n\033[0
 	else
         echo -e "\n\033[0;32mgo安装成功喵~\033[0m"
 	#重装ca-certificates解决go mod X509问题
+ 	echo -e "\n\033[0;33mgo正在重装ca-certificates，请稍等一下喵~\033[0m"
         apt-get install --reinstall ca-certificates -y
         yes | apt-get update
         fi
