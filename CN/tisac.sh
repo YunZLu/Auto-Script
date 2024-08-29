@@ -71,7 +71,7 @@ echo -e "\n\033[0;32mgit已安装喵~\033[0m"
 while ! command -v node &> /dev/null
 do
     if ! command -v node &> /dev/null; then
-    echo -e "\033[0;31m检测到你未安装nodejs喵~\n\033[0m"
+    echo -e "\n\033[0;31m检测到你未安装nodejs喵~\n\033[0m"
     echo -e "\033[0;33m正在为你下载nodejs，请稍等一下喵~\n\033[0m"
     DEBIAN_FRONTEND=noninteractive pkg install nodejs-lts -y
         if ! command -v node &> /dev/null; then
@@ -89,7 +89,7 @@ npm config set registry https://registry.npmmirror.com
 while ! command -v go &> /dev/null
 do
     if ! command -v go &> /dev/null; then
-    echo -e "\033[0;31m检测到你未安装go喵~\n\033[0m"
+    echo -e "\n\033[0;31m检测到你未安装go喵~\n\033[0m"
     echo -e "\033[0;33m正在为你下载go，请稍等一下喵~\n\033[0m"
     DEBIAN_FRONTEND=noninteractive pkg install golang -y
         if ! command -v go &> /dev/null; then
