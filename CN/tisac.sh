@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo "                                             
+echo -e "                                             
 \033[0;32m喵喵一键安卓脚本(one-api CN版)\n\033[0m
 \033[0;32m原作者: hoping喵，坏水秋\n\033[0m
 \033[0;32m来自: Claude2.1先行破限组\n\033[0m
