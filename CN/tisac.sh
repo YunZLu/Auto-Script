@@ -46,7 +46,7 @@ do
        sleep 2
        continue
      else
-        echo -e "\n\033[0;32mUbuntu成功安装到Termux喵~\033[0m"
+        echo -e "\033[0;32mUbuntu成功安装到Termux喵~\033[0m\n"
      fi
  
 done
