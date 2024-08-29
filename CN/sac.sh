@@ -88,7 +88,7 @@ done
 
 echo -e "\033[0;32mgit已安装喵~\n\033[0m"
 
-echo -e "\033[0;32mode已安装喵~\n\033[0m"
+echo -e "\033[0;32mnode已安装喵~\n\033[0m"
 #设置npm国内源
 npm config set registry https://registry.npmmirror.com
 
