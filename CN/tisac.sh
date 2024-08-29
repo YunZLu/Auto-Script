@@ -132,7 +132,7 @@ do
  		sleep 2
 		continue
 		else
-	        echo -e "\n\033[0;32m更新下载成功喵~\n\033[0m"
+	        echo -e "\n\033[0;32m更新文件下载成功喵~\n\033[0m"
 		fi
         fi
 done
