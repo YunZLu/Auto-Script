@@ -81,7 +81,7 @@ echo -e "\n\033[0;31已更换国内代理，并成功升级软件包喵~\n\033[0
 	sleep 2
         continue
 	else
-        echo -e "\n\033[0;32mgo装成功喵~\033[0m"
+        echo -e "\n\033[0;32mgo安装成功喵~\033[0m"
         fi
     fi
 done
