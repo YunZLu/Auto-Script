@@ -48,7 +48,7 @@ do
      fi
  
 done
-echo -e "\033[0;33m 喵喵正在帮你检查系统环境中，请稍等一下喵~\n\033[0m"
+echo -e "\033[0;33m喵喵正在帮你检查系统环境中，请稍等一下喵~\n\033[0m"
 
 # 安装git
 while ! command -v git &> /dev/null
@@ -138,7 +138,9 @@ done
 
 ln -s /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/ubuntu/root
 
+if [ -f /data/data/com.termux/files/home/one-api/ ]; then
 cp -r /data/data/com.termux/files/home/one-api/ $current/root/one-api
+fi
 
 echo "bash /root/sac.sh" >>$current/root/.bashrc
 
