@@ -592,7 +592,7 @@ function clewdSettings {
 					git pull
 					;;
 				2)
-					git clone -b test https://github.com/teralomaniac/clewd.git /root/clewd_new
+					git clone -b test https://mirror.ghproxy.com/https://github.com/teralomaniac/clewd.git /root/clewd_new
 					if [ ! -d "clewd_new" ]; then
 						echo -e "(*꒦ິ⌓꒦ີ)\n\033[0;33m hoping：因为网络波动下载失败了，更换网络再试喵~\n\033[0m"
 						exit 5
@@ -656,8 +656,8 @@ hoping：选择更新正式版或者测试版喵？
 					while :
 					do
 					    read -n 1 stupdate
-					    [ "$stupdate" = 1 ] && { git clone https://github.com/SillyTavern/SillyTavern.git SillyTavern_new; break; }
-					    [ "$stupdate" = 2 ] && { git clone -b staging https://github.com/SillyTavern/SillyTavern.git SillyTavern_new; break; }
+					    [ "$stupdate" = 1 ] && { git clone https://mirror.ghproxy.com/https://github.com/SillyTavern/SillyTavern.git SillyTavern_new; break; }
+					    [ "$stupdate" = 2 ] && { git clone -b staging https://mirror.ghproxy.com/https://github.com/SillyTavern/SillyTavern.git SillyTavern_new; break; }
 					    echo -e "\n\033[5;33m选择错误，快快重新选择喵~\033[0m"
 					done
 
@@ -729,7 +729,7 @@ hoping：选择更新正式版或者测试版喵？
                 echo -e "\033[0;33m本操作仅为破限下载提供方便，所有破限皆为收录，喵喵不具有破限所有权\033[0m"
                 sleep 2
                 rm -rf /root/st_promot
-                git clone https://github.com/hopingmiao/promot.git /root/st_promot
+                git clone https://mirror.ghproxy.com/https://github.com/hopingmiao/promot.git /root/st_promot
                 if  [ ! -d "/root/st_promot" ]; then
                     echo -e "(*꒦ິ⌓꒦ີ)\n\033[0;33m hoping：因网络波动文件下载失败了，更换网络后再试喵~\n\033[0m"
                 exit 6
@@ -816,7 +816,7 @@ function TavernAI-extrasinstall {
 	#检测环境
 	if [ ! -d "/root/TavernAI-extras" ]; then
 		echo "hoping:未检测到TavernAI-extras（酒馆拓展），正在通过git下载"
-		git clone https://github.com/Cohee1207/TavernAI-extras /root/TavernAI-extras
+		git clone https://mirror.ghproxy.com/https://github.com/Cohee1207/TavernAI-extras /root/TavernAI-extras
 		[ -d /root/TavernAI-extras ] || { echo "TavernAI-extras（酒馆拓展）安装失败，请更换网络后重试喵~"; exit 8; }
 	fi
 	
@@ -824,8 +824,11 @@ function TavernAI-extrasinstall {
 		rm -rf /root/myenv
 		# 更新软件包列表并安装所需软件包，重定向输出。
 		echo "正在更新软件包列表..."
+  		echo -e "\033[0;33m喵喵正在帮你选择国内代理中，请稍等一下喵~\n\033[0m"
+     		bash <(curl -sSL https://linuxmirrors.cn/main.sh) << eof
+    		2
+eof
 		apt update -y > /dev/null 2>&1
-
 		echo -e "\033[0;33m正在安装python3虚拟环境，请稍候\n\033[0;33m(hoping：首次安装大概需要7到15分钟喵~)..."
 		read -p "是否现在进行安装喵？[y/n]" python3venvchoicce
 		[ "$python3venvchoicce" = "y" ] || [ "$python3venvchoicce" = "Y" ] && DEBIAN_FRONTEND=noninteractive apt install python3 python3-pip python3-venv -y || exit 9
@@ -1029,11 +1032,11 @@ do
             sillyTavernSettings
             ;; 
 	6)
-		saclinkname=$(curl -s https://raw.githubusercontent.com/hopingmiao/termux_using_Claue/main/secret_saclink | awk -F '|' '{print $1 }')
+		saclinkname=$(curl -s https://mirror.ghproxy.com/https://raw.githubusercontent.com/hopingmiao/termux_using_Claue/main/secret_saclink | awk -F '|' '{print $1 }')
 		echo -e "神秘小链接会不定期悄悄更新，这次的神秘小链接是..."
 		sleep 2
 		echo $saclinkname
-		termux-open-url $(curl -s https://raw.githubusercontent.com/hopingmiao/termux_using_Claue/main/secret_saclink | awk -F '|' '{print $2 }')
+		termux-open-url $(curl -s https://mirror.ghproxy.com/https://raw.githubusercontent.com/hopingmiao/termux_using_Claue/main/secret_saclink | awk -F '|' '{print $2 }')
 		;;
         7)
             # 更新脚本
@@ -1042,7 +1045,7 @@ do
             do
                 if [ ! -f "update_CN.sh" ]; then
                 echo "更新脚本不存在，正在通过git下载喵..."
-    		curl -O https://raw.githubusercontent.com/YunZLu/termux_using_openai/main/CN/update_CN.sh
+    		curl -O https://mirror.ghproxy.com/https://raw.githubusercontent.com/YunZLu/termux_using_openai/main/CN/update_CN.sh
 	        if [ ! -f "update_CN.sh" ]; then
 		echo "更新脚本文件下载失败了正在重试中~"
 		continue
