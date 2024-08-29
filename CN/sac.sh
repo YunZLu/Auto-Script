@@ -148,7 +148,7 @@ do
         fi
 
         if [ ! -f "clewd/config.js" ]; then
-        echo -e "\033[0;33mclewd未部署，正在部署中，请稍等一下喵...\n\033[0m"
+        echo -e "\033[0;33mclewd未部署，正在部署中，请稍等一下喵...\033[0m"
         cd clewd
         bash start.sh
         cd /root
