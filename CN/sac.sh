@@ -175,7 +175,7 @@ do
                 echo -e "\n\033[0;32mSillyTavern下载成功喵~\033[0m"
                 fi
 	 	echo -e "\n\033[0;35m更新酒馆是为了导入破限，也可以选择后面自己更新喵~\033[0m"
-   		echo -e "\n\033[0;33m输入 Y 现在更新酒馆，按回车键暂时不更新喵~\033[0m"
+   		echo -e "\n\033[0;33m输入 Y 现在更新酒馆，按回车键暂时不更新喵~\033[0m\n"
      		read -n 1 choice
    		case "$choice" in
    		y|Y )
