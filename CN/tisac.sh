@@ -139,9 +139,7 @@ done
 
 ln -s /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/ubuntu/root
 
-if [ -f /data/data/com.termux/files/home/one-api/ ]; then
 cp -r /data/data/com.termux/files/home/one-api/ $current/root/one-api
-fi
 
 echo "bash /root/sac.sh" >>$current/root/.bashrc
 
