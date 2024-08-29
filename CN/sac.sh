@@ -127,7 +127,7 @@ do
         fi
         
         if [ ! -f "one-api/start.sh" ]; then
-                echo -e "\033[0;33mone-api启动文件不存在，正在通过git下载，请稍等一下喵...\n\033[0m"
+                echo -e "\n\033[0;33mone-api启动文件不存在，正在通过git下载，请稍等一下喵...\n\033[0m"
                 cd one-api
     		curl -O https://mirror.ghproxy.com/https://raw.githubusercontent.com/YunZLu/termux_using_openai/main/CN/start.sh
 	        if [ ! -f "start.sh" ]; then
@@ -141,7 +141,7 @@ do
         fi
 
         if [ ! -d "clewd" ]; then
-        	echo -e "\033[0;33mclewd不存在，正在通过git下载，请稍等一下喵...\n\033[0m"
+        	echo -e "\n\033[0;33mclewd不存在，正在通过git下载，请稍等一下喵...\n\033[0m"
         	git clone -b test https://mirror.ghproxy.com/https://github.com/teralomaniac/clewd
          	if  [ ! -d "clewd" ]; then
         	echo -e "\033[0;31mclewd下载失败了，正在重试中，请稍等一下喵~\n\033[0m"
