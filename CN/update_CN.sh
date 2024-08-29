@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-echo -e "\033[0;35m确定要更新吗?输入Y更新，或者按回车键退出喵~\n\033[0m"
+echo -e "\033[0;35m确定要更新吗?输入Y更新，或者按回车键退出喵~\033[0m"
 read -n 1 choice
 case "$choice" in
     y|Y )
