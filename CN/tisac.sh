@@ -7,7 +7,7 @@ echo -e "
 \033[0;32m群号: 704819371 / 910524479 / 304690608\033[0m
 \033[0;32m类脑Discord: https://discord.gg/HWNkueX34q\033[0m
 
-\033[0;33m修改人：瑾年\n\033[0m
+\033[0;33m修改人：瑾年\033[0m
 "
 
 current=/data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/ubuntu
@@ -46,7 +46,7 @@ do
        sleep 2
        continue
      else
-        echo -e "\n\033[0;31mUbuntu成功安装到Termux喵~\n\033[0m"
+        echo -e "\n\033[0;31mUbuntu成功安装到Termux喵~\033[0m"
      fi
  
 done
@@ -65,7 +65,7 @@ do
         fi
     fi
 done
-echo -e "\n\033[0;32mgit已安装喵~\n\033[0m"
+echo -e "\n\033[0;32mgit已安装喵~\033[0m"
 
 # 安装nodejs
 while ! command -v node &> /dev/null
@@ -81,7 +81,7 @@ do
         fi
     fi
 done
-echo -e "\n\033[0;32mnodejs已安装喵~\n\033[0m"
+echo -e "\n\033[0;32mnodejs已安装喵~\033[0m"
 #设置npm国内源
 npm config set registry https://registry.npmmirror.com
 
