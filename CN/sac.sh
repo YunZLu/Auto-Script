@@ -860,7 +860,7 @@ function TavernAI-extrasinstall {
 	       fi
 	     done
 		echo "正在更新软件包列表..."
-  		echo -e "\033[0;33m喵喵正在帮你选择国内代理中，请稍等一下喵~\n\033[0m"
+  		echo -e "\n\033[0;33m喵喵正在帮你选择国内代理中，请稍等一下喵~\n\033[0m"
      		bash <(curl -sSL https://linuxmirrors.cn/main.sh) << eof
     		6
 eof
@@ -874,7 +874,7 @@ eof
 	fi
 	echo -e "\033[0;31m正在安装requirements.txt所需依赖\n\033[0m(hoping：首次安装大概需要15至30分钟，最后构建时会出现长时间页面无变化，请耐心等待喵~)..."
 	read -p "是否现在进行安装喵？[y/n]" requirementschoice
-	[ "$requirementschoice" = "y" ] || [ "$requirementschoice" = "Y" ] && { source /root/myenv/bin/activate; cd /root/TavernAI-extras; pip3 install -r requirements.txt; } || exit 10
+	[ "$requirementschoice" = "y" ] || [ "$requirementschoice" = "Y" ] && { source /root/myenv/bin/activate; pip install -i https://pypi.tuna.tsinghua.edu.cn/simple some-package ; cd /root/TavernAI-extras; pip3 install -r requirements.txt; } || exit 10
 	echo -e "喵喵？\n\033[0;32m恭喜TavernAI-extras（酒馆拓展）所需环境已完全安装，可进行启动喵~\033[0m"
 	
 }
