@@ -842,10 +842,27 @@ function TavernAI-extrasinstall {
 	if [ ! -d "/root/myenv" ] || [ ! -f "/root/myenv/bin/activate" ]; then
 		rm -rf /root/myenv
 		# 更新软件包列表并安装所需软件包，重定向输出。
+  	    while ! command -v lsb_release &> /dev/null
+            do
+	        if ! command -v lsb_release &> /dev/null; then
+	        echo -e "\n\033[0;31m检测到你未安装lsb-release喵~\n\033[0m"
+	        echo -e "\033[0;33m正在为你下载lsb-release，请稍等一下喵~\n\033[0m"
+	        yes | apt update
+	 	yes | apt upgrade
+	        DEBIAN_FRONTEND=noninteractive apt-get install lsb-release -y
+	            if ! command -v lsb_release &> /dev/null; then
+	            echo -e "\033[0;31mlsb-release下载失败了，正在重试中，请稍等一下喵~\n\033[0m"
+		    sleep 2
+		    continue
+		    else
+	            echo -e "\n\033[0;32mlsb-release安装成功喵~\n\033[0m"
+	            fi
+	       fi
+	     done
 		echo "正在更新软件包列表..."
   		echo -e "\033[0;33m喵喵正在帮你选择国内代理中，请稍等一下喵~\n\033[0m"
      		bash <(curl -sSL https://linuxmirrors.cn/main.sh) << eof
-    		2
+    		6
 eof
 		apt update -y > /dev/null 2>&1
 		echo -e "\033[0;33m正在安装python3虚拟环境，请稍候\n\033[0;33m(hoping：首次安装大概需要7到15分钟喵~)..."
