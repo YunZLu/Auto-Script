@@ -130,7 +130,7 @@ do
                 echo -e "\033[0;33m更新文件不存在，正在通过git下载，请稍等一下喵...\033[0m\n"
     		curl -O https://mirror.ghproxy.com/https://raw.githubusercontent.com/YunZLu/termux_using_openai/main/CN/update_CN.sh
 	        if [ ! -f "$current/root/update_CN.sh" ]; then
-		echo -e "\033[0;31m更新下载失败了，正在重试中，请稍等一下喵~\033[0m\n"
+		echo -e "\033[0;31m更新文件下载失败了，正在重试中，请稍等一下喵~\033[0m\n"
  		sleep 2
 		continue
 		else
