@@ -42,7 +42,6 @@ do
    
     # Check Ubuntu installed successfully
      if [ ! -d "$current/etc" ]; then
-       proot-distro remove ubuntu
        echo -e "\033[0;31mUbuntu安装失败了，正在重试，请稍等一下喵~\n\033[0m"
        sleep 2
        continue
@@ -52,11 +51,13 @@ do
  
 done
 
-#下载启动文件
+cd $current/root
+
+#下载启动文件和更新文件
 while [ ! -f "$current/root/sac.sh" ]
 do
         if [ ! -f "$current/root/sac.sh" ]; then
-                echo -e "\033[0;33m启动文件不存在，正在通过git下载，请稍等一下喵...\033[0m\n"
+                echo -e "\033[0;33m启动文件不存在，正在下载，请稍等一下喵...\033[0m\n"
     		curl -O https://mirror.ghproxy.com/https://raw.githubusercontent.com/YunZLu/termux_using_openai/main/QC_CN/sac.sh
 	        if [ ! -f "$current/root/sac.sh" ]; then
 		echo -e "\033[0;31m启动文件下载失败了，正在重试中，请稍等一下喵~\n\033[0m"
