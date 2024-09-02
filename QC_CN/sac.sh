@@ -67,8 +67,8 @@ eof
 
     #安装node
     if ! command -v node &> /dev/null; then
-    echo -e "\033[0;31m检测到你未安装nodejs喵~\n\033[0m"
-    echo -e "\033[0;33m正在为你下载nodejs，请稍等一下喵~\n\033[0m"
+    echo -e "\033[0;31m检测到你未安装nodejs喵~\033[0m\n"
+    echo -e "\033[0;33m正在为你下载nodejs，请稍等一下喵~\033[0m\n"
     curl -O https://cdn.npmmirror.com/binaries/node/v20.10.0/node-v20.10.0-linux-arm64.tar.xz
     tar xf node-v20.10.0-linux-arm64.tar.xz
     echo "export PATH=\$PATH:/root/node-v20.10.0-linux-arm64/bin" >>/etc/profile
@@ -78,33 +78,33 @@ eof
 	sleep 2
         continue
 	else
-        echo -e "\n\033[0;32mnode安装成功喵~\n\033[0m"
+        echo -e "\033[0;32mnode安装成功喵~\033[0m\n"
         fi
     fi
 
     #安装go
     if ! command -v go &> /dev/null; then
-    echo -e "\033[0;31m检测到你未安装go喵~\n\033[0m"
-    echo -e "\033[0;33m正在为你下载go，请稍等一下喵~\n\033[0m"
+    echo -e "\033[0;31m检测到你未安装go喵~\033[0m\n"
+    echo -e "\033[0;33m正在为你下载go，请稍等一下喵~\033[0m\n"
     DEBIAN_FRONTEND=noninteractive apt-get install golang -y
         if ! command -v go &> /dev/null; then
-        echo -e "\033[0;31mgo下载失败了，正在重试中，请稍等一下喵~\n\033[0m"
+        echo -e "\033[0;31mgo下载失败了，正在重试中，请稍等一下喵~\033[0m\n"
 	sleep 2
         continue
 	else
-        echo -e "\n\033[0;32mgo安装成功喵~\033[0m"
+        echo -e "\033[0;32mgo安装成功喵~\033[0m\n"
 	#重装ca-certificates解决go mod X509问题
- 	echo -e "\n\033[0;33m正在重装ca-certificates，请稍等一下喵~\033[0m"
+ 	echo -e "\033[0;33m正在重装ca-certificates，请稍等一下喵~\033[0m\n"
         apt-get install --reinstall ca-certificates -y
         yes | apt-get update
- 	echo -e "\n\033[0;32mca-certificates重装成功喵~\033[0m"
+ 	echo -e "\033[0;32mca-certificates重装成功喵~\033[0m\n"
         fi
     fi
 
     #安装python3，并设置时区
     if ! command -v python3 &> /dev/null; then
-    echo -e "\033[0;31m检测到你未安装python3喵~\n\033[0m"
-    echo -e "\033[0;33m正在为你下载python3，请稍等一下喵~\n\033[0m"
+    echo -e "\033[0;31m检测到你未安装python3喵~\033[0m\n"
+    echo -e "\033[0;33m正在为你下载python3，请稍等一下喵~\033[0m\n"
     apt install python3 <<eof
 y
 5
@@ -113,54 +113,43 @@ y
 69
 eof
         if ! command -v python3 &> /dev/null; then
-        echo -e "\033[0;31mpython3下载失败了，正在重试中，请稍等一下喵~\n\033[0m"
+        echo -e "\033[0;31mpython3下载失败了，正在重试中，请稍等一下喵~\033[0m\n"
 	sleep 2
         continue
 	else
-        echo -e "\n\033[0;32mpython3安装成功喵~\033[0m"
+        echo -e "\033[0;32mpython3安装成功喵~\033[0m\n"
         fi
     fi
 
     #安装python3-pip
     if ! command -v pip &> /dev/null; then
-    echo -e "\033[0;31m检测到你未安装python3-pip喵~\n\033[0m"
-    echo -e "\033[0;33m正在为你下载python3-pip，请稍等一下喵~\n\033[0m"
+    echo -e "\033[0;31m检测到你未安装python3-pip喵~\033[0m\n"
+    echo -e "\033[0;33m正在为你下载python3-pip，请稍等一下喵~\033[0m\n"
     DEBIAN_FRONTEND=noninteractive apt install python3-pip -y
         if ! command -v pip &> /dev/null; then
-        echo -e "\033[0;31mpython3-pip下载失败了，正在重试中，请稍等一下喵~\n\033[0m"
+        echo -e "\033[0;31mpython3-pip下载失败了，正在重试中，请稍等一下喵~\033[0m\n"
 	sleep 2
         continue
 	else
-        echo -e "\n\033[0;32mpython3-pip安装成功喵~\033[0m"
+        echo -e "\033[0;32mpython3-pip安装成功喵~\033[0m\n"
         fi
     fi
 
     #安装python3-venv
-    if ! command -v venv &> /dev/null; then
-    echo -e "\033[0;31m检测到你未安装python3-venv喵~\n\033[0m"
-    echo -e "\033[0;33m正在为你下载python3-venv，请稍等一下喵~\n\033[0m"
     DEBIAN_FRONTEND=noninteractive apt install python3-venv -y
-        if ! command -v venv &> /dev/null; then
-        echo -e "\033[0;31mpython3-venv下载失败了，正在重试中，请稍等一下喵~\n\033[0m"
-	apt remove python3
-	sleep 2
-        continue
-	else
-        echo -e "\n\033[0;32mpython3-venv安装成功喵~\033[0m"
-        fi
-    fi
+
 
     #安装sudo
     if ! command -v sudo &> /dev/null; then
-    echo -e "\033[0;31m检测到你未安装sudo喵~\n\033[0m"
-    echo -e "\033[0;33m正在为你下载sudo，请稍等一下喵~\n\033[0m"
+    echo -e "\033[0;31m检测到你未安装sudo喵~\033[0m\n"
+    echo -e "\033[0;33m正在为你下载sudo，请稍等一下喵~\033[0m\n"
     DEBIAN_FRONTEND=noninteractive apt install sudo -y
         if ! command -v sudo &> /dev/null; then
-        echo -e "\033[0;31msudo下载失败了，正在重试中，请稍等一下喵~\n\033[0m"
+        echo -e "\033[0;31msudo下载失败了，正在重试中，请稍等一下喵~\033[0m\n"
 	sleep 2
         continue
 	else
-        echo -e "\n\033[0;32msudo安装成功喵~\033[0m"
+        echo -e "\033[0;32msudo安装成功喵~\033[0m\n"
         fi
     fi
 
@@ -169,18 +158,18 @@ eof
 
 done
 
-echo -e "\n\033[0;32mgit已安装喵~\033[0m"
+echo -e "\033[0;32mgit已安装喵~\033[0m\n"
 
-echo -e "\n\033[0;32mnode已安装喵~\033[0m"
+echo -e "\033[0;32mnode已安装喵~\033[0m\n"
 #设置npm国内源
 npm config set registry https://registry.npmmirror.com
 
-echo -e "\n\033[0;32mgo已安装喵~\n\033[0m"
+echo -e "\033[0;32mgo已安装喵~\n\033[0m"
 #设置go mod下载使用阿里云加速代理
 go env -w GO111MODULE=on
 go env -w GOPROXY=https://mirrors.aliyun.com/goproxy,direct
 
-echo -e "\n\033[0;32mpython已安装喵~\033[0m"
+echo -e "\033[0;32mpython已安装喵~\033[0m\n"
 #设置pip国内源
 pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple
 
@@ -188,71 +177,71 @@ while [ ! -d "clewd" ] || [ ! -f "clewd/config.js" ] || [ ! -d "SillyTavern" ] |
 do
 
     if [ ! -d "/opt/QQ/resources/app/app_launcher/napcat" ]; then
-                echo -e "\n\033[0;33mnapcat不存在，正在下载，请稍等一下喵...\n\033[0m"
+                echo -e "\n\033[0;33mnapcat不存在，正在下载，请稍等一下喵...\033[0m\n"
                 curl -o napcat.sh https://nclatest.znin.net/NapNeko/NapCat-Installer/main/script/install.sh && sudo bash napcat.sh <<eof
 n
 eof
         	if [ ! -d "/opt/QQ/resources/app/app_launcher/napcat" ]; then
-                echo -e "\033[0;31mnapcat下载失败了，正在重试中，请稍等一下喵~\n\033[0m"
+                echo -e "\033[0;31mnapcat下载失败了，正在重试中，请稍等一下喵~\033[0m\n"
 		sleep 2
         	continue
                 else
-                echo -e "\n\033[0;32mnapcat文件下载成功喵~\n\033[0m"
+                echo -e "\033[0;32mnapcat文件下载成功喵~\033[0m\n"
                 fi
         fi
 
     if [ ! -d "QChatGPT" ]; then
-                echo -e "\n\033[0;33QChatGPT不存在，正在通过git下载，请稍等一下喵...\n\033[0m"
+                echo -e "\033[0;33QChatGPT不存在，正在通过git下载，请稍等一下喵...\033[0m\n"
                 git clone https://mirror.ghproxy.com/https://github.com/RockChinQ/QChatGPT
         	if [ ! -d "QChatGPT" ]; then
-                echo -e "\033[0;31QChatGPT下载失败了，正在重试中，请稍等一下喵~\n\033[0m"
+                echo -e "\033[0;31QChatGPT下载失败了，正在重试中，请稍等一下喵~\033[0m\n"
 		sleep 2
         	continue
                 else
-                echo -e "\n\033[0;32mQChatGPT文件下载成功喵~\n\033[0m"
+                echo -e "\033[0;32mQChatGPT文件下载成功喵~\033[0m\n"
                 fi
         fi
         
         if [ ! -d "one-api" ]; then
-                echo -e "\n\033[0;33mone-api不存在，正在通过git下载，请稍等一下喵...\n\033[0m"
+                echo -e "\033[0;33mone-api不存在，正在通过git下载，请稍等一下喵...\033[0m\n"
                 git clone https://mirror.ghproxy.com/https://github.com/songquanpeng/one-api.git
         	if [ ! -d "one-api" ]; then
-                echo -e "\033[0;31mone-api下载失败了，正在重试中，请稍等一下喵~\n\033[0m"
+                echo -e "\033[0;31mone-api下载失败了，正在重试中，请稍等一下喵~\033[0m\n"
 		sleep 2
         	continue
                 else
-                echo -e "\n\033[0;32mone-api文件下载成功喵~\n\033[0m"
+                echo -e "\033[0;32mone-api文件下载成功喵~\033[0m\n"
                 fi
         fi
         
         if [ ! -f "one-api/start.sh" ]; then
-                echo -e "\n\033[0;33mone-api启动文件不存在，正在通过git下载，请稍等一下喵...\n\033[0m"
+                echo -e "\033[0;33mone-api启动文件不存在，正在通过git下载，请稍等一下喵...\n\033[0m\n"
                 cd one-api
     		curl -O https://mirror.ghproxy.com/https://raw.githubusercontent.com/YunZLu/termux_using_openai/main/CN/start.sh
 	        if [ ! -f "start.sh" ]; then
-		echo -e "\033[0;33mone-api启动文件下载失败了，正在重试中，请稍等一下喵~\n\033[0m"
+		echo -e "\033[0;33mone-api启动文件下载失败了，正在重试中，请稍等一下喵~\033[0m\n"
   		sleep 2
 		continue
 		else
-	        echo -e "\n\033[0;32mone-api启动文件下载成功喵~\n\033[0m"
+	        echo -e "\033[0;32mone-api启动文件下载成功喵~\033[0m\n"
 		cd /root
 		fi
         fi
 
         if [ ! -d "clewd" ]; then
-        	echo -e "\n\033[0;33mclewd不存在，正在通过git下载，请稍等一下喵...\n\033[0m"
+        	echo -e "\033[0;33mclewd不存在，正在通过git下载，请稍等一下喵...\033[0m\n"
         	git clone -b test https://mirror.ghproxy.com/https://github.com/teralomaniac/clewd
          	if  [ ! -d "clewd" ]; then
-        	echo -e "\033[0;31mclewd下载失败了，正在重试中，请稍等一下喵~\n\033[0m"
+        	echo -e "\033[0;31mclewd下载失败了，正在重试中，请稍等一下喵~\033[0m\n"
 	 	sleep 2
         	continue
          	else
-        	echo -e "\n\033[0;32mclewd下载成功喵~\n\033[0m"
+        	echo -e "\033[0;32mclewd下载成功喵~\033[0m\n"
         	fi
         fi
 
         if [ ! -f "clewd/config.js" ]; then
-        echo -e "\033[0;33mclewd未部署，正在部署中，请稍等一下喵...\033[0m"
+        echo -e "\033[0;33mclewd未部署，正在部署中，请稍等一下喵...\033[0m\n"
         cd clewd
         bash start.sh
         cd /root
@@ -262,36 +251,36 @@ eof
 		sleep 2
                 continue
                 else
-                echo -e "\n\033[0;32mclewd部署成功喵~\n\033[0m"
+                echo -e "\033[0;32mclewd部署成功喵~\033[0m\n"
                 fi
         fi
 
         if [ ! -d "SillyTavern" ]; then
-        echo -e "\033[0;33mSillyTavern不存在，正在通过git下载，请稍等一下喵...\n\033[0m"
+        echo -e "\033[0;33mSillyTavern不存在，正在通过git下载，请稍等一下喵...\033[0m\n"
         rm -rf SillyTavern
         git clone https://mirror.ghproxy.com/https://github.com/SillyTavern/SillyTavern -b release
         
                 if [ ! -d "SillyTavern" ]; then
-                echo -e "\033[0;31mSillyTavern下载失败了，正在重试中，请稍等一下喵~\n\033[0m"
+                echo -e "\033[0;31mSillyTavern下载失败了，正在重试中，请稍等一下喵~\033[0m\n"
 		sleep 2
                 continue
                 else
-                echo -e "\n\033[0;32mSillyTavern下载成功喵~\033[0m"
+                echo -e "\033[0;32mSillyTavern下载成功喵~\033[0m\n"
                 fi
-	 	echo -e "\n\033[0;35m更新酒馆是为了导入破限，也可以选择后面自己更新喵~\033[0m"
-   		echo -e "\n\033[0;33m输入 Y 现在更新酒馆，或者按回车键暂时不更新喵~\033[0m\n"
+	 	echo -e "\033[0;35m更新酒馆是为了导入破限，也可以选择后面自己更新喵~\033[0m\n"
+   		echo -e "\033[0;33m输入 Y 现在更新酒馆，或者按回车键暂时不更新喵~\033[0m\n"
      		read -n 1 choice
    		case "$choice" in
    		y|Y )
 	                #直接更新...不然不知道为什么会缺失破限文件...有时间再研究吧...
-	                echo -e "\n\033[0;33m\nSillyTavern更新中，请稍等一下喵...\n\033[0m"
+	                echo -e "\033[0;33m\nSillyTavern更新中，请稍等一下喵...\033[0m\n"
 	                cd /root/SillyTavern
 	                #启动酒馆后更新才能导入破限文件，暂时没办法...
 	                npm i --no-audit --no-fund --quiet --omit=dev
-	                echo -e "\n\033[0;35m当SillyTavern输出绿色网址后，请按Ctrl+C喵！\033[0m"
-	                echo -e "\n\033[0;33m紫红色字看明白了后，请按回车键继续喵...\033[0m"
+	                echo -e "\033[0;35m当SillyTavern输出绿色网址后，请按Ctrl+C喵！\033[0m\n"
+	                echo -e "\033[0;33m紫红色字看明白了后，请按回车键继续喵...\033[0m\n"
 		        read -n 1
-	                echo -e "\033[0;33mSillyTavern启动中，请稍等一下喵...\n\033[0m"
+	                echo -e "\033[0;33mSillyTavern启动中，请稍等一下喵...\033[0m\n"
 	                node "server.js" "$@"v
 	                cd /root
 	                
@@ -300,11 +289,11 @@ eof
 	                NEW_FOLDER_NAME="SillyTavern_$(date +%Y%m%d)"
 	                mv SillyTavern_old $NEW_FOLDER_NAME
 	                fi
-	                echo -e "\n\033[0;33m正在下载SillyTaver更新文件中，请稍等一下喵...\n\033[0m"
+	                echo -e "\033[0;33m正在下载SillyTaver更新文件中，请稍等一下喵...\n\033[0m\n"
 	                git clone -b staging https://mirror.ghproxy.com/https://github.com/SillyTavern/SillyTavern.git SillyTavern_new
 	                if [ ! -d "SillyTavern_new" ]; then
 	                rm -rf SillyTavern
-	                echo -e "\033[0;31mSillyTavern更新文件下载失败了，正在重试中，请稍等一下喵~\033[0m"
+	                echo -e "\033[0;31mSillyTavern更新文件下载失败了，正在重试中，请稍等一下喵~\033[0m\n"
 			sleep 2
 	                continue
 	                elif [ -d "SillyTavern/data/default-user" ]; then
@@ -322,7 +311,7 @@ eof
 	                rm -rf /root/st_promot
 	                git clone https://mirror.ghproxy.com/https://github.com/hopingmiao/promot.git /root/st_promot
 	                cp -r /root/st_promot/. /root/SillyTavern/public/'OpenAI Settings'/
-	                echo -e "\n\033[0;32m酒馆已更新完毕喵~\033[0m"
+	                echo -e "\033[0;32m酒馆已更新完毕喵~\033[0m\n"
 	                else
 	                cp -r SillyTavern/public/characters/. SillyTavern_new/public/characters/
 	                cp -r SillyTavern/public/chats/. SillyTavern_new/public/chats/       
@@ -338,10 +327,10 @@ eof
 	                rm -rf /root/st_promot
 	                git clone https://mirror.ghproxy.com/https://github.com/hopingmiao/promot.git /root/st_promot
 	                cp -r /root/st_promot/. /root/SillyTavern/public/'OpenAI Settings'/
-	                echo -e "\n\033[0;32m酒馆已更新完毕喵~\033[0m"
+	                echo -e "\033[0;32m酒馆已更新完毕喵~\033[0m\n"
 	                fi;;
 	    	* )
-        		echo -e "\033[0;32m你选择了不更新酒馆喵~\033[0m"
+        		echo -e "\033[0;32m你选择了不更新酒馆喵~\033[0m\n"
         		continue;;
    		esac
         fi
