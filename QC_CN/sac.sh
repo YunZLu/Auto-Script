@@ -67,18 +67,18 @@ eof
 
     #安装node
     if ! command -v node &> /dev/null; then
-    echo -e "\033[0;31m检测到你未安装nodejs喵~\033[0m\n"
-    echo -e "\033[0;33m正在为你下载nodejs，请稍等一下喵~\033[0m\n"
+    echo -e "\033[0;31m检测到你未安装nodejs喵~\n\033[0m"
+    echo -e "\033[0;33m正在为你下载nodejs，请稍等一下喵~\n\033[0m"
     curl -O https://cdn.npmmirror.com/binaries/node/v20.10.0/node-v20.10.0-linux-arm64.tar.xz
     tar xf node-v20.10.0-linux-arm64.tar.xz
     echo "export PATH=\$PATH:/root/node-v20.10.0-linux-arm64/bin" >>/etc/profile
     source /etc/profile
         if ! command -v node &> /dev/null; then
-        echo -e "\n\033[0;31mnodejs下载失败了，正在重试中，请稍等一下喵~\033[0m\n"
+        echo -e "\033[0;31mnodejs下载失败了，正在重试中，请稍等一下喵~\n\033[0m"
 	sleep 2
         continue
 	else
-        echo -e "\n\033[0;32mnode安装成功喵~\033[0m\n"
+        echo -e "\n\033[0;32mnode安装成功喵~\n\033[0m"
         fi
     fi
 
