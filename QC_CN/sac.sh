@@ -280,17 +280,17 @@ eof
                 echo -e "\n\033[0;32mSillyTavern下载成功喵~\033[0m\n"
                 fi
 	 	echo -e "\033[0;35m更新酒馆是为了导入破限，也可以选择后面自己更新喵~\033[0m\n"
-   		echo -e "\033[0;33m输入 Y 现在更新酒馆，或者按回车键暂时不更新喵~\033[0m\n"
+   		echo -e "\033[0;33m输入 Y 现在更新酒馆，或者按回车键暂时不更新喵~\033[0m"
      		read -n 1 choice
    		case "$choice" in
    		y|Y )
 	                #直接更新...不然不知道为什么会缺失破限文件...有时间再研究吧...
-	                echo -e "\n\033[0;33m\nSillyTavern更新中，请稍等一下喵...\033[0m\n"
+	                echo -e "\033[0;33m\nSillyTavern更新中，请稍等一下喵...\033[0m\n"
 	                cd /root/SillyTavern
 	                #启动酒馆后更新才能导入破限文件，暂时没办法...
 	                npm i --no-audit --no-fund --quiet --omit=dev
 	                echo -e "\n\033[0;35m当SillyTavern输出绿色网址后，请按Ctrl+C喵！\033[0m\n"
-	                echo -e "\033[0;33m紫红色字看明白了后，请按回车键继续喵...\033[0m\n"
+	                echo -e "\033[0;33m紫红色字看明白了后，请按回车键继续喵...\033[0m"
 		        read -n 1
 	                echo -e "\033[0;33mSillyTavern启动中，请稍等一下喵...\033[0m"
 	                node "server.js" "$@"v
