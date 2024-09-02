@@ -1,17 +1,16 @@
 #!/bin/bash
 
 echo -e "                                             
-\033[0;32m喵喵一键安卓脚本(QchatGpt CN版)\033[0m
+\033[0;32m喵喵一键安卓脚本(one-api CN版)\033[0m
 \033[0;32m原作者: hoping喵，坏水秋\033[0m
 \033[0;32m来自: Claude2.1先行破限组\033[0m
 \033[0;32m群号: 704819371 / 910524479 / 304690608\033[0m
 \033[0;32m类脑Discord: https://discord.gg/HWNkueX34q\033[0m
 
 \033[0;33m修改人：瑾年\033[0m
-\033[0;32m来自: 头脑风暴搞起来\033[0m
 "
 
-current=/data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/ubuntu-oldlts
+current=/data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/ubuntu
 
 echo -e "\033[0;33m喵喵正在帮你检查系统环境中，请稍等一下喵~\n\033[0m"
 
@@ -39,7 +38,7 @@ while [ ! -d "$current" ]
 do
    echo -e "\033[0;31m检测到你未安装Ubuntu喵~\n\033[0m"
    echo -e "\033[0;33m正在为你下载Ubuntu，请稍等一下喵~\n\033[0m"
-   DEBIAN_FRONTEND=noninteractive proot-distro install ubuntu-oldlts
+   DEBIAN_FRONTEND=noninteractive proot-distro install ubuntu
    
     # Check Ubuntu installed successfully
      if [ ! -d "$current" ]; then
@@ -103,10 +102,13 @@ do
     fi
 done
 echo -e "\033[0;32mgo已安装喵~\033[0m\n"
+#设置go mod下载使用阿里云加速代理
+go env -w GO111MODULE=on
+go env -w GOPROXY=https://mirrors.aliyun.com/goproxy,direct
 
 cd $current/root
 
-#下载启动文件和更新文件
+#下载启动文件
 while [ ! -f "$current/root/sac.sh" ]
 do
         if [ ! -f "$current/root/sac.sh" ]; then
@@ -122,22 +124,7 @@ do
         fi
 done
 
-while [ ! -f "$current/root/update_CN.sh" ]
-do
-        if [ ! -f "$current/root/update_CN.sh" ]; then
-                echo -e "\033[0;33m更新文件不存在，正在通过git下载，请稍等一下喵...\033[0m\n"
-    		curl -O https://mirror.ghproxy.com/https://raw.githubusercontent.com/YunZLu/termux_using_openai/main/QC_CN/update_CN.sh
-	        if [ ! -f "$current/root/update_CN.sh" ]; then
-		echo -e "\033[0;31m更新文件下载失败了，正在重试中，请稍等一下喵~\033[0m\n"
- 		sleep 2
-		continue
-		else
-	        echo -e "\033[0;32m更新文件下载成功喵~\033[0m\n"
-		fi
-        fi
-done
-
-ln -s /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/ubuntu-oldlts/root
+ln -s /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/ubuntu/root
 
 
 if [ ! -d "/data/data/com.termux/files/home/one-api/" ]; then
@@ -147,16 +134,9 @@ else
 	echo -e "\033[0;32mone-api文件复制成功\n\033[0m"
 fi
 
-if [ ! -d "/data/data/com.termux/files/home/SillyTavern/" ]; then
-        echo -e "\033[0;32m不需要复制SillyTavern文件，跳过...\n\033[0m"
-else
- 	cp -r /data/data/com.termux/files/home/SillyTavern/ $current/root/SillyTavern
-	echo -e "\033[0;32mSillyTavern文件复制成功\n\033[0m"
-fi
-
 echo "bash /root/sac.sh" >>$current/root/.bashrc
 
-echo "proot-distro login ubuntu-oldlts" >>/data/data/com.termux/files/home/.bashrc
+echo "proot-distro login ubuntu" >>/data/data/com.termux/files/home/.bashrc
 
 source /data/data/com.termux/files/home/.bashrc
 
