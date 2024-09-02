@@ -51,63 +51,6 @@ do
  
 done
 
-# 安装git
-while ! command -v git &> /dev/null
-do
-    if ! command -v git &> /dev/null; then
-    echo -e "\033[0;31m检测到你未安装git喵~\n\033[0m"
-    echo -e "\033[0;33m正在为你下载git，请稍等一下喵~\n\033[0m"
-    DEBIAN_FRONTEND=noninteractive pkg install git -y
-        if ! command -v git &> /dev/null; then
-        echo -e "\033[0;31mgit下载失败了，正在重试中，请稍等一下喵~\n\033[0m"
-	sleep 2
-        continue
-        fi
-    fi
-done
-echo -e "\033[0;32mgit已安装喵~\033[0m\n"
-
-# 安装nodejs
-cd $current/root
-while [ ! -d node-v20.10.0-linux-arm64 ]
-do
-    if [ ! -d node-v20.10.0-linux-arm64 ]; then
-    echo -e "\033[0;31m检测到你未安装nodejs喵~\n\033[0m"
-    echo -e "\033[0;33m正在为你下载nodejs，请稍等一下喵~\n\033[0m"
-    curl -O https://cdn.npmmirror.com/binaries/node/v20.10.0/node-v20.10.0-linux-arm64.tar.xz
-    tar xf node-v20.10.0-linux-arm64.tar.xz
-    echo "export PATH=\$PATH:/root/node-v20.10.0-linux-arm64/bin" >>$current/etc/profile
-        if [ ! -d node-v20.10.0-linux-arm64 ]; then
-        echo -e "\033[0;31mnodejs下载失败了，正在重试中，请稍等一下喵~\n\033[0m"
-	sleep 2
-        continue
-        fi
-    fi
-done
-echo -e "\033[0;32mnodejs已安装喵~\033[0m\n"
-cd /data/data/com.termux/files/home/
-
-#安装go
-while ! command -v go &> /dev/null
-do
-    if ! command -v go &> /dev/null; then
-    echo -e "\033[0;31m检测到你未安装go喵~\033[0m\n"
-    echo -e "\033[0;33m正在为你下载go，请稍等一下喵~\033[0m\n"
-    DEBIAN_FRONTEND=noninteractive pkg install golang -y
-        if ! command -v go &> /dev/null; then
-        echo -e "\033[0;31mgo下载失败了，正在重试中，请稍等一下喵~\033[0m\n"
-	sleep 2
-        continue
-        fi
-    fi
-done
-echo -e "\033[0;32mgo已安装喵~\033[0m\n"
-#设置go mod下载使用阿里云加速代理
-go env -w GO111MODULE=on
-go env -w GOPROXY=https://mirrors.aliyun.com/goproxy,direct
-
-cd $current/root
-
 #下载启动文件
 while [ ! -f "$current/root/sac.sh" ]
 do
