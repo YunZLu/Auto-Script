@@ -1242,19 +1242,31 @@ do
             
         3) 
             #启动QChatGPT
-			ps -ef | grep server.js | awk '{print$2}' | xargs kill -9
-            cd SillyTavern
-	        bash start.sh
-            echo "酒馆已关闭, 即将返回主菜单"
-            cd ../
+            # 启动QChatGpt
+		cd /root/QChatGPT/bin
+  		source activate
+                echo -e "\033[0;32m正在启动QChatGpt中，请稍等一下喵~\033[0m\n"
+		python3 main.py
+  		deactivate
+    		cd /root
             ;; 
         4) 
             #启动NapCatQQ
-			ps -ef | grep server.js | awk '{print$2}' | xargs kill -9
-            cd SillyTavern
-	        bash start.sh
-            echo "酒馆已关闭, 即将返回主菜单"
-            cd ../
+            if ls -1 /opt/QQ/resources/app/app_launcher/napcat/config/ | awk -F'_' '{print $2}' | awk -F'.' '{print $1}' | awk '!a[$0]++{print}' | awk 'NF{a++;print "\033[0;33m"a"\033[0m""\033[0;33m.\033[0m","\033[0;33m"$0"\033[0m\n";next}1'; then
+	    	echo -e "\033[0;36m没有登录过的QQ号，请先扫码添加QQ号喵~\033[0m"
+	    else
+	    	echo -e "\033[0;36m请输入数字登录对应的QQ号喵~\033[0m"
+	    	read -n 1 QQchose
+                echo -e "\033[0;36m你确定要登录以下QQ号喵？(y|N)\033[0m"
+		QQnumber = ls -1 /opt/QQ/resources/app/app_launcher/napcat/config/ | awk -F'_' '{print $2}' | awk -F'.' '{print $1}' | awk '!a[$0]++{print}'| awk NF | awk NR==$QQchose
+                read -n 1 chose
+		case $option in 
+        	    y|Y)
+	     		screen -dmS napcat bash -c "xvfb-run -a qq --no-sandbox -q $QQnumber";;
+		      *)
+			echo -e "\033[0;36m你已选择不登陆该QQ喵~\033[0m";;
+  		esac
+     	    fi
             ;;   
         5) 
             #启动Clewd
