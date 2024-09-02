@@ -154,8 +154,9 @@ eof
     fi
 
     #安装libasound2
+    DEBIAN_FRONTEND=noninteractive apt install liboss4-salsa-asound2 -y
     DEBIAN_FRONTEND=noninteractive apt install libasound2t64 -y
-
+    
 done
 
 echo -e "\033[0;32mgit已安装喵~\033[0m\n"
