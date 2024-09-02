@@ -285,7 +285,7 @@ eof
    		case "$choice" in
    		y|Y )
 	                #直接更新...不然不知道为什么会缺失破限文件...有时间再研究吧...
-	                echo -e "\033[0;33m\nSillyTavern更新中，请稍等一下喵...\033[0m\n"
+	                echo -e "\n\033[0;33m\nSillyTavern更新中，请稍等一下喵...\033[0m\n"
 	                cd /root/SillyTavern
 	                #启动酒馆后更新才能导入破限文件，暂时没办法...
 	                npm i --no-audit --no-fund --quiet --omit=dev
