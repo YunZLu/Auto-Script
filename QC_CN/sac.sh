@@ -1,5 +1,12 @@
 #!/bin/bash
 
+#添加termux上的Ubuntu/root软链接
+if [ ! -d "/data/data/com.termux/files/home/root" ]; then
+    ln -s /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/ubuntu/root /data/data/com.termux/files/home
+fi
+
+echo -e "\033[0;32mroot软链接已添加，可直接在mt管理器打开root文件夹修改文件喵~\033[0m"
+
 #echo -e "\033[0;33m喵喵正在获取版本信息中，请稍等一下喵~\n\033[0m"
 #latest_version=$(curl -s https://mirror.ghproxy.com/https://raw.githubusercontent.com/hopingmiao/termux_using_Claue/main/VERSION)
 #clewd_latestversion=$(curl -s https://mirror.ghproxy.com/https://raw.githubusercontent.com/teralomaniac/clewd/test/package.json | grep '"version"' | awk -F '"' '{print $4}')
@@ -18,43 +25,43 @@ echo -e "\033[0;33m喵喵正在帮你检查系统环境中，请稍等一下喵~
 
 
 #检查相应软件安装情况
-while ! command -v git &> /dev/null || ! command -v node &> /dev/null || ! command -v go &> /dev/null || ! command -v python3 &> /dev/null || ! command -v pip &> /dev/null || ! command -v venv &> /dev/null || ! command -v sudo &> /dev/null
+while ! command -v git &> /dev/null || ! command -v node &> /dev/null || ! command -v go &> /dev/null || ! command -v python3 &> /dev/null || ! command -v pip &> /dev/null || ! command -v sudo &> /dev/null
 do
-echo -e "\033[0;33m喵喵检查到你的系统有软件未安装，正在帮你安装喵~\033[0m"
+echo -e "\033[0;33m喵喵检查到你的系统有软件未安装，正在帮你安装喵~\033[0m\n"
     #设置apt国内源
     if ! command -v lsb_release &> /dev/null; then
-    echo -e "\n\033[0;33m喵喵正在帮你更新软件包中，请稍等一下喵~\033[0m"
+    echo -e "\033[0;33m喵喵正在帮你更新软件包中，请稍等一下喵~\033[0m\n"
     yes | apt update
-    echo -e "\n\033[0;31m检测到你未安装lsb-release喵~\n\033[0m"
-    echo -e "\033[0;33m正在为你下载lsb-release，请稍等一下喵~\n\033[0m"
+    echo -e "\033[0;31m检测到你未安装lsb-release喵~\033[0m\n"
+    echo -e "\033[0;33m正在为你下载lsb-release，请稍等一下喵~\033[0m\n"
     DEBIAN_FRONTEND=noninteractive apt-get install lsb-release -y
         if ! command -v lsb_release &> /dev/null; then
-        echo -e "\033[0;31mlsb-release下载失败了，正在重试中，请稍等一下喵~\n\033[0m"
+        echo -e "\033[0;31mlsb-release下载失败了，正在重试中，请稍等一下喵~\033[0m\n"
 	      sleep 2
 	      continue
 	      else
-        echo -e "\n\033[0;32mlsb-release安装成功喵~\n\033[0m"
-        echo -e "\033[0;33m喵喵正在帮你选择国内代理中，请稍等一下喵~\n\033[0m"
+        echo -e "\033[0;32mlsb-release安装成功喵~\033[0m\n"
+        echo -e "\033[0;33m喵喵正在帮你选择国内代理中，请稍等一下喵~\033[0m\n"
         bash <(curl -sSL https://linuxmirrors.cn/main.sh) << eof
         6
 eof
         yes | apt update
         yes | apt upgrade
-        echo -e "\n\033[0;32m已更换国内代理，并成功升级软件包喵~\n\033[0m"
+        echo -e "\033[0;32m已更换国内代理，并成功升级软件包喵~\033[0m\n"
         fi
     fi
     
     #安装git
     if ! command -v git &> /dev/null; then
-    echo -e "\033[0;31m检测到你未安装git喵~\n\033[0m"
-    echo -e "\033[0;33m正在为你下载git，请稍等一下喵~\n\033[0m"
+    echo -e "\033[0;31m检测到你未安装git喵~\033[0m\n"
+    echo -e "\033[0;33m正在为你下载git，请稍等一下喵~\033[0m\n"
     DEBIAN_FRONTEND=noninteractive apt-get install git -y
         if ! command -v git &> /dev/null; then
-        echo -e "\033[0;31mgit下载失败了，正在重试中，请稍等一下喵~\n\033[0m"
+        echo -e "\033[0;31mgit下载失败了，正在重试中，请稍等一下喵~\033[0m\n"
 	sleep 2
         continue
 	else
-        echo -e "\n\033[0;32mgit安装成功喵~\033[0m"
+        echo -e "\033[0;32mgit安装成功喵~\033[0m\n"
         fi
     fi
 
@@ -67,7 +74,7 @@ eof
     echo "export PATH=\$PATH:/root/node-v20.10.0-linux-arm64/bin" >>/etc/profile
     source /etc/profile
         if ! command -v node &> /dev/null; then
-        echo -e "\033[0;31mnodejs下载失败了，正在重试中，请稍等一下喵~\n\033[0m"
+        echo -e "\033[0;31mnodejs下载失败了，正在重试中，请稍等一下喵~\033[0m\n"
 	sleep 2
         continue
 	else
@@ -135,6 +142,7 @@ eof
     DEBIAN_FRONTEND=noninteractive apt install python3-venv -y
         if ! command -v venv &> /dev/null; then
         echo -e "\033[0;31mpython3-venv下载失败了，正在重试中，请稍等一下喵~\n\033[0m"
+	apt remove python3
 	sleep 2
         continue
 	else
@@ -175,13 +183,6 @@ go env -w GOPROXY=https://mirrors.aliyun.com/goproxy,direct
 echo -e "\n\033[0;32mpython已安装喵~\033[0m"
 #设置pip国内源
 pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple
-
-#添加termux上的Ubuntu/root软链接
-if [ ! -d "/data/data/com.termux/files/home/root" ]; then
-    ln -s /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/ubuntu/root /data/data/com.termux/files/home
-fi
-
-echo -e "\033[0;32mroot软链接已添加，可直接在mt管理器打开root文件夹修改文件喵~\033[0m"
 
 while [ ! -d "clewd" ] || [ ! -f "clewd/config.js" ] || [ ! -d "SillyTavern" ] || [ ! -f "SillyTavern/start.sh" ] || [ ! -d "one-api" ] || [ ! -f "one-api/start.sh" ] || [ ! -d "/opt/QQ/resources/app/app_launcher/napcat" ] || [ ! -d "QChatGPT" ]
 do
