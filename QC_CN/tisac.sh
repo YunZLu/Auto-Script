@@ -34,14 +34,14 @@ echo -e "\033[0;32mproot-distro已安装喵~\n\033[0m"
 sed -i 's/https:\/\/github.com/https:\/\/mirror.ghproxy.com\/github.com/g' /data/data/com.termux/files/usr/etc/proot-distro/ubuntu.sh
 
 # 创建并安装Ubuntu
-while [ ! -d "$current/etc/passwd" ]
+while [ ! -d "$current/etc" ]
 do
    echo -e "\033[0;31m检测到你未安装Ubuntu喵~\n\033[0m"
    echo -e "\033[0;33m正在为你下载Ubuntu，请稍等一下喵~\n\033[0m"
    DEBIAN_FRONTEND=noninteractive proot-distro install ubuntu
    
     # Check Ubuntu installed successfully
-     if [ ! -d "$current/etc/passwd" ]; then
+     if [ ! -d "$current/etc" ]; then
        proot-distro remove ubuntu
        echo -e "\033[0;31mUbuntu安装失败了，正在重试，请稍等一下喵~\n\033[0m"
        sleep 2
