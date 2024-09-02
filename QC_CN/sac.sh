@@ -5,7 +5,7 @@ if [ ! -d "/data/data/com.termux/files/home/root" ]; then
     ln -s /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/ubuntu/root /data/data/com.termux/files/home
 fi
 
-echo -e "\033[0;32mroot软链接已添加，可直接在mt管理器打开root文件夹修改文件喵~\033[0m"
+echo -e "\033[0;32mroot软链接已添加，可直接在mt管理器打开root文件夹修改文件喵~\033[0m\n"
 
 #echo -e "\033[0;33m喵喵正在获取版本信息中，请稍等一下喵~\n\033[0m"
 #latest_version=$(curl -s https://mirror.ghproxy.com/https://raw.githubusercontent.com/hopingmiao/termux_using_Claue/main/VERSION)
