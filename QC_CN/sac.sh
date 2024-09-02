@@ -1235,7 +1235,7 @@ do
             #启动SillyTavern
 	    ps -ef | grep server.js | awk '{print$2}' | xargs kill -9
             cd SillyTavern
-	        bash start.sh
+	    bash start.sh
             echo "酒馆已关闭, 即将返回主菜单"
             cd ../
             ;;   
@@ -1256,6 +1256,8 @@ do
 	    	echo -e "\033[0;31m没有登录过的QQ号，请先扫码添加QQ号喵~\033[0m"
          	echo -e "\033[0;31m请按任意键返回喵~\033[0m"
      		read -n 1
+                echo "QQ已退出登录, 即将返回主菜单"
+                cd /root
 	    else
 	    	echo -e "\033[0;36m请输入数字登录对应的QQ号喵~\033[0m"
 	    	read -n 1 QQchose
@@ -1282,11 +1284,11 @@ do
             ;; 
 	6)
             #QChatGPT设置
-		        QChatGPTSettings
+	    QChatGPTSettings
             ;;
 	7)
             #NapCatQQ设置
-		        NapCatQQSettings
+	    NapCatQQSettings
             ;;  
         8) 
             #SillyTavern设置
@@ -1303,14 +1305,14 @@ do
       	    while [ ! -f "update_CN.sh" ]
             do
                 if [ ! -f "update_CN.sh" ]; then
-                 echo "更新脚本不存在，正在通过git下载喵..."
-          	     curl -O https://mirror.ghproxy.com/https://raw.githubusercontent.com/YunZLu/termux_using_openai/main/CN/update_CN.sh
+                echo "更新脚本不存在，正在通过git下载喵..."
+          	curl -O https://mirror.ghproxy.com/https://raw.githubusercontent.com/YunZLu/termux_using_openai/main/CN/update_CN.sh
       	                if [ ! -f "update_CN.sh" ]; then
       		              echo "更新脚本文件下载失败了正在重试中~"
       		              continue
-      		              else
-      	                echo "更新脚本文件下载成功喵~"
-      		              fi
+      		        else
+      	                      echo "更新脚本文件下载成功喵~"
+      		        fi
             fi
             done
       	    echo -e "退出脚本后，请输入 bash update_CN.sh 更新脚本喵~"
