@@ -191,14 +191,25 @@ eof
         fi
 
     if [ ! -d "QChatGPT" ]; then
-                echo -e "\033[0;33QChatGPT不存在，正在通过git下载，请稍等一下喵...\033[0m\n"
+                echo -e "\n\033[0;33mQChatGPT不存在，正在下载，请稍等一下喵...\033[0m\n"
                 git clone https://mirror.ghproxy.com/https://github.com/RockChinQ/QChatGPT
         	if [ ! -d "QChatGPT" ]; then
-                echo -e "\033[0;31QChatGPT下载失败了，正在重试中，请稍等一下喵~\033[0m\n"
+                echo -e "\033[0;31mQChatGPT下载失败了，正在重试中，请稍等一下喵~\033[0m\n"
 		sleep 2
         	continue
                 else
                 echo -e "\033[0;32mQChatGPT文件下载成功喵~\033[0m\n"
+		cd /root/QChatGPT/
+                echo -e "\033[0;32m正在创建python3虚拟环境喵~\033[0m\n"
+		python3 -m venv .
+		cd bin
+		source activate
+		cd /root/QChatGPT/
+                echo -e "\033[0;32m正在安装依赖喵~\033[0m\n"
+		pip install -r requirements.txt -i https://mirrors.aliyun.com/pypi/simple some-package
+		python3 main.py
+  		deactivate
+    		cd /root
                 fi
         fi
         
@@ -348,7 +359,7 @@ function NapCatQQSettings {
 
     echo -e "\033[0;36m请选择选一个执行喵~\033[0m
 \033[0;33m--------------------------------------\033[0m
-\033[0;33m选项1 扫码登录QQ号
+\033[0;33m选项1 扫码添加QQ号
 \033[0;37m选项2 快速登录QQ号
 \033[0;33m选项3 添加自动登录QQ号
 \033[0;37m选项4 修改自动登录QQ号
@@ -363,13 +374,28 @@ function NapCatQQSettings {
     echo
     case $option in 
         1) 
-            # 查看 config.js
-            cat $clewd_dir/config.js
+            # 扫码添加QQ号
+            xvfb-run -a qq --no-sandbox
             ;;
         2)
-            # 使用 Vim 编辑 config.js
-            vim $clewd_dir/config.js
-            ;;
+            # 快速登录QQ号
+            if ls -1 /opt/QQ/resources/app/app_launcher/napcat/config/ | awk -F'_' '{print $2}' | awk -F'.' '{print $1}' | awk '!a[$0]++{print}' | awk 'NF{a++;print "\033[0;33m"a"\033[0m""\033[0;33m.\033[0m","\033[0;33m"$0"\033[0m\n";next}1'; then
+	    	echo -e "\033[0;36m没有登录过的QQ号，请先扫码添加QQ号喵~\033[0m"
+	    else
+	    	echo -e "\033[0;36m请输入数字登录对应的QQ号喵~\033[0m"
+	    	read -n 1 QQchose
+                echo -e "\033[0;36m你确定要登录以下QQ号喵？(y|N)\033[0m"
+		QQnumber = ls -1 /opt/QQ/resources/app/app_launcher/napcat/config/ | awk -F'_' '{print $2}' | awk -F'.' '{print $1}' | awk '!a[$0]++{print}'| awk NF | awk NR==$QQchose
+                read -n 1 chose
+		case $option in 
+        	    y|Y)
+	     		screen -dmS napcat bash -c "xvfb-run -a qq --no-sandbox -q $QQnumber";;
+		      *)
+			echo -e "\033[0;36m你已选择不登陆该QQ喵~\033[0m";;
+  		esac
+     	    fi
+	    
+	    ;;
 	      *)
             echo "什么都没有执行喵~"
             ;;
@@ -380,13 +406,14 @@ function QChatGPTSettings {
 
     echo -e "\033[0;36m请选择选一个执行喵~\033[0m
 \033[0;33m--------------------------------------\033[0m
-\033[0;33m选项1 设置管理员QQ号
-\033[0;37m选项2 设置接口地址设置
-\033[0;33m选项3 添加API Key
-\033[0;37m选项4 删除API Key
-\033[0;33m选项5 添加自定义模型
-\033[0;37m选项6 删除自定义模型
-\033[0;33m选项7 修改Vioce token
+\033[0;33m选项1 启动QChatGpt
+\033[0;33m选项2 设置管理员QQ号
+\033[0;37m选项3 设置接口地址设置
+\033[0;33m选项4 添加API Key
+\033[0;37m选项5 删除API Key
+\033[0;33m选项6 添加自定义模型
+\033[0;37m选项7 删除自定义模型
+\033[0;33m选项8 修改Vioce token
 \033[0;33m--------------------------------------\033[0m
 \033[0;31m选项0 更新 QChatGPT\033[0m
 \033[0;33m--------------------------------------\033[0m
@@ -395,8 +422,13 @@ function QChatGPTSettings {
     echo
     case $option in 
         1) 
-            # 查看 config.js
-            cat $clewd_dir/config.js
+            # 启动QChatGpt
+		cd /root/QChatGPT/bin
+  		source activate
+                echo -e "\033[0;32m正在启动QChatGpt中，请稍等一下喵~\033[0m\n"
+		python3 main.py
+  		deactivate
+    		cd /root
             ;;
         2)
             # 使用 Vim 编辑 config.js
