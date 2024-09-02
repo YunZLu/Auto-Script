@@ -1261,7 +1261,7 @@ do
 	    else
 	    	echo -e "\033[0;36m请输入数字登录对应的QQ号喵~\033[0m\n"
 	    	read -n 1 QQchose
-                echo -e "\033[0;36m你确定要登录以下QQ号喵？(y|N)\033[0m\n"
+                echo -e "\033[0;36m你确定要登录以下QQ号喵？(y|N)\033[0m"
 		QQnumber=$(ls -1 /opt/QQ/resources/app/app_launcher/napcat/config/ | awk -F'_' '{print $2}' | awk -F'.' '{print $1}' | awk '!a[$0]++{print}'| awk NF | awk -v QQchose=$QQchose NR==$QQchose)
 		echo $QQnumber
   		read -n 1 chose
@@ -1269,7 +1269,7 @@ do
         	    y|Y)
 	     		screen -dmS napcat bash -c "xvfb-run -a qq --no-sandbox -q $QQnumber";;
 		      *)
-			echo -e "\033[0;36m你已选择不登陆该QQ喵~\033[0m";;
+			echo -e "\033[0;36m你已选择不登陆该QQ喵~\033[0m\n";;
   		esac
      	    fi
             ;;   
