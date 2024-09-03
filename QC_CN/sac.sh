@@ -1308,7 +1308,7 @@ do
             do
                 if [ ! -f "update_QCCN.sh" ]; then
                 echo "更新脚本不存在，正在通过git下载喵..."
-          	curl -O https://mirror.ghproxy.com/https://raw.githubusercontent.com/YunZLu/termux_using_openai/main/CN/update_QCCN.sh
+          	curl -O https://mirror.ghproxy.com/https://raw.githubusercontent.com/YunZLu/termux_using_openai/main/QC_CN/update_QCCN.sh
       	                if [ ! -f "update_QCCN.sh" ]; then
       		              echo "更新脚本文件下载失败了正在重试中~"
       		              continue
