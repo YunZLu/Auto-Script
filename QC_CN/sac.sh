@@ -1262,7 +1262,7 @@ do
 	            1)
 		    	echo -e "\n\033[0;33m请输入你的QQ机器人号码喵~\033[0m\n"
        			read new_QQ
-       			echo -e "\n\033[0;33m请确认你的QQ机器人号码喵~（y|N）\033[0m"
+       			echo -e "\n\033[0;33m请确认你的QQ机器人号码喵~（y|N）\033[0m\n"
       			echo -e "\033[0;36m$new_QQ\033[0m\n"
 	 		read -n 1 chose
        			case $chose in 
@@ -1270,7 +1270,8 @@ do
 	        		cp /opt/QQ/resources/app/app_launcher/napcat/config/onebot11.json /opt/QQ/resources/app/app_launcher/napcat/config/onebot11_$new_QQ.json
        				sed -i '17s/false/true/' /opt/QQ/resources/app/app_launcher/napcat/config/onebot11_3106620649.json
        				sed -i '18s/\[\]/\["ws:\/\/127.0.0.1:8080\/ws\]/' /opt/QQ/resources/app/app_launcher/napcat/config/onebot11_3106620649.json
-       				echo -e "\n\033[0;33m请用你输入的QQ号扫码登录喵~\033[0m\n"
+       				echo -e "\n\n\033[0;33m正在启动...请用你输入的QQ号扫码登录喵~\033[0m\n"
+	   			sleep 5
 				xvfb-run -a qq --no-sandbox;;
 			*)
 				echo -e "\033[0;32m你已取消登录喵~\033[0m\n";;
