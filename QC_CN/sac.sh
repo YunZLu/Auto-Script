@@ -291,8 +291,8 @@ eof
 	                #启动酒馆后更新才能导入破限文件，暂时没办法...
 	                npm i --no-audit --no-fund --quiet --omit=dev
 	                echo -e "\n\033[0;35m当SillyTavern输出绿色网址后，请按Ctrl+C喵！\033[0m\n"
-	                echo -e "\033[0;33m紫红色字看明白了后，请按回车键继续喵...\033[0m"
-		        read -n 1
+	                echo -e "\033[0;33m紫红色字看明白了后，请按任意键继续喵...\033[0m"
+		        read -s -n 1
 	                echo -e "\033[0;33mSillyTavern启动中，请稍等一下喵...\033[0m"
 	                node "server.js" "$@"v
 	                cd /root
