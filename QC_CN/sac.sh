@@ -1295,14 +1295,14 @@ do
 	        	    	    y|Y)
 		     			screen -dmS napcat bash -c "xvfb-run -a qq --no-sandbox -q $QQnumber";;
 			      	    *)
-					echo -e "\033[0;36m你已选择不登陆该QQ喵~\033[0m\n";;
+					echo -e "\033[0;36m你已取消登录喵~\033[0m\n";;
 	  			esac
 	     	    	fi
 	   		;;
 	   	    *)
 			echo -e "\033[0;36m正在返回主菜单喵~\033[0m\n";;
 	  	esac
-                echo "\nNapCatQQ已关闭, 即将返回主菜单"
+		echo -e "\033[0;36mNapCatQQ已关闭, 即将返回主菜单\033[0m\n";;
             	cd ../
            	;; 
         5) 
