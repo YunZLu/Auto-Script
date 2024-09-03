@@ -160,18 +160,18 @@ done
 
 echo -e "\033[0;32mgit已安装喵~\033[0m\n"
 
-echo -e "\033[0;32mnode已安装喵~\033[0m\n"
 #设置npm国内源
 npm config set registry https://registry.npmmirror.com
+echo -e "\033[0;32mnode已安装喵~\033[0m\n"
 
-echo -e "\033[0;32mgo已安装喵~\n\033[0m"
 #设置go mod下载使用阿里云加速代理
 go env -w GO111MODULE=on
 go env -w GOPROXY=https://mirrors.aliyun.com/goproxy,direct
+echo -e "\033[0;32mgo已安装喵~\n\033[0m"
 
-echo -e "\033[0;32mpython已安装喵~\033[0m\n"
 #设置pip国内源
 pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple
+echo -e "\n\033[0;32mpython已安装喵~\033[0m\n"
 
 while [ ! -d "clewd" ] || [ ! -f "clewd/config.js" ] || [ ! -d "SillyTavern" ] || [ ! -f "SillyTavern/start.sh" ] || [ ! -d "one-api" ] || [ ! -f "one-api/start.sh" ] || [ ! -d "/opt/QQ/resources/app/app_launcher/napcat" ] || [ ! -d "QChatGPT" ]
 do
@@ -342,7 +342,7 @@ eof
 	                echo -e "\n\033[0;32m酒馆已更新完毕喵~\033[0m"
 	                fi;;
 	    	* )
-        		echo -e "\n\033[0;32m你选择了不更新酒馆喵~\033[0m"
+        		echo -e "\033[0;32m你选择了不更新酒馆喵~\033[0m"
         		continue;;
    		esac
         fi
