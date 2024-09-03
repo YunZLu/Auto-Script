@@ -1260,7 +1260,7 @@ do
      	  	read -n 1 chose
 		case $chose in 
 	            1)
-		    	echo -e "\033[0;33m请输入你的QQ机器人号码喵~\033[0m\n"
+		    	echo -e "\n\033[0;33m请输入你的QQ机器人号码喵~\033[0m\n"
        			read new_QQ
        			echo -e "\n\033[0;33m请确认你的QQ机器人号码喵~（y|N）\033[0m"
       			echo -e "\033[0;36m$new_QQ\033[0m\n"
@@ -1278,13 +1278,13 @@ do
 			;;
 		    2)
 	            	if ls -1 /opt/QQ/resources/app/app_launcher/napcat/config/ | awk -F'_' '{print $2}' | awk -F'.' '{print $1}' | awk '!a[$0]++{print}' | awk 'NF{a++;print "\033[0;33m"a"\033[0m""\033[0;33m.\033[0m","\033[0;33m"$0"\033[0m\n";next}1'; then
-		    		echo -e "\033[0;31m没有登录过的QQ号，请先扫码添加QQ号喵~\033[0m"
+		    		echo -e "\n\033[0;31m没有登录过的QQ号，请先扫码添加QQ号喵~\033[0m"
 	         		echo -e "\033[0;31m请按任意键返回喵~\033[0m\n"
 	     			read -n 1
 	              		echo -e "\033[0;33m即将返回主菜单喵~\033[0m\n"
 	                	cd /root
 		    	else
-		    		echo -e "\033[0;36m请输入数字登录对应的QQ号喵~\033[0m\n"
+		    		echo -e "\n\033[0;36m请输入数字登录对应的QQ号喵~\033[0m\n"
 		    		read -n 1 QQchose
 	                	echo -e "\033[0;36m你确定要登录以下QQ号喵？(y|N)\033[0m"
 				QQnumber=$(ls -1 /opt/QQ/resources/app/app_launcher/napcat/config/ | awk -F'_' '{print $2}' | awk -F'.' '{print $1}' | awk '!a[$0]++{print}'| awk NF | awk -v QQchose=$QQchose NR==$QQchose)
@@ -1301,7 +1301,7 @@ do
 	   	    *)
 			echo -e "\033[0;36m正在返回主菜单喵~\033[0m\n";;
 	  	esac
-                echo "NapCatQQ已关闭, 即将返回主菜单"
+                echo "\nNapCatQQ已关闭, 即将返回主菜单"
             	cd ../
            	;; 
         5) 
