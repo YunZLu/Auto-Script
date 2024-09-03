@@ -207,7 +207,7 @@ eof
 		cd /root/QChatGPT/
                 echo -e "\033[0;33m正在安装依赖喵~\033[0m\n"
 		pip install -r requirements.txt -i https://mirrors.aliyun.com/pypi/simple some-package
-		echo -e "\n\033[0;32m依赖安装完毕喵~\033[0m\n"
+		echo -e "\n\033[0;32m依赖安装完毕喵~\033[0m"
 		python3 main.py
   		deactivate
     		cd /root
@@ -215,7 +215,7 @@ eof
         fi
         
         if [ ! -d "one-api" ]; then
-                echo -e "\033[0;33mone-api不存在，正在通过git下载，请稍等一下喵...\033[0m\n"
+                echo -e "\n\033[0;33mone-api不存在，正在通过git下载，请稍等一下喵...\033[0m\n"
                 git clone https://mirror.ghproxy.com/https://github.com/songquanpeng/one-api.git
         	if [ ! -d "one-api" ]; then
                 echo -e "\n\033[0;31mone-api下载失败了，正在重试中，请稍等一下喵~\033[0m\n"
