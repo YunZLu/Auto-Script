@@ -1285,7 +1285,7 @@ do
 	              		echo -e "\033[0;33m即将返回主菜单喵~\033[0m\n"
 	                	cd /root
 		    	else
-		    		echo -e "\n\033[0;36m请输入数字登录对应的QQ号喵~\033[0m\n"
+		    		echo -e "\n\n\033[0;36m请输入数字登录对应的QQ号喵~\033[0m\n"
 		    		read -n 1 QQchose
 	                	echo -e "\033[0;36m你确定要登录以下QQ号喵？(y|N)\033[0m"
 				QQnumber=$(ls -1 /opt/QQ/resources/app/app_launcher/napcat/config/ | awk -F'_' '{print $2}' | awk -F'.' '{print $1}' | awk '!a[$0]++{print}'| awk NF | awk -v QQchose=$QQchose NR==$QQchose)
