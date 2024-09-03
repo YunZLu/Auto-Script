@@ -1270,8 +1270,8 @@ do
 	        		cp /opt/QQ/resources/app/app_launcher/napcat/config/onebot11.json /opt/QQ/resources/app/app_launcher/napcat/config/onebot11_$new_QQ.json
        				sed -i '17s/false/true/' /opt/QQ/resources/app/app_launcher/napcat/config/onebot11_3106620649.json
        				sed -i '18s/\[\]/\["ws:\/\/127.0.0.1:8080\/ws\]/' /opt/QQ/resources/app/app_launcher/napcat/config/onebot11_3106620649.json
-       				echo -e "\n033[0;33m正在启动...请用你输入的QQ号扫码登录喵~\033[0m\n"
-	   			sleep 5
+       				echo -e "\n\033[0;33m正在启动...请用你输入的QQ号扫码登录喵~\033[0m\n"
+	   			sleep 3
 				xvfb-run -a qq --no-sandbox;;
 			    *)
 				echo -e "\033[0;32m你已取消登录喵~\033[0m\n";;
