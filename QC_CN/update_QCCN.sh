@@ -14,6 +14,6 @@ case "$choice" in
            bash /root/sac.sh
         fi;;
    * )
-        echo -e "\033[0;32m你选择了不更新启动脚本，正在退出喵...\n\033[0m"
+        echo -e "\033[0;32m你选择了不更新启动脚本，正在重新启动脚本喵...\n\033[0m"
         exit;;
 esac
