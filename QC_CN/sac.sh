@@ -1302,13 +1302,13 @@ do
             ;; 
         a)
             # 更新脚本
-      	    rm -rf update_CN.sh
-      	    while [ ! -f "update_CN.sh" ]
+      	    rm -rf update_QCCN.sh
+      	    while [ ! -f "update_QCCN.sh" ]
             do
-                if [ ! -f "update_CN.sh" ]; then
+                if [ ! -f "update_QCCN.sh" ]; then
                 echo "更新脚本不存在，正在通过git下载喵..."
-          	curl -O https://mirror.ghproxy.com/https://raw.githubusercontent.com/YunZLu/termux_using_openai/main/CN/update_CN.sh
-      	                if [ ! -f "update_CN.sh" ]; then
+          	curl -O https://mirror.ghproxy.com/https://raw.githubusercontent.com/YunZLu/termux_using_openai/main/CN/update_QCCN.sh
+      	                if [ ! -f "update_QCCN.sh" ]; then
       		              echo "更新脚本文件下载失败了正在重试中~"
       		              continue
       		        else
@@ -1316,7 +1316,7 @@ do
       		        fi
             fi
             done
-      	    echo -e "退出脚本后，请输入 bash update_CN.sh 更新脚本喵~"
+      	    echo -e "退出脚本后，请输入 bash update_QCCN.sh 更新脚本喵~"
             break ;;
         *) 
             echo -e "m9( ｀д´ )!!!! \n\033[0;36m坏猫猫居然不听话，存心和我hoping喵~过不去是吧喵？\033[0m\n"
