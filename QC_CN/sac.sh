@@ -302,7 +302,7 @@ eof
 	                NEW_FOLDER_NAME="SillyTavern_$(date +%Y%m%d)"
 	                mv SillyTavern_old $NEW_FOLDER_NAME
 	                fi
-	                echo -e "\033[0;33m正在下载SillyTaver更新文件中，请稍等一下喵...\n\033[0m\n"
+	                echo -e "\033[0;33m正在下载SillyTaver更新文件中，请稍等一下喵...\033[0m"
 	                git clone -b staging https://mirror.ghproxy.com/https://github.com/SillyTavern/SillyTavern.git SillyTavern_new
 	                if [ ! -d "SillyTavern_new" ]; then
 	                rm -rf SillyTavern
@@ -324,7 +324,7 @@ eof
 	                rm -rf /root/st_promot
 	                git clone https://mirror.ghproxy.com/https://github.com/hopingmiao/promot.git /root/st_promot
 	                cp -r /root/st_promot/. /root/SillyTavern/public/'OpenAI Settings'/
-	                echo -e "\n\033[0;32m酒馆已更新完毕喵~\033[0m"
+	                echo -e "\n\033[0;32m酒馆已更新完毕喵~\033[0m\n"
 	                else
 	                cp -r SillyTavern/public/characters/. SillyTavern_new/public/characters/
 	                cp -r SillyTavern/public/chats/. SillyTavern_new/public/chats/       
@@ -340,10 +340,10 @@ eof
 	                rm -rf /root/st_promot
 	                git clone https://mirror.ghproxy.com/https://github.com/hopingmiao/promot.git /root/st_promot
 	                cp -r /root/st_promot/. /root/SillyTavern/public/'OpenAI Settings'/
-	                echo -e "\n\033[0;32m酒馆已更新完毕喵~\033[0m"
+	                echo -e "\n\033[0;32m酒馆已更新完毕喵~\033[0m\n"
 	                fi;;
 	    	* )
-        		echo -e "\033[0;32m你选择了不更新酒馆喵~\033[0m"
+        		echo -e "\033[0;32m你选择了不更新酒馆喵~\033[0m\n"
         		continue;;
    		esac
         fi
