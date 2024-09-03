@@ -1207,9 +1207,9 @@ do
 \033[0;34m选项1 启动One-Api\033[0m
 \033[0;37m选项2 启动酒馆\033[0m
 \033[0;34m选项3 启动QChatGPT\033[0m
-\033[0;34m选项4 启动NapCatQQ\033[0m
+\033[0;37m选项4 启动NapCatQQ\033[0m
 \033[0;33m选项5 启动Clewd\033[0m
-\033[0;33m选项6 QChatGPT设置\033[0m
+\033[0;37m选项6 QChatGPT设置\033[0m
 \033[0;33m选项7 NapCatQQ设置\033[0m
 \033[0;37m选项8 酒馆设置\033[0m
 \033[0;33m选项9 Clewd设置\033[0m
@@ -1313,6 +1313,7 @@ do
       		              continue
       		        else
       	                      echo "更新脚本文件下载成功喵~"
+			      bash update_QCCN.sh
       		        fi
             fi
             done
