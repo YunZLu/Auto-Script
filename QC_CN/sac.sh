@@ -155,7 +155,7 @@ eof
 
     #安装libasound2
     DEBIAN_FRONTEND=noninteractive apt install libasound2t64 -y
-    echo -e "\n\033[0;32libasound2t64安装成功喵~\033[0m\n"
+    echo -e "\n\033[0;32mlibasound2t64安装成功喵~\033[0m\n"
 done
 
 echo -e "\033[0;32mgit已安装喵~\033[0m\n"
