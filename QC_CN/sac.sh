@@ -1294,9 +1294,9 @@ do
 					     	case $chose in 
 			        	    y|Y)
 				     			screen -dmS napcat bash -c "xvfb-run -a qq --no-sandbox -q $QQnumber"
-								echo -e "\033[0;36m已执行登录命令，请检查登录状态喵~\033[0m\n";;
+								echo -e "\n\033[0;36m已执行登录命令，请检查登录状态喵~\033[0m\n";;
 					      	*)
-							    echo -e "\033[0;36m你已取消登录喵~\033[0m\n";;
+							    echo -e "\n\033[0;36m你已取消登录喵~\033[0m\n";;
 			  			    esac
 	                else
 						echo -e "\n\033[0;31m你怎么乱选？不给你登录了喵~\033[0m\n"
