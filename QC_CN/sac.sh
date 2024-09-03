@@ -1293,7 +1293,7 @@ do
 		  			    read -s -n 1 chose
 					     	case $chose in 
 			        	    y|Y)
-				     			screen -dmS napcat bash -c "xvfb-run -a qq --no-sandbox -q $QQnumber";;
+				     			screen -dmS napcat bash -c "xvfb-run -a qq --no-sandbox -q $QQnumber"
 								echo -e "\033[0;36m已执行登录命令，请检查登录状态喵~\033[0m\n";;
 					      	*)
 							    echo -e "\033[0;36m你已取消登录喵~\033[0m\n";;
