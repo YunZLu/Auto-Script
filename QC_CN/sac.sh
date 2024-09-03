@@ -172,13 +172,13 @@ echo -e "\033[0;32mgo已安装喵~\n\033[0m"
 
 #设置pip国内源
 pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple
-echo -e "\n\033[0;32mpython已安装喵~\033[0m"
+echo -e "\n\033[0;32mpython已安装喵~\033[0m\n"
 
 while [ ! -d "clewd" ] || [ ! -f "clewd/config.js" ] || [ ! -d "SillyTavern" ] || [ ! -f "SillyTavern/start.sh" ] || [ ! -d "one-api" ] || [ ! -f "one-api/start.sh" ] || [ ! -d "/opt/QQ/resources/app/app_launcher/napcat" ] || [ ! -d "QChatGPT" ]
 do
 
     if [ ! -d "/opt/QQ/resources/app/app_launcher/napcat" ]; then
-                echo -e "\n\033[0;33mnapcat不存在，正在下载，请稍等一下喵...\033[0m\n"
+                echo -e "\033[0;33mnapcat不存在，正在下载，请稍等一下喵...\033[0m\n"
                 curl -o napcat.sh https://nclatest.znin.net/NapNeko/NapCat-Installer/main/script/install.sh && sudo bash napcat.sh <<eof
 n
 eof
