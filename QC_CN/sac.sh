@@ -1288,14 +1288,14 @@ do
 		    		echo -e "\033[0;36m请输入数字登录对应的QQ号喵~\033[0m"
 		    		read -s -n 1 QQchose
 	                echo -e "\n\033[0;36m你确定要登录以下QQ号喵？(y|N)\033[0m"
-					if QQnumber=$(ls -1 /opt/QQ/resources/app/app_launcher/napcat/config/ | awk -F'_' '{print $2}' | awk -F'.' '{print $1}' | awk '!a[$0]++{print}'| awk NF | awk -v QQchose=$QQchose NR==$QQchose); then
+					if ! QQnumber=$(ls -1 /opt/QQ/resources/app/app_launcher/napcat/config/ | awk -F'_' '{print $2}' | awk -F'.' '{print $1}' | awk '!a[$0]++{print}'| awk NF | awk -v QQchose=$QQchose NR==$QQchose); then
 	    				echo -e "\n\033[0;33m$QQnumber\033[0m"
 		  			    read -s -n 1 chose
 					     	case $chose in 
 			        	    y|Y)
 				     			screen -dmS napcat bash -c "xvfb-run -a qq --no-sandbox -q $QQnumber";;
 					      	*)
-							    echo -e "\n\033[0;36m你已取消登录喵~\033[0m\n";;
+							    echo -e "\033[0;36m你已取消登录喵~\033[0m\n";;
 			  			    esac
 	                else
 						echo -e "\n\033[0;36m你怎么乱选？不给你登录了喵~\033[0m\n"
