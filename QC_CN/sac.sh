@@ -1257,53 +1257,56 @@ do
 \033[0;34m选项1 添加QQ号\033[0m
 \033[0;33m选项2 快速登录QQ号\033[0m
 \033[0;33m--------------------------------------\033[0m"
-     	  	read -n 1 chose
+     	  	read -s -n 1 chose
 		case $chose in 
 	            1)
 		    	echo -e "\n\033[0;33m请输入你的QQ机器人号码喵~\033[0m\n"
        			read new_QQ
        			echo -e "\n\033[0;33m请确认你的QQ机器人号码喵~（y|N）\033[0m\n"
       			echo -e "\033[0;36m$new_QQ\033[0m\n"
-	 		read -n 1 chose
+	 		read -s -n 1 chose
        			case $chose in 
 	        	    y|Y)
 	        		cp /opt/QQ/resources/app/app_launcher/napcat/config/onebot11.json /opt/QQ/resources/app/app_launcher/napcat/config/onebot11_$new_QQ.json
        				sed -i '17s/false/true/' /opt/QQ/resources/app/app_launcher/napcat/config/onebot11_3106620649.json
        				sed -i '18s/\[\]/\["ws:\/\/127.0.0.1:8080\/ws\]/' /opt/QQ/resources/app/app_launcher/napcat/config/onebot11_3106620649.json
-       				echo -e "\n\n\033[0;33m正在启动...请用你输入的QQ号扫码登录喵~\033[0m\n"
+       				echo -e "\n033[0;33m正在启动...请用你输入的QQ号扫码登录喵~\033[0m\n"
 	   			sleep 5
 				xvfb-run -a qq --no-sandbox;;
-			*)
+			    *)
 				echo -e "\033[0;32m你已取消登录喵~\033[0m\n";;
 	  		esac
 			;;
 		    2)
-	            	if ! ls -1 /opt/QQ/resources/app/app_launcher/napcat/config/ | awk -F'_' '{print $2}' | awk -F'.' '{print $1}' | awk '!a[$0]++{print}' | awk 'NF{a++;print "\n\n\033[0;33m"a"\033[0m""\033[0;33m.\033[0m","\033[0;33m"$0"\033[0m";next}1'; then
+	            if ! ls -1 /opt/QQ/resources/app/app_launcher/napcat/config/ | awk -F'_' '{print $2}' | awk -F'.' '{print $1}' | awk '!a[$0]++{print}' | awk 'NF{a++;print "\n\033[0;33m"a"\033[0m""\033[0;33m.\033[0m","\033[0;33m"$0"\033[0m";next}1'; then
 		    		echo -e "\n\033[0;31m没有登录过的QQ号，请先扫码添加QQ号喵~\033[0m"
-	         		echo -e "\033[0;31m请按任意键返回喵~\033[0m\n"
-	     			read -n 1
-	              		echo -e "\033[0;33m即将返回主菜单喵~\033[0m\n"
-	                	cd /root
+	         		echo -e "\033[0;31m请按任意键返回喵~\033[0m"
+	     			read -s -n 1
+	            	echo -e "\033[0;33m即将返回主菜单喵~\033[0m\n"
+	            	cd /root
 		    	else
-		    		echo -e "\033[0;36m请输入数字登录对应的QQ号喵~\033[0m\n"
-		    		read -n 1 QQchose
-	                	echo -e "\033[0;36m你确定要登录以下QQ号喵？(y|N)\033[0m"
-				QQnumber=$(ls -1 /opt/QQ/resources/app/app_launcher/napcat/config/ | awk -F'_' '{print $2}' | awk -F'.' '{print $1}' | awk '!a[$0]++{print}'| awk NF | awk -v QQchose=$QQchose NR==$QQchose)
-				echo $QQnumber
-	  			read -n 1 chose
-			     	case $chose in 
-	        	    	    y|Y)
-		     			screen -dmS napcat bash -c "xvfb-run -a qq --no-sandbox -q $QQnumber";;
-			      	    *)
-					echo -e "\033[0;36m你已取消登录喵~\033[0m\n";;
-	  			esac
-	     	    	fi
+		    		echo -e "\033[0;36m请输入数字登录对应的QQ号喵~\033[0m"
+		    		read -s -n 1 QQchose
+	                echo -e "\n\033[0;36m你确定要登录以下QQ号喵？(y|N)\033[0m"
+					if QQnumber=$(ls -1 /opt/QQ/resources/app/app_launcher/napcat/config/ | awk -F'_' '{print $2}' | awk -F'.' '{print $1}' | awk '!a[$0]++{print}'| awk NF | awk -v QQchose=$QQchose NR==$QQchose); then
+	    				echo -e "\n\033[0;33m$QQnumber\033[0m"
+		  			    read -s -n 1 chose
+					     	case $chose in 
+			        	    y|Y)
+				     			screen -dmS napcat bash -c "xvfb-run -a qq --no-sandbox -q $QQnumber";;
+					      	*)
+							    echo -e "\n\033[0;36m你已取消登录喵~\033[0m\n";;
+			  			    esac
+	                else
+						echo -e "\n\033[0;36m你怎么乱选？不给你登录了喵~\033[0m\n"
+		 			fi
+    			fi
 	   		;;
 	   	    *)
 			echo -e "\033[0;36m正在返回主菜单喵~\033[0m\n";;
-	  	esac
-		echo -e "\033[0;36mNapCatQQ已关闭, 即将返回主菜单\033[0m\n"
-            	cd ../
+	  		esac
+			echo -e "\033[0;36mNapCatQQ已关闭, 即将返回主菜单\033[0m\n"
+            cd ../
            	;; 
         5) 
             #启动Clewd
