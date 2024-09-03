@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-echo -e "\033[0;35m确定要更新吗?输入Y更新，或者按回车键退出喵~\033[0m\n"
+echo -e "\033[0;35m确定要更新吗?输入Y更新，或者按任意键退出喵~\033[0m\n"
 read -n 1 choice
 case "$choice" in
     y|Y )
@@ -14,7 +14,7 @@ case "$choice" in
            bash /root/sac.sh
         fi;;
    * )
-        echo -e "\033[0;33m你选择了不更新启动脚本，正在重新启动脚本喵...\n\033[0m"
+        echo -e "\n\033[0;33m你选择了不更新启动脚本，正在重新启动脚本喵...\n\033[0m"
         bash /root/sac.sh
         exit;;
 esac
