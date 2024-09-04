@@ -1290,7 +1290,7 @@ do
 		            echo $qList
 		    		read -s -n 1 QQchose
 					QQnumber=$(ls -1 /opt/QQ/resources/app/app_launcher/napcat/config/ | awk -F'_' '{print $2}' | awk -F'.' '{print $1}' | awk '!a[$0]++{print}'| awk NF | awk -v QQchose=$QQchose NR==$QQchose)
-					if [ ! "$QQnumber" ]; then
+					if [ "$QQnumber" ]; then
 	                	echo -e "\n\033[0;36m你确定要登录以下QQ号喵？(y|N)\033[0m"
 						echo -e "\n\033[0;33m$QQnumber\033[0m"
 		  			    read -s -n 1 chose
