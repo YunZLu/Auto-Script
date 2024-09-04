@@ -1305,7 +1305,7 @@ do
 		    		read -s -n 1 QQchose
 				QQnumber=$(ps -ef | grep napcat | awk '{print $0}' | awk -F'-q ' '{print $2}' | awk '!a[$0]++{print}'| awk NF | awk -v QQchose=$QQchose NR==$QQchose)
 					if [ "$QQnumber" ]; then
-	                		echo -e "\n\n\033[0;36m你确定要退出登录该QQ号喵？(y|N)\033[0m\n"
+	                		echo -e "\n\033[0;36m你确定要退出登录该QQ号喵？(y|N)\033[0m\n"
 					echo -e "\033[0;33mQQ：$QQnumber\033[0m"
 		  			read -s -n 1 chose
 						case $chose in 
