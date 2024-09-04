@@ -174,7 +174,7 @@ echo -e "\033[0;32mgo已安装喵~\n\033[0m"
 pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple
 echo -e "\n\033[0;32mpython已安装喵~\033[0m\n"
 
-while [ ! -d "clewd" ] || [ ! -f "clewd/config.js" ] || [ ! -d "SillyTavern" ] || [ ! -f "SillyTavern/start.sh" ] || [ ! -d "one-api" ] || [ ! -f "one-api/start.sh" ] || [ ! -d "/opt/QQ/resources/app/app_launcher/napcat" ] || [ ! -d "QChatGPT" ]
+while [ ! -d "/root/clewd" ] || [ ! -f "/root/clewd/config.js" ] || [ ! -d "/root/SillyTavern" ] || [ ! -f "/root/SillyTavern/start.sh" ] || [ ! -d "/root/one-api" ] || [ ! -f "/root/one-api/start.sh" ] || [ ! -d "/opt/QQ/resources/app/app_launcher/napcat" ] || [ ! -d "/root/QChatGPT" ]
 do
 
     if [ ! -d "/opt/QQ/resources/app/app_launcher/napcat" ]; then
