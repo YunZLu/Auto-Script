@@ -1231,6 +1231,7 @@ do
 	  		esac
 			;;
 		    2)
+      			#获取napcatQQ.json列表
 			qList=$(ls -1 /opt/QQ/resources/app/app_launcher/napcat/config/ | awk -F'_' '{print $2}' | awk -F'.' '{print $1}' | awk '!a[$0]++{print}' | awk 'NF{a++;print "\033[0;33m"a"\033[0m""\033[0;33m.\033[0m","\033[0;33m"$0"\033[0m\n";next}1')
 			if [ ! "$qList" ]; then
 		    		echo -e "\n\033[0;31m没有登录过的QQ号，请先扫码添加QQ号喵~\033[0m"
@@ -1239,7 +1240,7 @@ do
 	            		cd /root
 		    	else
 				echo -e "\033[0;36m请输入数字登录对应的QQ号喵~\033[0m\n"
-				echo $qList
+				echo "$qList"
 		    		read -s -n 1 QQchose
 				QQnumber=$(ls -1 /opt/QQ/resources/app/app_launcher/napcat/config/ | awk -F'_' '{print $2}' | awk -F'.' '{print $1}' | awk '!a[$0]++{print}'| awk NF | awk -v QQchose=$QQchose NR==$QQchose)
 					if [ "$QQnumber" ]; then
@@ -1248,6 +1249,9 @@ do
 		  			read -s -n 1 chose
 						case $chose in 
 			        	    	y|Y)
+		 		 			echo -e "\033[0;36mCtrl+A+D退出后台不退出登录，Ctrl+C退出登录喵~\033[0m"
+							echo -e "\033[0;36m看懂了请按任意键继续喵~\033[0m"
+       							read -n 1
 				     			screen -dmS napcat bash -c "xvfb-run -a qq --no-sandbox -q $QQnumber"
 							echo -e "\n\033[0;36m已执行登录命令，请检查登录状态喵~\033[0m\n";;
 					      	*)
@@ -1267,7 +1271,7 @@ do
 	            		cd /root
 		    	else
 				echo -e "\033[0;36m请选择需要查看后台的QQ号喵~\033[0m\n"
-				echo $qLogin
+				echo "$qLogin"
 		    		read -s -n 1 QQchose
 				QQnumber=$(ps -ef | grep napcat | awk '{print $0}' | awk -F'-q ' '{print $2}' | awk '!a[$0]++{print}'| awk NF | awk -v QQchose=$QQchose NR==$QQchose)
 					if [ "$QQnumber" ]; then
@@ -1289,6 +1293,36 @@ do
 		 			fi
     			fi
 	   		;;
+		    4)
+			qLogin=$(ps -ef | grep napcat | awk '{print $0}' | awk -F'-q ' '{print $2}' | awk '!a[$0]++{print}' | awk 'NF{a++;print "\033[0;33m"a"\033[0m""\033[0;33m.\033[0m","\033[0;33m"$0"\033[0m\n";next}1')
+			if [ ! "$qLogin" ]; then
+		    		echo -e "\n\033[0;31m你还没有登录的QQ号，你是在玩我喵？\033[0m\n"
+		    	else
+				echo -e "\033[0;36m请选择需要退出登录的QQ号喵~\033[0m\n"
+				echo "$qLogin"
+		    		read -s -n 1 QQchose
+				QQnumber=$(ps -ef | grep napcat | awk '{print $0}' | awk -F'-q ' '{print $2}' | awk '!a[$0]++{print}'| awk NF | awk -v QQchose=$QQchose NR==$QQchose)
+					if [ "$QQnumber" ]; then
+	                		echo -e "\n\033[0;36m你确定要退出登录该QQ号喵？(y|N)\033[0m"
+					echo -e "\033[0;33mQQ：$QQnumber\033[0m"
+		  			read -s -n 1 chose
+						case $chose in 
+			        	    	y|Y)
+		 					
+							echo -e "\033[0;36m看懂了请按任意键继续喵~\033[0m"
+       							read -n 1
+		 					PID=$(ps -ef | grep "SCREEN -dmS napcat bash -c xvfb-run -a qq --no-sandbox -q $QQnumber" | grep -v "grep" | awk -F' +' '{print $2}')
+				     			Kill -9 $PID
+	    						echo -e "\033[0;36mQQ：$QQnumber已退出登录喵~\033[0m";;
+					      	*)
+							echo -e "\n\033[0;36m你已取消查看后台喵~\033[0m\n";;
+			  			esac
+	                		else
+					echo -e "\n\033[0;31m你怎么乱选！不给你查了喵~\033[0m\n"
+		 			fi
+    			fi
+	   		;;
+      
 	   	    *)
 			echo -e "\n\033[0;31m你怎么乱选！不跟你玩了喵~\033[0m\n";;
 	  		esac
