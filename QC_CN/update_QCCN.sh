@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
 echo -e "\033[0;35m确定要更新吗?输入Y更新，或者按任意键退出喵~\033[0m"
 read -s -n 1 choice
