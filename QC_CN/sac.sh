@@ -1237,7 +1237,7 @@ do
 			;;
 		    2)
       			#获取napcatQQ.json列表
-			qList=$(ls -1 /opt/QQ/resources/app/app_launcher/napcat/config/ | awk -F'_' '{print $2}' | awk -F'。' '{print $1}' | awk '!a[$0]++{print}' | awk 'NF{a++;print "\033[0;33m"a"\033[0m""\033[0;33m.\033[0m","\033[0;33m"$0"\033[0m\n";next}1')
+			qList=$(ls -1 /opt/QQ/resources/app/app_launcher/napcat/config/ | awk -F'_' '{print $2}' | awk -F'.' '{print $1}' | awk '!a[$0]++{print}' | awk 'NF{a++;print "\033[0;33m"a"\033[0m""\033[0;33m.\033[0m","\033[0;33m"$0"\033[0m\n";next}1')
 			if [ ! "$qList" ]; then
 		    		echo -e "\n\033[0;31m没有登录过的QQ号，请先扫码添加QQ号喵~\033[0m"
 	         		echo -e "\033[0;31m请按任意键返回喵~\033[0m"
@@ -1305,13 +1305,13 @@ do
 		    		read -s -n 1 QQchose
 				QQnumber=$(ps -ef | grep napcat | awk '{print $0}' | awk -F'-q ' '{print $2}' | awk '!a[$0]++{print}'| awk NF | awk -v QQchose=$QQchose NR==$QQchose)
 					if [ "$QQnumber" ]; then
-	                		echo -e "\n\033[0;36m你确定要退出登录该QQ号喵？(y|N)\033[0m\n"
+	                		echo -e "\n\n\033[0;36m你确定要退出登录该QQ号喵？(y|N)\033[0m\n"
 					echo -e "\033[0;33mQQ：$QQnumber\033[0m"
 		  			read -s -n 1 chose
 						case $chose in 
 			        	    	y|Y)
 		 					PID=$(ps -ef | grep "SCREEN -dmS napcat bash -c xvfb-run -a qq --no-sandbox -q $QQnumber" | grep -v "grep" | awk -F' +' '{print $2}')
-				     			Kill -9 $PID
+				     			kill -9 $PID
 	    						echo -e "\033[0;36mQQ：$QQnumber已退出登录喵~\033[0m";;
 					      	*)
 							echo -e "\n\033[0;36m你已取消查看后台喵~\033[0m\n";;
@@ -1365,8 +1365,8 @@ do
       		              continue
       		        else
       	                      echo -e "\n\033[0;32m更新脚本下载成功，正在进入更新程序喵~\033[0m\n"
-			      chmod 777 ./update_QCCN.sh
-			      exec ./update_QCCN.sh
+			      chmod 777 /root/update_QCCN.sh
+			      exec /root/update_QCCN.sh
       		        fi
             fi
             done
