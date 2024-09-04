@@ -1327,7 +1327,7 @@ do
 	  		esac
 			echo -e "\033[0;33m3s后返回主菜单喵~\033[0m\n"
    			sleep 3
-            		cd ../
+            		cd /root
         	;; 
         5) 
             #启动Clewd
