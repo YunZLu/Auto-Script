@@ -1312,9 +1312,9 @@ do
 			        	    	y|Y)
 		 					PID=$(ps -ef | grep "SCREEN -dmS napcat bash -c xvfb-run -a qq --no-sandbox -q $QQnumber" | grep -v "grep" | awk -F' +' '{print $2}')
 				     			kill -9 $PID
-	    						echo -e "\033[0;36mQQ：$QQnumber已退出登录喵~\033[0m";;
+	    						echo -e "\n\033[0;36mQQ：$QQnumber已退出登录喵~\033[0m\n";;
 					      	*)
-							echo -e "\n\033[0;36m你已取消查看后台喵~\033[0m\n";;
+							echo -e "\n\033[0;36m你已取消退出登录喵~\033[0m\n";;
 			  			esac
 	                		else
 					echo -e "\n\033[0;31m你怎么乱选！不给你退了喵~\033[0m\n"
