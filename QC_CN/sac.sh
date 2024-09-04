@@ -1281,7 +1281,7 @@ do
 		  			read -s -n 1 chose
 						case $chose in 
 			        	    	y|Y)
-		 					echo -e "\033[0;36mCtrl+A+D退出后台不退出登录，Ctrl+C退出登录喵~\033[0m"
+		 					echo -e "\n\033[0;36mCtrl+A+D退出后台不退出登录，Ctrl+C退出登录喵~\033[0m"
 							echo -e "\033[0;36m看懂了请按任意键继续喵~\033[0m"
        							read -n 1
 		 					PID=$(ps -ef | grep "SCREEN -dmS napcat bash -c xvfb-run -a qq --no-sandbox -q $QQnumber" | grep -v "grep" | awk -F' +' '{print $2}')
