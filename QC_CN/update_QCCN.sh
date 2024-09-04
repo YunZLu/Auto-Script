@@ -11,6 +11,7 @@ case "$choice" in
            echo -e "\n\033[0;31m更新失败了，正在帮你重试，请稍等一下喵~\n\033[0m"
         else
            echo -e "\n\033[0;32m更新成功，正在重新启动脚本喵...\n\033[0m"
+           chmod 777 ./sac.sh
            exec ./sac.sh
         fi;;
    * )
