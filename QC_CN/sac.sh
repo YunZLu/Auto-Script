@@ -1232,7 +1232,7 @@ do
 	   			sleep 2
 				xvfb-run -a qq --no-sandbox;;
 			    *)
-				echo -e "\033[0;32m你已取消登录喵~\033[0m\n";;
+				echo -e "\n\033[0;32m你已取消登录喵~\033[0m\n";;
 	  		esac
 			;;
 		    2)
