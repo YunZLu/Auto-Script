@@ -1178,7 +1178,7 @@ do
         1) 
             #启动One-Api
 	    ps -ef | grep one-api | awk '{print$2}' | xargs kill -9
-            cd one-api
+            cd /root/one-api
             bash start.sh
             echo "One-Api已关闭, 即将返回主菜单"
             cd ../
@@ -1186,7 +1186,7 @@ do
         2) 
             #启动SillyTavern
 	    ps -ef | grep server.js | awk '{print$2}' | xargs kill -9
-            cd SillyTavern
+            cd /root/SillyTavern
 	    bash start.sh
             echo "酒馆已关闭, 即将返回主菜单"
             cd ../
@@ -1223,8 +1223,8 @@ do
        			case $chose in 
 	        	    y|Y)
 	        		cp /opt/QQ/resources/app/app_launcher/napcat/config/onebot11.json /opt/QQ/resources/app/app_launcher/napcat/config/onebot11_$new_QQ.json
-       				sed -i '17s/false/true/' /opt/QQ/resources/app/app_launcher/napcat/config/onebot11_$new_QQ.json
-       				sed -i '18s/\[\]/\["ws:\/\/127.0.0.1:8080\/ws\]/' /opt/QQ/resources/app/app_launcher/napcat/config/onebot11_$new_QQ.json
+       				sed -i '17秒/false/true/' /opt/QQ/resources/app/app_launcher/napcat/config/onebot11_$new_QQ.json
+       				sed -i '18秒/\[\]/\["ws:\/\/127.0.0.1:8080\/ws\]/' /opt/QQ/resources/app/app_launcher/napcat/config/onebot11_$new_QQ.json
 	   		 	echo -e "\033[0;36mCtrl+A+D退出后台不退出登录，Ctrl+C退出登录喵~\033[0m"
 				echo -e "\033[0;36m看懂了请按任意键继续喵~\033[0m"
        				read -n 1
@@ -1334,7 +1334,7 @@ do
             port=$(grep -oP '"Port":\s*\K\d+' clewd/config.js)
             echo "端口为$port, 出现 (x)Login in {邮箱} 代表启动成功, 后续出现AI无法应答等报错请检查本窗口喵。"
 			ps -ef | grep clewd.js | awk '{print$2}' | xargs kill -9
-            cd clewd
+            cd /root/clewd
             bash start.sh
             echo "Clewd已关闭, 即将返回主菜单"
             cd ../
@@ -1354,7 +1354,7 @@ do
             ;; 
         9)
             # 更新脚本
-      	    rm -rf update_QCCN.sh
+      	    rm -rf /root/update_QCCN.sh
       	    while [ ! -f "update_QCCN.sh" ]
             do
                 if [ ! -f "update_QCCN.sh" ]; then
