@@ -1224,6 +1224,9 @@ do
 	        		cp /opt/QQ/resources/app/app_launcher/napcat/config/onebot11.json /opt/QQ/resources/app/app_launcher/napcat/config/onebot11_$new_QQ.json
        				sed -i '17s/false/true/' /opt/QQ/resources/app/app_launcher/napcat/config/onebot11_$new_QQ.json
        				sed -i '18s/\[\]/\["ws:\/\/127.0.0.1:8080\/ws\]/' /opt/QQ/resources/app/app_launcher/napcat/config/onebot11_$new_QQ.json
+	   		 	echo -e "\033[0;36mCtrl+A+D退出后台不退出登录，Ctrl+C退出登录喵~\033[0m"
+				echo -e "\033[0;36m看懂了请按任意键继续喵~\033[0m"
+       				read -n 1
        				echo -e "\033[0;33m正在启动...请用你输入的QQ号扫码登录喵~\033[0m\n"
 	   			sleep 2
 				xvfb-run -a qq --no-sandbox;;
@@ -1250,11 +1253,8 @@ do
 		  			read -s -n 1 chose
 						case $chose in 
 			        	    	y|Y)
-		 		 			echo -e "\033[0;36mCtrl+A+D退出后台不退出登录，Ctrl+C退出登录喵~\033[0m"
-							echo -e "\033[0;36m看懂了请按任意键继续喵~\033[0m"
-       							read -n 1
 				     			screen -dmS napcat bash -c "xvfb-run -a qq --no-sandbox -q $QQnumber"
-							echo -e "\n\033[0;36m已执行登录命令，请检查登录状态喵~\033[0m\n";;
+							echo -e "\n\033[0;36m已执行登录命令，可以在后台检查登录状态喵~\033[0m\n";;
 					      	*)
 							echo -e "\n\033[0;36m你已取消登录喵~\033[0m\n";;
 			  			esac
@@ -1327,7 +1327,7 @@ do
 	   	    *)
 			echo -e "\n\033[0;31m你怎么乱选！不跟你玩了喵~\033[0m\n";;
 	  		esac
-			echo -e "\033[0;33m即将返回主菜单喵~\033[0m\n"
+			echo -e "\033[0;33m3s后返回主菜单喵~\033[0m\n"
    			sleep 3
             		cd ../
         	;; 
