@@ -1273,7 +1273,7 @@ do
 	     			read -s -n 1
 	            		cd /root
 		    	else
-				echo -e "\n\033[0;36m请选择需要查看后台的QQ号喵~\033[0m"
+				echo -e "\n\033[0;36m请选择需要查看后台的QQ号喵~\033[0m\n"
 				echo "$qLogin"
 		    		read -s -n 1 QQchose
 				QQnumber=$(ps -ef | grep napcat | awk '{print $0}' | awk -F'-q ' '{print $2}' | awk '!a[$0]++{print}'| awk NF | awk -v QQchose=$QQchose NR==$QQchose)
