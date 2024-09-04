@@ -1218,7 +1218,7 @@ do
 		    	echo -e "\n\033[0;33m请输入你的QQ机器人号码喵~\033[0m\n"
        			read -p "QQ：" new_QQ
        			echo -e "\n\033[0;33m请确认你的QQ机器人号码喵~（y|N）\033[0m\n"
-      			echo -e "\033[0;37mQQ：$new_QQ\033[0m\n"
+      			echo -e "\033[0;33mQQ：$new_QQ\033[0m"
 	 		read -s -n 1 chose
        			case $chose in 
 	        	    y|Y)
