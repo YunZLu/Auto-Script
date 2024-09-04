@@ -1210,6 +1210,7 @@ do
 \033[0;37m选项2 快速登录QQ号\033[0m
 \033[0;34m选项3 查看后台情况\033[0m
 \033[0;37m选项4 退出登陆QQ号\033[0m
+\033[0;34m选项5 删除QQ号\033[0m
 \033[0;33m--------------------------------------\033[0m
 \033[0;35m不准选其他选项，听到了喵？"
 		read -s -n 1 chose
@@ -1225,7 +1226,7 @@ do
 	        		cp /opt/QQ/resources/app/app_launcher/napcat/config/onebot11.json /opt/QQ/resources/app/app_launcher/napcat/config/onebot11_$new_QQ.json
        				sed -i '17s/false/true/' /opt/QQ/resources/app/app_launcher/napcat/config/onebot11_$new_QQ.json
        				sed -i '18s/\[\]/\["ws:\/\/127.0.0.1:8080\/ws\]/' /opt/QQ/resources/app/app_launcher/napcat/config/onebot11_$new_QQ.json
-	   		 	echo -e "\033[0;36mCtrl+A+D退出后台不退出登录，Ctrl+C退出登录喵~\033[0m"
+	   		 	echo -e "\n\033[0;36mCtrl+A+D退出后台不退出登录，Ctrl+C退出登录喵~\033[0m"
 				echo -e "\033[0;36m看懂了请按任意键继续喵~\033[0m"
        				read -n 1
        				echo -e "\033[0;33m正在启动...请用你输入的QQ号扫码登录喵~\033[0m\n"
@@ -1237,7 +1238,7 @@ do
 			;;
 		    2)
       			#获取napcatQQ.json列表
-			qList=$(ls -1 /opt/QQ/resources/app/app_launcher/napcat/config/ | awk -F'_' '{print $2}' | awk -F'.' '{print $1}' | awk '!a[$0]++{print}' | awk 'NF{a++;print "\033[0;33m"a"\033[0m""\033[0;33m.\033[0m","\033[0;33m"$0"\033[0m";next}1')
+			qList=$(ls -1 /opt/QQ/resources/app/app_launcher/napcat/config/ | awk -F'_' '{print $2}' | awk -F'.' '{print $1}' | awk '!a[$0]++{print}' | awk 'NF{a++;print "\033[0;33m"a"\033[0m""\033[0;33m.\033[0m","\033[0;33m"$0"\033[0m\n";next}1')
 			if [ ! "$qList" ]; then
 		    		echo -e "\n\033[0;31m没有登录过的QQ号，请先扫码添加QQ号喵~\033[0m"
 	         		echo -e "\033[0;31m请按任意键返回喵~\033[0m"
@@ -1321,7 +1322,32 @@ do
 		 			fi
     			fi
 	   		;;
-      
+		    5)
+      			#获取napcatQQ.json列表
+			qList=$(ls -1 /opt/QQ/resources/app/app_launcher/napcat/config/ | awk -F'_' '{print $2}' | awk -F'.' '{print $1}' | awk '!a[$0]++{print}' | awk 'NF{a++;print "\033[0;33m"a"\033[0m""\033[0;33m.\033[0m","\033[0;33m"$0"\033[0m\n";next}1')
+			if [ ! "$qList" ]; then
+		    		echo -e "\n\033[0;31m没有登录过的QQ号，你是在玩我喵喵大人喵？\033[0m"
+		    	else
+				echo -e "\n\033[0;36m请输入数字删除对应的QQ号喵~\033[0m\n"
+				echo "$qList"
+		    		read -s -n 1 QQchose
+				QQnumber=$(ls -1 /opt/QQ/resources/app/app_launcher/napcat/config/ | awk -F'_' '{print $2}' | awk -F'.' '{print $1}' | awk '!a[$0]++{print}'| awk NF | awk -v QQchose=$QQchose NR==$QQchose)
+					if [ "$QQnumber" ]; then
+	                		echo -e "\n\033[0;36m你确定要删除以下QQ号喵？(y|N)\033[0m\n"
+					echo -e "\033[0;33mQQ："$QQnumber"\033[0m"
+		  			read -s -n 1 chose
+						case $chose in 
+			        	    	y|Y)
+				     			rm -rf /opt/QQ/resources/app/app_launcher/napcat/config/onebot11.json /opt/QQ/resources/app/app_launcher/napcat/config/onebot11_$QQnumber.json
+							echo -e "\n\033[0;36m"$QQnumber"已删除喵~\033[0m\n";;
+					      	*)
+							echo -e "\n\033[0;36m你已取消删除喵~\033[0m\n";;
+			  			esac
+	                		else
+					echo -e "\n\033[0;31m你怎么乱选！不给你删除了喵~\033[0m\n"
+		 			fi
+    			fi
+	   		;;
 	   	    *)
 			echo -e "\n\033[0;31m你怎么乱选！不跟你玩了喵~\033[0m\n";;
 	  		esac
