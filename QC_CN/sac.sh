@@ -1365,10 +1365,8 @@ do
       		              echo -e "\n\033[0;31m更新脚本下载失败了，正在重试喵...\033[0m\n"
       		              continue
       		        else
-      	                      echo -e "\n\033[0;32m更新脚本下载成功，退出脚本后，请复制以下命令：~\033[0m\n"
-			      echo -e "\033[0;31mbash update_QCCN.sh\033[0m\n"
-			      echo -e "\033[0;31m输入终端，进行更新喵~\033[0m\n"
-	 		      exit
+      	                      echo -e "\n\033[0;32m更新脚本下载成功，正在进入更新程序喵~\033[0m\n"
+			      exec .update_QCCN.sh
       		        fi
             fi
             done
