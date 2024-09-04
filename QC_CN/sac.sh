@@ -1248,7 +1248,7 @@ do
 		    		read -s -n 1 QQchose
 				QQnumber=$(ls -1 /opt/QQ/resources/app/app_launcher/napcat/config/ | awk -F'_' '{print $2}' | awk -F'.' '{print $1}' | awk '!a[$0]++{print}'| awk NF | awk -v QQchose=$QQchose NR==$QQchose)
 					if [ "$QQnumber" ]; then
-	                		echo -e "\n\033[0;36m你确定要登录以下QQ号喵？(y|N)\033[0m"
+	                		echo -e "\n\033[0;36m你确定要登录以下QQ号喵？(y|N)\033[0m\n"
 					echo -e "\033[0;33mQQ：$QQnumber\033[0m"
 		  			read -s -n 1 chose
 						case $chose in 
@@ -1276,7 +1276,7 @@ do
 		    		read -s -n 1 QQchose
 				QQnumber=$(ps -ef | grep napcat | awk '{print $0}' | awk -F'-q ' '{print $2}' | awk '!a[$0]++{print}'| awk NF | awk -v QQchose=$QQchose NR==$QQchose)
 					if [ "$QQnumber" ]; then
-	                		echo -e "\n\033[0;36m你确定要查看以下QQ号的后台喵？(y|N)\033[0m"
+	                		echo -e "\n\033[0;36m你确定要查看以下QQ号的后台喵？(y|N)\033[0m\n"
 					echo -e "\033[0;33mQQ：$QQnumber\033[0m"
 		  			read -s -n 1 chose
 						case $chose in 
@@ -1304,12 +1304,11 @@ do
 		    		read -s -n 1 QQchose
 				QQnumber=$(ps -ef | grep napcat | awk '{print $0}' | awk -F'-q ' '{print $2}' | awk '!a[$0]++{print}'| awk NF | awk -v QQchose=$QQchose NR==$QQchose)
 					if [ "$QQnumber" ]; then
-	                		echo -e "\n\033[0;36m你确定要退出登录该QQ号喵？(y|N)\033[0m"
+	                		echo -e "\n\033[0;36m你确定要退出登录该QQ号喵？(y|N)\033[0m\n"
 					echo -e "\033[0;33mQQ：$QQnumber\033[0m"
 		  			read -s -n 1 chose
 						case $chose in 
 			        	    	y|Y)
-		 					
 							echo -e "\033[0;36m看懂了请按任意键继续喵~\033[0m"
        							read -n 1
 		 					PID=$(ps -ef | grep "SCREEN -dmS napcat bash -c xvfb-run -a qq --no-sandbox -q $QQnumber" | grep -v "grep" | awk -F' +' '{print $2}')
@@ -1366,8 +1365,9 @@ do
       		              echo -e "\n\033[0;31m更新脚本下载失败了，正在重试喵...\033[0m\n"
       		              continue
       		        else
-      	                      echo -e "\n\033[0;32m更新脚本下载成功，正在启动更新程序喵~\033[0m\n"
-			      bash update_QCCN.sh
+      	                      echo -e "\n\033[0;32m更新脚本下载成功，退出脚本后，请复制以下命令：~\033[0m\n"
+			      echo -e "\033[0;31mbash update_QCCN.sh\033[0m\n"
+			      echo -e "\033[0;31m输入终端，进行更新喵~\033[0m\n"
 	 		      exit
       		        fi
             fi
