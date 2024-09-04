@@ -1262,7 +1262,7 @@ do
 			qLogin=$(ps -ef | grep napcat | awk '{print $0}' | awk -F'-q ' '{print $2}' | awk '!a[$0]++{print}' | awk 'NF{a++;print "\033[0;33m"a"\033[0m""\033[0;33m.\033[0m","\033[0;33m"$0"\033[0m\n";next}1')
 			if [ ! "$qLogin" ]; then
 		    		echo -e "\n\033[0;31m你还没有登录的QQ号，请先登录QQ号喵~\033[0m"
-	         		echo -e "\033[0;31m请按任意键返回喵~\033[0m"
+	         		echo -e "\033[0;31m请按任意键返回喵~\033[0m\n"
 	     			read -s -n 1
 	            		cd /root
 		    	else
@@ -1276,6 +1276,9 @@ do
 		  			read -s -n 1 chose
 						case $chose in 
 			        	    	y|Y)
+		 					echo -e "\033[0;36mCtrl+A+D退出后台不退出登录，Ctrl+C退出登录喵~\033[0m"
+							echo -e "\033[0;36m看懂了请按任意键继续喵~\033[0m"
+       							read -n 1
 		 					PID=$(ps -ef | grep "SCREEN -dmS napcat bash -c xvfb-run -a qq --no-sandbox -q $QQnumber" | grep -v "grep" | awk -F' +' '{print $2}')
 				     			screen -r $PID.napcat;;
 					      	*)
