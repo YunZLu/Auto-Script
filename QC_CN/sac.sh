@@ -90,9 +90,9 @@ eof
     DEBIAN_FRONTEND=noninteractive apt-get install golang -y
         if ! command -v go &> /dev/null; then
         echo -e "\n\033[0;31mgo下载失败了，正在重试中，请稍等一下喵~\033[0m\n"
-	sleep 2
+		sleep 2
         continue
-	else
+		else
         echo -e "\n\033[0;32mgo安装成功喵~\033[0m\n"
 	#重装ca-certificates解决go mod X509问题
  	echo -e "\033[0;33m正在重装ca-certificates，请稍等一下喵~\033[0m\n"
@@ -1257,13 +1257,13 @@ do
 \033[0;34m选项1 添加QQ号\033[0m
 \033[0;33m选项2 快速登录QQ号\033[0m
 \033[0;33m--------------------------------------\033[0m"
-     	  	read -s -n 1 chose
+		read -s -n 1 chose
 		case $chose in 
 	            1)
 		    	echo -e "\n\033[0;33m请输入你的QQ机器人号码喵~\033[0m\n"
-       			read new_QQ
+       			read -p "QQ："new_QQ
        			echo -e "\n\033[0;33m请确认你的QQ机器人号码喵~（y|N）\033[0m\n"
-      			echo -e "\033[0;36m$new_QQ\033[0m\n"
+      			echo -e "\033[0;36mQQ：$new_QQ\033[0m\n"
 	 		read -s -n 1 chose
        			case $chose in 
 	        	    y|Y)
@@ -1278,31 +1278,31 @@ do
 	  		esac
 			;;
 		    2)
-	  			qList=$(ls -1 /opt/QQ/resources/app/app_launcher/napcat/config/ | awk -F'_' '{print $2}' | awk -F'.' '{print $1}' | awk '!a[$0]++{print}' | awk 'NF{a++;print "\033[0;33m"a"\033[0m""\033[0;33m.\033[0m","\033[0;33m"$0"\033[0m\n";next}1')
-	            if [ ! "$qList" ]; then
+			qList=$(ls -1 /opt/QQ/resources/app/app_launcher/napcat/config/ | awk -F'_' '{print $2}' | awk -F'。' '{print $1}' | awk '!a[$0]++{print}' | awk 'NF{a++;print "\033[0;33m"a"\033[0m""\033[0;33m.\033[0m","\033[0;33m"$0"\033[0m\n";next}1')
+			if [ ! "$qList" ]; then
 		    		echo -e "\n\033[0;31m没有登录过的QQ号，请先扫码添加QQ号喵~\033[0m"
 	         		echo -e "\033[0;31m请按任意键返回喵~\033[0m"
 	     			read -s -n 1
-	            	echo -e "\033[0;33m即将返回主菜单喵~\033[0m\n"
-	            	cd /root
+	            		echo -e "\033[0;33m即将返回主菜单喵~\033[0m\n"
+	            		cd /root
 		    	else
-		    		echo -e "\033[0;36m请输入数字登录对应的QQ号喵~\033[0m"
-		            echo $qList
+				echo -e "\033[0;36m请输入数字登录对应的QQ号喵~\033[0m"
+				echo $qList
 		    		read -s -n 1 QQchose
-					QQnumber=$(ls -1 /opt/QQ/resources/app/app_launcher/napcat/config/ | awk -F'_' '{print $2}' | awk -F'.' '{print $1}' | awk '!a[$0]++{print}'| awk NF | awk -v QQchose=$QQchose NR==$QQchose)
+				QQnumber=$(ls -1 /opt/QQ/resources/app/app_launcher/napcat/config/ | awk -F'_' '{print $2}' | awk -F'.' '{print $1}' | awk '!a[$0]++{print}'| awk NF | awk -v QQchose=$QQchose NR==$QQchose)
 					if [ "$QQnumber" ]; then
-	                	echo -e "\n\033[0;36m你确定要登录以下QQ号喵？(y|N)\033[0m"
-						echo -e "\n\033[0;33m$QQnumber\033[0m"
-		  			    read -s -n 1 chose
-					     	case $chose in 
-			        	    y|Y)
+	                		echo -e "\n\033[0;36m你确定要登录以下QQ号喵？(y|N)\033[0m"
+					echo -e "\033[0;33mQQ：$QQnumber\033[0m"
+		  			read -s -n 1 chose
+						case $chose in 
+			        	    	y|Y)
 				     			screen -dmS napcat bash -c "xvfb-run -a qq --no-sandbox -q $QQnumber"
-								echo -e "\n\033[0;36m已执行登录命令，请检查登录状态喵~\033[0m\n";;
+							echo -e "\n\033[0;36m已执行登录命令，请检查登录状态喵~\033[0m\n";;
 					      	*)
-							    echo -e "\n\033[0;36m你已取消登录喵~\033[0m\n";;
-			  			    esac
-	                else
-						echo -e "\n\033[0;31m你怎么乱选？不给你登录了喵~\033[0m\n"
+							echo -e "\n\033[0;36m你已取消登录喵~\033[0m\n";;
+			  			esac
+	                		else
+					echo -e "\n\033[0;31m你怎么乱选？不给你登录了喵~\033[0m\n"
 		 			fi
     			fi
 	   		;;
@@ -1310,8 +1310,9 @@ do
 			echo -e "\n\033[0;31m你怎么乱选？不给你登录了喵~\033[0m\n";;
 	  		esac
 			echo -e "\033[0;33m即将返回主菜单\033[0m\n"
-            cd ../
-           	;; 
+   			sleep 3
+            		cd ../
+        	;; 
         5) 
             #启动Clewd
             port=$(grep -oP '"Port":\s*\K\d+' clewd/config.js)
