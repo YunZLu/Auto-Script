@@ -1278,7 +1278,7 @@ do
 	  		esac
 			;;
 		    2)
-	            if ! ls -1 /opt/QQ/resources/app/app_launcher/napcat/config/ | awk -F'_' '{print $2}' | awk -F'.' '{print $1}' | awk '!a[$0]++{print}'| awk NF | awk NR==1; then
+	            if [ $(ls -1 /opt/QQ/resources/app/app_launcher/napcat/config/ | awk -F'_' '{print $2}' | awk -F'.' '{print $1}' | awk '!a[$0]++{print}'| awk NF | awk NR==1) ]; then
 		    		echo -e "\n\033[0;31m没有登录过的QQ号，请先扫码添加QQ号喵~\033[0m"
 	         		echo -e "\033[0;31m请按任意键返回喵~\033[0m"
 	     			read -s -n 1
@@ -1287,11 +1287,11 @@ do
 		    	else
 		    		echo -e "\033[0;36m请输入数字登录对应的QQ号喵~\033[0m"
 		    		read -s -n 1 QQchose
-					if QQnumber=$(ls -1 /opt/QQ/resources/app/app_launcher/napcat/config/ | awk -F'_' '{print $2}' | awk -F'.' '{print $1}' | awk '!a[$0]++{print}'| awk NF | awk -v QQchose=$QQchose NR==$QQchose); then
+					if [ ! QQnumber=$(ls -1 /opt/QQ/resources/app/app_launcher/napcat/config/ | awk -F'_' '{print $2}' | awk -F'.' '{print $1}' | awk '!a[$0]++{print}'| awk NF | awk -v QQchose=$QQchose NR==$QQchose) ]; then
 	                	echo -e "\n\033[0;36m你确定要登录以下QQ号喵？(y|N)\033[0m"
 						echo -e "\n\033[0;33m$QQnumber\033[0m"
 		  			    read -s -n 1 chose
-					     	case $chose in 
+					     	case $chose 在 
 			        	    y|Y)
 				     			screen -dmS napcat bash -c "xvfb-run -a qq --no-sandbox -q $QQnumber"
 								echo -e "\n\033[0;36m已执行登录命令，请检查登录状态喵~\033[0m\n";;
