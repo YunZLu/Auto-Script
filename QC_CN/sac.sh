@@ -1366,7 +1366,7 @@ do
       		              continue
       		        else
       	                      echo -e "\n\033[0;32m更新脚本下载成功，正在进入更新程序喵~\033[0m\n"
-			      exec .update_QCCN.sh
+			      exec ./update_QCCN.sh
       		        fi
             fi
             done
