@@ -1339,7 +1339,7 @@ do
 						case $chose in 
 			        	    	y|Y)
 				     			rm -rf /opt/QQ/resources/app/app_launcher/napcat/config/onebot11.json /opt/QQ/resources/app/app_launcher/napcat/config/onebot11_$QQnumber.json
-							echo -e "\n\033[0;36m"$QQnumber"已删除喵~\033[0m\n";;
+							echo -e "\n\033[0;36mQQ："$QQnumber" 已删除喵~\033[0m\n";;
 					      	*)
 							echo -e "\n\033[0;36m你已取消删除喵~\033[0m\n";;
 			  			esac
