@@ -1292,7 +1292,7 @@ do
 	                	echo -e "\n\033[0;36m你确定要登录以下QQ号喵？(y|N)\033[0m"
 						echo -e "\n\033[0;33m$QQnumber\033[0m"
 		  			    read -s -n 1 chose
-					     	case $chose 在 
+					     	case $chose in 
 			        	    y|Y)
 				     			screen -dmS napcat bash -c "xvfb-run -a qq --no-sandbox -q $QQnumber"
 								echo -e "\n\033[0;36m已执行登录命令，请检查登录状态喵~\033[0m\n";;
