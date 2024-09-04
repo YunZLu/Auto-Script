@@ -1231,7 +1231,7 @@ do
 	  		esac
 			;;
 		    2)
-			qList=$(ls -1 /opt/QQ/resources/app/app_launcher/napcat/config/ | awk -F'_' '{print $2}' | awk -F'。' '{print $1}' | awk '!a[$0]++{print}' | awk 'NF{a++;print "\033[0;33m"a"\033[0m""\033[0;33m.\033[0m","\033[0;33m"$0"\033[0m\n";next}1')
+			qList=$(ls -1 /opt/QQ/resources/app/app_launcher/napcat/config/ | awk -F'_' '{print $2}' | awk -F'.' '{print $1}' | awk '!a[$0]++{print}' | awk 'NF{a++;print "\033[0;33m"a"\033[0m""\033[0;33m.\033[0m","\033[0;33m"$0"\033[0m\n";next}1')
 			if [ ! "$qList" ]; then
 		    		echo -e "\n\033[0;31m没有登录过的QQ号，请先扫码添加QQ号喵~\033[0m"
 	         		echo -e "\033[0;31m请按任意键返回喵~\033[0m"
@@ -1276,7 +1276,8 @@ do
 		  			read -s -n 1 chose
 						case $chose in 
 			        	    	y|Y)
-				     			screen -r $QQnumber.napcat;;
+		 					PID=$(ps -ef | grep "SCREEN -dmS napcat bash -c xvfb-run -a qq --no-sandbox -q $QQnumber" | grep -v "grep" | awk -F' +' '{print $2}')
+				     			screen -r $PID.napcat;;
 					      	*)
 							echo -e "\n\033[0;36m你已取消查看后台喵~\033[0m\n";;
 			  			esac
