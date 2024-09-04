@@ -357,53 +357,6 @@ done
 #设置酒馆 获取等级
 #\033[0;33m当前版本:\033[0m$st_version \033[0;33m最新版本:\033[0m\033[5;36m$st_latest\033[0m
 
-function NapCatQQSettings {
-
-    echo -e "\033[0;36m请选择选一个执行喵~\033[0m
-\033[0;33m--------------------------------------\033[0m
-\033[0;33m选项1 扫码添加QQ号
-\033[0;37m选项2 快速登录QQ号
-\033[0;33m选项3 添加自动登录QQ号
-\033[0;37m选项4 修改自动登录QQ号
-\033[0;33m选项5 删除自动登录QQ号
-\033[0;37m选项6 查看自动登录QQ号
-\033[0;33m选项7 查看QQ napcat后台
-\033[0;33m--------------------------------------\033[0m
-\033[0;31m选项0 更新 NapCatQQ\033[0m
-\033[0;33m--------------------------------------\033[0m
-"
-    read -n 1 option
-    echo
-    case $option in 
-        1) 
-            # 扫码添加QQ号
-            xvfb-run -a qq --no-sandbox
-            ;;
-        2)
-            # 快速登录QQ号
-            if ! ls -1 /opt/QQ/resources/app/app_launcher/napcat/config/ | awk -F'_' '{print $2}' | awk -F'.' '{print $1}' | awk '!a[$0]++{print}' | awk 'NF{a++;print "\033[0;33m"a"\033[0m""\033[0;33m.\033[0m","\033[0;33m"$0"\033[0m\n";next}1'; then
-	    	echo -e "\033[0;36m没有登录过的QQ号，请先扫码添加QQ号喵~\033[0m"
-	    else
-	    	echo -e "\033[0;36m请输入数字登录对应的QQ号喵~\033[0m"
-	    	read -n 1 QQchose
-                echo -e "\033[0;36m你确定要登录以下QQ号喵？(y|N)\033[0m"
-		QQnumber = ls -1 /opt/QQ/resources/app/app_launcher/napcat/config/ | awk -F'_' '{print $2}' | awk -F'.' '{print $1}' | awk '!a[$0]++{print}'| awk NF | awk NR==$QQchose
-                read -n 1 chose
-		case $option in 
-        	    y|Y)
-	     		screen -dmS napcat bash -c "xvfb-run -a qq --no-sandbox -q $QQnumber";;
-		      *)
-			echo -e "\033[0;36m你已选择不登陆该QQ喵~\033[0m";;
-  		esac
-     	    fi
-	    
-	    ;;
-	      *)
-            echo "什么都没有执行喵~"
-            ;;
-    esac
-}
-
 function QChatGPTSettings {
 
     echo -e "\033[0;36m请选择选一个执行喵~\033[0m
@@ -1210,11 +1163,10 @@ do
 \033[0;37m选项4 启动NapCatQQ\033[0m
 \033[0;34m选项5 启动Clewd\033[0m
 \033[0;37m选项6 QChatGPT设置\033[0m
-\033[0;33m选项7 NapCatQQ设置\033[0m
-\033[0;37m选项8 酒馆设置\033[0m
-\033[0;33m选项9 Clewd设置\033[0m
+\033[0;37m选项7 酒馆设置\033[0m
+\033[0;33m选项8 Clewd设置\033[0m
 \033[0;33m--------------------------------------\033[0m
-\033[0;31m选项a 更新脚本\033[0m
+\033[0;31m选项9 更新脚本\033[0m
 \033[0;33m--------------------------------------\033[0m
 \033[0;35m不准选其他选项，听到了吗？
 \033[0m\n(⇀‸↼‶)"
@@ -1256,6 +1208,7 @@ do
 \033[0;33m--------------------------------------\033[0m
 \033[0;34m选项1 添加QQ号\033[0m
 \033[0;33m选项2 快速登录QQ号\033[0m
+\033[0;34m选项3 查看后台情况\033[0m
 \033[0;33m--------------------------------------\033[0m"
 		read -s -n 1 chose
 		case $chose in 
@@ -1263,7 +1216,7 @@ do
 		    	echo -e "\n\033[0;33m请输入你的QQ机器人号码喵~\033[0m\n"
        			read -p "QQ："new_QQ
        			echo -e "\n\033[0;33m请确认你的QQ机器人号码喵~（y|N）\033[0m\n"
-      			echo -e "\033[0;36mQQ：$new_QQ\033[0m\n"
+      			echo -e "\033[0;37mQQ：$new_QQ\033[0m\n"
 	 		read -s -n 1 chose
        			case $chose in 
 	        	    y|Y)
@@ -1271,7 +1224,7 @@ do
        				sed -i '17s/false/true/' /opt/QQ/resources/app/app_launcher/napcat/config/onebot11_$new_QQ.json
        				sed -i '18s/\[\]/\["ws:\/\/127.0.0.1:8080\/ws\]/' /opt/QQ/resources/app/app_launcher/napcat/config/onebot11_$new_QQ.json
        				echo -e "\033[0;33m正在启动...请用你输入的QQ号扫码登录喵~\033[0m\n"
-	   			sleep 3
+	   			sleep 2
 				xvfb-run -a qq --no-sandbox;;
 			    *)
 				echo -e "\033[0;32m你已取消登录喵~\033[0m\n";;
@@ -1306,8 +1259,36 @@ do
 		 			fi
     			fi
 	   		;;
+		    3)
+			qLogin=$(ps -ef | grep napcat | awk '{print $0}' | awk -F'-q ' '{print $2}' | awk '!a[$0]++{print}' | awk 'NF{a++;print "\033[0;33m"a"\033[0m""\033[0;33m.\033[0m","\033[0;33m"$0"\033[0m\n";next}1')
+			if [ ! "$qLogin" ]; then
+		    		echo -e "\n\033[0;31m你还没有登录的QQ号，请先登录QQ号喵~\033[0m"
+	         		echo -e "\033[0;31m请按任意键返回喵~\033[0m"
+	     			read -s -n 1
+	            		echo -e "\033[0;33m即将返回主菜单喵~\033[0m\n"
+	            		cd /root
+		    	else
+				echo -e "\033[0;36m请选择需要查看后台的QQ号喵~\033[0m\n"
+				echo $qLogin
+		    		read -s -n 1 QQchose
+				QQnumber=$(ps -ef | grep napcat | awk '{print $0}' | awk -F'-q ' '{print $2}' | awk '!a[$0]++{print}'| awk NF | awk -v QQchose=$QQchose NR==$QQchose)
+					if [ "$QQnumber" ]; then
+	                		echo -e "\n\033[0;36m你确定要查看以下QQ号的后台喵？(y|N)\033[0m"
+					echo -e "\033[0;33mQQ：$QQnumber\033[0m"
+		  			read -s -n 1 chose
+						case $chose in 
+			        	    	y|Y)
+				     			screen -r $QQnumber.napcat;;
+					      	*)
+							echo -e "\n\033[0;36m你已取消查看后台喵~\033[0m\n";;
+			  			esac
+	                		else
+					echo -e "\n\033[0;31m你怎么乱选？不给你查了喵~\033[0m\n"
+		 			fi
+    			fi
+	   		;;
 	   	    *)
-			echo -e "\n\033[0;31m你怎么乱选？不给你登录了喵~\033[0m\n";;
+			echo -e "\n\033[0;31m你怎么乱选？不给你查了喵~\033[0m\n";;
 	  		esac
 			echo -e "\033[0;33m即将返回主菜单\033[0m\n"
    			sleep 3
@@ -1327,20 +1308,16 @@ do
             #QChatGPT设置
 	    QChatGPTSettings
             ;;
-	7)
-            #NapCatQQ设置
-	    NapCatQQSettings
-            ;;  
-        8) 
+        7) 
             #SillyTavern设置
             sillyTavernSettings
             ;; 
 
-        9) 
+        8) 
             #Clewd设置
             clewdSettings
             ;; 
-        a)
+        9)
             # 更新脚本
       	    rm -rf update_QCCN.sh
       	    while [ ! -f "update_QCCN.sh" ]
