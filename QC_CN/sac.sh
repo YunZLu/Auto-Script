@@ -1,7 +1,7 @@
 #!/bin/bash
 
 cd /root
-source /data/data/com.termux/files/home/root/etc/profile
+source /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/ubuntu/etc/profile
 
 #添加termux上的Ubuntu/root软链接
 if [ ! -d "/data/data/com.termux/files/home/root" ]; then
