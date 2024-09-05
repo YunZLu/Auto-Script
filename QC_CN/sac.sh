@@ -394,7 +394,7 @@ function QChatGPTSettings {
         1) 
             # 设置QQ管理员
 			cd /root
-		    echo -e "\n\033[0;33m请输入你的QQ管理员号码喵~\033[0m\n"
+		    echo -e "\033[0;33m请输入你的QQ管理员号码喵~\033[0m\n"
        		read -p "QQ：" QQ_admin
        		echo -e "\n\033[0;33m请确认你的QQ机器人号码喵~（y|N）\033[0m\n"
       		echo -e "\033[0;33mQQ："$QQ_admin"\033[0m"
@@ -411,7 +411,7 @@ function QChatGPTSettings {
         2)
             # 设置接口地址
 			cd /root
-		    echo -e "\n\033[0;33m请输入你的接口地址喵~\033[0m\n"
+		    echo -e "\033[0;33m请输入你的接口地址喵~\033[0m\n"
        		read -p "接口地址：" Proxy
        		echo -e "\n\033[0;33m请确认你的接口地址喵~（y|N）\033[0m\n"
       		echo -e "\033[0;33m接口地址："$Proxy"\033[0m"
@@ -428,7 +428,7 @@ function QChatGPTSettings {
            3)
             # 添加APi key
 			cd /root
-		    echo -e "\n\033[0;33m请输入你的API key喵~(sk-开头的key)\033[0m\n"
+		    echo -e "\033[0;33m请输入你的API key喵~(sk-开头的key)\033[0m\n"
        		read -p "Api key：" Apikey
        		echo -e "\n\033[0;33m请确认你的Api key喵~（y|N）\033[0m\n"
       		echo -e "\033[0;33m接口地址："$Apikey"\033[0m"
@@ -473,7 +473,7 @@ function QChatGPTSettings {
         	5) 
             # 添加预设
 			cd /root
-		    echo -e "\n\033[0;33m请输入预设名喵~\033[0m\n"
+		    echo -e "\033[0;33m请输入预设名喵~\033[0m\n"
        		read -p "预设名：" name
 		 	echo -e "\n\033[0;33m请输入预设内容喵~\033[0m\n"
        		read -p "预设内容：" value
@@ -520,7 +520,7 @@ function QChatGPTSettings {
            7)
             # 添加自定义模型
 			cd /root
-		    echo -e "\n\033[0;33m请输入你的模型信息喵~(不输入内容按回车则为默认值)\033[0m\n"
+		    echo -e "\033[0;33m请输入你的模型信息喵~(不输入内容按回车则为默认值)\033[0m\n"
        		read -p "name(默认值: null)：" name
 		 	name=${name:-null}
        		read -p "requester(默认值 openai-chat-completions)：" requester
@@ -585,7 +585,7 @@ function QChatGPTSettings {
             	echo -e "\033[0;33m你还没有下载插件，请先用QQ管理员复制并发送给QQ机器人以下指令:\033[0m\n"
 				echo -e "\033[0;33m!plugin get https://mirror.ghproxy.com/https://github.com/the-lazy-me/NewChatVoice.git\033[0m\n"
    			else
-		    	echo -e "\n\033[0;33m请输入你的海豚TTS token(输入链接即可)喵~\033[0m\n"
+		    	echo -e "\033[0;33m请输入你的海豚TTS token(输入链接即可)喵~\033[0m\n"
        			read -p "Token：" token
        			echo -e "\n\033[0;33m请确认你的海豚TTS token喵~（y|N）\033[0m\n"
       			echo -e "\033[0;33mToken："$token"\033[0m"
