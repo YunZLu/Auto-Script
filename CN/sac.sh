@@ -1,11 +1,15 @@
 #!/bin/bash
-echo -e "\033[0;33m喵喵正在获取版本信息中，请稍等一下喵~\n\033[0m"
-latest_version=$(curl -s https://mirror.ghproxy.com/https://raw.githubusercontent.com/hopingmiao/termux_using_Claue/main/VERSION)
-clewd_latestversion=$(curl -s https://mirror.ghproxy.com/https://raw.githubusercontent.com/teralomaniac/clewd/test/package.json | grep '"version"' | awk -F '"' '{print $4}')
-clewd_subversion=$(curl -s https://mirror.ghproxy.com/https://raw.githubusercontent.com/teralomaniac/clewd/test/lib/clewd-utils.js | grep "Main = 'clewd修改版 v'" | awk -F'[()]' '{print $3}')
-clewd_latest="$clewd_latestversion($clewd_subversion)"
-st_latest=$(curl -s https://mirror.ghproxy.com/https://raw.githubusercontent.com/SillyTavern/SillyTavern/release/package.json | grep '"version"' | awk -F '"' '{print $4}')
-saclinkemoji=$(curl -s https://mirror.ghproxy.com/https://raw.githubusercontent.com/hopingmiao/termux_using_Claue/main/secret_saclink | awk -F '|' '{print $3 }')
+
+cd /root
+source /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/ubuntu/etc/profile
+
+#echo -e "\033[0;33m喵喵正在获取版本信息中，请稍等一下喵~\n\033[0m"
+#latest_version=$(curl -s https://mirror.ghproxy.com/https://raw.githubusercontent.com/hopingmiao/termux_using_Claue/main/VERSION)
+#clewd_latestversion=$(curl -s https://mirror.ghproxy.com/https://raw.githubusercontent.com/teralomaniac/clewd/test/package.json | grep '"version"' | awk -F '"' '{print $4}')
+#clewd_subversion=$(curl -s https://mirror.ghproxy.com/https://raw.githubusercontent.com/teralomaniac/clewd/test/lib/clewd-utils.js | grep "Main = 'clewd修改版 v'" | awk -F'[()]' '{print $3}')
+#clewd_latest="$clewd_latestversion($clewd_subversion)"
+#st_latest=$(curl -s https://mirror.ghproxy.com/https://raw.githubusercontent.com/SillyTavern/SillyTavern/release/package.json | grep '"version"' | awk -F '"' '{print $4}')
+#saclinkemoji=$(curl -s https://mirror.ghproxy.com/https://raw.githubusercontent.com/hopingmiao/termux_using_Claue/main/secret_saclink | awk -F '|' '{print $3 }')
 # hopingmiao=hotmiao
 
 # ANSI Colors
@@ -1002,12 +1006,13 @@ function TavernAI-extrasstart {
 	
 	
 }
+
+#版本：酒馆:$st_version clewd:$clewd_version 脚本:$version
+#最新：\033[5;36m酒馆:$st_latest\033[0m \033[5;32mclewd:$clewd_latest\033[0m \033[0;33m脚本:$latest_version\033[0m
 # 主菜单
 echo -e "                                              
 喵喵一键脚本(one-api版)
 作者：hoping喵(懒喵~)，水秋喵(苦等hoping喵起床)，瑾年(...)
-版本：酒馆:$st_version clewd:$clewd_version 脚本:$version
-最新：\033[5;36m酒馆:$st_latest\033[0m \033[5;32mclewd:$clewd_latest\033[0m \033[0;33m脚本:$latest_version\033[0m
 来自：Claude2.1先行破限组
 群号：704819371，910524479，304690608
 类脑Discord(角色卡发布等): https://discord.gg/HWNkueX34q
@@ -1083,15 +1088,15 @@ do
                 echo "更新脚本不存在，正在通过git下载喵..."
     		curl -O https://mirror.ghproxy.com/https://raw.githubusercontent.com/YunZLu/termux_using_openai/main/CN/update_CN.sh
 	        if [ ! -f "update_CN.sh" ]; then
-		echo "更新脚本文件下载失败了正在重试中~"
+		echo "更新脚本文件下载失败了，正在重试中喵~"
 		continue
 		else
-	        echo "更新脚本文件下载成功喵~"
+      	        echo -e "\n\033[0;32m更新脚本下载成功，正在进入更新程序喵~\033[0m\n"
+		chmod 777 /root/update_QCCN.sh
+		exec /root/update_QCCN.sh
 		fi
             fi
-            done
-	    echo -e "退出脚本后，请输入 bash update_CN.sh 更新脚本喵~"
-            break ;;
+            done;;
         *) 
             echo -e "m9( ｀д´ )!!!! \n\033[0;36m坏猫猫居然不听话，存心和我hoping喵~过不去是吧喵？\033[0m\n"
             ;;
