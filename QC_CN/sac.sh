@@ -418,7 +418,7 @@ function QChatGPTSettings {
 	        	    y|Y)
 			  		Proxy="$Proxy"
 	   				jq --arg P ${Proxy} '.requester."openai-chat-completions"."base-url"=$P' /root/QChatGPT/data/config/provider.json > temp.json && mv temp.json /root/QChatGPT/data/config/provider.json
-       				echo -e "\033[0;33m接口地址设置成功喵~\033[0m\n";;
+       				echo -e "\n\033[0;33m接口地址设置成功喵~\033[0m\n";;
 			    *)
 				echo -e "\n\033[0;32m你已取消设置接口地址喵~\033[0m\n";;
 	  		esac
@@ -436,7 +436,7 @@ function QChatGPTSettings {
 			  		Apikey="$Apikey"
 	   				len=$(cat /root/QChatGPT/data/config/provider.json | jq '.keys.openai[]' | awk 'END{print NR}')
 	   				jq --arg n ${len} --arg e ${Apikey} '.keys.openai[$n|tonumber]=$e' /root/QChatGPT/data/config/provider.json > tmp.json && mv tmp.json /root/QChatGPT/data/config/provider.json
-       				echo -e "\033[0;33mApi key添加成功喵~\033[0m\n";;
+       				echo -e "\n\033[0;33mApi key添加成功喵~\033[0m\n";;
 			    *)
 				echo -e "\n\033[0;32m你已取消添加Api key喵~\033[0m\n";;
 	  		esac
