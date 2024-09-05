@@ -401,9 +401,9 @@ function QChatGPTSettings {
 	        	    y|Y)
 			  		QQ_admin="person_$QQ_admin"
 	   				jq --arg QQ_admin ${QQ_admin} '."admin-sessions"=[$QQ_admin]' /root/QChatGPT/data/config/system.json > temp.json && mv temp.json /root/QChatGPT/data/config/system.json
-       				echo -e "\n\033[0;33mQQ管理员设置成功喵~\033[0m\n";;
+       				echo -e "\n\033[0;32mQQ管理员设置成功喵~\033[0m\n";;
 			    *)
-				echo -e "\n\033[0;32m你已取消设置QQ管理员喵~\033[0m\n";;
+				echo -e "\n\033[0;36m你已取消设置QQ管理员喵~\033[0m\n";;
 	  		esac
 			;;
         2)
@@ -418,9 +418,9 @@ function QChatGPTSettings {
 	        	    y|Y)
 			  		Proxy="$Proxy"
 	   				jq --arg P ${Proxy} '.requester."openai-chat-completions"."base-url"=$P' /root/QChatGPT/data/config/provider.json > temp.json && mv temp.json /root/QChatGPT/data/config/provider.json
-       				echo -e "\n\033[0;33m接口地址设置成功喵~\033[0m\n";;
+       				echo -e "\n\033[0;32m接口地址设置成功喵~\033[0m\n";;
 			    *)
-				echo -e "\n\033[0;32m你已取消设置接口地址喵~\033[0m\n";;
+				echo -e "\n\033[0;36m你已取消设置接口地址喵~\033[0m\n";;
 	  		esac
 			;;
            3)
@@ -436,9 +436,9 @@ function QChatGPTSettings {
 			  		Apikey="$Apikey"
 	   				len=$(cat /root/QChatGPT/data/config/provider.json | jq '.keys.openai[]' | awk 'END{print NR}')
 	   				jq --arg n ${len} --arg e ${Apikey} '.keys.openai[$n|tonumber]=$e' /root/QChatGPT/data/config/provider.json > tmp.json && mv tmp.json /root/QChatGPT/data/config/provider.json
-       				echo -e "\n\033[0;33mApi key添加成功喵~\033[0m\n";;
+       				echo -e "\n\033[0;32mApi key添加成功喵~\033[0m\n";;
 			    *)
-				echo -e "\n\033[0;32m你已取消添加Api key喵~\033[0m\n";;
+				echo -e "\n\033[0;36m你已取消添加Api key喵~\033[0m\n";;
 	  		esac
 			;;
 			4)
@@ -459,7 +459,7 @@ function QChatGPTSettings {
 					case $chose in 
 			        	y|Y)
 							jq --arg n ${keyChose} 'del(.keys.openai[$n|tonumber])' /root/QChatGPT/data/config/provider.json > tmp.json && mv tmp.json /root/QChatGPT/data/config/provider.json
-	    					echo -e "\n\033[0;36mApi key：$keyNumr已被删除喵~\033[0m\n";;
+	    					echo -e "\n\033[0;32mApi key：$keyNumr已被删除喵~\033[0m\n";;
 					    *)
 							echo -e "\n\033[0;36m你已取消删除Api key喵~\033[0m\n";;
 			  			esac
@@ -482,9 +482,9 @@ function QChatGPTSettings {
        			case $chose in 
 	        	y|Y)
 			  		cat /root/QChatGPT/data/config/provider.json | jq --arg n ${name} --arg v ${value} '.prompt.[$n]=$v' > tmp.json && mv tmp.json /root/QChatGPT/data/config/provider.json
-				  	echo -e "\n\033[0;33m预设添加成功喵~\033[0m\n";;
+				  	echo -e "\n\033[0;32m预设添加成功喵~\033[0m\n";;
 			    *)
-				echo -e "\n\033[0;32m你已取消设添加预设喵~\033[0m\n";;
+				echo -e "\n\033[0;36m你已取消设添加预设喵~\033[0m\n";;
 	  		esac
 			;;
 		    6)
@@ -499,7 +499,7 @@ function QChatGPTSettings {
 				promptName=$(cat /root/QChatGPT/data/config/provider.json | jq '.prompt'| jq -r 'keys[]' | awk NR==$promptChose)
 				if [ "$promptName" ]; then
 	                echo -e "\n\033[0;36m你确定要删除该预设喵？(y|N)\033[0m\n"
-					echo -e "\033[0;33m预设名：$promptName\033[0m"
+					echo -e "\033[0;33m预设名：$promptName\033[0m\n"
 	 				promptValue=$(cat /root/QChatGPT/data/config/provider.json | jq --arg n ${promptName} '.prompt.[$n]' | awk -F'"' '{print $2}')
 	  				echo -e "\033[0;33m预设内容：$promptValue\033[0m"
 		  			read -s -n 1 chose
@@ -545,9 +545,9 @@ function QChatGPTSettings {
  					vision_supported="$vision_supported"
 	   				len=$(cat /root/QChatGPT/data/metadata/llm-models.json|jq '.list[].name'|awk -F'"' '{print $2}'| awk 'END{print NR}')
        				jq --arg l ${len} --arg n ${name} --arg r ${requester} --arg tm ${token_mgr} --arg tcs ${tool_call_supported} --arg vs ${vision_supported} '.list[$l|tonumber]={"name":$n,"requester":$r,"token_mgr":$tm,"tool_call_supported":$tcs,"vision_supported":$vs}' /root/QChatGPT/data/metadata/llm-models.json > tmp.json && mv tmp.json /root/QChatGPT/data/metadata/llm-models.json
-		   			echo -e "\n\033[0;33m自定义模型添加成功喵~\033[0m\n";;
+		   			echo -e "\n\033[0;32m自定义模型添加成功喵~\033[0m\n";;
 			    *)
-				echo -e "\n\033[0;32m你已取消添加自定义模型喵~\033[0m\n";;
+				echo -e "\n\033[0;36m你已取消添加自定义模型喵~\033[0m\n";;
 	  		esac
 			;;
 		    8)
@@ -570,7 +570,7 @@ function QChatGPTSettings {
 							jq --arg n ${modeChose} 'del(.list[$n|tonumber])' /root/QChatGPT/data/metadata/llm-models.json > tmp.json && mv tmp.json /root/QChatGPT/data/metadata/llm-models.json
 	    					echo -e "\n\033[0;36m模型：$modeName已被删除喵~\033[0m\n";;
 					    *)
-							echo -e "\n\033[0;36m你已取消删除语言模型喵~\033[0m\n";;
+							echo -e "\n\033[0;32m你已取消删除语言模型喵~\033[0m\n";;
 			  			esac
 	            else
 					echo -e "\n\033[0;31m你怎么乱选！不给你删了喵~\033[0m\n"
@@ -591,9 +591,9 @@ function QChatGPTSettings {
        			case $chose in 
 	        	y|Y)
 	   				jq --arg token ${token} '."acgn_ttson".token=$token' /root/QChatGPT/data/plugins/NewChatVoice/config/global_config.json > temp.json && mv temp.json /root/QChatGPT/data/plugins/NewChatVoice/config/global_config.json
-       				echo -e "\n\033[0;33m海豚TTS token设置成功喵~\033[0m\n";;
+       				echo -e "\n\033[0;32m海豚TTS token设置成功喵~\033[0m\n";;
 			    *)
-					echo -e "\n\033[0;32m你已取消设置海豚TTS token喵~\033[0m\n";;
+					echo -e "\n\033[0;36m你已取消设置海豚TTS token喵~\033[0m\n";;
 	  			esac
 	 		fi
 			;;
@@ -1438,7 +1438,7 @@ do
 	   			sleep 2
 				xvfb-run -a qq --no-sandbox;;
 			    *)
-				echo -e "\n\033[0;32m你已取消登录喵~\033[0m\n";;
+				echo -e "\n\033[0;36m你已取消登录喵~\033[0m\n";;
 	  		esac
 			;;
 		    2)
@@ -1458,7 +1458,7 @@ do
 						case $chose in 
 			        	    	y|Y)
 				     			screen -dmS napcat bash -c "xvfb-run -a qq --no-sandbox -q $QQnumber"
-							echo -e "\n\033[0;36m已执行登录命令，可以在后台检查登录状态喵~\033[0m\n";;
+							echo -e "\n\033[0;32m已执行登录命令，可以在后台检查登录状态喵~\033[0m\n";;
 					      	*)
 							echo -e "\n\033[0;36m你已取消登录喵~\033[0m\n";;
 			  			esac
@@ -1513,7 +1513,7 @@ do
 			        	    	y|Y)
 		 					PID=$(ps -ef | grep "SCREEN -dmS napcat bash -c xvfb-run -a qq --no-sandbox -q $QQnumber" | grep -v "grep" | awk -F' +' '{print $2}')
 				     			kill -9 $PID
-	    						echo -e "\n\033[0;36mQQ：$QQnumber已退出登录喵~\033[0m\n";;
+	    						echo -e "\n\033[0;32mQQ：$QQnumber已退出登录喵~\033[0m\n";;
 					      	*)
 							echo -e "\n\033[0;36m你已取消退出登录喵~\033[0m\n";;
 			  			esac
@@ -1540,7 +1540,7 @@ do
 			        	    	y|Y)
 				     			rm -rf /opt/QQ/resources/app/app_launcher/napcat/config/onebot11_$QQnumber.json
 	    						rm -rf /opt/QQ/resources/app/app_launcher/napcat/config/napcat_$QQnumber.json
-							echo -e "\n\033[0;36mQQ："$QQnumber" 已删除喵~\033[0m\n";;
+							echo -e "\n\033[0;32mQQ："$QQnumber" 已删除喵~\033[0m\n";;
 					      	*)
 							echo -e "\n\033[0;36m你已取消删除喵~\033[0m\n";;
 			  			esac
