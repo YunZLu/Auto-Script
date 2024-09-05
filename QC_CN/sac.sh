@@ -483,7 +483,7 @@ function QChatGPTSettings {
 	 		read -s -n 1 chose
        			case $chose in 
 	        	y|Y)
-			  		cat /root/QChatGPT/data/config/provider.json | jq --arg n ${name} --arg v ${value} '.prompt.[$n]=$v' > tmp.json && mv tmp.json /root/QChatGPT/data/config/provider.json
+			  		cat /root/QChatGPT/data/config/provider.json | jq --arg n ${name} --arg v "$value" '.prompt.[$n]=$v' > tmp.json && mv tmp.json /root/QChatGPT/data/config/provider.json
 				  	echo -e "\n\033[0;32m预设添加成功喵~\033[0m\n";;
 			    *)
 				echo -e "\n\033[0;36m你已取消设添加预设喵~\033[0m\n";;
