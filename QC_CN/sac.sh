@@ -401,7 +401,7 @@ function QChatGPTSettings {
 	        	    y|Y)
 			  		QQ_admin="person_$QQ_admin"
 	   				jq --arg QQ_admin ${QQ_admin} '."admin-sessions"=[$QQ_admin]' /root/QChatGPT/data/config/system.json > temp.json && mv temp.json /root/QChatGPT/data/config/system.json
-       				echo -e "\033[0;33mQQ管理员设置成功喵~\033[0m\n";;
+       				echo -e "\n\033[0;33mQQ管理员设置成功喵~\033[0m\n";;
 			    *)
 				echo -e "\n\033[0;32m你已取消设置QQ管理员喵~\033[0m\n";;
 	  		esac
@@ -482,7 +482,7 @@ function QChatGPTSettings {
        			case $chose in 
 	        	y|Y)
 			  		cat /root/QChatGPT/data/config/provider.json | jq --arg n ${name} --arg v ${value} '.prompt.[$n]=$v' > tmp.json && mv tmp.json /root/QChatGPT/data/config/provider.json
-				  	echo -e "\033[0;33m预设添加成功喵~\033[0m\n";;
+				  	echo -e "\n\033[0;33m预设添加成功喵~\033[0m\n";;
 			    *)
 				echo -e "\n\033[0;32m你已取消设添加预设喵~\033[0m\n";;
 	  		esac
@@ -546,7 +546,7 @@ function QChatGPTSettings {
  					vision_supported="$vision_supported"
 	   				len=$(cat /root/QChatGPT/data/metadata/llm-models.json|jq '.list[].name'|awk -F'"' '{print $2}'| awk 'END{print NR}')
        				jq --arg l ${len} --arg n ${name} --arg r ${requester} --arg tm ${token_mgr} --arg tcs ${tool_call_supported} --arg vs ${vision_supported}'.list[$l|tonumber]={"name":$n,"requester":$r,"token_mgr":$tm,"tool_call_supported":$tcs,"vision_supported":$vs}' /root/QChatGPT/data/metadata/llm-models.json > tmp.json && mv tmp.json /root/QChatGPT/data/metadata/llm-models.json
-		   			echo -e "\033[0;33自定义模型添加成功喵~\033[0m\n";;
+		   			echo -e "\n\033[0;33自定义模型添加成功喵~\033[0m\n";;
 			    *)
 				echo -e "\n\033[0;32m你已取消添加自定义模型喵~\033[0m\n";;
 	  		esac
@@ -592,7 +592,7 @@ function QChatGPTSettings {
        			case $chose in 
 	        	y|Y)
 	   				jq --arg token ${token} '.token=$token' /root/QChatGPT/data/plugins/NewChatVoice/global_config.json > temp.json && mv temp.json /root/QChatGPT/data/config/system.json
-       				echo -e "\033[0;33m海豚TTS token设置成功喵~\033[0m\n";;
+       				echo -e "\n\033[0;33m海豚TTS token设置成功喵~\033[0m\n";;
 			    *)
 					echo -e "\n\033[0;32m你已取消设置海豚TTS token喵~\033[0m\n";;
 	  			esac
