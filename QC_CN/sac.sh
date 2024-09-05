@@ -1434,7 +1434,7 @@ do
 	        	    y|Y)
 	        		cp /opt/QQ/resources/app/app_launcher/napcat/config/onebot11.json /opt/QQ/resources/app/app_launcher/napcat/config/onebot11_$new_QQ.json
        				sed -i '17s/false/true/' /opt/QQ/resources/app/app_launcher/napcat/config/onebot11_$new_QQ.json
-       				sed -i '18s/\[\]/\["ws:\/\/127.0.0.1:8080\/ws\]/' /opt/QQ/resources/app/app_launcher/napcat/config/onebot11_$new_QQ.json
+       				sed -i '18s/\[\]/\["ws:\/\/127.0.0.1:8080\/ws"\]/' /opt/QQ/resources/app/app_launcher/napcat/config/onebot11_$new_QQ.json
        				echo -e "\033[0;33m正在启动...请用你输入的QQ号扫码登录喵~\033[0m\n"
 	   			sleep 2
 				xvfb-run -a qq --no-sandbox;;
