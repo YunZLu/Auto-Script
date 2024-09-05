@@ -1321,7 +1321,7 @@ do
       			#获取napcatQQ.json列表
 			qList=$(ls -1 /opt/QQ/resources/app/app_launcher/napcat/config/ | awk -F'_' '{print $2}' | awk -F'.' '{print $1}' | awk '!a[$0]++{print}' | awk 'NF{a++;print "\033[0;33m"a"\033[0m""\033[0;33m.\033[0m","\033[0;33m"$0"\033[0m\n";next}1')
 			if [ ! "$qList" ]; then
-		    		echo -e "\n\033[0;31m没有登录过的QQ号，你是在玩我喵喵大人喵？\033[0m"
+		    		echo -e "\n\033[0;31m你根本没有添加QQ号，你是在玩我喵喵大人喵？\033[0m\n"
 		    	else
 				echo -e "\n\033[0;36m请输入数字删除对应的QQ号喵~\033[0m\n"
 				echo "$qList"
