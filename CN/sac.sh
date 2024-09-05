@@ -1090,7 +1090,7 @@ do
 		fi
             fi
             done;;
-        8)
+        7)
             # 更新脚本
 	    rm -rf update_CN.sh
 	    while [ ! -f "update_CN.sh" ]
