@@ -1356,11 +1356,14 @@ function TavernAI-extrasstart {
 #最新：\033[5;36m酒馆:$st_latest\033[0m \033[5;32mclewd:$clewd_latest\033[0m \033[0;33m脚本:$latest_version\033[0m
 # 主菜单
 echo -e "喵喵一键脚本(QChatGPT版)
-作者：hoping喵(懒喵~)，水秋喵(苦等hoping喵起床)，瑾年(...)
+作者：hoping喵(懒喵~)，水秋喵(苦等hoping喵起床)
 来自：Claude2.1先行破限组
 群号：704819371，910524479，304690608
 类脑Discord(角色卡发布等): https://discord.gg/HWNkueX34q
-此程序完全免费，不允许如浅睡纪元等人对脚本/教程进行盗用/商用。"
+此程序完全免费，不允许如浅睡纪元等人对脚本/教程进行盗用/商用。
+
+\033[0;34m修改人:瑾年\033[0m
+\033[0;34m来自：头脑风暴搞起来\033[0m"
 while :
 do 
     echo -e "\033[0;36mhoping喵~让你选一个执行（输入数字即可），懂了吗？\033[0;38m(｡ì _ í｡)\033[0m\033[0m
