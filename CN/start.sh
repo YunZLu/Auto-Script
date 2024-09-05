@@ -3,7 +3,7 @@
 # Make sure pwd is the directory of the script
 cd "$(dirname "$0")"
 
-echo -e "\n\033[0;33m前端构建中，请稍等一下喵...\n\033[0m"
+echo -e "\n\033[0;33m前端构建中，请稍等一下喵...\033[0m"
 cd web/default
 npm install
 npm run build
