@@ -388,7 +388,7 @@ function QChatGPTSettings {
 \033[0;34m选项9 设置Vioce token
 \033[0;33m--------------------------------------\033[0m
 "
-    read -n 1 option
+    read -s -n 1 option
     echo
     case $option in 
         1) 
@@ -635,7 +635,7 @@ function clewdSettings {
 \033[0;31m选项0 更新 clewd(test分支)\033[0m
 \033[0;33m--------------------------------------\033[0m
 "
-    read -n 1 option
+    read -s -n 1 option
     echo
     case $option in 
         1) 
@@ -952,7 +952,7 @@ function clewdSettings {
             ;;
         0)
 			echo -e "hoping：选择更新模式(两种模式都会保留重要数据)喵~\n\033[0;33m--------------------------------------\n\033[0m\033[0;33m选项1 使用git pull进行简单更新\n\033[0m\033[0;37m选项2 几乎重新下载进行全面更新\n\033[0m"
-            read -n 1 -p "" clewdup_choice
+            read -s -n 1 -p "" clewdup_choice
 			echo
 			cd /root
 			case $clewdup_choice in
@@ -1000,12 +1000,12 @@ function sillyTavernSettings {
 \033[0;31m选项0 更新酒馆\033[0m
 \033[0;33m--------------------------------------\033[0m
 "
-    read -n 1 option
+    read -s -n 1 option
     echo
     case $option in 
         0)
 			echo -e "hoping：选择更新模式(重要数据会进行转移，但喵喵最好自己有备份)喵~\n\033[0;33m--------------------------------------\n\033[0m\033[0;33m选项1 使用git pull进行简单更新\n\033[0m\033[0;37m选项2 几乎重新下载进行全面更新\n\033[0m"
-            read -n 1 -p "" stup_choice
+            read -s -n 1 -p "" stup_choice
 			echo
 			cd /root
 			case $stup_choice in
@@ -1024,7 +1024,7 @@ hoping：选择更新正式版或者测试版喵？
 \033[0;37m选项2 测试版\033[0m"
 					while :
 					do
-					    read -n 1 stupdate
+					    read -s -n 1 stupdate
 					    [ "$stupdate" = 1 ] && { git clone https://mirror.ghproxy.com/https://github.com/SillyTavern/SillyTavern.git SillyTavern_new; break; }
 					    [ "$stupdate" = 2 ] && { git clone -b staging https://mirror.ghproxy.com/https://github.com/SillyTavern/SillyTavern.git SillyTavern_new; break; }
 					    echo -e "\n\033[5;33m选择错误，快快重新选择喵~\033[0m"
@@ -1487,7 +1487,7 @@ do
 			        	    	y|Y)
 		 					echo -e "\n\033[0;36mCtrl+A+D退出后台不退出登录，Ctrl+C退出登录喵~\033[0m"
 							echo -e "\033[0;36m看懂了请按任意键继续喵~\033[0m"
-       							read -n 1
+       							read -s -n 1
 		 					PID=$(ps -ef | grep "SCREEN -dmS napcat bash -c xvfb-run -a qq --no-sandbox -q $QQnumber" | grep -v "grep" | awk -F' +' '{print $2}')
 				     			screen -r $PID.napcat;;
 					      	*)
