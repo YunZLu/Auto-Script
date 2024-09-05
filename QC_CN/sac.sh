@@ -598,7 +598,7 @@ function QChatGPTSettings {
 	 		fi
 			;;
 	   	    *)
-			echo -e "\n\033[0;31m你怎么乱选！不跟你玩了喵~\033[0m\n";;
+			echo -e "\033[0;31m你怎么乱选！不跟你玩了喵~\033[0m\n";;
 	  esac
 	  echo -e "\033[0;33m3s后返回主菜单喵~\033[0m\n"
    	  sleep 3
