@@ -1079,7 +1079,25 @@ do
 		echo $saclinkname
 		termux-open-url $(curl -s https://mirror.ghproxy.com/https://raw.githubusercontent.com/hopingmiao/termux_using_Claue/main/secret_saclink | awk -F '|' '{print $2 }')
 		;;
-        7)
+          7)
+            # 更新脚本
+	    rm -rf update_CN.sh
+	    while [ ! -f "update_QCCN.sh" ]
+            do
+                if [ ! -f "update_QCCN.sh" ]; then
+                echo "更新脚本不存在，正在通过git下载喵..."
+    		curl -O https://mirror.ghproxy.com/https://raw.githubusercontent.com/YunZLu/termux_using_openai/main/QC_CN/update_QCCN.sh
+	        if [ ! -f "update_QCCN.sh" ]; then
+		echo "更新脚本文件下载失败了，正在重试中喵~"
+		continue
+		else
+      	        echo -e "\n\033[0;32m更新脚本下载成功，正在进入更新程序喵~\033[0m\n"
+		chmod 777 /root/update_QCCN.sh
+		exec /root/update_QCCN.sh
+		fi
+            fi
+            done;;
+        8)
             # 更新脚本
 	    rm -rf update_CN.sh
 	    while [ ! -f "update_CN.sh" ]
@@ -1092,8 +1110,8 @@ do
 		continue
 		else
       	        echo -e "\n\033[0;32m更新脚本下载成功，正在进入更新程序喵~\033[0m\n"
-		chmod 777 /root/update_QCCN.sh
-		exec /root/update_QCCN.sh
+		chmod 777 /root/update_CN.sh
+		exec /root/update_CN.sh
 		fi
             fi
             done;;
