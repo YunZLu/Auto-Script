@@ -1402,11 +1402,10 @@ do
             
         3) 
             #启动QChatGPT
-            #启动QChatGpt
 		cd /root/QChatGPT/bin
   		source activate
     		cd ..
-                echo -e "\033[0;33m正在启动QChatGpt中，请稍等一下喵~\033[0m"
+                echo -e "\n\033[0;33m正在启动QChatGpt中，请稍等一下喵~\033[0m"
 		python3 main.py
   		deactivate
     		cd /root
@@ -1435,7 +1434,7 @@ do
 	        		cp /opt/QQ/resources/app/app_launcher/napcat/config/onebot11.json /opt/QQ/resources/app/app_launcher/napcat/config/onebot11_$new_QQ.json
        				sed -i '17s/false/true/' /opt/QQ/resources/app/app_launcher/napcat/config/onebot11_$new_QQ.json
        				sed -i '18s/\[\]/\["ws:\/\/127.0.0.1:8080\/ws"\]/' /opt/QQ/resources/app/app_launcher/napcat/config/onebot11_$new_QQ.json
-       				echo -e "\033[0;33m正在启动...请用你输入的QQ号扫码登录喵~\033[0m\n"
+       				echo -e "\n\033[0;33m正在启动...请用你输入的QQ号扫码登录喵~\033[0m\n"
 	   			sleep 2
 				xvfb-run -a qq --no-sandbox;;
 			    *)
