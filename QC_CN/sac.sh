@@ -579,7 +579,7 @@ function QChatGPTSettings {
 	   		;;
 	  		9)
             # 设置TTS-token
-			if [ ! -f "/root/QChatGPT/data/plugins/NewChatVoice/global_config.json" ]; then
+			if [ ! -f "/root/QChatGPT/data/plugins/NewChatVoice/config/global_config.json" ]; then
             	echo -e "\033[0;33m你还没有下载插件，请先用QQ管理员复制并发送给QQ机器人以下指令:\033[0m\n"
 				echo -e "\033[0;33m!plugin get https://github.com/the-lazy-me/NewChatVoice.git\033[0m\n"
    			else
@@ -590,7 +590,7 @@ function QChatGPTSettings {
 	 			read -s -n 1 chose
        			case $chose in 
 	        	y|Y)
-	   				jq --arg token ${token} '.token=$token' /root/QChatGPT/data/plugins/NewChatVoice/global_config.json > temp.json && mv temp.json /root/QChatGPT/data/config/system.json
+	   				jq --arg token ${token} '.token=$token' /root/QChatGPT/data/plugins/NewChatVoice/config/global_config.json > temp.json && mv temp.json /root/QChatGPT/data/plugins/NewChatVoice/config/global_config.json
        				echo -e "\n\033[0;33m海豚TTS token设置成功喵~\033[0m\n";;
 			    *)
 					echo -e "\n\033[0;32m你已取消设置海豚TTS token喵~\033[0m\n";;
