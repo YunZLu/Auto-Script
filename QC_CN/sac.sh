@@ -35,7 +35,7 @@ echo -e "\033[0;33m喵喵检查到你的系统有软件未安装，正在帮你�
     if ! command -v lsb_release &> /dev/null; then
     echo -e "\033[0;33m喵喵正在帮你更新软件包中，请稍等一下喵~\033[0m\n"
     yes | apt update
-    echo -e "\033[0;31m检测到你未安装lsb-release喵~\033[0m\n"
+    echo -e "\n\033[0;31m检测到你未安装lsb-release喵~\033[0m\n"
     echo -e "\033[0;33m正在为你下载lsb-release，请稍等一下喵~\033[0m\n"
     DEBIAN_FRONTEND=noninteractive apt-get install lsb-release -y
         if ! command -v lsb_release &> /dev/null; then
