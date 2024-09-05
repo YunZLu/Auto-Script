@@ -561,7 +561,7 @@ function QChatGPTSettings {
 		    	read -s -n 2 modeChose
 	   			modeChose=$(($modeChose-1))
 				modeName=$(jq --arg n ${modeChose} '.list[$n|tonumber]' /root/QChatGPT/data/metadata/llm-models.json)
-				if [ "$modeName" ] && [ "$modeList" != null ]; then
+				if [ "$modeName" ] && [ "$modeName" != null ]; then
 	                echo -e "\n\033[0;36m你确定要删除该语言模型喵？(y|N)\033[0m\n"
 					echo -e "\033[0;33m语言模型：\n$modeName\033[0m"
 		  			read -s -n 1 chose
