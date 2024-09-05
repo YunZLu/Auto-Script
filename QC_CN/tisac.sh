@@ -28,7 +28,7 @@ do
         fi
     fi
 done
-echo -e "\033[0;32mproot-distro已安装喵~\n\033[0m"
+echo -e "\n\033[0;32mproot-distro已安装喵~\n\033[0m"
 
 # 加速Ubuntu下载地址
 sed -i 's/https:\/\/github.com/https:\/\/mirror.ghproxy.com\/github.com/g' /data/data/com.termux/files/usr/etc/proot-distro/ubuntu.sh
