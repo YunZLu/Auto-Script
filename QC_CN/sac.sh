@@ -305,7 +305,7 @@ eof
 	                #启动酒馆后更新才能导入破限文件，暂时没办法...
 	                npm i --no-audit --no-fund --quiet --omit=dev
 	                echo -e "\n\033[0;35m当SillyTavern输出绿色网址后，请按Ctrl+C喵！\033[0m\n"
-	                echo -e "\033[0;33m紫红色字看明白了后，请按任意键继续喵...\033[0m"
+	                echo -e "\033[0;33m紫红色字看明白了后，请按任意键继续喵...\033[0m\n"
 		        read -s -n 1
 	                echo -e "\033[0;33mSillyTavern启动中，请稍等一下喵...\033[0m"
 	                node "server.js" "$@"v
@@ -556,7 +556,7 @@ function QChatGPTSettings {
 			if [ ! "$modeList" ]; then
 		    	echo -e "\n\033[0;31m你根本没有语言模型，你是在玩我喵喵大人喵？\033[0m\n"
 		    else
-				echo -e "\n\033[0;36m请选择需要删除的语言喵~\033[0m\n"
+				echo -e "\n\033[0;36m请选择需要删除的语言模型喵~\033[0m\n"
 				echo "$modeList"
 		    	read -s -n 2 modeChose
 	   			modeChose=$(($modeChose-1))
