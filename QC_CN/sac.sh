@@ -452,7 +452,7 @@ function QChatGPTSettings {
 		    	read -s -n 1 keyChose
 	   			keyChose=$(($keyChose-1))
 				keyNum=$(jq --arg n ${keyChose} '.keys.openai[$n|tonumber]' /root/QChatGPT/data/config/provider.json)
-				if [ "$keyNum" ]  && ["$keyNum" ！= null] ; then
+				if [ "$keyNum" ]  && ["$keyNum" != null] ; then
 	                echo -e "\n\033[0;36m你确定要删除该Api key喵？(y|N)\033[0m\n"
 					echo -e "\033[0;33mApi key：$keyNum\033[0m"
 		  			read -s -n 1 chose
