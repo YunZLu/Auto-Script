@@ -546,7 +546,7 @@ function QChatGPTSettings {
  					vision_supported="$vision_supported"
 	   				len=$(cat /root/QChatGPT/data/metadata/llm-models.json|jq '.list[].name'|awk -F'"' '{print $2}'| awk 'END{print NR}')
        				jq --arg l ${len} --arg n ${name} --arg r ${requester} --arg tm ${token_mgr} --arg tcs ${tool_call_supported} --arg vs ${vision_supported} '.list[$l|tonumber]={"name":$n,"requester":$r,"token_mgr":$tm,"tool_call_supported":$tcs,"vision_supported":$vs}' /root/QChatGPT/data/metadata/llm-models.json > tmp.json && mv tmp.json /root/QChatGPT/data/metadata/llm-models.json
-		   			echo -e "\n\033[0;33自定义模型添加成功喵~\033[0m\n";;
+		   			echo -e "\n\033[0;33m自定义模型添加成功喵~\033[0m\n";;
 			    *)
 				echo -e "\n\033[0;32m你已取消添加自定义模型喵~\033[0m\n";;
 	  		esac
