@@ -65,7 +65,7 @@ do
  		sleep 2
 		continue
 		else
-	        echo -e "\033[0;32m启动文件下载成功喵~\n\033[0m"
+	        echo -e "\n\033[0;32m启动文件下载成功喵~\n\033[0m"
 		fi
         fi
 done
