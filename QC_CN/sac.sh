@@ -215,7 +215,17 @@ eof
 		python3 main.py
   		deactivate
     		cd /root
+      		#修改QQ连接方式
       		jq '."platform-adapters"[2].enable=true' /root/QChatGPT/data/config/platform.json > tmp.json && mv tmp.json /root/QChatGPT/data/config/platform.json
+		#添加minimax模型元数据
+  		echo "{}" >> /root/QChatGPT/data/metadata/llm-models.json
+		jq '. += {"list":
+  		[{"name":"abab5.5-chat","requester":"openai-chat-completions","token_mgr": "openai","tool_call_supported": false,"vision_supported": false},
+  		{"name":"abab5.5s-chat","requester":"openai-chat-completions","token_mgr": "openai","tool_call_supported": false,"vision_supported": false},
+  		{"name":"abab6-chat","requester":"openai-chat-completions","token_mgr": "openai","tool_call_supported": false,"vision_supported": false},
+  		{"name":"abab6.5s-chat","requester":"openai-chat-completions","token_mgr": "openai","tool_call_supported": false,"vision_supported": false},
+  		{"name":"abab6.5t.-chat","requester":"openai-chat-completions","token_mgr": "openai","tool_call_supported": false,"vision_supported": false}]
+    		} ' /root/QChatGPT/data/metadata/llm-models.json > temp.json && mv temp.json /root/QChatGPT/data/metadata/llm-models.json
                 fi
         fi
         
@@ -366,12 +376,14 @@ function QChatGPTSettings {
     echo -e "\033[0;36m请选择选一个执行喵~\033[0m
 \033[0;33m--------------------------------------\033[0m
 \033[0;33m选项1 设置管理员QQ号
-\033[0;37m选项2 接口地址设置
+\033[0;37m选项2 设置接口地址
 \033[0;33m选项3 添加API Key
 \033[0;37m选项4 删除API Key
-\033[0;33m选项5 添加自定义模型
-\033[0;37m选项6 删除自定义模型
-\033[0;33m选项7 修改Vioce token
+\033[0;37m选项5 添加预设
+\033[0;37m选项6 删除预设
+\033[0;33m选项7 添加自定义模型
+\033[0;37m选项8 删除自定义模型
+\033[0;33m选项9 修改Vioce token
 \033[0;33m--------------------------------------\033[0m
 \033[0;31m选项0 更新 QChatGPT\033[0m
 \033[0;33m--------------------------------------\033[0m
@@ -380,21 +392,133 @@ function QChatGPTSettings {
     echo
     case $option in 
         1) 
-            # 启动QChatGpt
-		cd /root/QChatGPT/bin
-  		source activate
-                echo -e "\033[0;32m正在启动QChatGpt中，请稍等一下喵~\033[0m\n"
-		python3 main.py
-  		deactivate
-    		cd /root
-            ;;
+            # 设置QQ管理员
+			cd /root
+		    echo -e "\n\033[0;33m请输入你的QQ管理员号码喵~\033[0m\n"
+       		read -p "QQ：" QQ_admin
+       		echo -e "\n\033[0;33m请确认你的QQ机器人号码喵~（y|N）\033[0m\n"
+      		echo -e "\033[0;33mQQ："$QQ_admin"\033[0m"
+	 		read -s -n 1 chose
+       			case $chose in 
+	        	    y|Y)
+			  		QQ_admin="person_$QQ_admin"
+	   				jq --arg QQ_admin ${QQ_admin} '."admin-sessions"=[$QQ_admin]' /root/QChatGPT/data/config/system.json > temp.json && mv temp.json /root/QChatGPT/data/config/system.json
+       				echo -e "\033[0;33mQQ管理员设置成功喵~\033[0m\n";;
+			    *)
+				echo -e "\n\033[0;32m你已取消设置QQ管理员喵~\033[0m\n";;
+	  		esac
+			;;
         2)
-            # 使用 Vim 编辑 config.js
-            vim $clewd_dir/config.js
-            ;;
-	      *)
-            echo "什么都没有执行喵~"
-            ;;
+            # 设置接口地址
+			cd /root
+		    echo -e "\n\033[0;33m请输入你的接口地址喵~\033[0m\n"
+       		read -p "接口地址：" Proxy
+       		echo -e "\n\033[0;33m请确认你的接口地址喵~（y|N）\033[0m\n"
+      		echo -e "\033[0;33m接口地址："$Proxy"\033[0m"
+	 		read -s -n 1 chose
+       			case $chose in 
+	        	    y|Y)
+			  		Proxy="$Proxy"
+	   				jq '.requester."openai-chat-completions"."base-url"=$Proxy' /root/QChatGPT/data/config/provider.json > temp.json && mv temp.json /root/QChatGPT/data/config/provider.json
+       				echo -e "\033[0;33m接口地址设置成功喵~\033[0m\n";;
+			    *)
+				echo -e "\n\033[0;32m你已取消设置接口地址喵~\033[0m\n";;
+	  		esac
+			;;
+           3)
+            # 添加APi key
+			cd /root
+		    echo -e "\n\033[0;33m请输入你的API key喵~(sk-开头的key)\033[0m\n"
+       		read -p "Api key：" Apikey
+       		echo -e "\n\033[0;33m请确认你的Api key喵~（y|N）\033[0m\n"
+      		echo -e "\033[0;33m接口地址："$Apikey"\033[0m"
+	 		read -s -n 1 chose
+       			case $chose in 
+	        	    y|Y)
+			  		Apikey="$Apikey"
+	   				len=$(cat /root/QChatGPT/data/config/provider.json | jq '.keys.openai[]' | awk 'END{print NR}')
+	   				jq --arg n ${len} --arg e ${Apikey} '.keys.openai[$n|tonumber]=$e' /root/QChatGPT/data/config/provider.json > tmp.json && mv tmp.json /root/QChatGPT/data/config/provider.json
+       				echo -e "\033[0;33mApi key添加成功喵~\033[0m\n";;
+			    *)
+				echo -e "\n\033[0;32m你已取消添加Api key喵~\033[0m\n";;
+	  		esac
+			;;
+		    4)
+	   		# 删除APi key
+			keyList=$(cat /root/QChatGPT/data/config/provider.json | jq '.keys.openai[]'|awk -F'"' '{print $2}'| awk 'NF{a++;print "\033[0;33m"a"\033[0m""\033[0;33m.\033[0m","\033[0;33m"$0"\033[0m\n";next}1')
+			if [ ! "$keyList" ]; then
+		    	echo -e "\n\033[0;31m你根本没有key，你是在玩我喵喵大人喵？\033[0m\n"
+		    else
+				echo -e "\n\033[0;36m请选择需要删除的Api key喵~\033[0m\n"
+				echo "$keyList"
+		    	read -s -n 1 keyChose
+	   			keyChose=$(($keyChose-1))
+				keyNum=$(jq --arg n ${keyChose} '.keys.openai[$n|tonumber]' /root/QChatGPT/data/config/provider.json)
+				if [ "$keyNum" ]; then
+	                echo -e "\n\033[0;36m你确定要删除该Api key喵？(y|N)\033[0m\n"
+					echo -e "\033[0;33mApi key：$keyNum\033[0m"
+		  			read -s -n 1 chose
+					case $chose in 
+			        	y|Y)
+							jq --arg n ${keyChose} 'del(.keys.openai[$n|tonumber])' /root/QChatGPT/data/config/provider.json > tmp.json && mv tmp.json /root/QChatGPT/data/config/provider.json
+	    					echo -e "\n\033[0;36mApi key：$keyNumr已被删除喵~\033[0m\n";;
+					    *)
+							echo -e "\n\033[0;36m你已取消删除Api key喵~\033[0m\n";;
+			  			esac
+	            else
+					echo -e "\n\033[0;31m你怎么乱选！不给你删了喵~\033[0m\n"
+		 		fi
+    		fi
+	   		;;
+        5) 
+            # 添加预设
+			cd /root
+		    echo -e "\n\033[0;33m请输入预设名喵~\033[0m\n"
+       		read -p "预设名：" name
+		 	echo -e "\n\033[0;33m请输入预设内容喵~\033[0m\n"
+       		read -p "预设内容：" value
+       		echo -e "\n\033[0;33m请确认你的预设信息喵~（y|N）\033[0m\n"
+      		echo -e "\033[0;33m预设名："$name"\033[0m"
+		    echo -e "\033[0;33m预设内容："$value"\033[0m"
+	 		read -s -n 1 chose
+       			case $chose in 
+	        	y|Y)
+			  		cat /root/QChatGPT/data/config/provider.json | jq --arg n ${name} --arg v ${value} '.prompt.[$n]=$v' > tmp.json && mv tmp.json /root/QChatGPT/data/config/provider.json
+				  	echo -e "\033[0;33m预设添加成功喵~\033[0m\n";;
+			    *)
+				echo -e "\n\033[0;32m你已取消设添加预设喵~\033[0m\n";;
+	  		esac
+			;;
+		    6)
+	   		# 删除预设
+			promptList=$(cat /root/QChatGPT/data/config/provider.json | jq '.prompt'| jq -r 'keys[]' | awk 'NF{a++;print "\033[0;33m"a"\033[0m""\033[0;33m.\033[0m","\033[0;33m"$0"\033[0m\n";next}1')
+			if [ ! "$promptList" ]; then
+		    	echo -e "\n\033[0;31m你根本没有预设，你是在玩我喵喵大人喵？\033[0m\n"
+		    else
+				echo -e "\n\033[0;36m请选择需要删除的预设喵~\033[0m\n"
+				echo "$promptList"
+		    	read -s -n 1 promptChose
+	   			promptChose=$(($promptChose-1))
+				promptName=$(cat /root/QChatGPT/data/config/provider.json | jq '.prompt'| jq -r 'keys[]' | awk -v chose=$promptChose NR==$chose)
+				if [ "$promptName" ]; then
+	                echo -e "\n\033[0;36m你确定要删除该预设喵？(y|N)\033[0m\n"
+					echo -e "\033[0;33m预设名：$promptName\033[0m"
+	 				promptValue=$(cat /root/QChatGPT/data/config/provider.json | jq --arg n ${a} '.prompt.[$n]' | awk -F'"' '{print $2}')
+	  				echo -e "\033[0;33m预设内容：$promptValue\033[0m"
+		  			read -s -n 1 chose
+					case $chose 在 
+			        	y|Y)
+							jq --arg n ${keyChose} 'del(.keys.openai[$n|tonumber])' /root/QChatGPT/data/config/provider.json > tmp.json && mv tmp.json /root/QChatGPT/data/config/provider.json
+	    					echo -e "\n\033[0;36mApi key：$keyNumr已被删除喵~\033[0m\n";;
+					    *)
+							echo -e "\n\033[0;36m你已取消删除Api key喵~\033[0m\n";;
+			  			esac
+	            else
+					echo -e "\n\033[0;31m你怎么乱选！不给你删了喵~\033[0m\n"
+		 		fi
+    		fi
+	   		;;
+   
     esac
 }
 
