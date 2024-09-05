@@ -1027,7 +1027,7 @@ do
 \033[0;37m选项3 启动酒馆\033[0m
 \033[0;33m选项4 Clewd设置\033[0m
 \033[0;37m选项5 酒馆设置\033[0m
-\033[0;33m选项6 神秘小链接$saclinkemoji\033[0m
+\033[0;33m选项6 安装QChatGpt
 \033[0;33m--------------------------------------\033[0m
 \033[0;31m选项7 更新脚本\033[0m
 \033[0;33m--------------------------------------\033[0m
@@ -1072,14 +1072,7 @@ do
             #SillyTavern设置
             sillyTavernSettings
             ;; 
-	6)
-		saclinkname=$(curl -s https://mirror.ghproxy.com/https://raw.githubusercontent.com/hopingmiao/termux_using_Claue/main/secret_saclink | awk -F '|' '{print $1 }')
-		echo -e "神秘小链接会不定期悄悄更新，这次的神秘小链接是..."
-		sleep 2
-		echo $saclinkname
-		termux-open-url $(curl -s https://mirror.ghproxy.com/https://raw.githubusercontent.com/hopingmiao/termux_using_Claue/main/secret_saclink | awk -F '|' '{print $2 }')
-		;;
-          7)
+          6)
             # 更新脚本
 	    rm -rf update_CN.sh
 	    while [ ! -f "update_QCCN.sh" ]
@@ -1120,5 +1113,5 @@ do
             ;;
     esac
 done 
-echo "已退出喵喵一键脚本，输入 bash sac.sh 可重新进入脚本喵~"
+echo "已退出喵喵一键脚本，输入 bash 可重新进入脚本喵~"
 exit
