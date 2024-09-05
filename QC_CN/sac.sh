@@ -215,6 +215,7 @@ eof
 		python3 main.py
   		deactivate
     		cd /root
+      		jq '."platform-adapters"[2].enable=true' /root/QChatGPT/data/config/platform.json > tmp.json && mv tmp.json /root/QChatGPT/data/config/platform.json
                 fi
         fi
         
@@ -364,14 +365,13 @@ function QChatGPTSettings {
 
     echo -e "\033[0;36m请选择选一个执行喵~\033[0m
 \033[0;33m--------------------------------------\033[0m
-\033[0;33m选项1 启动QChatGpt
-\033[0;33m选项2 设置管理员QQ号
-\033[0;37m选项3 设置接口地址设置
-\033[0;33m选项4 添加API Key
-\033[0;37m选项5 删除API Key
-\033[0;33m选项6 添加自定义模型
-\033[0;37m选项7 删除自定义模型
-\033[0;33m选项8 修改Vioce token
+\033[0;33m选项1 设置管理员QQ号
+\033[0;37m选项2 接口地址设置
+\033[0;33m选项3 添加API Key
+\033[0;37m选项4 删除API Key
+\033[0;33m选项5 添加自定义模型
+\033[0;37m选项6 删除自定义模型
+\033[0;33m选项7 修改Vioce token
 \033[0;33m--------------------------------------\033[0m
 \033[0;31m选项0 更新 QChatGPT\033[0m
 \033[0;33m--------------------------------------\033[0m
@@ -1200,6 +1200,7 @@ do
             #启动QChatGpt
 		cd /root/QChatGPT/bin
   		source activate
+    		cd ..
                 echo -e "\033[0;32m正在启动QChatGpt中，请稍等一下喵~\033[0m\n"
 		python3 main.py
   		deactivate
@@ -1227,8 +1228,8 @@ do
        			case $chose in 
 	        	    y|Y)
 	        		cp /opt/QQ/resources/app/app_launcher/napcat/config/onebot11.json /opt/QQ/resources/app/app_launcher/napcat/config/onebot11_$new_QQ.json
-       				sed -i '17s/false/true/' /opt/QQ/resources/app/app_launcher/napcat/config/onebot11_$new_QQ.json
-       				sed -i '18s/\[\]/\["ws:\/\/127.0.0.1:8080\/ws\]/' /opt/QQ/resources/app/app_launcher/napcat/config/onebot11_$new_QQ.json
+       				sed -i '17秒/false/true/' /opt/QQ/resources/app/app_launcher/napcat/config/onebot11_$new_QQ.json
+       				sed -i '18秒/\[\]/\["ws:\/\/127.0.0.1:8080\/ws\]/' /opt/QQ/resources/app/app_launcher/napcat/config/onebot11_$new_QQ.json
 	   		 	echo -e "\n\033[0;36mCtrl+A+D退出后台不退出登录，Ctrl+C退出登录喵~\033[0m"
 				echo -e "\033[0;36m看懂了请按任意键继续喵~\033[0m"
        				read -n 1
