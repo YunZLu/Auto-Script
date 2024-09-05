@@ -1201,7 +1201,7 @@ do
 		cd /root/QChatGPT/bin
   		source activate
     		cd ..
-                echo -e "\033[0;32m正在启动QChatGpt中，请稍等一下喵~\033[0m\n"
+                echo -e "\033[0;33m正在启动QChatGpt中，请稍等一下喵~\033[0m"
 		python3 main.py
   		deactivate
     		cd /root
