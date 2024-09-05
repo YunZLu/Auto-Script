@@ -417,7 +417,7 @@ function QChatGPTSettings {
        			case $chose in 
 	        	    y|Y)
 			  		Proxy="$Proxy"
-	   				jq '.requester."openai-chat-completions"."base-url"=$Proxy' /root/QChatGPT/data/config/provider.json > temp.json && mv temp.json /root/QChatGPT/data/config/provider.json
+	   				jq --arg P ${Proxy} '.requester."openai-chat-completions"."base-url"=$P' /root/QChatGPT/data/config/provider.json > temp.json && mv temp.json /root/QChatGPT/data/config/provider.json
        				echo -e "\033[0;33m接口地址设置成功喵~\033[0m\n";;
 			    *)
 				echo -e "\n\033[0;32m你已取消设置接口地址喵~\033[0m\n";;
