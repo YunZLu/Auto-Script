@@ -1245,7 +1245,7 @@ do
 			if [ ! "$qList" ]; then
 		    		echo -e "\n\033[0;31m你根本没有添加过QQ号，你是在玩我喵喵大人喵？\033[0m\n"
 		    	else
-				echo -e "\n\033[0;36m请输入数字登录对应的QQ号喵~\033[0m\n"
+				echo -e "\n\033[0;36m请输入数字登录对应的QQ号喵~\033[0m"
 				echo "$qList"
 		    		read -s -n 1 QQchose
 				QQnumber=$(ls -1 /opt/QQ/resources/app/app_launcher/napcat/config/ | awk -F'_' '{print $2}' | awk -F'.' '{print $1}' | awk '!a[$0]++{print}'| awk NF | awk -v QQchose=$QQchose NR==$QQchose)
@@ -1299,7 +1299,7 @@ do
 			if [ ! "$qLogin" ]; then
 		    		echo -e "\n\033[0;31m你根本没有登录QQ号，你是在玩我喵喵大人喵？\033[0m\n"
 		    	else
-				echo -e "\n\033[0;36m请选择需要退出登录的QQ号喵~\033[0m"
+				echo -e "\n\033[0;36m请选择需要退出登录的QQ号喵~\033[0m\n"
 				echo "$qLogin"
 		    		read -s -n 1 QQchose
 				QQnumber=$(ps -ef | grep napcat | awk '{print $0}' | awk -F'-q ' '{print $2}' | awk '!a[$0]++{print}'| awk NF | awk -v QQchose=$QQchose NR==$QQchose)
