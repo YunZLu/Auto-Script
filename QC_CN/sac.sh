@@ -497,7 +497,7 @@ function QChatGPTSettings {
 				echo "$promptList"
 		    	read -s -n 1 promptChose
 				promptName=$(cat /root/QChatGPT/data/config/provider.json | jq '.prompt'| jq -r 'keys[]' | awk NR==$promptChose)
-				if [ "$promptName" ]; then
+				if [ "$promptName" ]  && [ "$promptName" != null ]; then
 	                echo -e "\n\033[0;36m你确定要删除该预设喵？(y|N)\033[0m\n"
 					echo -e "\033[0;33m预设名：$promptName\033[0m\n"
 	 				promptValue=$(cat /root/QChatGPT/data/config/provider.json | jq --arg n ${promptName} '.prompt.[$n]' | awk -F'"' '{print $2}')
@@ -506,7 +506,7 @@ function QChatGPTSettings {
 					case $chose in 
 			        	y|Y)
 							cat /root/QChatGPT/data/config/provider.json | jq --arg n ${promptName} 'del(.prompt.[$n])' > tmp.json && mv tmp.json /root/QChatGPT/data/config/provider.json
-	    					echo -e "\n\033[0;36m预设：$promptName已被删除喵~\033[0m\n";;
+	    					echo -e "\n\033[0;32m预设：$promptName已被删除喵~\033[0m\n";;
 					    *)
 							echo -e "\n\033[0;36m你已取消删除预设喵~\033[0m\n";;
 			  			esac
@@ -553,7 +553,7 @@ function QChatGPTSettings {
 		    8)
 	   		# 删除自定义模型
 			modeList=$(cat /root/QChatGPT/data/metadata/llm-models.json|jq '.list[].name'|awk -F'"' '{print $2}'| awk 'NF{a++;print "\033[0;33m"a"\033[0m""\033[0;33m.\033[0m","\033[0;33m"$0"\033[0m\n";next}1')
-			if [ ! "$modeList" ]; then
+			if [ ! "$modeList" ]  && [ "$modeList" != null ]; then
 		    	echo -e "\n\033[0;31m你根本没有语言模型，你是在玩我喵喵大人喵？\033[0m\n"
 		    else
 				echo -e "\n\033[0;36m请选择需要删除的语言模型喵~\033[0m\n"
@@ -568,9 +568,9 @@ function QChatGPTSettings {
 					case $chose in 
 			        	y|Y)
 							jq --arg n ${modeChose} 'del(.list[$n|tonumber])' /root/QChatGPT/data/metadata/llm-models.json > tmp.json && mv tmp.json /root/QChatGPT/data/metadata/llm-models.json
-	    					echo -e "\n\033[0;36m模型：$modeName已被删除喵~\033[0m\n";;
+	    					echo -e "\n\033[0;32m模型：$modeName已被删除喵~\033[0m\n";;
 					    *)
-							echo -e "\n\033[0;32m你已取消删除语言模型喵~\033[0m\n";;
+							echo -e "\n\033[0;36m你已取消删除语言模型喵~\033[0m\n";;
 			  			esac
 	            else
 					echo -e "\n\033[0;31m你怎么乱选！不给你删了喵~\033[0m\n"
