@@ -496,7 +496,6 @@ function QChatGPTSettings {
 				echo -e "\n\033[0;36m请选择需要删除的预设喵~\033[0m\n"
 				echo "$promptList"
 		    	read -s -n 1 promptChose
-	   			promptChose=$(($promptChose-1))
 				promptName=$(cat /root/QChatGPT/data/config/provider.json | jq '.prompt'| jq -r 'keys[]' | awk -v chose=$promptChose NR==$chose)
 				if [ "$promptName" ]; then
 	                echo -e "\n\033[0;36m你确定要删除该预设喵？(y|N)\033[0m\n"
