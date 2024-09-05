@@ -82,6 +82,7 @@ eof
 	sleep 2
         continue
 	else
+ 	rm -rf node-v20.10.0-linux-arm64.tar.xz
         echo -e "\n\033[0;32mnode安装成功喵~\n\033[0m"
         fi
     fi
@@ -191,6 +192,7 @@ eof
         	continue
                 else
                 echo -e "\n\033[0;32mnapcat文件下载成功喵~\033[0m\n"
+		rm -rf napcat.sh
                 fi
         fi
 
@@ -581,7 +583,7 @@ function QChatGPTSettings {
             # 设置TTS-token
 			if [ ! -f "/root/QChatGPT/data/plugins/NewChatVoice/config/global_config.json" ]; then
             	echo -e "\033[0;33m你还没有下载插件，请先用QQ管理员复制并发送给QQ机器人以下指令:\033[0m\n"
-				echo -e "\033[0;33m!plugin get https://github.com/the-lazy-me/NewChatVoice.git\033[0m\n"
+				echo -e "\033[0;33m!plugin get https://mirror.ghproxy.com/https://github.com/the-lazy-me/NewChatVoice.git\033[0m\n"
    			else
 		    	echo -e "\n\033[0;33m请输入你的海豚TTS token(输入链接即可)喵~\033[0m\n"
        			read -p "Token：" token
@@ -1603,5 +1605,5 @@ do
             ;;
     esac
 done 
-echo "已退出喵喵一键脚本，输入 bash sac.sh 可重新进入脚本喵~"
+echo "已退出喵喵一键脚本，输入 bash 可重新进入脚本喵~"
 exit
