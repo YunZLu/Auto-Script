@@ -379,13 +379,11 @@ function QChatGPTSettings {
 \033[0;37m选项2 设置接口地址
 \033[0;33m选项3 添加API Key
 \033[0;37m选项4 删除API Key
-\033[0;37m选项5 添加预设
+\033[0;33m选项5 添加预设
 \033[0;37m选项6 删除预设
 \033[0;33m选项7 添加自定义模型
 \033[0;37m选项8 删除自定义模型
 \033[0;33m选项9 设置Vioce token
-\033[0;33m--------------------------------------\033[0m
-\033[0;31m选项0 更新 QChatGPT\033[0m
 \033[0;33m--------------------------------------\033[0m
 "
     read -n 1 option
@@ -443,7 +441,7 @@ function QChatGPTSettings {
 				echo -e "\n\033[0;32m你已取消添加Api key喵~\033[0m\n";;
 	  		esac
 			;;
-		    4)
+			4)
 	   		# 删除APi key
 			keyList=$(cat /root/QChatGPT/data/config/provider.json | jq '.keys.openai[]'|awk -F'"' '{print $2}'| awk 'NF{a++;print "\033[0;33m"a"\033[0m""\033[0;33m.\033[0m","\033[0;33m"$0"\033[0m\n";next}1')
 			if [ ! "$keyList" ]; then
@@ -470,7 +468,7 @@ function QChatGPTSettings {
 		 		fi
     		fi
 	   		;;
-        5) 
+        	5) 
             # 添加预设
 			cd /root
 		    echo -e "\n\033[0;33m请输入预设名喵~\033[0m\n"
