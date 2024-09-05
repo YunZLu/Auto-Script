@@ -383,7 +383,7 @@ function QChatGPTSettings {
 \033[0;37m选项6 删除预设
 \033[0;33m选项7 添加自定义模型
 \033[0;37m选项8 删除自定义模型
-\033[0;33m选项9 修改Vioce token
+\033[0;33m选项9 设置Vioce token
 \033[0;33m--------------------------------------\033[0m
 \033[0;31m选项0 更新 QChatGPT\033[0m
 \033[0;33m--------------------------------------\033[0m
@@ -506,23 +506,107 @@ function QChatGPTSettings {
 	 				promptValue=$(cat /root/QChatGPT/data/config/provider.json | jq --arg n ${a} '.prompt.[$n]' | awk -F'"' '{print $2}')
 	  				echo -e "\033[0;33m预设内容：$promptValue\033[0m"
 		  			read -s -n 1 chose
-					case $chose 在 
+					case $chose in 
 			        	y|Y)
-							jq --arg n ${keyChose} 'del(.keys.openai[$n|tonumber])' /root/QChatGPT/data/config/provider.json > tmp.json && mv tmp.json /root/QChatGPT/data/config/provider.json
-	    					echo -e "\n\033[0;36mApi key：$keyNumr已被删除喵~\033[0m\n";;
+							cat /root/QChatGPT/data/config/provider.json | jq --arg n ${promptName} 'del(.prompt.[$n])' > tmp.json && mv tmp.json /root/QChatGPT/data/config/provider.json
+	    					echo -e "\n\033[0;36m预设：$promptName已被删除喵~\033[0m\n";;
 					    *)
-							echo -e "\n\033[0;36m你已取消删除Api key喵~\033[0m\n";;
+							echo -e "\n\033[0;36m你已取消删除预设喵~\033[0m\n";;
 			  			esac
 	            else
 					echo -e "\n\033[0;31m你怎么乱选！不给你删了喵~\033[0m\n"
 		 		fi
     		fi
 	   		;;
-   
-    esac
+           7)
+            # 添加自定义模型
+			cd /root
+		    echo -e "\n\033[0;33m请输入你的模型信息喵~(不输入内容按回车则为默认值)\033[0m\n"
+       		read -p "name(默认值: null)：" name
+		 	name=${name:-null}
+       		read -p "requester(默认值 openai-chat-completions)：" requester
+		 	requester=${requester:-openai-chat-completions}
+		    read -p "token_mgr(默认值 openai)：" token_mgr
+	  		token_mgr=${token_mgr:-openai}
+			read -p "tool_call_supported(默认值 false)：" tool_call_supported
+   			tool_call_supported=${tool_call_supported:-false}
+			read -p "vision_supported(默认值 false)：" vision_supported
+   			vision_supported=${vision_supported:-false}
+       		echo -e "\n\033[0;33m请确认你的模型信息喵~（y|N）\033[0m\n"
+      		echo -e "\033[0;33mname："$name"\033[0m"
+		    echo -e "\033[0;33mrequester："$requester"\033[0m"
+		    echo -e "\033[0;33mtoken_mgr："$token_mgr"\033[0m"
+			echo -e "\033[0;33mtool_call_supported："$tool_call_supported"\033[0m"
+		    echo -e "\033[0;33mvision_supported："$vision_supported"\033[0m"
+	 		read -s -n 1 chose
+       			case $chose in 
+	        	    y|Y)
+			  		name="$name"
+	   				requester="$requester"
+					token_mgr="$token_mgr"
+					tool_call_supported="$tool_call_supported"
+ 					vision_supported="$vision_supported"
+	   				len=$(cat /root/QChatGPT/data/metadata/llm-models.json|jq '.list[].name'|awk -F'"' '{print $2}'| awk 'END{print NR}')
+       				jq --arg l ${len} --arg n ${name} --arg r ${requester} --arg tm ${token_mgr} --arg tcs ${tool_call_supported} --arg vs ${vision_supported}'.list[$l|tonumber]={"name":$n,"requester":$r,"token_mgr":$tm,"tool_call_supported":$tcs,"vision_supported":$vs}' /root/QChatGPT/data/metadata/llm-models.json > tmp.json && mv tmp.json /root/QChatGPT/data/metadata/llm-models.json
+		   			echo -e "\033[0;33自定义模型添加成功喵~\033[0m\n";;
+			    *)
+				echo -e "\n\033[0;32m你已取消添加自定义模型喵~\033[0m\n";;
+	  		esac
+			;;
+		    8)
+	   		# 删除自定义模型
+			modeList=$(cat /root/QChatGPT/data/metadata/llm-models.json|jq '.list[].name'|awk -F'"' '{print $2}'| awk 'NF{a++;print "\033[0;33m"a"\033[0m""\033[0;33m.\033[0m","\033[0;33m"$0"\033[0m\n";next}1')
+			if [ ! "$modeList" ]; then
+		    	echo -e "\n\033[0;31m你根本没有语言模型，你是在玩我喵喵大人喵？\033[0m\n"
+		    else
+				echo -e "\n\033[0;36m请选择需要删除的语言喵~\033[0m\n"
+				echo "$modeList"
+		    	read -s -n 1 modeChose
+	   			modeChose=$(($modeChose-1))
+				modeName=$(jq --arg n ${modeChose} '.list[$n|tonumber]' /root/QChatGPT/data/metadata/llm-models.json)
+				if [ "$modeName" ]; then
+	                echo -e "\n\033[0;36m你确定要删除该语言模型喵？(y|N)\033[0m\n"
+					echo -e "\033[0;33m语言模型：\n$modeName\033[0m"
+		  			read -s -n 1 chose
+					case $chose in 
+			        	y|Y)
+							jq --arg n ${modeChose} 'del(.list[$n|tonumber])' /root/QChatGPT/data/metadata/llm-models.json > tmp.json && mv tmp.json /root/QChatGPT/data/metadata/llm-models.json
+	    					echo -e "\n\033[0;36m模型：$modeName已被删除喵~\033[0m\n";;
+					    *)
+							echo -e "\n\033[0;36m你已取消删除语言模型喵~\033[0m\n";;
+			  			esac
+	            else
+					echo -e "\n\033[0;31m你怎么乱选！不给你删了喵~\033[0m\n"
+		 		fi
+    		fi
+	   		;;
+	  		9)
+            # 设置TTS-token
+			if [ ! -f "/root/QChatGPT/data/plugins/NewChatVoice/global_config.json" ]; then
+            	echo -e "\033[0;33m你还没有下载插件，请先用QQ管理员复制并发送给QQ机器人以下指令:\033[0m\n"
+				echo -e "\033[0;33m!plugin get https://github.com/the-lazy-me/NewChatVoice.git\033[0m\n"
+   			else
+		    	echo -e "\n\033[0;33m请输入你的海豚TTS token(输入链接即可)喵~\033[0m\n"
+       			read -p "Token：" token
+       			echo -e "\n\033[0;33m请确认你的海豚TTS token喵~（y|N）\033[0m\n"
+      			echo -e "\033[0;33mToken："$token"\033[0m"
+	 			read -s -n 1 chose
+       			case $chose in 
+	        	y|Y)
+	   				jq --arg token ${token} '.token=$token' /root/QChatGPT/data/plugins/NewChatVoice/global_config.json > temp.json && mv temp.json /root/QChatGPT/data/config/system.json
+       				echo -e "\033[0;33m海豚TTS token设置成功喵~\033[0m\n";;
+			    *)
+					echo -e "\n\033[0;32m你已取消设置海豚TTS token喵~\033[0m\n";;
+	  			esac
+	 		fi
+			;;
+	   	    *)
+			echo -e "\n\033[0;31m你怎么乱选！不跟你玩了喵~\033[0m\n";;
+	  esac
+	  echo -e "\033[0;33m3s后返回主菜单喵~\033[0m\n"
+   	  sleep 3
+      cd /root
 }
-
-
 
 function clewdSettings { 
     # 3. Clewd设置
