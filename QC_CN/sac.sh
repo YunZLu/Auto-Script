@@ -174,8 +174,6 @@ go env -w GO111MODULE=on
 go env -w GOPROXY=https://mirrors.aliyun.com/goproxy,direct
 echo -e "\033[0;32mgo已安装喵~\n\033[0m"
 
-#设置pip国内源
-pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple
 echo -e "\n\033[0;32mpython已安装喵~\033[0m\n"
 
 while [ ! -d "/root/clewd" ] || [ ! -f "/root/clewd/config.js" ] || [ ! -d "/root/SillyTavern" ] || [ ! -f "/root/SillyTavern/start.sh" ] || [ ! -d "/root/one-api" ] || [ ! -f "/root/one-api/start.sh" ] || [ ! -d "/opt/QQ/resources/app/app_launcher/napcat" ] || [ ! -d "/root/QChatGPT" ]
@@ -212,7 +210,9 @@ eof
 		source activate
 		cd /root/QChatGPT/
                 echo -e "\033[0;33m正在安装依赖喵~\033[0m\n"
-		pip install -r requirements.txt -i https://mirrors.aliyun.com/pypi/simple some-package
+		#设置pip国内源
+		pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple
+		pip install -r requirements.txt
 		echo -e "\n\033[0;32m依赖安装完毕喵~\033[0m"
 		python3 main.py
   		deactivate
