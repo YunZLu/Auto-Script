@@ -222,7 +222,8 @@ eof
 		#添加minimax模型元数据
   		echo "{}" >> /root/QChatGPT/data/metadata/llm-models.json
 		jq '. += {"list":
-  		[{"name":"abab5.5-chat","requester":"openai-chat-completions","token_mgr": "openai","tool_call_supported": false,"vision_supported": false},
+  		[{"model_name": "claude-3-5-sonnet-20240620","name": "OneAPI/claude-3-5-sonnet-20240620"},
+    		{"name":"abab5.5-chat","requester":"openai-chat-completions","token_mgr": "openai","tool_call_supported": false,"vision_supported": false},
   		{"name":"abab5.5s-chat","requester":"openai-chat-completions","token_mgr": "openai","tool_call_supported": false,"vision_supported": false},
   		{"name":"abab6-chat","requester":"openai-chat-completions","token_mgr": "openai","tool_call_supported": false,"vision_supported": false},
   		{"name":"abab6.5s-chat","requester":"openai-chat-completions","token_mgr": "openai","tool_call_supported": false,"vision_supported": false},
