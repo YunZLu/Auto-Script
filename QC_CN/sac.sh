@@ -181,7 +181,7 @@ do
 
     if [ ! -d "/opt/QQ/resources/app/app_launcher/napcat" ]; then
                 echo -e "\033[0;33mnapcat不存在，正在下载，请稍等一下喵...\033[0m\n"
-                curl -O -L napcat.sh https://nclatest.znin.net/NapNeko/NapCat-Installer/main/script/install.sh && sudo bash napcat.sh <<eof
+                curl -O napcat.sh https://nclatest.znin.net/NapNeko/NapCat-Installer/main/script/install.sh && sudo bash napcat.sh <<eof
 n
 eof
         	if [ ! -d "/opt/QQ/resources/app/app_launcher/napcat" ]; then
