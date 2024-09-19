@@ -72,7 +72,7 @@ eof
     if ! command -v node &> /dev/null; then
     echo -e "\033[0;31m检测到你未安装nodejs喵~\n\033[0m"
     echo -e "\033[0;33m正在为你下载nodejs，请稍等一下喵~\n\033[0m"
-    curl -O https://cdn.npmmirror.com/binaries/node/v20.10.0/node-v20.10.0-linux-arm64.tar.xz
+    curl -O -L https://cdn.npmmirror.com/binaries/node/v20.10.0/node-v20.10.0-linux-arm64.tar.xz
     tar xf node-v20.10.0-linux-arm64.tar.xz
     echo "export PATH=\$PATH:/root/node-v20.10.0-linux-arm64/bin" >> /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/ubuntu/etc/profile
     source /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/ubuntu/etc/profile
@@ -183,7 +183,7 @@ do
 
     if [ ! -d "/opt/QQ/resources/app/app_launcher/napcat" ]; then
                 echo -e "\033[0;33mnapcat不存在，正在下载，请稍等一下喵...\033[0m\n"
-                curl -o napcat.sh https://nclatest.znin.net/NapNeko/NapCat-Installer/main/script/install.sh && sudo bash napcat.sh <<eof
+                curl -O -L napcat.sh https://nclatest.znin.net/NapNeko/NapCat-Installer/main/script/install.sh && sudo bash napcat.sh <<eof
 n
 eof
         	if [ ! -d "/opt/QQ/resources/app/app_launcher/napcat" ]; then
@@ -247,7 +247,7 @@ eof
         if [ ! -f "one-api/start.sh" ]; then
                 echo -e "\033[0;33mone-api启动文件不存在，正在通过git下载，请稍等一下喵...\n\033[0m\n"
                 cd one-api
-    		curl -O https://mirror.ghproxy.com/https://raw.githubusercontent.com/YunZLu/termux_using_openai/main/CN/start.sh
+    		curl -O -L https://mirror.ghproxy.com/https://raw.githubusercontent.com/YunZLu/termux_using_openai/main/CN/start.sh
 	        if [ ! -f "start.sh" ]; then
 		echo -e "\n\033[0;33mone-api启动文件下载失败了，正在重试中，请稍等一下喵~\033[0m\n"
   		sleep 2
@@ -1592,7 +1592,7 @@ do
             do
                 if [ ! -f "update_QCCN.sh" ]; then
 		echo -e "\n\033[0;33m更新脚本已删除，正在通过git重新下载喵...\033[0m\n"
-          	curl -O https://mirror.ghproxy.com/https://raw.githubusercontent.com/YunZLu/termux_using_openai/main/QC_CN/update_QCCN.sh
+          	curl -O -L https://mirror.ghproxy.com/https://raw.githubusercontent.com/YunZLu/termux_using_openai/main/QC_CN/update_QCCN.sh
       	                if [ ! -f "update_QCCN.sh" ]; then
       		              echo -e "\n\033[0;31m更新脚本下载失败了，正在重试喵...\033[0m\n"
       		              continue
