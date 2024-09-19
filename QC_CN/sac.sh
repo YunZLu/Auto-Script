@@ -245,7 +245,7 @@ eof
         fi
         
         if [ ! -f "one-api/start.sh" ]; then
-                echo -e "\033[0;33mone-api启动文件不存在，正在通过git下载，请稍等一下喵...\n\033[0m\n"
+                echo -e "\033[0;33mone-api启动文件不存在，正在通过git下载，请稍等一下喵...\033[0m\n"
                 cd one-api
     		curl -O -L https://mirror.ghproxy.com/https://raw.githubusercontent.com/YunZLu/termux_using_openai/main/CN/start.sh
 	        if [ ! -f "start.sh" ]; then
@@ -1588,6 +1588,7 @@ do
         9)
             # 更新脚本
       	    rm -rf /root/update_QCCN.sh
+	    rm -rf /root/one-api/start.sh
       	    while [ ! -f "update_QCCN.sh" ]
             do
                 if [ ! -f "update_QCCN.sh" ]; then
