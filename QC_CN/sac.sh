@@ -498,7 +498,8 @@ function QChatGPTSettings {
        		read -p "预设内容：" value
        		echo -e "\n\033[0;33m请确认你的预设信息喵~（y|N）\033[0m\n"
       		echo -e "\033[0;33m预设名："$name"\033[0m\n"
-		    echo -e "\033[0;33m预设内容：""$value""\033[0m"
+			echo -e "\033[0;33m预设内容：\033[0m"
+			echo "$value" | jq .
 	 		read -s -n 1 chose
        			case $chose in 
 	        	y|Y)
