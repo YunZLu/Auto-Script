@@ -485,10 +485,9 @@ function QChatGPTSettings {
 				2)
 					cat /root/QChatGPT/data/config/provider.json | jq '.prompt-mode="full-scenario"' > tmp.json && mv tmp.json /root/QChatGPT/data/config/provider.json
 					echo -e "\n\033[0;36m预设模式已设置为:完整对话预设模式喵~\033[0m\n";;
+	 			*)
+	 				echo -e "\n\033[0;31m你怎么乱选！不给你设置了喵~\033[0m\n";;
 			  		esac
-	            else
-					echo -e "\n\033[0;31m你怎么乱选！不给你设置了喵~\033[0m\n"
-		 		fi
 			;;
         	5) 
             # 添加预设
