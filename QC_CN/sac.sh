@@ -658,7 +658,7 @@ function QChatGPTSettings {
 						echo -e "\n\033[0;36m你已取消添加自定义模型喵~\033[0m\n";;
 	  				esac
 		 	else
-			echo -e "\n\033[0;32m模型名称不能为空喵~\033[0m\n"
+			echo -e "\n\033[0;31m模型名称不能为空喵~\033[0m\n"
 			fi
 			;;
 		    8)
