@@ -83,6 +83,8 @@ eof
         continue
 	else
  	rm -rf node-v20.10.0-linux-arm64.tar.xz
+  	#设置npm国内源
+	npm config set registry https://registry.npmmirror.com
         echo -e "\n\033[0;32mnode安装成功喵~\n\033[0m"
         fi
     fi
@@ -165,8 +167,6 @@ done
 
 echo -e "\033[0;32mgit已安装喵~\033[0m\n"
 
-#设置npm国内源
-npm config set registry https://registry.npmmirror.com
 echo -e "\033[0;32mnode已安装喵~\033[0m\n"
 
 #设置go mod下载使用阿里云加速代理
@@ -1502,6 +1502,8 @@ do
             #启动One-Api
 	    ps -ef | grep one-api | awk '{print$2}' | xargs kill -9
             cd /root/one-api
+	    #设置npm国内源
+	    npm config set registry https://registry.npmmirror.com
             bash start.sh
             echo "One-Api已关闭, 即将返回主菜单"
             cd ../
@@ -1510,6 +1512,8 @@ do
             #启动SillyTavern
 	    ps -ef | grep server.js | awk '{print$2}' | xargs kill -9
             cd /root/SillyTavern
+	    #设置npm国内源
+	    npm config set registry https://registry.npmmirror.com
 	    bash start.sh
             echo "酒馆已关闭, 即将返回主菜单"
             cd ../
@@ -1677,6 +1681,8 @@ do
             echo "端口为$port, 出现 (x)Login in {邮箱} 代表启动成功, 后续出现AI无法应答等报错请检查本窗口喵。"
 			ps -ef | grep clewd.js | awk '{print$2}' | xargs kill -9
             cd /root/clewd
+	    #设置npm国内源
+	    npm config set registry https://registry.npmmirror.com
             bash start.sh
             echo "Clewd已关闭, 即将返回主菜单"
             cd ../
