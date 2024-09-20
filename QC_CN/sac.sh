@@ -597,7 +597,7 @@ function QChatGPTSettings {
 						     		rm -rf /root/QChatGPT/data/scenario/$PMname.json
 									echo -e "\n\033[0;32m预设："$PMname" 已删除喵~\033[0m\n";;
 							    *)
-									echo -e "\n\033[0;36m你已取消删除喵~\033[0m\n";;
+									echo -e "\n\n\033[0;36m你已取消删除喵~\033[0m\n";;
 					  			esac
 			             else
 							echo -e "\n\033[0;31m你怎么乱选！不给你删除了喵~\033[0m\n"
