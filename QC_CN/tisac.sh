@@ -50,7 +50,7 @@ do
      fi
 done
 
-echo -e "\033[0;32mubuntu已安装喵~\n\033[0m"
+echo -e "\033[0;32mUbuntu已安装喵~\n\033[0m"
 
 cd $current/root
 
