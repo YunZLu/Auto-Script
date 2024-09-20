@@ -1701,7 +1701,7 @@ do
       	    while [ ! -f "update_QCCN.sh" ]
             do
                 if [ ! -f "update_QCCN.sh" ]; then
-		echo -e "\n\033[0;33m更新脚本已删除，正在通过git重新下载喵...\033[0m\n"
+		echo -e "\033[0;33m更新脚本已删除，正在通过git重新下载喵...\033[0m\n"
           	curl -O -L https://mirror.ghproxy.com/https://raw.githubusercontent.com/YunZLu/termux_using_openai/main/QC_CN/update_QCCN.sh
       	                if [ ! -f "update_QCCN.sh" ]; then
       		              echo -e "\n\033[0;31m更新脚本下载失败了，正在重试喵...\033[0m\n"
