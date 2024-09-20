@@ -561,14 +561,13 @@ function QChatGPTSettings {
 						else
 		        		jq --arg l ${len} --arg n ${name} --arg r ${requester} --arg tm ${token_mgr} --arg tcs ${tool_call_supported} --arg vs ${vision_supported} '.list[$l|tonumber]={"name":$n,"requester":$r,"token_mgr":$tm,"tool_call_supported":$tcs,"vision_supported":$vs}' /root/QChatGPT/data/metadata/llm-models.json > tmp.json && mv tmp.json /root/QChatGPT/data/metadata/llm-models.json	 
 		        		fi
-			   			echo -e "\n\033[0;32m自定义模型添加成功喵~\033[0m\n"
+			   			echo -e "\n\033[0;32m自定义模型添加成功喵~\033[0m\n";;
+           				*)
+						echo -e "\n\033[0;36m你已取消添加自定义模型喵~\033[0m\n";;
+	  				esac
 		 	else
 			echo -e "\n\033[0;32m模型名称不能为空喵~\033[0m\n"
 			fi
-   			;;
-           *)
-			echo -e "\n\033[0;36m你已取消添加自定义模型喵~\033[0m\n";;
-	  		esac
 			;;
 		    8)
 	   		# 删除自定义模型
