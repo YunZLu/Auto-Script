@@ -480,10 +480,10 @@ function QChatGPTSettings {
 		    read -s -n 1 chose
 			case $chose in 
 			    1)
-					cat /root/QChatGPT/data/config/provider.json | jq '.prompt-mode="normal"' > tmp.json && mv tmp.json /root/QChatGPT/data/config/provider.json
+					cat /root/QChatGPT/data/config/provider.json | jq '."prompt-mode"="normal"' > tmp.json && mv tmp.json /root/QChatGPT/data/config/provider.json
 	    			echo -e "\n\033[0;32m预设模式已设置为:普通预设模式喵~\033[0m\n";;
 				2)
-					cat /root/QChatGPT/data/config/provider.json | jq '.prompt-mode="full-scenario"' > tmp.json && mv tmp.json /root/QChatGPT/data/config/provider.json
+					cat /root/QChatGPT/data/config/provider.json | jq '."prompt-mode"="full-scenario"' > tmp.json && mv tmp.json /root/QChatGPT/data/config/provider.json
 					echo -e "\n\033[0;36m预设模式已设置为:完整对话预设模式喵~\033[0m\n";;
 	 			*)
 	 				echo -e "\n\033[0;31m你怎么乱选！不给你设置了喵~\033[0m\n";;
