@@ -519,8 +519,7 @@ function QChatGPTSettings {
 		       		read -p "预设名：" name
 				 	echo -e "\n\033[0;33m请输入预设内容喵~\033[0m\n"
 		       		read -p "预设内容：" value
-					echo "$value" | jq empty
-					if [ $? -eq 0 ]; then
+					if echo "$value" | jq . >/dev/null 2>&1; then
 			       		echo -e "\n\033[0;33m请确认你的预设信息喵~（y|N）\033[0m\n"
 			      		echo -e "\033[0;33m预设名："$name"\033[0m\n"
 						echo -e "\033[0;33m预设内容：\033[0m\n"
