@@ -378,10 +378,11 @@ function QChatGPTSettings {
 
     echo -e "\033[0;36m请选择选一个执行喵~\033[0m
 \033[0;33m--------------------------------------\033[0m
-\033[0;34m选项1 设置管理员QQ号
-\033[0;37m选项2 设置接口地址
-\033[0;34m选项3 添加API Key
-\033[0;37m选项4 删除API Key
+\033[0;34m选项0 设置管理员QQ号
+\033[0;37m选项1 设置接口地址
+\033[0;34m选项2 添加API Key
+\033[0;37m选项3 删除API Key
+\033[0;34m选项4 设置预设模式
 \033[0;34m选项5 添加预设
 \033[0;37m选项6 删除预设
 \033[0;34m选项7 添加自定义模型
@@ -391,7 +392,7 @@ function QChatGPTSettings {
     read -s -n 1 option
     echo
     case $option in 
-        1) 
+        0) 
             # 设置QQ管理员
 			cd /root
 		    echo -e "\033[0;33m请输入你的QQ管理员号码喵~\033[0m\n"
@@ -408,7 +409,7 @@ function QChatGPTSettings {
 				echo -e "\n\033[0;36m你已取消设置QQ管理员喵~\033[0m\n";;
 	  		esac
 			;;
-        2)
+        1)
             # 设置接口地址
 			cd /root
 		    echo -e "\033[0;33m请输入你的接口地址喵~\033[0m\n"
@@ -425,7 +426,7 @@ function QChatGPTSettings {
 				echo -e "\n\033[0;36m你已取消设置接口地址喵~\033[0m\n";;
 	  		esac
 			;;
-           3)
+           2)
             # 添加APi key
 			cd /root
 		    echo -e "\033[0;33m请输入你的API key喵~(sk-开头的key)\033[0m\n"
@@ -443,7 +444,7 @@ function QChatGPTSettings {
 				echo -e "\n\033[0;36m你已取消添加Api key喵~\033[0m\n";;
 	  		esac
 			;;
-			4)
+			3)
 	   		# 删除APi key
 			keyList=$(cat /root/QChatGPT/data/config/provider.json | jq '.keys.openai[]'|awk -F'"' '{print $2}'| awk 'NF{a++;print "\033[0;33m"a"\033[0m""\033[0;33m.\033[0m","\033[0;33m"$0"\033[0m\n";next}1')
 			if [ ! "$keyList" ]; then
@@ -470,6 +471,25 @@ function QChatGPTSettings {
 		 		fi
     		fi
 	   		;;
+	        4) 
+            # 设置预设模式
+			cd /root
+			echo -e "\033[0;33m请选择预设模式喵~\033[0m\n"
+			echo -e "\033[0;33m1、普通预设模式\033[0m\n"
+   			echo -e "\033[0;33m2、完整对话预设模式\033[0m\n"
+		    read -s -n 1 chose
+			case $chose in 
+			    1)
+					cat /root/QChatGPT/data/config/provider.json | jq '.prompt-mode="normal"' > tmp.json && mv tmp.json /root/QChatGPT/data/config/provider.json
+	    			echo -e "\n\033[0;32m预设模式已设置为:普通预设模式喵~\033[0m\n";;
+				2)
+					cat /root/QChatGPT/data/config/provider.json | jq '.prompt-mode="full-scenario"' > tmp.json && mv tmp.json /root/QChatGPT/data/config/provider.json
+					echo -e "\n\033[0;36m预设模式已设置为:完整对话预设模式喵~\033[0m\n";;
+			  		esac
+	            else
+					echo -e "\n\033[0;31m你怎么乱选！不给你设置了喵~\033[0m\n"
+		 		fi
+			;;
         	5) 
             # 添加预设
 			cd /root
@@ -479,7 +499,7 @@ function QChatGPTSettings {
        		read -p "预设内容：" value
        		echo -e "\n\033[0;33m请确认你的预设信息喵~（y|N）\033[0m\n"
       		echo -e "\033[0;33m预设名："$name"\033[0m\n"
-		    echo -e "\033[0;33m预设内容："$value"\033[0m"
+		    echo -e "\033[0;33m预设内容：""$value""\033[0m"
 	 		read -s -n 1 chose
        			case $chose in 
 	        	y|Y)
