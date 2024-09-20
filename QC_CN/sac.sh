@@ -510,7 +510,7 @@ function QChatGPTSettings {
 		       			case $chose in 
 			        	y|Y)
 					  		cat /root/QChatGPT/data/config/provider.json | jq --arg n ${name} --arg v "$value" '.prompt.[$n]=$v' > tmp.json && mv tmp.json /root/QChatGPT/data/config/provider.json
-						  	echo -e "\033[0;32m预设："$name"添加成功喵~\033[0m\n";;
+						  	echo -e "\033[0;32m预设：$name 添加成功喵~\033[0m\n";;
 					    *)
 						echo -e "\033[0;36m你已取消设添加预设喵~\033[0m\n";;
 			  		esac;;
@@ -530,9 +530,9 @@ function QChatGPTSettings {
 				        	y|Y)
 								echo '{}' > /root/QChatGPT/data/scenario/"$name".json
 						  		cat /root/QChatGPT/data/scenario/"$name".json | jq --argjson v "$value" '.+=$v' > temp.json && mv temp.json /root/QChatGPT/data/scenario/"$name".json
-							  	echo -e "\n\033[0;32m预设："$name"添加成功喵~\033[0m\n";;
+							  	echo -e "\n\033[0;32m预设：$name 添加成功喵~\033[0m\n";;
 						    *)
-							echo -e "\033[0;36m你已取消设添加预设喵~\033[0m\n";;
+							echo -e "\n\033[0;36m你已取消设添加预设喵~\033[0m\n";;
 				  		esac
 					else
 						echo -e "\n\033[0;31m请检查你输入的预设内容是否为json格式喵！！！\033[0m\n"
@@ -568,7 +568,7 @@ function QChatGPTSettings {
 							case $chose in 
 					        	y|Y)
 									cat /root/QChatGPT/data/config/provider.json | jq --arg n ${promptName} 'del(.prompt.[$n])' > tmp.json && mv tmp.json /root/QChatGPT/data/config/provider.json
-			    					echo -e "\033[0;32m预设：$promptName已被删除喵~\033[0m\n";;
+			    					echo -e "\033[0;32m预设：$promptName 已被删除喵~\033[0m\n";;
 							    *)
 									echo -e "\033[0;36m你已取消删除预设喵~\033[0m\n";;
 					  			esac
@@ -588,16 +588,16 @@ function QChatGPTSettings {
 						PMname=$(ls -1 /root/QChatGPT/data/scenario/ | awk -F'.' '{print $1}' | awk '!a[$0]++{print}'| awk NF | awk -v PMchose=$PMchose NR==$PMchose)
 						if [ "$PMname" ]; then
 			                echo -e "\n\033[0;36m你确定要删除该预设喵？(y|N)\033[0m\n"
-							echo -e "\033[0;33m预设名："$PMname"\033[0m"
+							echo -e "\033[0;33m预设名："$PMname"\033[0m\n"
 	   						echo -e "\033[0;33m预设内容：\033[0m"
 		  					cat /root/QChatGPT/data/scenario/$PMname.json | jq .
 				  			read -s -n 1 chose
 							case $chose in 
 					        	y|Y)
 						     		rm -rf /root/QChatGPT/data/scenario/$PMname.json
-									echo -e "\n\033[0;32m预设："$PMname" 已删除喵~\033[0m\n";;
+									echo -e "\n\033[0;32m预设：$PMname 已被删除喵~\033[0m\n";;
 							    *)
-									echo -e "\n\n\033[0;36m你已取消删除喵~\033[0m\n";;
+									echo -e "\n\033[0;36m你已取消删除喵~\033[0m\n";;
 					  			esac
 			             else
 							echo -e "\n\033[0;31m你怎么乱选！不给你删除了喵~\033[0m\n"
