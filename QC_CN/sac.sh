@@ -523,8 +523,8 @@ function QChatGPTSettings {
 	                echo -e "\n\033[0;36m你确定要删除该预设喵？(y|N)\033[0m\n"
 					echo -e "\033[0;33m预设名：$promptName\033[0m\n"
 	 				promptValue=$(cat /root/QChatGPT/data/config/provider.json | jq --arg n ${promptName} '.prompt.[$n]' | awk -F'"' '{print $2}')
-      				echo -e "\033[0;33m预设名："$name"\033[0m\n"
 					echo -e "\033[0;33m预设内容：\033[0m"
+					echo "$promptValue" | jq .
 		  			read -s -n 1 chose
 					case $chose in 
 			        	y|Y)
