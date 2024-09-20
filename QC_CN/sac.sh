@@ -665,9 +665,9 @@ function QChatGPTSettings {
 	   		# 删除自定义模型
 			modeList=$(cat /root/QChatGPT/data/metadata/llm-models.json|jq '.list[].name'|awk -F'"' '{print $2}'| awk 'NF{a++;print "\033[0;33m"a"\033[0m""\033[0;33m.\033[0m","\033[0;33m"$0"\033[0m\n";next}1')
 			if [ ! "$modeList" ]; then
-		    	echo -e "\n\033[0;31m你根本没有语言模型，你是在玩我喵喵大人喵？\033[0m\n"
+		    	echo -e "\033[0;31m你根本没有语言模型，你是在玩我喵喵大人喵？\033[0m\n"
 		    else
-				echo -e "\n\033[0;36m请选择需要删除的语言模型喵~\033[0m\n"
+				echo -e "\033[0;36m请选择需要删除的语言模型喵~\033[0m\n"
 				echo -e "$modeList\n"
 		    	read -n 3 modeChose
 	   			modeChose=$(($modeChose-1))
