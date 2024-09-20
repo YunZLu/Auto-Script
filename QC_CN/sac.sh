@@ -481,12 +481,12 @@ function QChatGPTSettings {
 			case $chose in 
 			    1)
 					cat /root/QChatGPT/data/config/provider.json | jq '."prompt-mode"="normal"' > tmp.json && mv tmp.json /root/QChatGPT/data/config/provider.json
-	    			echo -e "\n\033[0;32m预设模式已设置为:普通预设模式喵~\033[0m\n";;
+	    			echo -e "\033[0;32m预设模式已设置为:普通预设模式喵~\033[0m\n";;
 				2)
 					cat /root/QChatGPT/data/config/provider.json | jq '."prompt-mode"="full-scenario"' > tmp.json && mv tmp.json /root/QChatGPT/data/config/provider.json
-					echo -e "\n\033[0;36m预设模式已设置为:完整对话预设模式喵~\033[0m\n";;
+					echo -e "\033[0;32m预设模式已设置为:完整对话预设模式喵~\033[0m\n";;
 	 			*)
-	 				echo -e "\n\033[0;31m你怎么乱选！不给你设置了喵~\033[0m\n";;
+	 				echo -e "\033[0;31m你怎么乱选！不给你设置了喵~\033[0m\n";;
 			  		esac
 			;;
         	5) 
@@ -519,19 +519,25 @@ function QChatGPTSettings {
 		       		read -p "预设名：" name
 				 	echo -e "\n\033[0;33m请输入预设内容喵~\033[0m\n"
 		       		read -p "预设内容：" value
-		       		echo -e "\n\033[0;33m请确认你的预设信息喵~（y|N）\033[0m\n"
-		      		echo -e "\033[0;33m预设名："$name"\033[0m\n"
-					echo -e "\033[0;33m预设内容：\033[0m\n"
-	 				echo "$value" | jq .
-			 		read -s -n 1 chose
-		       			case $chose in 
-			        	y|Y)
-							echo '{}' > /root/QChatGPT/data/scenario/"$name".json
-					  		cat /root/QChatGPT/data/scenario/"$name".json | jq --argjson v "$value" '.+=$v' > temp.json && mv temp.json /root/QChatGPT/data/scenario/"$name".json
-						  	echo -e "\033[0;32m预设添加成功喵~\033[0m\n";;
-					    *)
-						echo -e "\033[0;36m你已取消设添加预设喵~\033[0m\n";;
-			  		esac;;
+					echo "$value" | jq empty
+					if [ $? -eq 0 ]; then
+			       		echo -e "\n\033[0;33m请确认你的预设信息喵~（y|N）\033[0m\n"
+			      		echo -e "\033[0;33m预设名："$name"\033[0m\n"
+						echo -e "\033[0;33m预设内容：\033[0m\n"
+		 				echo "$value" | jq .
+				 		read -s -n 1 chose
+			       			case $chose in 
+				        	y|Y)
+								echo '{}' > /root/QChatGPT/data/scenario/"$name".json
+						  		cat /root/QChatGPT/data/scenario/"$name".json | jq --argjson v "$value" '.+=$v' > temp.json && mv temp.json /root/QChatGPT/data/scenario/"$name".json
+							  	echo -e "\033[0;32m预设添加成功喵~\033[0m\n";;
+						    *)
+							echo -e "\033[0;36m你已取消设添加预设喵~\033[0m\n";;
+				  		esac
+					else
+						echo -e "\033[0;31m请检查你输入的预设内容是否为json格式喵！！！\033[0m\n"
+					fi
+					;;
 	 			*)
 	 				echo -e "\n\033[0;31m你怎么乱选！不给你设置了喵~\033[0m\n";;
 			  		esac
