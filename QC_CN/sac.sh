@@ -547,7 +547,7 @@ function QChatGPTSettings {
    			cd /root
 			echo -e "\033[0;33m请选择删除相应模式的预设喵~\033[0m\n"
 			echo -e "\033[0;33m1.删除普通模式的预设\033[0m\n"
-   			echo -e "\033[0;33m2.删除完整对话模式的预设\033[0m\n"
+   			echo -e "\033[0;33m2.删除完整对话模式的预设\033[0m"
 		    read -s -n 1 chose
 			case $chose in 
 			    1)
