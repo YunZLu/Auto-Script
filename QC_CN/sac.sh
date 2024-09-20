@@ -587,7 +587,7 @@ function QChatGPTSettings {
 					case $chose in 
 			        	y|Y)
 							jq --arg n ${modeChose} 'del(.list[$n|tonumber])' /root/QChatGPT/data/metadata/llm-models.json > tmp.json && mv tmp.json /root/QChatGPT/data/metadata/llm-models.json
-	    					echo -e "\n\033[0;32m模型：$modeName已被删除喵~\033[0m\n";;
+	    					echo -e "\n\033[0;32m模型：$modeName\n已被删除喵~\033[0m\n";;
 					    *)
 							echo -e "\n\033[0;36m你已取消删除语言模型喵~\033[0m\n";;
 			  			esac
