@@ -172,9 +172,9 @@ echo -e "\033[0;32mnode已安装喵~\033[0m\n"
 #设置go mod下载使用阿里云加速代理
 go env -w GO111MODULE=on
 go env -w GOPROXY=https://mirrors.aliyun.com/goproxy,direct
-echo -e "\033[0;32mgo已安装喵~\n\033[0m"
+echo -e "\033[0;32mgo已安装喵~\033[0m\n"
 
-echo -e "\n\033[0;32mpython已安装喵~\033[0m\n"
+echo -e "\033[0;32mpython已安装喵~\033[0m\n"
 
 while [ ! -d "/root/clewd" ] || [ ! -f "/root/clewd/config.js" ] || [ ! -d "/root/SillyTavern" ] || [ ! -f "/root/SillyTavern/start.sh" ] || [ ! -d "/root/one-api" ] || [ ! -f "/root/one-api/start.sh" ] || [ ! -d "/opt/QQ/resources/app/app_launcher/napcat" ] || [ ! -d "/root/QChatGPT" ]
 do
