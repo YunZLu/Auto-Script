@@ -519,7 +519,8 @@ function QChatGPTSettings {
 		       		read -p "预设名：" name
 				 	echo -e "\n\033[0;33m请输入预设内容喵~\033[0m\n"
 		       		read -p "预设内容：" value
-					if echo "$value" | jq . >/dev/null 2>&1; then
+		   			#验证json格式
+					if echo "$value" |  jq 'if type == "object" or type == "array" then true else false end'; then
 			       		echo -e "\n\033[0;33m请确认你的预设信息喵~（y|N）\033[0m\n"
 			      		echo -e "\033[0;33m预设名："$name"\033[0m\n"
 						echo -e "\033[0;33m预设内容：\033[0m\n"
@@ -534,7 +535,7 @@ function QChatGPTSettings {
 							echo -e "\033[0;36m你已取消设添加预设喵~\033[0m\n";;
 				  		esac
 					else
-						echo -e "\033[0;31m请检查你输入的预设内容是否为json格式喵！！！\033[0m\n"
+						echo -e "\n\033[0;31m请检查你输入的预设内容是否为json格式喵！！！\033[0m\n"
 					fi
 					;;
 	 			*)
