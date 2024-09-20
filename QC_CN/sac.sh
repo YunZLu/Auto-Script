@@ -529,7 +529,7 @@ function QChatGPTSettings {
 				        	y|Y)
 								echo '{}' > /root/QChatGPT/data/scenario/"$name".json
 						  		cat /root/QChatGPT/data/scenario/"$name".json | jq --argjson v "$value" '.+=$v' > temp.json && mv temp.json /root/QChatGPT/data/scenario/"$name".json
-							  	echo -e "\033[0;32m预设添加成功喵~\033[0m\n";;
+							  	echo -e "\n\033[0;32m预设添加成功喵~\033[0m\n";;
 						    *)
 							echo -e "\033[0;36m你已取消设添加预设喵~\033[0m\n";;
 				  		esac
