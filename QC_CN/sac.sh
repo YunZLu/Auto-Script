@@ -467,7 +467,7 @@ function QChatGPTSettings {
 							echo -e "\n\033[0;36m你已取消删除Api key喵~\033[0m\n";;
 			  			esac
 	            else
-					echo -e "\033[0;31m你怎么乱选！不给你删了喵~\033[0m\n"
+					echo -e "\n\033[0;31m你怎么乱选！不给你删了喵~\033[0m\n"
 		 		fi
     		fi
 	   		;;
@@ -476,17 +476,17 @@ function QChatGPTSettings {
 			cd /root
 			echo -e "\033[0;33m请选择预设模式喵~\033[0m\n"
 			echo -e "\033[0;33m1.普通预设模式\033[0m\n"
-   			echo -e "\033[0;33m2.完整对话预设模式\033[0m\n"
+   			echo -e "\033[0;33m2.完整对话预设模式\033[0m"
 		    read -s -n 1 chose
 			case $chose in 
 			    1)
 					cat /root/QChatGPT/data/config/provider.json | jq '."prompt-mode"="normal"' > tmp.json && mv tmp.json /root/QChatGPT/data/config/provider.json
-	    			echo -e "\033[0;32m预设模式已设置为:普通预设模式喵~\033[0m\n";;
+	    			echo -e "\n\033[0;32m预设模式已设置为:普通预设模式喵~\033[0m\n";;
 				2)
 					cat /root/QChatGPT/data/config/provider.json | jq '."prompt-mode"="full-scenario"' > tmp.json && mv tmp.json /root/QChatGPT/data/config/provider.json
-					echo -e "\033[0;32m预设模式已设置为:完整对话预设模式喵~\033[0m\n";;
+					echo -e "\n\033[0;32m预设模式已设置为:完整对话预设模式喵~\033[0m\n";;
 	 			*)
-	 				echo -e "\033[0;31m你怎么乱选！不给你设置了喵~\033[0m\n";;
+	 				echo -e "\n\033[0;31m你怎么乱选！不给你设置了喵~\033[0m\n";;
 			  		esac
 			;;
         	5) 
@@ -495,7 +495,7 @@ function QChatGPTSettings {
    			cd /root
 			echo -e "\033[0;33m请选择添加相应模式的预设喵~\033[0m\n"
 			echo -e "\033[0;33m1.添加普通模式的预设\033[0m\n"
-   			echo -e "\033[0;33m2.添加完整对话模式的预设\033[0m\n"
+   			echo -e "\033[0;33m2.添加完整对话模式的预设\033[0m"
 		    read -s -n 1 chose
 			case $chose in 
 			    1)
@@ -539,7 +539,7 @@ function QChatGPTSettings {
 					fi
 					;;
 	 			*)
-	 				echo -e "\033[0;31m你怎么乱选！不给你添加了喵~\033[0m\n";;
+	 				echo -e "\n\033[0;31m你怎么乱选！不给你添加了喵~\033[0m\n";;
 			  		esac
 			;;
 		    6)
@@ -573,7 +573,7 @@ function QChatGPTSettings {
 									echo -e "\033[0;36m你已取消删除预设喵~\033[0m\n";;
 					  			esac
 			            else
-							echo -e "\033[0;31m你怎么乱选！不给你删了喵~\033[0m\n"
+							echo -e "\n\033[0;31m你怎么乱选！不给你删了喵~\033[0m\n"
 				 		fi
 		    		fi;;
 				2)
@@ -600,12 +600,12 @@ function QChatGPTSettings {
 									echo -e "\n\033[0;36m你已取消删除喵~\033[0m\n";;
 					  			esac
 			             else
-							echo -e "\033[0;31m你怎么乱选！不给你删除了喵~\033[0m\n"
+							echo -e "\n\033[0;31m你怎么乱选！不给你删了喵~\033[0m\n"
 				 		 fi
 		    		 fi
 			   		;;
 	 			*)
-	 				echo -e "\n\033[0;31m你怎么乱选！不给你删除了喵~\033[0m\n";;
+	 				echo -e "\n\033[0;31m你怎么乱选！不给你删了喵~\033[0m\n";;
 			  		esac
 			;;
 
