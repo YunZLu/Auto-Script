@@ -475,8 +475,8 @@ function QChatGPTSettings {
             # 设置预设模式
 			cd /root
 			echo -e "\033[0;33m请选择预设模式喵~\033[0m\n"
-			echo -e "\033[0;33m1、普通预设模式\033[0m\n"
-   			echo -e "\033[0;33m2、完整对话预设模式\033[0m\n"
+			echo -e "\033[0;33m1.普通预设模式\033[0m\n"
+   			echo -e "\033[0;33m2.完整对话预设模式\033[0m\n"
 		    read -s -n 1 chose
 			case $chose in 
 			    1)
@@ -491,51 +491,118 @@ function QChatGPTSettings {
 			;;
         	5) 
             # 添加预设
-			cd /root
-		    echo -e "\033[0;33m请输入预设名喵~\033[0m\n"
-       		read -p "预设名：" name
-		 	echo -e "\n\033[0;33m请输入预设内容喵~\033[0m\n"
-       		read -p "预设内容：" value
-       		echo -e "\n\033[0;33m请确认你的预设信息喵~（y|N）\033[0m\n"
-      		echo -e "\033[0;33m预设名："$name"\033[0m\n"
-			echo -e "\033[0;33m预设内容：$value\033[0m\n"
-	 		read -s -n 1 chose
-       			case $chose in 
-	        	y|Y)
-			  		cat /root/QChatGPT/data/config/provider.json | jq --arg n ${name} --arg v "$value" '.prompt.[$n]=$v' > tmp.json && mv tmp.json /root/QChatGPT/data/config/provider.json
-				  	echo -e "\033[0;32m预设添加成功喵~\033[0m\n";;
-			    *)
-				echo -e "\033[0;36m你已取消设添加预设喵~\033[0m\n";;
-	  		esac
+
+   			cd /root
+			echo -e "\033[0;33m请选择添加相应模式的预设喵~\033[0m\n"
+			echo -e "\033[0;33m1.添加普通模式的预设\033[0m\n"
+   			echo -e "\033[0;33m2.添加完整对话模式的预设\033[0m\n"
+		    read -s -n 1 chose
+			case $chose in 
+			    1)
+					echo -e "\033[0;33m请输入预设名喵~\033[0m\n"
+		       		read -p "预设名：" name
+				 	echo -e "\n\033[0;33m请输入预设内容喵~\033[0m\n"
+		       		read -p "预设内容：" value
+		       		echo -e "\n\033[0;33m请确认你的预设信息喵~（y|N）\033[0m\n"
+		      		echo -e "\033[0;33m预设名："$name"\033[0m\n"
+					echo -e "\033[0;33m预设内容：$value\033[0m\n"
+			 		read -s -n 1 chose
+		       			case $chose in 
+			        	y|Y)
+					  		cat /root/QChatGPT/data/config/provider.json | jq --arg n ${name} --arg v "$value" '.prompt.[$n]=$v' > tmp.json && mv tmp.json /root/QChatGPT/data/config/provider.json
+						  	echo -e "\033[0;32m预设添加成功喵~\033[0m\n";;
+					    *)
+						echo -e "\033[0;36m你已取消设添加预设喵~\033[0m\n";;
+			  		esac;;
+				2)
+					echo -e "\033[0;33m请输入预设名喵~\033[0m\n"
+		       		read -p "预设名：" name
+				 	echo -e "\n\033[0;33m请输入预设内容喵~\033[0m\n"
+		       		read -p "预设内容：" value
+		       		echo -e "\n\033[0;33m请确认你的预设信息喵~（y|N）\033[0m\n"
+		      		echo -e "\033[0;33m预设名："$name"\033[0m\n"
+					echo -e "\033[0;33m预设内容：\033[0m\n"
+	 				echo "$value" | jq .
+			 		read -s -n 1 chose
+		       			case $chose in 
+			        	y|Y)
+							echo '{}' > /root/QChatGPT/data/scenario/"$name".json
+					  		cat /root/QChatGPT/data/scenario/"$name".json | jq --argjson v "$value" '.+=$v' > temp.json && mv temp.json /root/QChatGPT/data/scenario/"$name".json
+						  	echo -e "\033[0;32m预设添加成功喵~\033[0m\n";;
+					    *)
+						echo -e "\033[0;36m你已取消设添加预设喵~\033[0m\n";;
+			  		esac;;
+	 			*)
+	 				echo -e "\n\033[0;31m你怎么乱选！不给你设置了喵~\033[0m\n";;
+			  		esac
 			;;
 		    6)
 	   		# 删除预设
-			promptList=$(cat /root/QChatGPT/data/config/provider.json | jq '.prompt'| jq -r 'keys[]' | awk 'NF{a++;print "\033[0;33m"a"\033[0m""\033[0;33m.\033[0m","\033[0;33m"$0"\033[0m\n";next}1')
-			if [ ! "$promptList" ]; then
-		    	echo -e "\n\033[0;31m你根本没有预设，你是在玩我喵喵大人喵？\033[0m\n"
-		    else
-				echo -e "\n\033[0;36m请选择需要删除的预设喵~\033[0m\n"
-				echo "$promptList"
-		    	read -s -n 1 promptChose
-				promptName=$(cat /root/QChatGPT/data/config/provider.json | jq '.prompt'| jq -r 'keys[]' | awk NR==$promptChose)
-				if [ "$promptName" ]  && [ "$promptName" != null ]; then
-	                echo -e "\n\033[0;36m你确定要删除该预设喵？(y|N)\033[0m\n"
-					echo -e "\033[0;33m预设名：$promptName\033[0m\n"
-	 				promptValue=$(cat /root/QChatGPT/data/config/provider.json | jq -r --arg n ${promptName} '.prompt.[$n]')
-					echo -e "\033[0;33m预设内容：$promptValue\033[0m\n"
-		  			read -s -n 1 chose
-					case $chose in 
-			        	y|Y)
-							cat /root/QChatGPT/data/config/provider.json | jq --arg n ${promptName} 'del(.prompt.[$n])' > tmp.json && mv tmp.json /root/QChatGPT/data/config/provider.json
-	    					echo -e "\033[0;32m预设：$promptName已被删除喵~\033[0m\n";;
-					    *)
-							echo -e "\033[0;36m你已取消删除预设喵~\033[0m\n";;
-			  			esac
-	            else
-					echo -e "\n\033[0;31m你怎么乱选！不给你删了喵~\033[0m\n"
-		 		fi
-    		fi
-	   		;;
+   			cd /root
+			echo -e "\033[0;33m请选择删除相应模式的预设喵~\033[0m\n"
+			echo -e "\033[0;33m1.删除普通模式的预设\033[0m\n"
+   			echo -e "\033[0;33m2.删除完整对话模式的预设\033[0m\n"
+		    read -s -n 1 chose
+			case $chose in 
+			    1)
+					promptList=$(cat /root/QChatGPT/data/config/provider.json | jq '.prompt'| jq -r 'keys[]' | awk 'NF{a++;print "\033[0;33m"a"\033[0m""\033[0;33m.\033[0m","\033[0;33m"$0"\033[0m\n";next}1')
+					if [ ! "$promptList" ]; then
+				    	echo -e "\n\033[0;31m你根本没有预设，你是在玩我喵喵大人喵？\033[0m\n"
+				    else
+						echo -e "\n\033[0;36m请选择需要删除的预设喵~\033[0m\n"
+						echo "$promptList"
+				    	read -s -n 1 promptChose
+						promptName=$(cat /root/QChatGPT/data/config/provider.json | jq '.prompt'| jq -r 'keys[]' | awk NR==$promptChose)
+						if [ "$promptName" ]  && [ "$promptName" != null ]; then
+			                echo -e "\n\033[0;36m你确定要删除该预设喵？(y|N)\033[0m\n"
+							echo -e "\033[0;33m预设名：$promptName\033[0m\n"
+			 				promptValue=$(cat /root/QChatGPT/data/config/provider.json | jq -r --arg n ${promptName} '.prompt.[$n]')
+							echo -e "\033[0;33m预设内容：$promptValue\033[0m\n"
+				  			read -s -n 1 chose
+							case $chose in 
+					        	y|Y)
+									cat /root/QChatGPT/data/config/provider.json | jq --arg n ${promptName} 'del(.prompt.[$n])' > tmp.json && mv tmp.json /root/QChatGPT/data/config/provider.json
+			    					echo -e "\033[0;32m预设：$promptName已被删除喵~\033[0m\n";;
+							    *)
+									echo -e "\033[0;36m你已取消删除预设喵~\033[0m\n";;
+					  			esac
+			            else
+							echo -e "\n\033[0;31m你怎么乱选！不给你删了喵~\033[0m\n"
+				 		fi
+		    		fi;;
+				2)
+      				#获取PMname.json列表
+					pList=$(ls -1 /root/QChatGPT/data/scenario/ | awk -F'_' '{print $2}' | awk -F'.' '{print $1}' | awk '!a[$0]++{print}' | awk 'NF{a++;print "\033[0;33m"a"\033[0m""\033[0;33m.\033[0m","\033[0;33m"$0"\033[0m\n";next}1')
+					if [ ! "$pList" ]; then
+				    	echo -e "\n\033[0;31m你根本没有预设，你是在玩我喵喵大人喵？\033[0m\n"
+				    	else
+						echo -e "\n\033[0;36m请选择需要删除的预设喵~\033[0m\n"
+						echo "$pList"
+				    	read -s -n 1 PMchose
+						PMname=$(ls -1 /root/QChatGPT/data/scenario/ | awk -F'_' '{print $2}' | awk -F'.' '{print $1}' | awk '!a[$0]++{print}'| awk NF | awk -v PMchose=$PMchose NR==$PMchose)
+						if [ "$PMname" ]; then
+			                echo -e "\n\033[0;36m你确定要删除该预设喵？(y|N)\033[0m\n"
+							echo -e "\033[0;33m预设名："$PMname"\033[0m"
+	   						echo -e "\033[0;33m预设内容：\033[0m"
+		  					cat /root/QChatGPT/data/scenario/$PMname.json | jq .
+				  			read -s -n 1 chose
+							case $chose in 
+					        	y|Y)
+						     		rm -rf /root/QChatGPT/data/scenario/$PMname.json
+									echo -e "\n\033[0;32m预设："$PMname" 已删除喵~\033[0m\n";;
+							    *)
+									echo -e "\n\033[0;36m你已取消删除喵~\033[0m\n";;
+					  			esac
+			             else
+							echo -e "\n\033[0;31m你怎么乱选！不给你删除了喵~\033[0m\n"
+				 		 fi
+		    		 fi
+			   		;;
+	 			*)
+	 				echo -e "\n\033[0;31m你怎么乱选！不给你删除了喵~\033[0m\n";;
+			  		esac
+			;;
+
            7)
             # 添加自定义模型
 			cd /root
