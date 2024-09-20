@@ -250,6 +250,7 @@ eof
     		curl -O -L https://mirror.ghproxy.com/https://raw.githubusercontent.com/YunZLu/termux_using_openai/main/CN/start.sh
 	        if [ ! -f "start.sh" ]; then
 		echo -e "\n\033[0;33mone-api启动文件下载失败了，正在重试中，请稍等一下喵~\033[0m\n"
+  		cd /root
   		sleep 2
 		continue
 		else
