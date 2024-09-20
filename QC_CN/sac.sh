@@ -467,7 +467,7 @@ function QChatGPTSettings {
 							echo -e "\n\033[0;36m你已取消删除Api key喵~\033[0m\n";;
 			  			esac
 	            else
-					echo -e "\n\033[0;31m你怎么乱选！不给你删了喵~\033[0m\n"
+					echo -e "\033[0;31m你怎么乱选！不给你删了喵~\033[0m\n"
 		 		fi
     		fi
 	   		;;
@@ -539,7 +539,7 @@ function QChatGPTSettings {
 					fi
 					;;
 	 			*)
-	 				echo -e "\n\033[0;31m你怎么乱选！不给你设置了喵~\033[0m\n";;
+	 				echo -e "\033[0;31m你怎么乱选！不给你添加了喵~\033[0m\n";;
 			  		esac
 			;;
 		    6)
@@ -573,7 +573,7 @@ function QChatGPTSettings {
 									echo -e "\033[0;36m你已取消删除预设喵~\033[0m\n";;
 					  			esac
 			            else
-							echo -e "\n\033[0;31m你怎么乱选！不给你删了喵~\033[0m\n"
+							echo -e "\033[0;31m你怎么乱选！不给你删了喵~\033[0m\n"
 				 		fi
 		    		fi;;
 				2)
@@ -600,7 +600,7 @@ function QChatGPTSettings {
 									echo -e "\n\033[0;36m你已取消删除喵~\033[0m\n";;
 					  			esac
 			             else
-							echo -e "\n\033[0;31m你怎么乱选！不给你删除了喵~\033[0m\n"
+							echo -e "\033[0;31m你怎么乱选！不给你删除了喵~\033[0m\n"
 				 		 fi
 		    		 fi
 			   		;;
@@ -649,7 +649,7 @@ function QChatGPTSettings {
 	 					vision_supported="$vision_supported"
 		   				len=$(cat /root/QChatGPT/data/metadata/llm-models.json|jq '.list[].name'|awk -F'"' '{print $2}'| awk 'END{print NR}')
 	       				if [ "$model_name" ]; then
-		        		jq --arg l ${len} --arg n ${name} --arg mn ${model_name} --arg r ${requester} --arg tm ${token_mgr} --arg tcs ${tool_call_supported} --arg vs ${vision_supported} '.list[$l|tonumber]={"name":$n,"name":$mn,"requester":$r,"token_mgr":$tm,"tool_call_supported":$tcs,"vision_supported":$vs}' /root/QChatGPT/data/metadata/llm-models.json > tmp.json && mv tmp.json /root/QChatGPT/data/metadata/llm-models.json
+		        		jq --arg l ${len} --arg n ${name} --arg mn ${model_name} --arg r ${requester} --arg tm ${token_mgr} --arg tcs ${tool_call_supported} --arg vs ${vision_supported} '.list[$l|tonumber]={"name":$n,"model_name":$mn,"requester":$r,"token_mgr":$tm,"tool_call_supported":$tcs,"vision_supported":$vs}' /root/QChatGPT/data/metadata/llm-models.json > tmp.json && mv tmp.json /root/QChatGPT/data/metadata/llm-models.json
 						else
 		        		jq --arg l ${len} --arg n ${name} --arg r ${requester} --arg tm ${token_mgr} --arg tcs ${tool_call_supported} --arg vs ${vision_supported} '.list[$l|tonumber]={"name":$n,"requester":$r,"token_mgr":$tm,"tool_call_supported":$tcs,"vision_supported":$vs}' /root/QChatGPT/data/metadata/llm-models.json > tmp.json && mv tmp.json /root/QChatGPT/data/metadata/llm-models.json	 
 		        		fi
