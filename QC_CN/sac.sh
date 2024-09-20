@@ -491,7 +491,6 @@ function QChatGPTSettings {
 			;;
         	5) 
             # 添加预设
-
    			cd /root
 			echo -e "\033[0;33m请选择添加相应模式的预设喵~\033[0m\n"
 			echo -e "\033[0;33m1.添加普通模式的预设\033[0m\n"
@@ -499,7 +498,7 @@ function QChatGPTSettings {
 		    read -s -n 1 chose
 			case $chose in 
 			    1)
-					echo -e "\033[0;33m请输入预设名喵~\033[0m\n"
+					echo -e "\n\033[0;33m请输入预设名喵~\033[0m\n"
 		       		read -p "预设名：" name
 				 	echo -e "\n\033[0;33m请输入预设内容喵~\033[0m\n"
 		       		read -p "预设内容：" value
@@ -515,7 +514,7 @@ function QChatGPTSettings {
 						echo -e "\033[0;36m你已取消设添加预设喵~\033[0m\n";;
 			  		esac;;
 				2)
-					echo -e "\033[0;33m请输入预设名喵~\033[0m\n"
+					echo -e "\n\033[0;33m请输入预设名喵~\033[0m\n"
 		       		read -p "预设名：" name
 				 	echo -e "\n\033[0;33m请输入预设内容喵~\033[0m\n"
 		       		read -p "预设内容：" value
