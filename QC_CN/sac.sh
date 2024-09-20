@@ -520,22 +520,22 @@ function QChatGPTSettings {
            7)
             # 添加自定义模型
 			cd /root
-		    echo -e "\033[0;33m请输入你的模型信息喵~(不输入内容按回车则为默认值)\033[0m\n"
+		    echo -e "\033[0;33m请输入你的模型信息喵~(不输入直接回车则为默认值)\033[0m\n"
 	  		echo -e "\033[0;33m请输入模型名称喵~\033[0m"
        		read -p "name(必填项)：" name
 			if [ "$name" ]; then
-			  	echo -e "\033[0;33m请输入请求时使用的模型名称，用于区分使用不同请求器的相同模型，若未设置则使用 name 字段喵~\033[0m"
+			  	echo -e "\n\033[0;33m请输入请求时使用的模型名称，用于区分使用不同请求器的相同模型，若未设置则使用 name 字段喵~\033[0m"
 		       	read -p "model_name(无默认值，未填则不设置)：" model_name
-		  		echo -e "\033[0;33m请输入请求器名称，指定使用哪个请求器请求该模型的响应喵~\033[0m"
+		  		echo -e "\n\033[0;33m请输入请求器名称，指定使用哪个请求器请求该模型的响应喵~\033[0m"
 	       		read -p "requester(默认值 openai-chat-completions)：" requester
 			 	requester=${requester:-openai-chat-completions}
-	 			echo -e "\033[0;33m请输入Key 管理器，此模型使用的 key 组喵~\033[0m"
+	 			echo -e "\n\033[0;33m请输入Key 管理器，此模型使用的 key 组喵~\033[0m"
 			    read -p "token_mgr(默认值 openai)：" token_mgr
 		  		token_mgr=${token_mgr:-openai}
-	  			echo -e "\033[0;33m请选择是否支持工具调用喵~\033[0m"
+	  			echo -e "\n\033[0;33m请选择是否支持工具调用喵~\033[0m"
 				read -p "tool_call_supported(默认值 false)：" tool_call_supported
 	   			tool_call_supported=${tool_call_supported:-false}
-	   	  		echo -e "\033[0;33m请选择是否支持图像输入喵~\033[0m"
+	   	  		echo -e "\n\033[0;33m请选择是否支持图像输入喵~\033[0m"
 				read -p "vision_supported(默认值 false)：" vision_supported
 	   			vision_supported=${vision_supported:-false}
 	       		echo -e "\n\033[0;33m请确认你的模型信息喵~（y|N）\033[0m\n"
@@ -576,12 +576,12 @@ function QChatGPTSettings {
 		    	echo -e "\n\033[0;31m你根本没有语言模型，你是在玩我喵喵大人喵？\033[0m\n"
 		    else
 				echo -e "\n\033[0;36m请选择需要删除的语言模型喵~\033[0m\n"
-				echo "$modeList\n"
+				echo -e "$modeList\n"
 		    	read -n 2 modeChose
 	   			modeChose=$(($modeChose-1))
 				modeName=$(jq --arg n ${modeChose} '.list[$n|tonumber]' /root/QChatGPT/data/metadata/llm-models.json)
 				if [ "$modeName" ] && [ "$modeName" != null ]; then
-	                echo -e "\n\033[0;36m你确定要删除该语言模型喵？(y|N)\033[0m\n"
+	                echo -e "\n\n\033[0;36m你确定要删除该语言模型喵？(y|N)\033[0m\n"
 					echo -e "\033[0;33m语言模型：\n$modeName\033[0m"
 		  			read -s -n 1 chose
 					case $chose in 
@@ -592,7 +592,7 @@ function QChatGPTSettings {
 							echo -e "\n\033[0;36m你已取消删除语言模型喵~\033[0m\n";;
 			  			esac
 	            else
-					echo -e "\n\033[0;31m你怎么乱选！不给你删了喵~\033[0m\n"
+					echo -e "\n\n\033[0;31m你怎么乱选！不给你删了喵~\033[0m\n"
 		 		fi
     		fi
 	   		;;
