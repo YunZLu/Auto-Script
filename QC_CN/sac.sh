@@ -572,14 +572,14 @@ function QChatGPTSettings {
 		    		fi;;
 				2)
       				#获取PMname.json列表
-					pList=$(ls -1 /root/QChatGPT/data/scenario/ | awk -F'_' '{print $2}' | awk -F'.' '{print $1}' | awk '!a[$0]++{print}' | awk 'NF{a++;print "\033[0;33m"a"\033[0m""\033[0;33m.\033[0m","\033[0;33m"$0"\033[0m\n";next}1')
+					pList=$(ls -1 /root/QChatGPT/data/scenario/ | awk -F'.' '{print $1}' | awk '!a[$0]++{print}' | awk 'NF{a++;print "\033[0;33m"a"\033[0m""\033[0;33m.\033[0m","\033[0;33m"$0"\033[0m\n";next}1')
 					if [ ! "$pList" ]; then
 				    	echo -e "\n\033[0;31m你根本没有预设，你是在玩我喵喵大人喵？\033[0m\n"
 				    	else
 						echo -e "\n\033[0;36m请选择需要删除的预设喵~\033[0m\n"
 						echo "$pList"
 				    	read -s -n 1 PMchose
-						PMname=$(ls -1 /root/QChatGPT/data/scenario/ | awk -F'_' '{print $2}' | awk -F'.' '{print $1}' | awk '!a[$0]++{print}'| awk NF | awk -v PMchose=$PMchose NR==$PMchose)
+						PMname=$(ls -1 /root/QChatGPT/data/scenario/ | awk -F'.' '{print $1}' | awk '!a[$0]++{print}'| awk NF | awk -v PMchose=$PMchose NR==$PMchose)
 						if [ "$PMname" ]; then
 			                echo -e "\n\033[0;36m你确定要删除该预设喵？(y|N)\033[0m\n"
 							echo -e "\033[0;33m预设名："$PMname"\033[0m"
