@@ -74,7 +74,7 @@ do
     if [ ! -d node-v20.10.0-linux-arm64 ]; then
     echo -e "\033[0;31m检测到你未安装nodejs喵~\n\033[0m"
     echo -e "\033[0;33m正在为你下载nodejs，请稍等一下喵~\n\033[0m"
-    curl -O https://cdn.npmmirror.com/binaries/node/v20.10.0/node-v20.10.0-linux-arm64.tar.xz
+    curl -O -L https://cdn.npmmirror.com/binaries/node/v20.10.0/node-v20.10.0-linux-arm64.tar.xz
     tar xf node-v20.10.0-linux-arm64.tar.xz
     echo "export PATH=\$PATH:/root/node-v20.10.0-linux-arm64/bin" >>$current/etc/profile
         if [ ! -d node-v20.10.0-linux-arm64 ]; then
@@ -113,7 +113,7 @@ while [ ! -f "$current/root/sac.sh" ]
 do
         if [ ! -f "$current/root/sac.sh" ]; then
                 echo -e "\033[0;33m启动文件不存在，正在通过git下载，请稍等一下喵...\033[0m\n"
-    		curl -O https://mirror.ghproxy.com/https://raw.githubusercontent.com/YunZLu/termux_using_openai/main/CN/sac.sh
+    		curl -O -L https://mirror.ghproxy.com/https://raw.githubusercontent.com/YunZLu/termux_using_openai/main/CN/sac.sh
 	        if [ ! -f "$current/root/sac.sh" ]; then
 		echo -e "\033[0;31m启动文件下载失败了，正在重试中，请稍等一下喵~\n\033[0m"
  		sleep 2
@@ -128,7 +128,7 @@ while [ ! -f "$current/root/update_CN.sh" ]
 do
         if [ ! -f "$current/root/update_CN.sh" ]; then
                 echo -e "\033[0;33m更新文件不存在，正在通过git下载，请稍等一下喵...\033[0m\n"
-    		curl -O https://mirror.ghproxy.com/https://raw.githubusercontent.com/YunZLu/termux_using_openai/main/CN/update_CN.sh
+    		curl -O -L https://mirror.ghproxy.com/https://raw.githubusercontent.com/YunZLu/termux_using_openai/main/CN/update_CN.sh
 	        if [ ! -f "$current/root/update_CN.sh" ]; then
 		echo -e "\033[0;31m更新文件下载失败了，正在重试中，请稍等一下喵~\033[0m\n"
  		sleep 2
