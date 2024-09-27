@@ -66,7 +66,7 @@ echo -e "\n\033[0;32m已更换国内代理，并成功升级软件包喵~\n\033[
     if ! command -v node &> /dev/null; then
     echo -e "\033[0;31m检测到你未安装nodejs喵~\n\033[0m"
     echo -e "\033[0;33m正在为你下载nodejs，请稍等一下喵~\n\033[0m"
-    curl -O https://cdn.npmmirror.com/binaries/node/v20.10.0/node-v20.10.0-linux-arm64.tar.xz
+    curl -O -L https://cdn.npmmirror.com/binaries/node/v20.10.0/node-v20.10.0-linux-arm64.tar.xz
     tar xf node-v20.10.0-linux-arm64.tar.xz
     echo "export PATH=\$PATH:/root/node-v20.10.0-linux-arm64/bin" >>/etc/profile
     source /etc/profile
@@ -136,7 +136,7 @@ do
         if [ ! -f "one-api/start.sh" ]; then
                 echo -e "\n\033[0;33mone-api启动文件不存在，正在通过git下载，请稍等一下喵...\n\033[0m"
                 cd one-api
-    		curl -O https://mirror.ghproxy.com/https://raw.githubusercontent.com/YunZLu/termux_using_openai/main/CN/start.sh
+    		curl -O -L https://mirror.ghproxy.com/https://raw.githubusercontent.com/YunZLu/termux_using_openai/main/CN/start.sh
 	        if [ ! -f "start.sh" ]; then
 		echo -e "\033[0;33mone-api启动文件下载失败了，正在重试中，请稍等一下喵~\n\033[0m"
   		sleep 2
@@ -1079,7 +1079,7 @@ do
             do
                 if [ ! -f "update_QCCN.sh" ]; then
                 echo "安装脚本不存在，正在通过git下载喵..."
-    		curl -O https://mirror.ghproxy.com/https://raw.githubusercontent.com/YunZLu/termux_using_openai/main/QC_CN/update_QCCN.sh
+    		curl -O -L https://mirror.ghproxy.com/https://raw.githubusercontent.com/YunZLu/termux_using_openai/main/QC_CN/update_QCCN.sh
 	        if [ ! -f "update_QCCN.sh" ]; then
 		echo "安装脚本文件下载失败了，正在重试中喵~"
 		continue
@@ -1097,7 +1097,7 @@ do
             do
                 if [ ! -f "update_CN.sh" ]; then
                 echo "更新脚本不存在，正在通过git下载喵..."
-    		curl -O https://mirror.ghproxy.com/https://raw.githubusercontent.com/YunZLu/termux_using_openai/main/CN/update_CN.sh
+    		curl -O -L https://mirror.ghproxy.com/https://raw.githubusercontent.com/YunZLu/termux_using_openai/main/CN/update_CN.sh
 	        if [ ! -f "update_CN.sh" ]; then
 		echo "更新脚本文件下载失败了，正在重试中喵~"
 		continue
