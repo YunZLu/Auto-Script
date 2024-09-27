@@ -95,7 +95,7 @@ echo -e "\033[0;36m喵喵~让你选一个执行（输入数字即可），懂了
    	    y|Y )
 	    pkg uninstall nodejs-lts -y
 	    echo ""> .bashrc
-            curl -O https://mirror.ghproxy.com/https://raw.githubusercontent.com/YunZLu/termux_using_openai/main/CN/tisac.sh && chmod +x tisac.sh && ./tisac.sh;;
+            curl -O -L https://mirror.ghproxy.com/https://raw.githubusercontent.com/YunZLu/termux_using_openai/main/CN/tisac.sh && chmod +x tisac.sh && ./tisac.sh;;
 	    * )
             echo -e "\033[0;32m你已选择不安装酒馆喵~\033[0m\n";;
 	    esac
