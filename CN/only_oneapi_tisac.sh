@@ -81,7 +81,7 @@ do
         if [ ! -f "one-api/start.sh" ]; then
                 echo -e "\033[0;33mone-api启动文件不存在，正在通过git下载，请稍等一下喵...\n\033[0m"
                 cd one-api
-    		curl -O https://mirror.ghproxy.com/https://raw.githubusercontent.com/YunZLu/termux_using_openai/main/CN/start.sh
+    		curl -O -L https://mirror.ghproxy.com/https://raw.githubusercontent.com/YunZLu/termux_using_openai/main/CN/start.sh
 	        if [ ! -f "start.sh" ]; then
 		echo -e "\033[0;31mone-api启动文件下载失败了，正在重试中，请稍等一下喵~\n\033[0m"
   		sleep 2
@@ -97,7 +97,7 @@ while [ ! -f "only_oneapi_sac.sh" ]
 do
         if [ ! -f "only_oneapi_sac.sh" ]; then
                 echo -e "\033[0;33mone-api启动界面不存在，正在通过git下载，请稍等一下喵...\n\033[0m"
-    		curl -O https://mirror.ghproxy.com/https://raw.githubusercontent.com/YunZLu/termux_using_openai/main/CN/only_oneapi_sac.sh
+    		curl -O -L https://mirror.ghproxy.com/https://raw.githubusercontent.com/YunZLu/termux_using_openai/main/CN/only_oneapi_sac.sh
 	        if [ ! -f "only_oneapi_sac.sh" ]; then
 		echo -e "\033[0;31mone-api启动界面下载失败了，正在重试中，请稍等一下喵~\n\033[0m"
  		sleep 2
