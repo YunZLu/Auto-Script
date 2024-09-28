@@ -176,7 +176,7 @@ echo -e "\033[0;32mgo已安装喵~\033[0m\n"
 
 echo -e "\033[0;32mpython已安装喵~\033[0m\n"
 
-while [ ! -d "/root/clewd" ] || [ ! -f "/root/clewd/config.js" ] || [ ! -d "/root/SillyTavern" ] || [ ! -f "/root/SillyTavern/start.sh" ] || [ ! -d "/root/one-api" ] || [ ! -f "/root/one-api/start.sh" ] || [ ! -d "/opt/QQ/resources/app/app_launcher/napcat" ] || [ ! -d "/root/QChatGPT" ]
+while [ ! -d "/root/clewd" ] || [ ! -f "/root/clewd/config.js" ] || [ ! -d "/root/SillyTavern" ] || [ ! -f "/root/SillyTavern/start.sh" ] || [ ! -d "/root/one-api" ] || [ ! -f "/root/one-api/start.sh" ] || [ ! -d "/opt/QQ/resources/app/app_launcher/napcat" ] || [ ! -d "/root/QChatGPT" ] || [ ! -f "/root/MM_Audio/main.py" ] || [ ! -f "/root/MM_Audio/config/default.json" ]
 do
 
     if [ ! -d "/opt/QQ/resources/app/app_launcher/napcat" ]; then
@@ -186,20 +186,23 @@ n
 eof
         	if [ ! -d "/opt/QQ/resources/app/app_launcher/napcat" ]; then
                 echo -e "\n\033[0;31mnapcat下载失败了，正在重试中，请稍等一下喵~\033[0m\n"
+		cd /root
 		sleep 2
         	continue
                 else
                 echo -e "\n\033[0;32mnapcat文件下载成功喵~\033[0m\n"
+		cd /root
 		rm -rf napcat.sh
                 fi
         fi
 
-    if [ ! -d "QChatGPT" ]; then
+    if [ ! -d "/root/QChatGPT" ]; then
                 echo -e "\033[0;33mQChatGPT不存在，正在下载，请稍等一下喵...\033[0m\n"
                 git clone https://mirror.ghproxy.com/https://github.com/RockChinQ/QChatGPT
-        	if [ ! -d "QChatGPT" ]; then
+        	if [ ! -d "/root/QChatGPT" ]; then
                 echo -e "\n\033[0;31mQChatGPT下载失败了，正在重试中，请稍等一下喵~\033[0m\n"
 		sleep 2
+ 		cd /root
         	continue
                 else
                 echo -e "\n\033[0;32mQChatGPT文件下载成功喵~\033[0m\n"
@@ -232,21 +235,23 @@ eof
                 fi
         fi
         
-        if [ ! -d "one-api" ]; then
+        if [ ! -d "/root/one-api" ]; then
                 echo -e "\n\033[0;33mone-api不存在，正在通过git下载，请稍等一下喵...\033[0m\n"
                 git clone https://mirror.ghproxy.com/https://github.com/songquanpeng/one-api.git
-        	if [ ! -d "one-api" ]; then
+        	if [ ! -d "/root/one-api" ]; then
                 echo -e "\n\033[0;31mone-api下载失败了，正在重试中，请稍等一下喵~\033[0m\n"
 		sleep 2
+                cd /root
         	continue
                 else
                 echo -e "\n\033[0;32mone-api文件下载成功喵~\033[0m\n"
+		cd /root
                 fi
         fi
         
-        if [ ! -f "one-api/start.sh" ]; then
+        if [ ! -f "/root/one-api/start.sh" ]; then
                 echo -e "\033[0;33mone-api启动文件不存在，正在通过git下载，请稍等一下喵...\033[0m\n"
-                cd one-api
+                cd /root/one-api
     		curl -O -L https://mirror.ghproxy.com/https://raw.githubusercontent.com/YunZLu/termux_using_openai/main/CN/start.sh
 	        if [ ! -f "start.sh" ]; then
 		echo -e "\n\033[0;33mone-api启动文件下载失败了，正在重试中，请稍等一下喵~\033[0m\n"
@@ -259,10 +264,10 @@ eof
 		fi
         fi
 
-        if [ ! -d "clewd" ]; then
+        if [ ! -d "/root/clewd" ]; then
         	echo -e "\033[0;33mclewd不存在，正在通过git下载，请稍等一下喵...\033[0m\n"
         	git clone -b test https://mirror.ghproxy.com/https://github.com/teralomaniac/clewd
-         	if  [ ! -d "clewd" ]; then
+         	if  [ ! -d "/root/clewd" ]; then
         	echo -e "\n\033[0;31mclewd下载失败了，正在重试中，请稍等一下喵~\033[0m\n"
 	 	sleep 2
         	continue
@@ -271,12 +276,12 @@ eof
         	fi
         fi
 
-        if [ ! -f "clewd/config.js" ]; then
+        if [ ! -f "/root/clewd/config.js" ]; then
         echo -e "\033[0;33mclewd未部署，正在部署中，请稍等一下喵...\033[0m"
         cd clewd
         bash start.sh
         cd /root
-                if [ ! -f "clewd/config.js" ]; then
+                if [ ! -f "/root/clewd/config.js" ]; then
                 rm -rf clewd
                 echo -e "\n(*꒦ິ⌓꒦ີ)\033[0;33m hoping：clewd未部署成功，已帮您删除clewd了喵~\033[0m\n"
 		sleep 2
@@ -286,12 +291,12 @@ eof
                 fi
         fi
 
-        if [ ! -d "SillyTavern" ]; then
+        if [ ! -d "/root/SillyTavern" ]; then
         echo -e "\033[0;33mSillyTavern不存在，正在通过git下载，请稍等一下喵...\033[0m\n"
         rm -rf SillyTavern
         git clone https://mirror.ghproxy.com/https://github.com/SillyTavern/SillyTavern -b release
         
-                if [ ! -d "SillyTavern" ]; then
+                if [ ! -d "/root/SillyTavern" ]; then
                 echo -e "\n\033[0;31mSillyTavern下载失败了，正在重试中，请稍等一下喵~\033[0m\n"
 		sleep 2
                 continue
@@ -316,18 +321,18 @@ eof
 	                cd /root
 	                
 	                export NODE_ENV=production
-	                if [ -d "SillyTavern_old" ]; then                                   
+	                if [ -d "/root/SillyTavern_old" ]; then                                   
 	                NEW_FOLDER_NAME="SillyTavern_$(date +%Y%m%d)"
 	                mv SillyTavern_old $NEW_FOLDER_NAME
 	                fi
 	                echo -e "\033[0;33m正在下载SillyTaver更新文件中，请稍等一下喵...\033[0m"
 	                git clone -b staging https://mirror.ghproxy.com/https://github.com/SillyTavern/SillyTavern.git SillyTavern_new
-	                if [ ! -d "SillyTavern_new" ]; then
+	                if [ ! -d "/root/SillyTavern_new" ]; then
 	                rm -rf SillyTavern
 	                echo -e "\n\033[0;31mSillyTavern更新文件下载失败了，正在重试中，请稍等一下喵~\033[0m\n"
 			sleep 2
 	                continue
-	                elif [ -d "SillyTavern/data/default-user" ]; then
+	                elif [ -d "/root/SillyTavern/data/default-user" ]; then
 	                cp -r SillyTavern/data/default-user/characters/. SillyTavern_new/public/characters/
 	                cp -r SillyTavern/data/default-user/chats/. SillyTavern_new/public/chats/       
 	                cp -r SillyTavern/data/default-user/worlds/. SillyTavern_new/public/worlds/
@@ -365,6 +370,47 @@ eof
         		continue;;
    		esac
         fi
+
+        if [ ! -f "/root/MM_Audio/main.py" ]; then
+                echo -e "\n\033[0;33MM_Audio不存在，正在通过git下载，请稍等一下喵...\033[0m\n"
+		mkdir -m 777 /root/MM_Audio
+                cd /root/MM_Audio
+                curl -O -L https://mirror.ghproxy.com/https://raw.githubusercontent.com/YunZLu/termux_using_openai/refs/heads/main/QC_CN/MM_Audio/main.py
+        	if [ ! -f "/root/MM_Audio/main.py" ]; then
+                echo -e "\n\033[0;31MM_Audio下载失败了，正在重试中，请稍等一下喵~\033[0m\n"
+		cd /root
+		sleep 2
+        	continue
+                else
+                echo -e "\n\033[0;32mMM_Audio文件下载成功喵~\033[0m\n"
+                echo -e "\033[0;33m正在创建python3虚拟环境喵~\033[0m\n"
+		python3 -m venv .
+		cd bin
+		source activate
+		cd ..
+                echo -e "\033[0;33m正在安装依赖喵~\033[0m\n"
+		pip install aiohttp
+		echo -e "\n\033[0;32m依赖安装完毕喵~\033[0m"
+  		deactivate
+		cd /root
+                fi
+        fi
+
+         if [ ! -f "/root/MM_Audio/config/default.json" ]; then
+                echo -e "\n\033[0;33MM_Audio配置文件不存在，正在通过git下载，请稍等一下喵...\033[0m\n"
+		mkdir -m 777 /root/MM_Audio/config/
+                cd /root/MM_Audio/config/
+                curl -O -L https://mirror.ghproxy.com/https://raw.githubusercontent.com/YunZLu/termux_using_openai/refs/heads/main/QC_CN/MM_Audio/config/default.json
+        	if [ ! -f "/root/MM_Audio/config/default.json" ]; then
+                echo -e "\n\033[0;31MM_Audio配置文件下载失败了，正在重试中，请稍等一下喵~\033[0m\n"
+		cd /root
+		sleep 2
+        	continue
+                else
+                echo -e "\n\033[0;32mMM_Audio配置文件文件下载成功喵~\033[0m\n"
+		cd /root
+                fi
+        fi
 done
 
 #version="Ver2.9.5"
@@ -374,6 +420,176 @@ done
 #\033[0;33m当前:\033[0m$clewd_version \033[0;33m最新:\033[0m\033[5;36m$clewd_latest\033[0m \033[0;33mconfig.js:\033[5;37m$sactag_value
 #设置酒馆 获取等级
 #\033[0;33m当前版本:\033[0m$st_version \033[0;33m最新版本:\033[0m\033[5;36m$st_latest\033[0m
+function MINIMAX_TTS_Settings {
+
+    echo -e "\033[0;36m请选择选一个执行喵~\033[0m
+\033[0;33m--------------------------------------\033[0m
+\033[0;34m选项0 设置group_id
+\033[0;37m选项1 设置API Key
+\033[0;34m选项2 设置模型
+\033[0;37m选项3 添加混音
+\033[0;34m选项4 删除混音
+\033[0;37m选项5 设置语速
+\033[0;34m选项6 设置音量
+\033[0;37m选项7 设置音调
+\033[0;33m--------------------------------------\033[0m"
+    read -s -n 1 option
+    echo
+    case $option in 
+        0) 
+            # 设置group_id
+			cd /root
+		    echo -e "\033[0;33m请输入你的group_id喵~\033[0m\n"
+       		read -p "group_id：" group_id
+       		echo -e "\n\033[0;33m请确认你的group_id喵~（y|N）\033[0m\n"
+      		echo -e "\033[0;33mgroup_id："$group_id"\033[0m"
+	 		read -s -n 1 chose
+       			case $chose in 
+	        	    y|Y)
+	   				jq --arg gid "$group_id" '.group_id = $gid' /root/MM_Audio/config/default.json > /root/MM_Audio/config/default_tmp.json && mv /root/MM_Audio/config/default_tmp.json /root/MM_Audio/config/default.json       				echo -e "\n\033[0;32mgroup_id设置成功喵~\033[0m\n";;
+			    *)
+				echo -e "\n\033[0;36m你已取消设置group_id喵~\033[0m\n";;
+	  		esac
+			;;
+        1) 
+            # 设置API Key
+			cd /root
+		    echo -e "\033[0;33m请输入你的API Key喵~\033[0m\n"
+       		read -p "API_Key：" API_Key
+       		echo -e "\n\033[0;33m请确认你的API_Key喵~（y|N）\033[0m\n"
+      		echo -e "\033[0;33mAPI_Key："$API_Key"\033[0m"
+	 		read -s -n 1 chose
+       			case $chose in 
+	        	    y|Y)
+	   				jq --arg AK "$API_Key" '.api_key = $AK' /root/MM_Audio/config/default.json > /root/MM_Audio/config/default_tmp.json && mv /root/MM_Audio/config/default_tmp.json /root/MM_Audio/config/default.json       				echo -e "\n\033[0;32mgroup_id设置成功喵~\033[0m\n";;
+			    *)
+				echo -e "\n\033[0;36m你已取消设置API_Key喵~\033[0m\n";;
+	  		esac
+			;;
+        2) 
+            # 设置模型
+			cd /root
+		    echo -e "\033[0;33m请输入你的语音模型喵~\033[0m\n"
+       		read -p "语音模型：" model
+       		echo -e "\n\033[0;33m请确认你的语音模型喵~（y|N）\033[0m\n"
+      		echo -e "\033[0;33m语音模型："$model"\033[0m"
+	 		read -s -n 1 chose
+       			case $chose in 
+	        	    y|Y)
+	   				jq --arg m "$model" '.request_params.model = $m' /root/MM_Audio/config/default.json > /root/MM_Audio/config/default_tmp.json && mv /root/MM_Audio/config/default_tmp.json /root/MM_Audio/config/default.json       				echo -e "\n\033[0;32mgroup_id设置成功喵~\033[0m\n";;
+			    *)
+				echo -e "\n\033[0;36m你已取消设置模型喵~\033[0m\n";;
+	  		esac
+			;;
+      	3)
+	   		# 添加混音
+			speakList=$(cat /root/MM_Audio/config/default.json|jq '.voice_id' | keys_unsorted | awk -F'"' '{print $2}'| awk 'NF{a++;print "\033[0;33m"a"\033[0m""\033[0;33m.\033[0m","\033[0;33m"$0"\033[0m\n";next}1')
+			if [ ! "$speakList" ]; then
+		    	echo -e "\033[0;31m你根本没有可添加的混音，你是在玩我喵喵大人喵？\033[0m\n"
+		    else
+				echo -e "\033[0;36m请选择需要添加的混音喵~\033[0m\n"
+				echo -e "$speakList\n"
+		    	read -n 3 speakChose
+	   			speakChose=$(($speakChose-1))
+				speakName=$(jq --arg n ${speakChose} '.voice_id' | keys_unsorted | awk -F'"' '{print $2}'| awk NR==$n /root/MM_Audio/config/default.json)
+				if [ "$speakName" ] && [ "$speakName" != null ]; then
+				voice_id=$(jq -r --arg key "$speakName" '.voice_id[$key]' /root/MM_Audio/config/default.json)
+				echo -e "\n\033[0;33m请输入混音权重喵~\033[0m\n"
+				read -p "混音权重（范围[1,100]）：" weight
+				echo -e "\n\033[0;33m请确认你的预设信息喵~（y|N）\033[0m\n"
+				echo -e "\033[0;33m配音角色："$speakName"\033[0m\n"
+				echo -e "\033[0;33m混音权重：$weight\033[0m\n"
+				read -s -n 1 chose
+					case $chose in 
+					y|Y)
+						cat /root/MM_Audio/config/default.json | jq --arg voice_id "$voice_id" --argjson weight "$weight" '.request_params.timber_weights += [{"voice_id": $voice_id, "weight": $weight}]' > tmp.json && mv tmp.json /root/MM_Audio/config/default.json
+						echo -e "\033[0;32m混音角色：$speakName 添加成功喵~\033[0m\n";;
+					*)
+					echo -e "\033[0;36m你已取消添加混音角色喵~\033[0m\n";;
+	            else
+					echo -e "\n\033[0;31m你怎么乱选！不给你删了喵~\033[0m\n"
+		 		fi
+    		fi
+	   		;;
+   		4)
+	   		# 删除混音
+			speakList=$(cat /root/MM_Audio/config/default.json|jq '.request_params.timber_weights[].voice_id'|awk -F'"' '{print $2}'| awk 'NF{a++;print "\033[0;33m"a"\033[0m""\033[0;33m.\033[0m","\033[0;33m"$0"\033[0m\n";next}1')
+			if [ ! "$speakList" ]; then
+		    	echo -e "\033[0;31m你根本没有语言模型，你是在玩我喵喵大人喵？\033[0m\n"
+		    else
+				echo -e "\033[0;36m请选择需要删除的混音喵~\033[0m\n"
+				echo -e "$speakList\n"
+		    	read -n 3 speakChose
+	   			speakChose=$(($speakChose-1))
+				speakName=$(jq --arg n ${speakChose} '.request_params.timber_weights[$n|tonumber]' /root/MM_Audio/config/default.json)
+				if [ "$speakName" ] && [ "$speakName" != null ]; then
+	                echo -e "\n\033[0;36m你确定要删除该混音喵？(y|N)\033[0m\n"
+					echo -e "\033[0;33m混音\n$speakName\033[0m"
+		  			read -s -n 1 chose
+					case $chose in 
+			        	y|Y)
+							jq --arg n ${speakChose} 'del(.request_params.timber_weights[$n|tonumber])' /root/MM_Audio/config/default.json > tmp.json && mv tmp.json /root/MM_Audio/config/default.json
+	    					echo -e "\n\033[0;32m混音：\n$speakName\n已被删除喵~\033[0m\n";;
+					    *)
+							echo -e "\n\033[0;36m你已取消删除混音喵~\033[0m\n";;
+			  			esac
+	            else
+					echo -e "\n\033[0;31m你怎么乱选！不给你删了喵~\033[0m\n"
+		 		fi
+    		fi
+	   		;;
+        5) 
+            # 设置语速
+			cd /root
+		    echo -e "\033[0;33m请输入你的语速喵~\033[0m\n"
+       		read -p "语速(范围[0.5,2]）：" speed
+       		echo -e "\n\033[0;33m请确认你的语速喵~（y|N）\033[0m\n"
+      		echo -e "\033[0;33m语速："$speed"\033[0m"
+	 		read -s -n 1 chose
+       			case $chose in 
+	        	    y|Y)
+	   				jq --arg s "$speed" '.request_params.speed = $s' /root/MM_Audio/config/default.json > /root/MM_Audio/config/default_tmp.json && mv /root/MM_Audio/config/default_tmp.json /root/MM_Audio/config/default.json       				echo -e "\n\033[0;32mgroup_id设置成功喵~\033[0m\n";;
+			    *)
+				echo -e "\n\033[0;36m你已取消设置语速喵~\033[0m\n";;
+	  		esac
+			;;
+        6) 
+            # 设置音量
+			cd /root
+		    echo -e "\033[0;33m请输入你的音量喵~\033[0m\n"
+       		read -p "音量（范围（0,10]）：" vol
+       		echo -e "\n\033[0;33m请确认你的音量喵~（y|N）\033[0m\n"
+      		echo -e "\033[0;33m音量："$vol"\033[0m"
+	 		read -s -n 1 chose
+       			case $chose in 
+	        	    y|Y)
+	   				jq --arg v "$vol" '.request_params.vol = $v' /root/MM_Audio/config/default.json > /root/MM_Audio/config/default_tmp.json && mv /root/MM_Audio/config/default_tmp.json /root/MM_Audio/config/default.json       				echo -e "\n\033[0;32mgroup_id设置成功喵~\033[0m\n";;
+			    *)
+				echo -e "\n\033[0;36m你已取消设置音量喵~\033[0m\n";;
+	  		esac
+			;;
+        7) 
+            # 设置音调
+			cd /root
+		    echo -e "\033[0;33m请输入你的音调喵~\033[0m\n"
+       		read -p "音调（范围[-12,12]）：" pitch
+       		echo -e "\n\033[0;33m请确认你的音调喵~（y|N）\033[0m\n"
+      		echo -e "\033[0;33m音调："$pitch"\033[0m"
+	 		read -s -n 1 chose
+       			case $chose in 
+	        	    y|Y)
+	   				jq --arg p "$pitch" '.request_params.pitch = $p' /root/MM_Audio/config/default.json > /root/MM_Audio/config/default_tmp.json && mv /root/MM_Audio/config/default_tmp.json /root/MM_Audio/config/default.json       				echo -e "\n\033[0;32mgroup_id设置成功喵~\033[0m\n";;
+			    *)
+				echo -e "\n\033[0;36m你已取消设置音调喵~\033[0m\n";;
+	  		esac
+			;;
+   	   	*)
+			echo -e "\033[0;31m你怎么乱选！不跟你玩了喵~\033[0m\n";;
+	  esac
+	  echo -e "\033[0;33m3s后返回主菜单喵~\033[0m\n"
+   	  sleep 3
+      cd /root
+}
 
 function QChatGPTSettings {
 
@@ -1484,10 +1700,12 @@ do
 \033[0;37m选项2 启动酒馆\033[0m
 \033[0;34m选项3 启动QChatGPT\033[0m
 \033[0;37m选项4 启动NapCatQQ\033[0m
-\033[0;34m选项5 启动Clewd\033[0m
+\033[0;34m选项5 启动MINIMAX_TTS\033[0m
 \033[0;37m选项6 QChatGPT设置\033[0m
 \033[0;34m选项7 酒馆设置\033[0m
-\033[0;37m选项8 Clewd设置\033[0m
+\033[0;37m选项8 MINIMAX_TTS设置\033[0m
+\033[0;34m选项a 启动Clewd\033[0m
+\033[0;37m选项b Clewd设置\033[0m
 \033[0;33m--------------------------------------\033[0m
 \033[0;31m选项9 更新脚本\033[0m
 \033[0;33m--------------------------------------\033[0m
@@ -1676,16 +1894,14 @@ do
             		cd /root
         	;; 
         5) 
-            #启动Clewd
-            port=$(grep -oP '"Port":\s*\K\d+' clewd/config.js)
-            echo "端口为$port, 出现 (x)Login in {邮箱} 代表启动成功, 后续出现AI无法应答等报错请检查本窗口喵。"
-			ps -ef | grep clewd.js | awk '{print$2}' | xargs kill -9
-            cd /root/clewd
-	    #设置npm国内源
-	    npm config set registry https://registry.npmmirror.com
-            bash start.sh
-            echo "Clewd已关闭, 即将返回主菜单"
-            cd ../
+            #启动MINIMAX_TTS
+		cd /root/MM_Audio/bin
+  		source activate
+    		cd ..
+                echo -e "\n\033[0;33m正在启动MINIMAX_TTS中，请稍等一下喵~\033[0m"
+		python3 main.py
+  		deactivate
+    		cd /root
             ;; 
 	6)
             #QChatGPT设置
@@ -1697,8 +1913,8 @@ do
             ;; 
 
         8) 
-            #Clewd设置
-            clewdSettings
+            #MINIMAX_TTS设置
+            MINIMAX_TTS_Settings
             ;; 
         9)
             # 更新脚本
@@ -1720,6 +1936,22 @@ do
             fi
             done
 	    ;;
+        a) 
+            #启动Clewd
+            port=$(grep -oP '"Port":\s*\K\d+' clewd/config.js)
+            echo "端口为$port, 出现 (x)Login in {邮箱} 代表启动成功, 后续出现AI无法应答等报错请检查本窗口喵。"
+			ps -ef | grep clewd.js | awk '{print$2}' | xargs kill -9
+            cd /root/clewd
+	    #设置npm国内源
+	    npm config set registry https://registry.npmmirror.com
+            bash start.sh
+            echo "Clewd已关闭, 即将返回主菜单"
+            cd ../
+            ;; 
+	b) 
+            #Clewd设置
+            clewdSettings
+            ;; 
         *) 
             echo -e "m9( ｀д´ )!!!! \n\033[0;36m坏猫猫居然不听话，存心和我hoping喵~过不去是吧喵？\033[0m\n"
             ;;
