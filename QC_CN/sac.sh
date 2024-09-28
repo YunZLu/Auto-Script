@@ -485,7 +485,7 @@ function MINIMAX_TTS_Settings {
 			;;
       	3)
 	   		# 添加混音
-			speakList=$(cat /root/MM_Audio/config/default.json|jq '.voice_id' | to_entries | map(.key) | awk 'NF{a++;print "\033[0;33m"a"\033[0m""\033[0;33m.\033[0m","\033[0;33m"$0"\033[0m\n";next}1')
+			speakList=$(cat /root/MM_Audio/config/default.json|jq -r '.voice_id | to_entries | map(.key)' | awk -F'"' '{print $2}' | awk 'NF{a++;print "\033[0;33m"a"\033[0m""\033[0;33m.\033[0m","\033[0;33m"$0"\033[0m\n";next}1')
 			if [ ! "$speakList" ]; then
 		    	echo -e "\033[0;31m你根本没有可添加的混音，你是在玩我喵喵大人喵？\033[0m\n"
 		    else
@@ -493,7 +493,7 @@ function MINIMAX_TTS_Settings {
 				echo -e "$speakList\n"
 		    	read -n 3 speakChose
 	   			speakChose=$(($speakChose-1))
-				speakName=$(jq --arg n ${speakChose} '.voice_id' | to_entries | map(.key) | awk NR==$n /root/MM_Audio/config/default.json)
+				speakName=$(jq --arg n ${speakChose} '.voice_id | to_entries | map(.key)' | awk -F'"' '{print $2}' | awk NR==$n /root/MM_Audio/config/default.json)
 				if [ "$speakName" ] && [ "$speakName" != null ]; then
 				voice_id=$(jq -r --arg key "$speakName" '.voice_id[$key]' /root/MM_Audio/config/default.json)
 				echo -e "\n\033[0;33m请输入混音权重喵~\033[0m\n"
