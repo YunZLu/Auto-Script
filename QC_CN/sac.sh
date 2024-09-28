@@ -493,7 +493,7 @@ function MINIMAX_TTS_Settings {
 				echo -e "$speakList\n"
 		    	read -n 3 speakChose
 	   			speakChose=$(($speakChose+1))
-				speakName=$(cat /root/MM_Audio/config/default.json|jq -r --arg n ${speakChose} '.voice_id | to_entries | map(.key)' | awk -F'"' '{print $2}' | awk NR==$n)
+				speakName=$(cat /root/MM_Audio/config/default.json|jq -r '.voice_id | to_entries | map(.key)' | awk -F'"' '{print $2}' | awk NR==$speakChose)
 				if [ "$speakName" ] && [ "$speakName" != null ]; then
 				voice_id=$(jq -r --arg key "$speakName" '.voice_id[$key]' /root/MM_Audio/config/default.json)
 				echo -e "\n\033[0;33m请输入混音权重喵~\033[0m\n"
