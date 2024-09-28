@@ -1,0 +1,28 @@
+{
+    "group_id": "请填写您的group_id", 
+    "api_key": "请填写您的api_key", 
+    "request_params": {
+        "model": "speech-01-turbo", 
+        "stream": false, 
+        "timber_weights": [
+            {
+                "voice_id": "male-qn-qingse", 
+                "weight": 1
+            }, 
+            {
+                "voice_id": "female-shaonv", 
+                "weight": 1
+            }
+        ], 
+        "voice_setting": {
+            "speed": 1, 
+            "vol": 1, 
+            "pitch": 0
+        }, 
+        "audio_setting": {
+            "sample_rate": 32000, 
+            "bitrate": 128000, 
+            "format": "mp3"
+        }
+    }
+}
