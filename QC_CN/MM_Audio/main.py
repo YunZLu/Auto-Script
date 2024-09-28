@@ -14,7 +14,7 @@ logging.basicConfig(level=logging.INFO)
 home_dir = os.path.expanduser("~/MM_Audio")
 
 # 配置文件夹路径
-config_dir = os.path.join(home_dir, "config_speakers")
+config_dir = os.path.join(home_dir, "config")
 default_config_path = os.path.join(config_dir, 'default.json')
 
 # 临时文件夹路径
