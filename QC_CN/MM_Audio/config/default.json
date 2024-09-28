@@ -15,6 +15,7 @@
             }
         ], 
         "voice_setting": {
+            "voice_id": "", 
             "speed": 1, 
             "vol": 1, 
             "pitch": 0
