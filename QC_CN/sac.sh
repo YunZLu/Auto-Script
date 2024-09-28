@@ -456,16 +456,16 @@ function MINIMAX_TTS_Settings {
             # 设置API Key
 			cd /root
 		    echo -e "\033[0;33m请输入你的API Key喵~\033[0m\n"
-       		read -p "API_Key：" API_Key
+       		read -p "API Key：" API_Key
        		echo -e "\n\033[0;33m请确认你的API_Key喵~（y|N）\033[0m\n"
-      		echo -e "\033[0;33mAPI_Key："$API_Key"\033[0m"
+      		echo -e "\033[0;33mAPI Key："$API_Key"\033[0m"
 	 		read -s -n 1 chose
        			case $chose in 
 	        	    y|Y)
 	   				jq --arg AK "$API_Key" '.api_key = $AK' /root/MM_Audio/config/default.json > /root/MM_Audio/config/default_tmp.json && mv /root/MM_Audio/config/default_tmp.json /root/MM_Audio/config/default.json
-					echo -e "\n\033[0;32mgroup_id设置成功喵~\033[0m\n";;
+					echo -e "\n\033[0;32mAPI Key设置成功喵~\033[0m\n";;
 			    *)
-				echo -e "\n\033[0;36m你已取消设置API_Key喵~\033[0m\n";;
+				echo -e "\n\033[0;36m你已取消设置API Key喵~\033[0m\n";;
 	  		esac
 			;;
         2) 
@@ -1903,7 +1903,7 @@ do
 		cd /root/MM_Audio/bin
   		source activate
     		cd ..
-                echo -e "\n\033[0;33m正在启动MINIMAX_TTS中，请稍等一下喵~\033[0m"
+                echo -e "\033[0;33m正在启动MINIMAX_TTS中，请稍等一下喵~\033[0m\n"
 		python3 main.py
   		deactivate
     		cd /root
