@@ -446,7 +446,8 @@ function MINIMAX_TTS_Settings {
 	 		read -s -n 1 chose
        			case $chose in 
 	        	    y|Y)
-	   				jq --arg gid "$group_id" '.group_id = $gid' /root/MM_Audio/config/default.json > /root/MM_Audio/config/default_tmp.json && mv /root/MM_Audio/config/default_tmp.json /root/MM_Audio/config/default.json       				echo -e "\n\033[0;32mgroup_id设置成功喵~\033[0m\n";;
+	   				jq --arg gid "$group_id" '.group_id = $gid' /root/MM_Audio/config/default.json > /root/MM_Audio/config/default_tmp.json && mv /root/MM_Audio/config/default_tmp.json /root/MM_Audio/config/default.json
+					echo -e "\n\033[0;32mgroup_id设置成功喵~\033[0m\n";;
 			    *)
 				echo -e "\n\033[0;36m你已取消设置group_id喵~\033[0m\n";;
 	  		esac
@@ -564,7 +565,8 @@ function MINIMAX_TTS_Settings {
 	 		read -s -n 1 chose
        			case $chose in 
 	        	    y|Y)
-	   				jq --arg v "$vol" '.request_params.vol = $v' /root/MM_Audio/config/default.json > /root/MM_Audio/config/default_tmp.json && mv /root/MM_Audio/config/default_tmp.json /root/MM_Audio/config/default.json       				echo -e "\n\033[0;32mgroup_id设置成功喵~\033[0m\n";;
+	   				jq --arg v "$vol" '.request_params.vol = $v' /root/MM_Audio/config/default.json > /root/MM_Audio/config/default_tmp.json && mv /root/MM_Audio/config/default_tmp.json /root/MM_Audio/config/default.json
+					echo -e "\n\033[0;32mgroup_id设置成功喵~\033[0m\n";;
 			    *)
 				echo -e "\n\033[0;36m你已取消设置音量喵~\033[0m\n";;
 	  		esac
@@ -579,7 +581,8 @@ function MINIMAX_TTS_Settings {
 	 		read -s -n 1 chose
        			case $chose in 
 	        	    y|Y)
-	   				jq --arg p "$pitch" '.request_params.pitch = $p' /root/MM_Audio/config/default.json > /root/MM_Audio/config/default_tmp.json && mv /root/MM_Audio/config/default_tmp.json /root/MM_Audio/config/default.json       				echo -e "\n\033[0;32mgroup_id设置成功喵~\033[0m\n";;
+	   				jq --arg p "$pitch" '.request_params.pitch = $p' /root/MM_Audio/config/default.json > /root/MM_Audio/config/default_tmp.json && mv /root/MM_Audio/config/default_tmp.json /root/MM_Audio/config/default.json
+					echo -e "\n\033[0;32mgroup_id设置成功喵~\033[0m\n";;
 			    *)
 				echo -e "\n\033[0;36m你已取消设置音调喵~\033[0m\n";;
 	  		esac
