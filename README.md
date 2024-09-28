@@ -1,3 +1,20 @@
+2024.9.28、更新
+
+新增QChatGPT版本功能：
+
+1、NapCatQQ:接收和发送QQ消息
+
+2、QChatGPT:通过NapCatQQ让QQ接入Claude等模型
+
+2、MINIMAX_TTS：将酒馆接入MINIMAX_TTS
+
+具体配置教程查看腾讯文档：
+
+【腾讯文档】喵喵一键脚本(QchatGPT版)部署教程
+https://docs.qq.com/doc/DWnVzakZzTW16ekpN#
+
+——————————————————————————————————————————
+
 2024.8.28、更新
 
 已更新国内代理版本，链接使用代理加速，不需要魔法！！！
