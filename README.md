@@ -6,7 +6,7 @@
 
 2、QChatGPT:通过NapCatQQ让QQ接入Claude等模型
 
-2、MINIMAX_TTS：将酒馆接入MINIMAX_TTS
+2、MINIMAX_TTS：将酒馆接入MINIMAX_TTS语音服务
 
 具体配置教程查看腾讯文档：
 
