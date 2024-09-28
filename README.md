@@ -8,7 +8,7 @@
 
 2、MINIMAX_TTS：将酒馆接入MINIMAX_TTS语音服务
 
-具体配置教程查看腾讯文档：
+具体升级命令和配置教程查看腾讯文档：
 
 【腾讯文档】喵喵一键脚本(QchatGPT版)部署教程
 https://docs.qq.com/doc/DWnVzakZzTW16ekpN#
