@@ -1,0 +1,17 @@
+{
+    "id": "7513e122-a43f-431d-82be-e0715a55519d",
+    "scriptName": "音频替换",
+    "findRegex": "/\"([^\"]*)\"/gms",
+    "replaceString": "\"$1\"<p><audio controls src=http://127.0.0.1:5000/female-yujie/$1></p>",
+    "trimStrings": [],
+    "placement": [
+        2
+    ],
+    "disabled": false,
+    "markdownOnly": true,
+    "promptOnly": false,
+    "runOnEdit": true,
+    "substituteRegex": false,
+    "minDepth": null,
+    "maxDepth": null
+}
