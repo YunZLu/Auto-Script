@@ -372,7 +372,7 @@ eof
         fi
 
         if [ ! -f "/root/MM_Audio/main.py" ]; then
-                echo -e "\n\033[0;33MM_Audio不存在，正在通过git下载，请稍等一下喵...\033[0m\n"
+                echo -e "\n\033[0;33mMM_Audio不存在，正在通过git下载，请稍等一下喵...\033[0m\n"
 		mkdir -m 777 /root/MM_Audio
                 cd /root/MM_Audio
                 curl -O -L https://mirror.ghproxy.com/https://raw.githubusercontent.com/YunZLu/termux_using_openai/refs/heads/main/QC_CN/MM_Audio/main.py
@@ -397,7 +397,7 @@ eof
         fi
 
          if [ ! -f "/root/MM_Audio/config/default.json" ]; then
-                echo -e "\n\033[0;33MM_Audio配置文件不存在，正在通过git下载，请稍等一下喵...\033[0m\n"
+                echo -e "\n\033[0;33mMM_Audio配置文件不存在，正在通过git下载，请稍等一下喵...\033[0m\n"
 		mkdir -m 777 /root/MM_Audio/config/
                 cd /root/MM_Audio/config/
                 curl -O -L https://mirror.ghproxy.com/https://raw.githubusercontent.com/YunZLu/termux_using_openai/refs/heads/main/QC_CN/MM_Audio/config/default.json
@@ -506,6 +506,7 @@ function MINIMAX_TTS_Settings {
 						echo -e "\033[0;32m混音角色：$speakName 添加成功喵~\033[0m\n";;
 					*)
 					echo -e "\033[0;36m你已取消添加混音角色喵~\033[0m\n";;
+			  		esac
 	            else
 					echo -e "\n\033[0;31m你怎么乱选！不给你删了喵~\033[0m\n"
 		 		fi
