@@ -462,7 +462,8 @@ function MINIMAX_TTS_Settings {
 	 		read -s -n 1 chose
        			case $chose in 
 	        	    y|Y)
-	   				jq --arg AK "$API_Key" '.api_key = $AK' /root/MM_Audio/config/default.json > /root/MM_Audio/config/default_tmp.json && mv /root/MM_Audio/config/default_tmp.json /root/MM_Audio/config/default.json       				echo -e "\n\033[0;32mgroup_id设置成功喵~\033[0m\n";;
+	   				jq --arg AK "$API_Key" '.api_key = $AK' /root/MM_Audio/config/default.json > /root/MM_Audio/config/default_tmp.json && mv /root/MM_Audio/config/default_tmp.json /root/MM_Audio/config/default.json
+					echo -e "\n\033[0;32mgroup_id设置成功喵~\033[0m\n";;
 			    *)
 				echo -e "\n\033[0;36m你已取消设置API_Key喵~\033[0m\n";;
 	  		esac
